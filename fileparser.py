@@ -141,6 +141,7 @@ for count in range(1,len(sys.argv)):
                 if(float(a.xmin)>float(b.xmax)): continue #uncomparable
                 elif(float(b.xmin)>float(a.xmax)): continue #uncomparable
                 
+                #interruption
                 if(overlap(a,b)):
                     # print a.name,a.xmin, a.xmax, b.name,b.xmin, b.xmax 
                     if(a.xmin>b.xmin and user==a.name): 
@@ -175,7 +176,8 @@ for a in  arr3:
             
 for key in sorted(dict,key=len):
     if(dict[key]!=None):
-        print key, dict[key]   
+        print key, dict[key]
+        
 print 'total interruption', overlapcount
 
 
