@@ -144,7 +144,7 @@ for count in range(1,len(sys.argv)):
                 if(overlap(a,b)):
                     # print a.name,a.xmin, a.xmax, b.name,b.xmin, b.xmax 
                     if(a.xmin>b.xmin and user==a.name): 
-                        dict['interrupting'] += 1   
+                        dict['interrupt'] += 1   
                     elif(b.xmin>=a.xmin and user==a.name):
                         dict['interrupted'] += 1
                     else:
@@ -176,7 +176,7 @@ for a in  arr3:
 for key in sorted(dict,key=len):
     if(dict[key]!=None):
         print key, dict[key]   
-
+print 'total interruption', overlapcount
 
 
    
