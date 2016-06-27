@@ -1,6 +1,7 @@
 import sys
 import re
 import itertools
+import functools
 
 class Item(object):
     xmin = ""
@@ -93,42 +94,89 @@ def overlap(a,b):
     # interval a min, max, interval b min, max
     return a.xmin <= b.xmax and b.xmin <= a.xmax
 
-def printinterval(a):
-    print 'min:', a.xmin, 'max: ', a.xmax
+def sameSegment(max,min):
+    return max == min
+
+def compare(item1, item2):
+    if float(item1.xmin)<float(item2.xmin): return -1
+    elif float(item1.xmin)>float(item2.xmin): return 1
+    else: return 0 
+
+def length(a):
+    return float(a.xmax)-float(a.xmin)
+
+def adds(sounds):
+    total = 0
+    for s in sounds:
+        total+=length(s)
+    return total 
 
 print 'Argument', str(sys.argv)
-arr1 = []
-arr2 = []
-merge = []
+files = []
 dict = {}
 counter = 0 
 overlapcount = 0
+user = readFile(sys.argv[1])[0].name
+print 'user: ', user
+dict['interrupted'] = 0
+dict['interrupt'] = 0
 
 for count in range(1,len(sys.argv)):
-    for count2 in range(count+1, len(sys.argv)):
-        arr1 = readFile(sys.argv[count])
-        arr2 = readFile(sys.argv[count2])
-        # hash key using label and value is souding arr
-        # dict[count] = arr1
-        # dict[count2] = arr2
-        dict[str(count)+str(count2)] = 0 #eg'12'
-        dict[str(count2)+str(count)] = 0 #eg'12'
-        for item in itertools.chain(arr1, arr2):
-            if()
-        #pick the shorter duration as reference
-        maxlength = min(arr1[len(arr1)-1].xmax, arr2[len(arr2)-1].xmax)
-        for a in arr1:
-            for b in arr2:
-                if(float(a.xmin)>float(b.xmax)): continue
-                elif(float(b.xmin)>float(a.xmax)): continue #uncomparable
+    for count2 in range(count+1,len(sys.argv)):
+        #merge intervals
+        files.append(readFile(sys.argv[count]))
+        files.append(readFile(sys.argv[count2]))
+        #initiate turntakingkeys
+        dict[readFile(sys.argv[count])[0].name+readFile(sys.argv[count2])[0].name] = 0
+        dict[readFile(sys.argv[count2])[0].name+readFile(sys.argv[count])[0].name] = 0
+        dict[readFile(sys.argv[count])[0].name+readFile(sys.argv[count])[0].name] = None
+        dict[readFile(sys.argv[count2])[0].name+readFile(sys.argv[count2])[0].name] = None
+        #total sounding duration
+        dict[readFile(sys.argv[count])[0].name] = adds(readFile(sys.argv[count]))
+        dict[readFile(sys.argv[count2])[0].name] =  adds(readFile(sys.argv[count2]))
 
+        #checking for overlap by comparing intervals in each audio
+        for a in readFile(sys.argv[count]):
+            for b in readFile(sys.argv[count2]):
+                if(float(a.xmin)>float(b.xmax)): continue #uncomparable
+                elif(float(b.xmin)>float(a.xmax)): continue #uncomparable
+                
                 if(overlap(a,b)):
+                    # print a.name,a.xmin, a.xmax, b.name,b.xmin, b.xmax 
+                    if(a.xmin>b.xmin and user==a.name): 
+                        dict['interrupting'] += 1   
+                    elif(b.xmin>=a.xmin and user==a.name):
+                        dict['interrupted'] += 1
+                    else:
+                        dict['interrupt'] += 1 
+                        
                     overlapcount+=1
 
-print 'Interruption Count: ', overlapcount
-# print dict.items()
-                
-    
+arr3 = []
+flag = []
+
+for afile in files:
+    for a in afile:
+        arr3.append(a)
+
+arr3.sort(cmp=compare)
+# # initial flagged interval
+flag.append(arr3[0])
+# print 'turn', flag[0].name, flag[0].xmin, flag[0].xmax, '*'
+for a in  arr3:
+    prevname = flag[0].name
+    if(float(a.xmax) <= float(flag[0].xmax) and float(a.xmin)>=float(flag[0].xmin)): 
+        continue
+    else: 
+        flag[0] = a
+        # print 'turn', flag[0].name, flag[0].xmin, flag[0].xmax
+        if(dict[prevname+flag[0].name]!=None):
+            dict[prevname+flag[0].name] +=1
+            
+for key in sorted(dict,key=len):
+    if(dict[key]!=None):
+        print key, dict[key]   
+
 
 
    
