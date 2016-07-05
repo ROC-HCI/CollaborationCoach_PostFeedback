@@ -1,0 +1,4 @@
+# Exclude videos and audio files #
+*.csv
+*.avi
+*.webm
