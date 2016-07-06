@@ -78,7 +78,7 @@ var RealSocket = function (app) {
 		console.log("SPAWN SELECTION #6");
         break;
     default:
-        default this.yourPlayerTranslation = default_translation;
+        this.yourPlayerTranslation = default_translation;
 }
 
   this.translated = false;
