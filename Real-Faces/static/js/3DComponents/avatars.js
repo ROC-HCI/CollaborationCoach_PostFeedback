@@ -129,7 +129,8 @@ Avatar.prototype.createPlayerObject = function(scene) {
   // rotatedHead.add(headgroup);
 
   // playerModel.add(rotatedHead);
-  playerModel.position.y = 6;
+  playerModel.position.y = 35;
+  playerModel.position.x = 35;
 
   var playerGroup = new THREE.Object3D();
 
