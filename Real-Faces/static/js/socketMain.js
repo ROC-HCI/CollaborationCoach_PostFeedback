@@ -8,11 +8,11 @@ var RealSocket = function (app) {
  
   //YOUR PLAYER UPDATES TO SERVER
   this.yourPlayerTranslation = {
-    position: {x:0, y:10, z:0},
+    position: {x:35, y:10, z:35},
     rotation: {x:0, y:0}
   }; 
 
-  this.translated = false;
+  this.translated = true;
 
   //connect to server namespace
   this.socketio = io.connect('/translations');
