@@ -31,9 +31,6 @@ var createYourPlayerScreen = function(){
   playerScreen.add(body.mesh);
   //playerScreen.position.y += 10;
   
-  playerScreen.position.x = 50;
-  console.log("I SET THE PLAYER SCREEN POSITION!");
-  
   playerScreen.startWalking = function(){
     body.startWalking();
   };
