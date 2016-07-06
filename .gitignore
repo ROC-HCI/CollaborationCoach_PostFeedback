@@ -1,0 +1,8 @@
+# Exclude videos and audio files #
+*.csv
+*.avi
+*.webm
+*.wav
+
+#exclude everything in directory
+Data/* 
