@@ -107,7 +107,7 @@ var RealSocket = function (app) {
 
   this.socketio.on('new_client', function(clientID){
     console.log('new player socket', clientID)
-    context.lastRecordedPlayerTranslations[clientID] = {position:{x:0, y:10, z:10}, rotation:{x:0,y:0}};
+    context.lastRecordedPlayerTranslations[clientID] = {position:{x:50, y:50, z:0}, rotation:{x:0,y:0}};
     //otherPlayerUpdates will hear this and create a new player
     playerEvents.emit('new_player', [clientID]);
   });
