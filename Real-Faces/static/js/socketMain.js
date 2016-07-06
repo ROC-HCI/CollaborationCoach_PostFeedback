@@ -7,37 +7,37 @@ var RealSocket = function (app) {
   var context = this;
   
   var player_1_translation = {
-    position: {x:0, y:10, z:0},
+    position: {x:40, y:0, z:0},
     rotation: {x:0, y:0}
   };
   
   var player_2_translation = {
-    position: {x:5, y:10, z:0},
+    position: {x:-40, y:0, z:0},
     rotation: {x:0, y:0}
   };
   
   var player_3_translation = {
-    position: {x:10, y:10, z:0},
+    position: {x:0, y:40, z:0},
     rotation: {x:0, y:0}
   };
   
   var player_4_translation = {
-    position: {x:15, y:10, z:0},
+    position: {x:0, y:-40, z:0},
     rotation: {x:0, y:0}
   };
   
   var player_5_translation = {
-    position: {x:20, y:10, z:0},
+    position: {x:20, y:20, z:0},
     rotation: {x:0, y:0}
   };
   
   var player_6_translation = {
-    position: {x:30, y:10, z:0},
+    position: {x:-20, y:-20, z:0},
     rotation: {x:0, y:0}
   };  
   
   var default_translation =  {
-    position: {x:0, y:10, z:0},
+    position: {x:0, y:0, z:0},
     rotation: {x:0, y:0}
   };
   

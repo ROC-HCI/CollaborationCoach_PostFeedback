@@ -221,7 +221,7 @@ RealTHREE.prototype.createSceneUnionSquare  = function () {
   var tableGeometry = new THREE.CylinderGeometry(18, 18, 8, 32);
   var tableMaterial = new THREE.MeshBasicMaterial( { color: 0xffff00ff } );
   var tableMesh = new THREE.Mesh( tableGeometry, tableMaterial );
-  tableMesh.position.set(0.5,1,0.75);
+  tableMesh.position.set(0,0,0);
   this.scene.add( tableMesh );
 
   /////////////////////////////////
