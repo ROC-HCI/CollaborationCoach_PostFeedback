@@ -20,7 +20,7 @@ module.exports = function(io){
       }
 
       clientTranslations[client.roomName][client.id] = {
-        position: {x:35, y:15, z:0},
+        position: {x:0, y:15, z:0},
         rotation: {x:0, y:0}
       };
 

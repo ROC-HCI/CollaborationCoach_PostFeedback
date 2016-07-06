@@ -30,6 +30,9 @@ var createYourPlayerScreen = function(){
 
   playerScreen.add(body.mesh);
   //playerScreen.position.y += 10;
+  
+  playerScreen.position.x = 50;
+  
   playerScreen.startWalking = function(){
     body.startWalking();
   };
