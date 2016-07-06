@@ -2,3 +2,7 @@
 *.csv
 *.avi
 *.webm
+*.wav
+
+#exclude everything in directory
+Data/* 
