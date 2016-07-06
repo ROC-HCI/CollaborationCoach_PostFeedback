@@ -8,7 +8,7 @@ var RealSocket = function (app) {
  
   //YOUR PLAYER UPDATES TO SERVER
   this.yourPlayerTranslation = {
-    position: {x:0, y:10, z:0},
+    position: {x:50, y:50, z:0},
     rotation: {x:0, y:0}
   }; 
 
