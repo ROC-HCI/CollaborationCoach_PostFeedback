@@ -213,6 +213,58 @@ RealTHREE.prototype.createSceneUnionSquare  = function () {
   light.position.set( 0.5, 1, 0.75 );
   this.scene.add( light );
 
+  /////////////////////////////
+  // CREATE CONFERENCE TABLE //
+  /////////////////////////////
+
+  //var tableGeometry = new THREE.BoxGeometry(20,10,30);
+  var tableGeometry = new THREE.CylinderGeometry(18, 18, 8, 32);
+  var tableMaterial = new THREE.MeshBasicMaterial( { color: 0xffff00ff } );
+  var tableMesh = new THREE.Mesh( tableGeometry, tableMaterial );
+  tableMesh.position.set(0.5,1,0.75);
+  this.scene.add( tableMesh );
+
+  /////////////////////////////////
+  // END CREATE CONFERENCE TABLE //
+  /////////////////////////////////
+
+  /////////////////////////////
+  // CREATE CONFERENCE WALLS //
+  /////////////////////////////
+
+  var wallMaterial = new THREE.MeshBasicMaterial( { color: 0xff888888 } );
+  var cielingMaterial = new THREE.MeshBasicMaterial( { color: 0xffcccccc });
+
+  var wallGeometry = new THREE.BoxGeometry(5,60,100);
+  var wallGeometryAdj = new THREE.BoxGeometry(100,60,5);
+  //var cielingGeometry = new THREE.CylinderGeometry(5, 5, 20, 32);
+
+  var wallMesh1 = new THREE.Mesh( wallGeometry, wallMaterial );
+
+  var wallMesh2 = new THREE.Mesh( wallGeometry, wallMaterial );
+
+  var wallMesh3 = new THREE.Mesh( wallGeometryAdj, wallMaterial );
+
+  var wallMesh4 = new THREE.Mesh( wallGeometryAdj, wallMaterial );
+
+  //var cielingMesh = new THREE.Mesh( cielingGeometry, cielingMaterial );
+
+  wallMesh1.position.set(-40,1,0.75);
+  wallMesh2.position.set(40,1,0.75);
+  wallMesh3.position.set(0,1,50);
+  wallMesh4.position.set(0,1,-50);
+  //cielingMesh.position.set(100,100,100);
+
+  this.scene.add( wallMesh1 );
+  this.scene.add( wallMesh2 );
+  this.scene.add( wallMesh3 );
+  this.scene.add( wallMesh4 );
+  //this.scene.add( cielingMesh );
+
+  /////////////////////////////////
+  // END CREATE CONFERENCE WALLS //
+  /////////////////////////////////
+
 
   //////////////////////
   // CREATE SKYBOX   ///
@@ -254,6 +306,104 @@ RealTHREE.prototype.createSceneUnionSquare  = function () {
 
 }
 
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+////////////////////////START CUSTOM ROOM CODE////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+RealTHREE.prototype.createSceneConferenceRoom  = function () {
+
+  ////////////////////
+  // CREATE FLOOR ///
+  ///////////////////
+
+  // Tiled floor
+  // note: 4x4 checkboard pattern scaled so that each square is 25 by 25 pixels.
+  var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.jpg' );
+  floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
+  floorTexture.repeat.set( 10, 10 );
+  // DoubleSide: render texture on both sides of mesh
+  var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
+  var floorGeometry = new THREE.PlaneBufferGeometry(this.sceneVars.sceneSize, this.sceneVars.sceneSize, 1, 1);
+  var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+  floor.position.y = -0.5;
+  floor.rotation.x = Math.PI / 2;
+  floor.matrixAutoUpdate = false;
+  floor.updateMatrix();
+  this.scene.add(floor);
+
+  //////////////////////
+  // END CREATE FLOOR //
+  //////////////////////
+
+  var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
+  light.position.set( 0.5, 1, 0.75 );
+  this.scene.add( light );
+
+
+  /////////////////////////////
+  // CREATE CONFERENCE TABLE //
+  /////////////////////////////
+
+  var tableGeometry = new THREE.BoxGeometry(5,3,1);
+  var tableMaterial = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+  var tableMesh = new THREE.Mesh( tableGeometry, tableMaterial );
+  this.position.set(0,0,0);
+  this.scene.add( tableMesh );
+
+  /////////////////////////////////
+  // END CREATE CONFERENCE TABLE //
+  /////////////////////////////////
+
+  //////////////////////
+  // CREATE SKYBOX   ///
+  //////////////////////
+
+  var skyBoxDir = 'UnionSquare';
+
+  var path = "images/skyBoxes/" + skyBoxDir + "/";
+  var format = '.jpg';
+  var urls = [
+    path + 'posx' + format, path + 'negx' + format,
+    path + 'posy' + format, path + 'negy' + format,
+    path + 'posz' + format, path + 'negz' + format
+  ];
+
+  var reflectionCube = THREE.ImageUtils.loadTextureCube( urls );
+  reflectionCube.format = THREE.RGBFormat;
+
+  var shader = THREE.ShaderLib[ "cube" ];
+  shader.uniforms[ "tCube" ].value = reflectionCube;
+
+  var material = new THREE.ShaderMaterial( {
+
+    fragmentShader: shader.fragmentShader,
+    vertexShader: shader.vertexShader,
+    uniforms: shader.uniforms,
+    depthWrite: false,
+    side: THREE.BackSide
+
+  } ),
+
+  skyBox = new THREE.Mesh( new THREE.BoxGeometry( this.sceneVars.skySize, this.sceneVars.skySize, this.sceneVars.skySize ), material );
+  skyBox.position.set(0, this.sceneVars.skySize * 0.4, 0);
+  this.scene.add( skyBox );
+
+  ////////////////////////
+  // END CREATE SKYBOX ///
+  ////////////////////////
+
+
+}
+
+
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////END CUSTOM ROOM CODE////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
 RealTHREE.prototype.createScene = function (sceneName) {
   if(sceneName === 'Outdoors'){
     this.createSceneOutdoors();
@@ -261,6 +411,8 @@ RealTHREE.prototype.createScene = function (sceneName) {
     this.createSceneArtGallery();
   }else if(sceneName === 'UnionSquare'){
     this.createSceneUnionSquare();
+  }else if(sceneName == 'ConferenceRoom'){
+    this.createSceneConferenceRoom
   }
 }
 
