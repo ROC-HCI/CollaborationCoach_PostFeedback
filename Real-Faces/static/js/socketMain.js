@@ -30,6 +30,7 @@ var RealSocket = function (app) {
       if (clientTranslations.hasOwnProperty(id) && clientTranslations[id] && id !== yourID)
 	  {
 		this.existingClients++;
+		alert(this.existingClients);
         context.lastRecordedPlayerTranslations[id] = clientTranslations[id];
         playerEvents.emit('new_player', id, clientTranslations[id]);
         playerEvents.emit('teleport_other_player', id, clientTranslations[id]);
