@@ -14,6 +14,10 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
 
   var yawObject = new THREE.Object3D();
   yawObject.position.y = sceneVars.playerStartHeight;
+  
+  yawObject.position.x = 45;
+  yawObject.position.z = 45;
+  
   //createPlayerScreen(yourID);
   yawObject.add( pitchObject );
 
