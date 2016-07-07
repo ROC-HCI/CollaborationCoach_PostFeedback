@@ -3,16 +3,17 @@ var RealSocket = function (app) {
   this.socketInterval = 100;
   this.yourPlayerTranslation;
   this.lastRecordedPlayerTranslations = {};
+  this.existingClients = 0;
   
   var context = this;
  
   //YOUR PLAYER UPDATES TO SERVER
   this.yourPlayerTranslation = {
-    position: {x:35, y:10, z:35},
+    position: {x:0, y:10, z:0},
     rotation: {x:0, y:0}
   }; 
 
-  this.translated = true;
+  this.translated = false;
 
   //connect to server namespace
   this.socketio = io.connect('/translations');
@@ -26,7 +27,9 @@ var RealSocket = function (app) {
     context.yourID = yourID;
     //draw pre-existing clients when you login
     for (var id in clientTranslations){
-      if (clientTranslations.hasOwnProperty(id) && clientTranslations[id] && id !== yourID){
+      if (clientTranslations.hasOwnProperty(id) && clientTranslations[id] && id !== yourID)
+	  {
+		this.existingClients++;
         context.lastRecordedPlayerTranslations[id] = clientTranslations[id];
         playerEvents.emit('new_player', id, clientTranslations[id]);
         playerEvents.emit('teleport_other_player', id, clientTranslations[id]);

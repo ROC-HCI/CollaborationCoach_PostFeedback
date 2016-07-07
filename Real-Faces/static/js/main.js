@@ -30,6 +30,8 @@ var RealFaces = function(sceneName){
   this.THREE.animate(this.THREE);
 
   this.socket = new RealSocket(this);
+  
+  this.THREE.setSpawn(this.socket.existingClients);
 
   playerEvents.addListener('new_player', this.socket.createPlayerScreen);
 

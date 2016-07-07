@@ -42,6 +42,11 @@ var RealTHREE = function (xMinBoundary, xMaxBoundary, zMinBoundary, zMaxBoundary
 
 };
 
+RealTHREE.prototype.setSpawn = function(clients){
+	
+	console.log("I'm client " + clients);
+}
+
 RealTHREE.prototype.createSceneOutdoors = function () {
   ////////////////////
   // CREATE FLOOR ///
