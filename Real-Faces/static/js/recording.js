@@ -1,10 +1,7 @@
 var recordingDIV = document.getElementById('videoContainer');
-var recordingPlayer = recordingDIV.querySelector('video');
+var recordingPlayer = recordingDIV.querySelector('localVideo');
 var button = document.querySelector('.testbutton');
 var button2 = recordingDIV.querySelector('#upload-to-server');
-
-var pendingUploads = 4;
-//var numberofQuestions = 8;
 
 // These vars are constant
 var MAX_SLICE_SIZE = 1024 * 1024; // 1MB chunk sizes.
@@ -41,7 +38,7 @@ var commonConfig = {
         if(button.mediaCapturedCallback) {
             button.mediaCapturedCallback();
         }
-        button.disabled = false;
+        //button.disabled = false;
     },
 };
 
@@ -65,7 +62,7 @@ button.mediaCapturedCallback = function() {
 captureVideo(commonConfig);
 
 function stopRecording(){
-    button.innerHTML = 'Start Recording';  
+    //button.innerHTML = 'Start Recording';  
     if(button.recordRTC) {
         button.recordRTC.stopRecording(function(url) {
             console.log(button.recordRTC.blob);      
@@ -124,14 +121,14 @@ function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
 
 function upload(recordRTC) {    
     uploadToServer(recordRTC, function(progress, fileURL) {
-        if(progress === 'ended') {
+        /*if(progress === 'ended') {
             button2.disabled = false;
-            button.onclick = function() {
+            /*button.onclick = function() {
                 window.open(fileURL);
             };
             return;
         }
-        button2.innerHTML = progress;
+        button2.innerHTML = progress;*/
     });
 }
 
