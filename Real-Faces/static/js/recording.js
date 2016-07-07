@@ -1,8 +1,14 @@
-var recordingDIV = document.getElementById('videoContainer');
-var recordingPlayer = recordingDIV.querySelector('localVideo');
-var button = document.querySelector('.testbutton');
-var button2 = recordingDIV.querySelector('#upload-to-server');
+//var recordingDIV;
+var recordingPlayer;
+var button;
+var button2;
 
+function instantiator(){
+  //recordingDIV = document.getElementById('videoContainer');
+  recordingPlayer = document.querySelector('localVideo');
+  //button = document.querySelector('.testbutton');
+  //button2 = recordingDIV.querySelector('#upload-to-server');
+}
 // These vars are constant
 var MAX_SLICE_SIZE = 1024 * 1024; // 1MB chunk sizes.
 var MAX_ALLOWED_UPLOAD_ERRORS = 50;
