@@ -31,7 +31,7 @@ var RealFaces = function(sceneName){
 
   this.socket = new RealSocket(this);
   
-  this.THREE.setSpawn(0);
+  this.THREE.setSpawn(this.socket.lastRecordedPlayerTranslations.length - 1);
 
   playerEvents.addListener('new_player', this.socket.createPlayerScreen);
 
