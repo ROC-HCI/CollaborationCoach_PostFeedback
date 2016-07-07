@@ -59,6 +59,7 @@ var RealSocket = function (app) {
   setInterval(function(){
     if (thisPointer.translated){
       thisPointer.socketio.emit('translate', thisPointer.yourPlayerTranslation);
+      console.log('translation');
       thisPointer.translated = false;
     }
   }, thisPointer.socketInterval);
