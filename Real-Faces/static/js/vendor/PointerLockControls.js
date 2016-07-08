@@ -39,12 +39,7 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
 
   var PI_2 = Math.PI / 2;
   
-  var setPosition = function(x_pos, z_pos)
-  {
-	  yawObject.position.setX(x_pos);
-	  yawObject.position.setZ(z_pos);
-	  yawObject.lookAt(0,yawObject.position.y,0);
-  }
+
 
   var getTranslation = function(){
     var position = {
@@ -157,6 +152,12 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
   document.addEventListener( 'keyup', onKeyUp, false );
 
   this.enabled = false;
+  
+  this.setPosition = function(x_pos, z_pos){
+	  yawObject.position.setX(x_pos);
+	  yawObject.position.setZ(z_pos);
+	  yawObject.lookAt(0,yawObject.position.y,0);
+  }
 
   this.getObject = function () {
 
