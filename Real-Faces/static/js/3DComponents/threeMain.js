@@ -44,7 +44,16 @@ var RealTHREE = function (xMinBoundary, xMaxBoundary, zMinBoundary, zMaxBoundary
 
 RealTHREE.prototype.setSpawn = function(clients){
 	
-	console.log("I'm client " + clients);
+	switch(clients) {
+		case 0:
+			this.controls.setPosition(20,0)
+			break;
+		case 1:
+			this.controls.setPosition(-20,0)
+			break;
+		default:
+			this.controls.setPosition(0,0);
+	}
 }
 
 RealTHREE.prototype.createSceneOutdoors = function () {
