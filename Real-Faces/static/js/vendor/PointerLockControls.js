@@ -82,6 +82,7 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
 
     switch ( event.keyCode ) {
 
+	  /*
       case 38: // up
       case 87: // w
         moveForward = true;
@@ -106,6 +107,7 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
         if ( canJump === true ) velocity.y += 180;
           canJump = false;
         break;
+	  */
 
       //press p to re-request webcam
       case 80: // p
@@ -119,6 +121,7 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
 
     switch( event.keyCode ) {
 
+	  /*
       case 38: // up
       case 87: // w
         moveForward = false;
@@ -138,6 +141,7 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
       case 68: // d
         moveRight = false;
         break;
+	  */
 
       case 84: //T for talk
         playerEvents.emitEvent('start_chat_typing');

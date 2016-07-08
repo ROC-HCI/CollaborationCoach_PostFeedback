@@ -51,6 +51,12 @@ RealTHREE.prototype.setSpawn = function(clients){
 		case 1:
 			this.controls.setPosition(-20,0)
 			break;
+		case 2:
+			this.controls.setPosition(0,20);
+			break;
+		case 3:
+			this.controls.setPosition(0,-20);
+			break;
 		default:
 			this.controls.setPosition(0,0);
 	}
