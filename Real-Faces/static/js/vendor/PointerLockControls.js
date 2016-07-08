@@ -156,7 +156,7 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
   this.setPosition = function(x_pos, z_pos){
 	  yawObject.position.setX(x_pos);
 	  yawObject.position.setZ(z_pos);
-	  yawObject.lookAt(0,yawObject.position.y,0);
+	  //yawObject.lookAt(0,yawObject.position.y,0);
   }
 
   this.getObject = function () {
