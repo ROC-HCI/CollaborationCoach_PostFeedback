@@ -5,7 +5,7 @@ var RealFaces = function(sceneName){
   this.roomName = location.pathname;
 
 
-  document.getElementById('roomURL').innerHTML = "realfaces.org" + location.pathname + " <br> Share this URL with your friends so they can join your room!"
+  //document.getElementById('roomURL').innerHTML = "realfaces.org" + location.pathname + " <br> Share this URL with your friends so they can join your room!"
 
 
   playerEvents.addListener('start_webRTC', this.initWebRTC);
