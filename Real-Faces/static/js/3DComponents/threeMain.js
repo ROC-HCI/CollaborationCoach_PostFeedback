@@ -46,11 +46,11 @@ RealTHREE.prototype.setSpawn = function(clients){
 	
 	switch(clients) {
 		case 0:
-			this.controls.setPosition(20,0,90 * Math.PI / 180, 1)
-      console.log("I am player 1");
+			this.controls.setPosition(20,0,90 * Math.PI / 180, 1);
+			console.log("I am player 1");
 			break;
 		case 1:
-			this.controls.setPosition(-20,0, -90 * Math.PI / 180, 2)
+			this.controls.setPosition(-20,0, -90 * Math.PI / 180, 2);
 			break;
 		case 2:
 			this.controls.setPosition(0,20,0, 3);
