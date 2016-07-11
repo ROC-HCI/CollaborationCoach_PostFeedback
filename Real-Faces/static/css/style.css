@@ -150,3 +150,16 @@ body {
   float: right;
 }
 
+#playerFocusHUDNotifitcation {
+  border: 2px solid;
+  border-color: white;
+  border-radius: 5px;
+  background: no-repeat scroll 0% 0% transparent;
+  width: 28%;
+  height: 20px;
+  background-color: #A9A9A9;
+  position: relative;
+  margin-right: 2%;
+  margin-top: 5%;
+  float: right;
+}
