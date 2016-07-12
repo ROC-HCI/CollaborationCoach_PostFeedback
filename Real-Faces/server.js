@@ -1,7 +1,7 @@
 var fs = require('fs');
 
-var pkey = fs.readFileSync('/etc/apache2/ssl/apache.key');
-var pcert = fs.readFileSync('/etc/apache2/ssl/apache.crt');
+var pkey = fs.readFileSync('/etc/ssl/private/ssl-cert-snakeoil.key');
+var pcert = fs.readFileSync('/etc/ssl/certs/ssl-cert-snakeoil.pem');
 
 var options = {
     key: pkey,
