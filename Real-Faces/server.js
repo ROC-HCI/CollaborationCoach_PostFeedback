@@ -1,19 +1,8 @@
-var fs = require('fs');
-
-var pkey = fs.readFileSync('/etc/ssl/private/ssl-cert-snakeoil.key');
-var pcert = fs.readFileSync('/etc/ssl/certs/ssl-cert-snakeoil.pem');
-
-var options = {
-    key: pkey,
-    cert: pcert
-};
-
 var express = require("express"),
    server = express(),
-   https = require("https").createServer(server),
-   
+   http = require("http").createServer(server),
    bodyParser = require("body-parser"),
-   io = require("socket.io").listen(https),
+   io = require("socket.io").listen(http),
    // _ = require("underscore"),
 
    port = (process.env.PORT || 8081);
@@ -209,7 +198,7 @@ function NotFound(msg){
     Error.captureStackTrace(this, arguments.callee);
 }
 
-https.listen(server.get("port"), server.get("ipaddr"), function() {
+http.listen(server.get("port"), server.get("ipaddr"), function() {
   console.log("Server up and running. Go to http://" + server.get("ipaddr") + ":" + server.get("port"));
 });
 
