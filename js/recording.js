@@ -1,13 +1,13 @@
 //var recordingDIV;
 var recordingPlayer;
-var button;
+var button = document.createElement("Start");;
 var button2;
 
 function instantiator(){
   //recordingDIV = document.getElementById('videoContainer');
   recordingPlayer = document.querySelector('localVideo');
   //button = document.querySelector('.testbutton');
-  button = document.createElement("Start");
+  //button = document.createElement("Start");
   //button2 = recordingDIV.querySelector('#upload-to-server');
 }
 // These vars are constant
