@@ -1,8 +1,19 @@
+var fs = require('fs');
+
+var pkey = fs.readFileSync('/etc/apache2/ssl/apache.key');
+var pcert = fs.readFileSync('/etc/apache2/ssl/apache.crt');
+
+var options = {
+    key: pkey,
+    cert: pcert
+};
+
 var express = require("express"),
    server = express(),
-   http = require("http").createServer(server),
+   https = require("https").createServer(server),
+   
    bodyParser = require("body-parser"),
-   io = require("socket.io").listen(http),
+   io = require("socket.io").listen(https),
    // _ = require("underscore"),
 
    port = (process.env.PORT || 8081);
@@ -198,7 +209,7 @@ function NotFound(msg){
     Error.captureStackTrace(this, arguments.callee);
 }
 
-http.listen(server.get("port"), server.get("ipaddr"), function() {
+https.listen(server.get("port"), server.get("ipaddr"), function() {
   console.log("Server up and running. Go to http://" + server.get("ipaddr") + ":" + server.get("port"));
 });
 
