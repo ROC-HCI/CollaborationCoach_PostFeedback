@@ -2,6 +2,7 @@
 var recordingPlayer;
 var button = document.createElement("Start");;
 var button2;
+var baseDataKey = "testing";
 
 function instantiator(){
   //recordingDIV = document.getElementById('videoContainer');
@@ -289,10 +290,6 @@ MyRecording.prototype.uploadFileToServerCallback = function(message) {
             $("#post").html("<a href='demo_session2.php?dataKey="+baseDataKey+"'>Continue to next session</a>");
         }
     }
-
-    /*if (pendingUploads <= 0) {
-        //processRecording();
-    }*/
 
   }
 }

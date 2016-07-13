@@ -2,6 +2,7 @@
 var recordingPlayer;
 var button = document.createElement("Start");;
 var button2;
+var baseDataKey = "testing";
 
 function instantiator(){
   //recordingDIV = document.getElementById('videoContainer');
@@ -110,15 +111,31 @@ function stopStream() {
 }
 
 function captureVideo(config) {
+
     captureUserMedia({video: { 
                 width: {min: 320, ideal: captureresolution.width, max: 1920},
                 height: {min: 240, ideal: captureresolution.height, max: 1080}}, audio: true}, function(videoStream) {
         recordingPlayer.srcObject = videoStream;
         recordingPlayer.play();
+
+        button.stream = videoStream;
+        button.recordRTC = RecordRTC(videoStream, {
+        type: 'video',
+        disableLogs: params.disableLogs || false,
+        canvas: {
+            //width: params.canvas_width || 320,
+            //height: params.canvas_height || 240
+            width: resolution.width || 320,
+            height: resolution.height || 240
+        },
+        frameInterval: typeof params.frameInterval !== 'undefined' ? parseInt(params.frameInterval) : 20 // minimum time between pushing frames to Whammy (in milliseconds)
+        });
         
-        config.onMediaCaptured(videoStream);
+        //config.onMediaCaptured(videoStream);
+
+
     }, function(error) {
-        config.onMediaCapturingFailed(error);
+        //config.onMediaCapturingFailed(error);
     });
 };
 
@@ -289,10 +306,6 @@ MyRecording.prototype.uploadFileToServerCallback = function(message) {
             $("#post").html("<a href='demo_session2.php?dataKey="+baseDataKey+"'>Continue to next session</a>");
         }
     }
-
-    /*if (pendingUploads <= 0) {
-        //processRecording();
-    }*/
 
   }
 }
