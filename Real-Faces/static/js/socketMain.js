@@ -25,20 +25,23 @@ var RealSocket = function (app) {
     //save your socketio ID
     context.yourID = yourID;
     //draw pre-existing clients when you login
-	var client_count = 0;
     for (var id in clientTranslations){
       if (clientTranslations.hasOwnProperty(id) && clientTranslations[id] && id !== yourID)
 	  {
-		client_count = client_count + 1;
         context.lastRecordedPlayerTranslations[id] = clientTranslations[id];
         playerEvents.emit('new_player', id, clientTranslations[id]);
         playerEvents.emit('teleport_other_player', id, clientTranslations[id]);
       }
     }
 	
-	app.THREE.setSpawn(client_count);
+	
     //initialize webRTC connection after drawing other clients
     playerEvents.emit('start_webRTC', yourID, app);
+  });  
+  
+  this.socketio.on('seat_location', function(seatID){
+	  console.log("RECEIVED SEAT LOCATION");
+	  app.THREE.setSpawn(seatID);
   });
 
   this.socketio.on('new_client', function(clientID){

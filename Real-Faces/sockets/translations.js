@@ -3,6 +3,7 @@ module.exports = function(io){
   var translations = io.of('/translations');
 
   var clientTranslations = {};
+  var currentSeats = ["E","E","E","E"];
 
   translations.on('connection', function(client){
 
@@ -20,9 +21,25 @@ module.exports = function(io){
       }
 
       clientTranslations[client.roomName][client.id] = {
-        position: {x:40, y:15, z:40},
+        position: {x:0, y:15, z:0},
         rotation: {x:0, y:0}
       };
+	  
+	  // Calculate where this user should sit.
+	  var seatLocation = 0;	  
+	  for(int i = 0; i < currentSeats.length; i++)
+	  {
+		  // Find the first empty seat
+		  if(currentSeats[i] == "E")
+		  {
+			  currentSeats[i] == client.id;
+			  seatLocation = i;
+		  }
+	  }
+	  
+	  //tells this client where it should be sitting
+	  client.emit('seat_location', seatLocation);
+	  console.log("SEAT LOCATION IS " + seatLocation);
 
       //tells new clients about pre-existing clients
       client.emit('preexisting_clients', clientTranslations[client.roomName], client.id);
@@ -41,6 +58,15 @@ module.exports = function(io){
         console.log('Client Disconnected.', client.id);
 
         delete clientTranslations[client.roomName][client.id];
+		
+		//Free up this clients seat
+		for(int i = 0; i < currentSeats.length; i++)
+		{
+			if(currentSeats[i] == client.id)
+			{
+				currentSeats[i] = "E";
+			}
+		}
 
         client.broadcast.to(client.roomName).emit('client_disconnected', client.id);
       });

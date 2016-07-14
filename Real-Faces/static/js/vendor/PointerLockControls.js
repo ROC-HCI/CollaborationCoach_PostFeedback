@@ -256,11 +256,10 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
   this.enabled = false;
   
   this.setPosition = function(x_pos, z_pos, rot_y, clientNumber){
-	//yawObject.position.setX(x_pos);
-	//yawObject.position.setZ(z_pos);
-	//yawObject.rotation.set(0,rot_y,0);
+	yawObject.position.setX(x_pos);
+	yawObject.position.setZ(z_pos);
+	yawObject.rotation.set(0,rot_y,0);
 	clientNum = clientNumber;
-    //console.log("This work?"+clientNum);
   }
 
   this.getObject = function () {
