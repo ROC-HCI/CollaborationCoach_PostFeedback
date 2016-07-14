@@ -40,8 +40,11 @@ var RealSocket = function (app) {
   });  
   
   this.socketio.on('seat_location', function(seatID){
-	  console.log("RECEIVED SEAT LOCATION"+ seatID);
 	  app.THREE.setSpawn(seatID);
+  });
+  
+  this.socketio.on('session_key', function(keyValue){
+	  
   });
 
   this.socketio.on('new_client', function(clientID){

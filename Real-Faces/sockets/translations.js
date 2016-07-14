@@ -4,6 +4,7 @@ module.exports = function(io){
 
   var clientTranslations = {};
   var currentSeats = ["E","E","E","E"];
+  var sessionKey = "test_session_key";
 
   translations.on('connection', function(client){
 
@@ -40,7 +41,9 @@ module.exports = function(io){
 	  
 	  //tells this client where it should be sitting
 	  client.emit('seat_location', seatLocation);
-	  console.log("SEAT LOCATION IS " + seatLocation);
+	  
+	  //tells this client the current session ID
+	  client.emit('session_key', sessionKey);
 
       //tells new clients about pre-existing clients
       client.emit('preexisting_clients', clientTranslations[client.roomName], client.id);
