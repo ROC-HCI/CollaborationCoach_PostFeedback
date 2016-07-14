@@ -27,7 +27,7 @@ module.exports = function(io){
 	  
 	  // Calculate where this user should sit.
 	  var seatLocation = 0;	  
-	  for(int i = 0; i < currentSeats.length; i++)
+	  for(var i = 0; i < currentSeats.length; i++)
 	  {
 		  // Find the first empty seat
 		  if(currentSeats[i] == "E")
@@ -60,7 +60,7 @@ module.exports = function(io){
         delete clientTranslations[client.roomName][client.id];
 		
 		//Free up this clients seat
-		for(int i = 0; i < currentSeats.length; i++)
+		for(var i = 0; i < currentSeats.length; i++)
 		{
 			if(currentSeats[i] == client.id)
 			{
