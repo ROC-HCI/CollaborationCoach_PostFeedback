@@ -34,6 +34,7 @@ module.exports = function(io){
 		  {
 			  currentSeats[i] == client.id;
 			  seatLocation = i;
+			  break;
 		  }
 	  }
 	  
