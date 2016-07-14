@@ -3,14 +3,15 @@ var recordingPlayer;
 var button = document.createElement("Start");;
 var button2;
 var baseDataKey = "testing";
+var sessionCount = 0;
 
-function instantiator(){
+/*function instantiator(){
   //recordingDIV = document.getElementById('videoContainer');
   recordingPlayer = document.querySelector('localVideo');
   //button = document.querySelector('.testbutton');
   //button = document.createElement("Start");
   //button2 = recordingDIV.querySelector('#upload-to-server');
-}
+}*/
 // These vars are constant
 var MAX_SLICE_SIZE = 1024 * 1024; // 1MB chunk sizes.
 var MAX_ALLOWED_UPLOAD_ERRORS = 50;
@@ -67,7 +68,7 @@ button.mediaCapturedCallback = function() {
     });
 };
 
-captureVideo(commonConfig);
+//captureVideo(commonConfig);
 
 function stopRecording(){
     //button.innerHTML = 'Start Recording';  
@@ -115,8 +116,12 @@ function captureVideo(config) {
     captureUserMedia({video: { 
                 width: {min: 320, ideal: captureresolution.width, max: 1920},
                 height: {min: 240, ideal: captureresolution.height, max: 1080}}, audio: true}, function(videoStream) {
+        recordingPlayer = document.getElementById('localVideo');
+
         recordingPlayer.srcObject = videoStream;
         recordingPlayer.play();
+
+        console.log(videoStream);
 
         button.stream = videoStream;
         button.recordRTC = RecordRTC(videoStream, {
@@ -128,7 +133,7 @@ function captureVideo(config) {
             width: resolution.width || 320,
             height: resolution.height || 240
         },
-        frameInterval: typeof params.frameInterval !== 'undefined' ? parseInt(params.frameInterval) : 20 // minimum time between pushing frames to Whammy (in milliseconds)
+            frameInterval: typeof params.frameInterval !== 'undefined' ? parseInt(params.frameInterval) : 20 // minimum time between pushing frames to Whammy (in milliseconds)
         });
         
         //config.onMediaCaptured(videoStream);
@@ -171,7 +176,7 @@ function uploadToServer(recordRTC, callback) {
     formData.append(fileType + '-filename', fileName);
     formData.append(fileType + '-blob', blob);
     callback('Uploading ' + fileType + ' recording to server.');
-    makeXMLHttpRequest('response.php?action=upload', formData, function(progress) {
+    makeXMLHttpRequest('http://localhost/Real-Faces/static/js/response.php?action=upload', formData, function(progress) {
         if (progress !== 'upload-ended') {
             callback(progress);
             return;
@@ -278,7 +283,7 @@ MyRecording.prototype.uploadFileToServer = function(blob_slice) {
     }
   };
 
-  request.open('POST', "response.php?action=upload");
+  request.open('POST', "http://localhost/Real-Faces/static/js/response.php?action=upload");
   request.send(formData);
   
   console.log("this.uploadFilePartsCount",this.uploadFilePartsCount);
