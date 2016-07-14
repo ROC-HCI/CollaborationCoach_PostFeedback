@@ -32,7 +32,7 @@ module.exports = function(io){
 		  // Find the first empty seat
 		  if(currentSeats[i] == "E")
 		  {
-			  currentSeats[i] == client.id;
+			  currentSeats[i] = client.id;
 			  seatLocation = i;
 			  break;
 		  }
