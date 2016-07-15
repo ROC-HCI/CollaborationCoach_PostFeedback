@@ -34,6 +34,7 @@ server.set("views", __dirname + "/views");
 server.set("view engine", "jade");
 
 //Specify where the static content is
+server.use(sphp.express("static", __dirname + "/static"));
 server.use(express.static("static", __dirname + "/static"));
 
 //Tells server to support JSON requests
