@@ -5,14 +5,6 @@ var button2;
 var baseDataKey = "testing";
 var sessionCount = 0;
 
-/*function instantiator(){
-  //recordingDIV = document.getElementById('videoContainer');
-  recordingPlayer = document.querySelector('localVideo');
-  //button = document.querySelector('.testbutton');
-  //button = document.createElement("Start");
-  //button2 = recordingDIV.querySelector('#upload-to-server');
-}*/
-// These vars are constant
 var MAX_SLICE_SIZE = 1024 * 1024; // 1MB chunk sizes.
 var MAX_ALLOWED_UPLOAD_ERRORS = 50;
 
@@ -47,7 +39,6 @@ var commonConfig = {
         if(button.mediaCapturedCallback) {
             button.mediaCapturedCallback();
         }
-        //button.disabled = false;
     },
 };
 
@@ -59,8 +50,6 @@ button.mediaCapturedCallback = function() {
         type: 'video',
         disableLogs: params.disableLogs || false,
         canvas: {
-            //width: params.canvas_width || 320,
-            //height: params.canvas_height || 240
             width: resolution.width || 320,
             height: resolution.height || 240
         },
@@ -68,17 +57,12 @@ button.mediaCapturedCallback = function() {
     });
 };
 
-//captureVideo(commonConfig);
-
 function stopRecording(){
-    //button.innerHTML = 'Start Recording';  
     if(button.recordRTC) {
         button.recordRTC.stopRecording(function(url) {
             console.log(button.recordRTC.blob);      
-            //upload(button.recordRTC);
             var videoRecording = new MyRecording(url,"video",button.recordRTC.blob);
             console.log("video blob size:"+videoRecording.blob.size);
-            //pendingUploads++;
 
             videoRecording.startUploading();         
             console.log("it's at three");
@@ -86,12 +70,6 @@ function stopRecording(){
         });
     } 
     return;
-}
-
-function start(){
-  $("#localVideo").hide()
-  $("#resolution").hide();
-  $("#pre").show();
 }
 
 function startRecordingAfterActive(){
@@ -128,19 +106,12 @@ function captureVideo(config) {
         type: 'video',
         disableLogs: params.disableLogs || false,
         canvas: {
-            //width: params.canvas_width || 320,
-            //height: params.canvas_height || 240
             width: resolution.width || 320,
             height: resolution.height || 240
         },
             frameInterval: typeof params.frameInterval !== 'undefined' ? parseInt(params.frameInterval) : 20 // minimum time between pushing frames to Whammy (in milliseconds)
         });
-        
-        //config.onMediaCaptured(videoStream);
 
-
-    }, function(error) {
-        //config.onMediaCapturingFailed(error);
     });
 };
 
@@ -150,18 +121,9 @@ function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
 
 function upload(recordRTC) {    
     uploadToServer(recordRTC, function(progress, fileURL) {
-        /*if(progress === 'ended') {
-            button2.disabled = false;
-            /*button.onclick = function() {
-                window.open(fileURL);
-            };
-            return;
-        }
-        button2.innerHTML = progress;*/
     });
 }
 
-var listOfFilesUploaded = [];
 function uploadToServer(recordRTC, callback) {
     var blob = recordRTC instanceof Blob ? recordRTC : recordRTC.blob;
     var fileType = blob.type.split('/')[0] || 'audio';
@@ -171,20 +133,19 @@ function uploadToServer(recordRTC, callback) {
     fileName += "_" + sessionCount + '.webm';
     console.log(fileName);
     console.log(blob);
+
     // create FormData
     var formData = new FormData();
     formData.append(fileType + '-filename', fileName);
     formData.append(fileType + '-blob', blob);
     callback('Uploading ' + fileType + ' recording to server.');
-    makeXMLHttpRequest('http://conference.eastus.cloudapp.azure.com/RocConf/Real-Faces/static/js/static/js/response.php?action=upload', formData, function(progress) {
+    makeXMLHttpRequest('/js/response.php?action=upload', formData, function(progress) {
         if (progress !== 'upload-ended') {
             callback(progress);
             return;
         }
         var initialURL = location.href.replace(location.href.split('/').pop(), '') + 'uploads/';
         callback('ended', initialURL + fileName);
-        // to make sure we can delete as soon as visitor leaves
-        listOfFilesUploaded.push(initialURL + fileName);
     });
 }
 
@@ -254,9 +215,7 @@ MyRecording.prototype.uploadFileToServer = function(blob_slice) {
   var formData = new FormData();
   formData.append('blob', blob_slice, fileName);
     
-    
   var request = new XMLHttpRequest();
-
   var recorder = this;
   
   request.upload.addEventListener("progress", function(evt) {
@@ -283,7 +242,7 @@ MyRecording.prototype.uploadFileToServer = function(blob_slice) {
     }
   };
 
-  request.open('POST', "http://conference.eastus.cloudapp.azure.com/RocConf/Real-Faces/static/js/response.php?action=upload");
+  request.open('POST', "/js/response.php?action=upload");
   request.send(formData);
   
   console.log("this.uploadFilePartsCount",this.uploadFilePartsCount);
@@ -311,7 +270,6 @@ MyRecording.prototype.uploadFileToServerCallback = function(message) {
             $("#post").html("<a href='demo_session2.php?dataKey="+baseDataKey+"'>Continue to next session</a>");
         }
     }
-
   }
 }
 
