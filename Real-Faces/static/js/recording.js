@@ -134,6 +134,7 @@ function uploadToServer(recordRTC, callback) {
     console.log(fileName);
     console.log(blob);
 
+    realfaces.socket.socketio.emit("uploader", "youodlfo");
 
     // create FormData
     var formData = new FormData();

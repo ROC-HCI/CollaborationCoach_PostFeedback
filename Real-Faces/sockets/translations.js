@@ -8,6 +8,13 @@ module.exports = function(io){
 
   translations.on('connection', function(client){
 
+    client.on('uploader', function(data) {
+        console.log('writing to disk');
+        //writeToDisk(data.audio.dataURL, data.audio.name);
+        //writeToDisk(data.video.dataURL, data.video.name);
+
+    });
+
     client.on('select_room', function(roomName){
       client.join(roomName);
       client.roomName = roomName;
