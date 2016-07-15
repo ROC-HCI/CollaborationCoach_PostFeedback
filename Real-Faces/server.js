@@ -8,6 +8,8 @@ var options = {
     cert: pcert
 };
 
+var sphp = require('sphp');
+
 var express = require("express"),
    server = express(),
    https = require("https").createServer(options, server),
