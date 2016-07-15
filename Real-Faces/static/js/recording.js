@@ -134,6 +134,19 @@ function uploadToServer(recordRTC, callback) {
     console.log(fileName);
     console.log(blob);
 
+    var socketio = io();
+
+    var file = {
+        video: {
+            name: fileName + '.webm',
+            type: 'video/webm',
+            dataURL: blob
+        }
+    };
+
+    socketio.emit('message', file);
+
+
     // create FormData
     var formData = new FormData();
     formData.append(fileType + '-filename', fileName);

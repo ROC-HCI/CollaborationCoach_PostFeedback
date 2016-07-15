@@ -7,6 +7,12 @@ module.exports = function(io){
   var sessionKey = "test_session_key";
 
   translations.on('connection', function(client){
+    
+    socket.on('message', function(data) {
+        console.log('writing to disk');
+        writeToDisk(data.audio.dataURL, data.audio.name);
+
+    });
 
     client.on('select_room', function(roomName){
       client.join(roomName);
