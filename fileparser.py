@@ -2,6 +2,8 @@ import sys
 import re
 import itertools
 import functools
+import json
+import requests
 
 class Item(object):
     xmin = ""
@@ -117,9 +119,11 @@ dict = {}
 counter = 0 
 overlapcount = 0
 user = readFile(sys.argv[1])[0].name
-print 'user: ', user
-dict['interrupted'] = 0
-dict['interrupt'] = 0
+dict['user'] = user
+dict['interrupted'] = 0 #being interrupted
+dict['interrupting'] = 0 #interrupting others
+dict['turntaking'] = {} #turn taking duh
+dict['participation'] = {} #speaking percentage duh
 
 for count in range(1,len(sys.argv)):
     for count2 in range(count+1,len(sys.argv)):
@@ -127,14 +131,14 @@ for count in range(1,len(sys.argv)):
         files.append(readFile(sys.argv[count]))
         files.append(readFile(sys.argv[count2]))
         #initiate turntakingkeys
-        dict[readFile(sys.argv[count])[0].name+readFile(sys.argv[count2])[0].name] = 0
-        dict[readFile(sys.argv[count2])[0].name+readFile(sys.argv[count])[0].name] = 0
-        dict[readFile(sys.argv[count])[0].name+readFile(sys.argv[count])[0].name] = None
-        dict[readFile(sys.argv[count2])[0].name+readFile(sys.argv[count2])[0].name] = None
+        dict['turntaking'][readFile(sys.argv[count])[0].name+'-'+readFile(sys.argv[count2])[0].name] = 0
+        dict['turntaking'][readFile(sys.argv[count2])[0].name+'-'+readFile(sys.argv[count])[0].name] = 0
+        dict['turntaking'][readFile(sys.argv[count])[0].name+'-'+readFile(sys.argv[count])[0].name] = None
+        dict['turntaking'][readFile(sys.argv[count2])[0].name+'-'+readFile(sys.argv[count2])[0].name] = None
+        
         #total sounding duration
-        dict[readFile(sys.argv[count])[0].name] = adds(readFile(sys.argv[count]))
-        dict[readFile(sys.argv[count2])[0].name] =  adds(readFile(sys.argv[count2]))
-
+        dict['participation'][readFile(sys.argv[count])[0].name] = adds(readFile(sys.argv[count]))
+        dict['participation'][readFile(sys.argv[count2])[0].name] =  adds(readFile(sys.argv[count2]))
         #checking for overlap by comparing intervals in each audio
         for a in readFile(sys.argv[count]):
             for b in readFile(sys.argv[count2]):
@@ -145,11 +149,11 @@ for count in range(1,len(sys.argv)):
                 if(overlap(a,b)):
                     # print a.name,a.xmin, a.xmax, b.name,b.xmin, b.xmax 
                     if(a.xmin>b.xmin and user==a.name): 
-                        dict['interrupt'] += 1   
+                        dict['interrupting'] += 1   
                     elif(b.xmin>=a.xmin and user==a.name):
                         dict['interrupted'] += 1
                     else:
-                        dict['interrupt'] += 1 
+                        dict['interrupting'] += 1 
                         
                     overlapcount+=1
 
@@ -171,14 +175,26 @@ for a in  arr3:
     else: 
         flag[0] = a
         # print 'turn', flag[0].name, flag[0].xmin, flag[0].xmax
-        if(dict[prevname+flag[0].name]!=None):
-            dict[prevname+flag[0].name] +=1
-            
-for key in sorted(dict,key=len):
-    if(dict[key]!=None):
-        print key, dict[key]
-        
-print 'total interruption', overlapcount
+        if(dict['turntaking'][prevname+'-'+flag[0].name]!=None):
+            dict['turntaking'][prevname+'-'+flag[0].name] +=1
 
+for key in sorted(dict['turntaking'],key=len):
+    if(dict['turntaking'][key]!=None):
+        print key
+    else:
+        dict['turntaking'].pop(key, dict['turntaking'][key])           
+
+total = 0
+for key in sorted(dict['participation'],key=len):
+    total+=dict['participation'][key] 
+
+dict['participation']['total'] = total
+
+with open('result.json','w') as outfile:
+    json.dump(dict, outfile, indent=4,sort_keys=True, separators=(',',':'), ensure_ascii=False)
+#does not work if there is no url duh
+# url = './display'
+# headers = {'content-type': 'application/json'}
+# r = requests.post(url,data=j,headers=headers)
 
    
