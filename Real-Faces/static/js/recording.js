@@ -140,11 +140,10 @@ function uploadToServer(recordRTC, callback) {
     formData.append(fileType + '-filename', fileName);
     formData.append(fileType + '-blob', blob);
 
-    realfaces.socket.socketio.emit("uploader", formData);
-
+    //realFaces.socket.socketio.emit("uploader", formData);
 
     callback('Uploading ' + fileType + ' recording to server.');
-    makeXMLHttpRequest('/js/response.php?action=upload', formData, function(progress) {
+    makeXMLHttpRequest('https://conference.eastus.cloudapp.azure.com/RocConfScripts/response.php?action=upload', formData, function(progress) {
         if (progress !== 'upload-ended') {
             callback(progress);
             return;
@@ -247,7 +246,7 @@ MyRecording.prototype.uploadFileToServer = function(blob_slice) {
     }
   };
 
-  request.open('POST', "/js/response.php?action=upload");
+  request.open('POST', "https://conference.eastus.cloudapp.azure.com/RocConfScripts/response.php?action=upload");
   request.send(formData);
   
   console.log("this.uploadFilePartsCount",this.uploadFilePartsCount);
