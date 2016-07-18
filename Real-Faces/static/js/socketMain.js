@@ -43,6 +43,10 @@ var RealSocket = function (app) {
 	  app.THREE.setSpawn(seatID);
   });
   
+  this.socketio.on('session_key', function(session_key){
+	  app.sessionKey = session_key;
+  }
+  
   this.socketio.on('session_key', function(keyValue){
 	  
   });

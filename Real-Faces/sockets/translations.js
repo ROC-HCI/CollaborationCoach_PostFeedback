@@ -4,7 +4,7 @@ module.exports = function(io){
 
   var clientTranslations = {};
   var currentSeats = ["E","E","E","E"];
-  var sessionKey = "test_session_key";
+  var sessionKey = uuid.v1();
 
   translations.on('connection', function(client){
 
