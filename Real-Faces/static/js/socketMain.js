@@ -45,7 +45,7 @@ var RealSocket = function (app) {
   
   this.socketio.on('session_key', function(session_key){
 	  app.sessionKey = session_key;
-	  console.log("SESSION KEY IS SET TO: " app.sessionKey);
+	  console.log("SESSION KEY IS SET TO: " + app.sessionKey);
   });
 
   this.socketio.on('new_client', function(clientID){
