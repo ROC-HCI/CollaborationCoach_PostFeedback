@@ -45,10 +45,6 @@ var RealSocket = function (app) {
   
   this.socketio.on('session_key', function(session_key){
 	  app.sessionKey = session_key;
-  }
-  
-  this.socketio.on('session_key', function(keyValue){
-	  
   });
 
   this.socketio.on('new_client', function(clientID){
