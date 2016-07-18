@@ -4,6 +4,7 @@ var RealFaces = function(sceneName){
   //will load webRTC deps on event, set to be called when THREE.js scene is done rendering
   this.roomName = location.pathname;
   this.sessionKey = "NOT SET YET";
+  this.userName = "";
 
   //document.getElementById('roomURL').innerHTML = "realfaces.org" + location.pathname + " <br> Share this URL with your friends so they can join your room!"
 
