@@ -1,4 +1,4 @@
-module.exports = function(io){
+module.exports = function(io,uuid){
   //create socket.io client movement namespacing
   var translations = io.of('/translations');
 
