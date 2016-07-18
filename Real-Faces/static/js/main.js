@@ -30,8 +30,6 @@ var RealFaces = function(sceneName){
   this.THREE.animate(this.THREE);
 
   this.socket = new RealSocket(this);
-  
-  console.log("SESSION KEY IS: " + this.sessionKey);
 
   playerEvents.addListener('new_player', this.socket.createPlayerScreen);
 
