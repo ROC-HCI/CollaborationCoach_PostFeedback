@@ -2,7 +2,7 @@
 var recordingPlayer;
 var button = document.createElement("Start");;
 var button2;
-var baseDataKey = "testing";
+var baseDataKey;
 var sessionCount = 0;
 
 var MAX_SLICE_SIZE = 1024 * 1024; // 1MB chunk sizes.
@@ -77,6 +77,7 @@ function startRecordingAfterActive(){
 }
 
 function stopRecordingOnHangup(){
+    baseDataKey = realFaces.sessionKey + "_" + realFaces.userName;
     stopRecording();    
 }
 
