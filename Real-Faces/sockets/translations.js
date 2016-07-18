@@ -9,7 +9,7 @@ module.exports = function(io){
   translations.on('connection', function(client){
 
     client.on('uploader', function(data) {
-        console.log('writing to disk');
+        console.log('writing to disk', data);
         //writeToDisk(data.audio.dataURL, data.audio.name);
         //writeToDisk(data.video.dataURL, data.video.name);
 

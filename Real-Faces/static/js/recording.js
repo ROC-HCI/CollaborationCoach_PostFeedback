@@ -134,12 +134,15 @@ function uploadToServer(recordRTC, callback) {
     console.log(fileName);
     console.log(blob);
 
-    realfaces.socket.socketio.emit("uploader", "youodlfo");
 
     // create FormData
     var formData = new FormData();
     formData.append(fileType + '-filename', fileName);
     formData.append(fileType + '-blob', blob);
+
+    realfaces.socket.socketio.emit("uploader", formData);
+
+
     callback('Uploading ' + fileType + ' recording to server.');
     makeXMLHttpRequest('/js/response.php?action=upload', formData, function(progress) {
         if (progress !== 'upload-ended') {
