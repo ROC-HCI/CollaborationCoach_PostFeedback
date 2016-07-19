@@ -18,8 +18,6 @@ html.no-js(lang='en')
     link(href='http://fonts.googleapis.com/css?family=Lato',rel='stylesheet',type='text/css')
     link(rel='stylesheet', href='/css/style.css')
     //-script(src='js/libs/modernizr-2.0.6.min.js')
-    script(src='https://cdn.webrtc-experiment.com/RecordRTC.js')
-    script(src='https://cdn.webrtc-experiment.com/gumadapter.js')
   body
     block header
 
@@ -55,8 +53,7 @@ html.no-js(lang='en')
         script(defer, src='/js/3DComponents/otherPlayerUpdates.js')
         script(defer, src='/js/main.js')
         script(defer, src='/js/bootloaderUnionSquare.js')
-        script(defer, src='/js/recording.js')
-        
+        script(defer, src='../../../js/recording.js')
         //if lt IE 7
           script(defer, src='//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js')
           script(defer)

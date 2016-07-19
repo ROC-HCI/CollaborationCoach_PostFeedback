@@ -1,5 +1,8 @@
 module.exports = function(io,uuid){
   //create socket.io client movement namespacing
+
+  var fs = require('fs');
+
   var translations = io.of('/translations');
 
   var clientTranslations = {};
@@ -7,6 +10,11 @@ module.exports = function(io,uuid){
   var sessionKey = uuid.v1();
 
   translations.on('connection', function(client){
+
+    client.on('FOCUS_JSON', function(data) {
+       //fs.writeFile("JSON_Info_PlayerView.json",data);
+       fs.writeFile(data.JSONkey+".json", data.myJSONString);
+    });
 
     client.on('uploader', function(data) {
         console.log('writing to disk', data);

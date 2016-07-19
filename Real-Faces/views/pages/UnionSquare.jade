@@ -20,4 +20,15 @@ block content
   //- div(id='chatBox')
   //-  input(id="chatInput")
   //-  button(id="chatInputButton") Send!
-  div(id ='playerFocusHUDNotifitcation')
+  div(id = 'playerFocusHUDNotifitcation')
+  //- div(id = 'Start')
+
+  script(src ='/js/timer.js')
+
+  p(id='Output') 
+
+  button(id='Start', onClick="startPause()") 
+    |Start
+
+  button(id='Reset', onClick="reset()")
+    |Reset

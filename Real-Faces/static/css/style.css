@@ -163,3 +163,44 @@ body {
   margin-top: 5%;
   float: right;
 }
+
+#Start {
+    border: 2px solid;
+  border-color: white;
+  border-radius: 5px;
+  background: no-repeat scroll 0% 0% transparent;
+  width: 6%;
+  height: 20px;
+  background-color: #A9A9A9;
+  position: relative;
+  margin-top: 5%;
+  margin-left: .5%;
+  float: left;
+}
+
+#Reset {
+    border: 2px solid;
+  border-color: white;
+  border-radius: 5px;
+  background: no-repeat scroll 0% 0% transparent;
+  width: 6%;
+  height: 20px;
+  background-color: #A9A9A9;
+  position: relative;
+  margin-top: 5%;
+  margin-left: .5%;
+  float: left;
+}
+#Output {
+    border: 2px solid;
+  border-color: white;
+  border-radius: 5px;
+  background: no-repeat scroll 0% 0% transparent;
+  width: 8%;
+  height: 20px;
+  background-color: #A9A9A9;
+  position: relative;
+  margin-top: 5%;
+  margin-left: 2%;
+  float: left;
+}
