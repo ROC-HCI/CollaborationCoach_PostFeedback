@@ -1,0 +1,54 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        mixin style(url)
+            link(rel='stylesheet', href=url type='text/css')
+        +style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+        link(href='/css/style.css', rel='stylesheet')
+    body
+        .text-center.container
+            .inner-contain1
+                h1 Interruption
+                .outer
+                    mixin label(id,value)
+                        span(id=id,class='chart-label',data-value=value)
+                    p
+                        +label('chart1', value1)
+                    p By You
+                .outer
+                    p
+                        +label('chart2', value2)
+                    p By Others
+            .inner-contain2
+                .outer2
+                    h1 Participation
+                    canvas(id='chart3', class='chart', data-value='0' data-speaker='')
+            h1 Turn Taking
+            .inner-contain3#chart4(data-value='0' data-user='')
+        script(src='https://code.jquery.com/jquery-3.1.0.min.js')
+        script(src='/js/jquery.animateNumber.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js')
+        script(src='https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js')
+        script.
+            var total = total
+            var i1 = #{value1};
+            var i2 = #{value2};
+            var i3 = !{JSON.stringify(value3)};
+            var i4 = !{JSON.stringify(value4)};
+            var iuser = '#{overalluser}';
+            var i3data = []
+            var i3speaker = []
+            var colorpalette = ['#90D0D5','#FBF172', '#B0D357', '#C88ABC', '#4B79BD']
+            var guests = {}
+            var i = 0
+            for (var key in i3){
+                i3speaker.push(key);
+                guests[key] = colorpalette[i];
+                i3data.push(Math.round(i3[key]));
+                i+=1;
+            }
+            $.getScript('#{path}main.js',function(data,textStatus){
+                console.log("load was performed. ");
+            });
