@@ -1,4 +1,5 @@
 var fs = require('fs');
+var uuid = require('node-uuid');
 
 var pkey = fs.readFileSync('/etc/apache2/ssl/apache.key');
 var pcert = fs.readFileSync('/etc/apache2/ssl/apache.crt');
@@ -56,7 +57,7 @@ server.use(bodyParser.json());
 
 
 //translations middleware file: create event listeners at /translations namespace
-require('./sockets/translations.js')(io);
+require('./sockets/translations.js')(io,uuid);
 
 //rtc signalmaster middleware file: create event listeners at /signalmaster namespace
 require('./sockets/signalmaster.js')(io);

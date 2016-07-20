@@ -1,15 +1,15 @@
-module.exports = function(io){
+module.exports = function(io,uuid){
   //create socket.io client movement namespacing
   var translations = io.of('/translations');
 
   var clientTranslations = {};
   var currentSeats = ["E","E","E","E"];
-  var sessionKey = "test_session_key";
+  var sessionKey = uuid.v1();
 
   translations.on('connection', function(client){
 
     client.on('uploader', function(data) {
-        console.log('writing to disk');
+        console.log('writing to disk', data);
         //writeToDisk(data.audio.dataURL, data.audio.name);
         //writeToDisk(data.video.dataURL, data.video.name);
 

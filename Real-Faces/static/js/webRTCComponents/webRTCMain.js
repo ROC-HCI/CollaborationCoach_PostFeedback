@@ -38,6 +38,9 @@ var RealWebRTC =  function (clientID) {
   this.webrtc.on('readyToCall', function () {
     //ask for username
     this.username = prompt("Please enter your name", "Anonymous");
+	
+	realFaces.userName = this.username;
+	
     //variable that allows pointer lock
     this.webcam = true;
     // you can name it anything

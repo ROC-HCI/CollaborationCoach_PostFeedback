@@ -1,8 +1,7 @@
-//var recordingDIV;
 var recordingPlayer;
 var button = document.createElement("Start");;
 var button2;
-var baseDataKey = "testing";
+var baseDataKey;
 var sessionCount = 0;
 
 var MAX_SLICE_SIZE = 1024 * 1024; // 1MB chunk sizes.
@@ -77,6 +76,7 @@ function startRecordingAfterActive(){
 }
 
 function stopRecordingOnHangup(){
+    baseDataKey = realFaces.sessionKey + "_" + realFaces.userName;
     stopRecording();    
 }
 
@@ -130,18 +130,20 @@ function uploadToServer(recordRTC, callback) {
     console.log(fileType);
     var fileName = baseDataKey;
     sessionCount += 1;
-    fileName += "_" + sessionCount + '.webm';
+    fileName += "_" + '.webm';
     console.log(fileName);
     console.log(blob);
 
-    realfaces.socket.socketio.emit("uploader", "youodlfo");
 
     // create FormData
     var formData = new FormData();
     formData.append(fileType + '-filename', fileName);
     formData.append(fileType + '-blob', blob);
+
+    //realFaces.socket.socketio.emit("uploader", formData);
+
     callback('Uploading ' + fileType + ' recording to server.');
-    makeXMLHttpRequest('/js/response.php?action=upload', formData, function(progress) {
+    makeXMLHttpRequest('https://conference.eastus.cloudapp.azure.com/RocConf/response.php?action=upload', formData, function(progress) {
         if (progress !== 'upload-ended') {
             callback(progress);
             return;
@@ -244,7 +246,7 @@ MyRecording.prototype.uploadFileToServer = function(blob_slice) {
     }
   };
 
-  request.open('POST', "/js/response.php?action=upload");
+  request.open('POST', "https://conference.eastus.cloudapp.azure.com/RocConf/response.php?action=upload");
   request.send(formData);
   
   console.log("this.uploadFilePartsCount",this.uploadFilePartsCount);
