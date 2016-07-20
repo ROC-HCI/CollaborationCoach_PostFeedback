@@ -1,15 +1,18 @@
 var fs = require('fs');
 console.log('** start **');
-var contents = fs.readFileSync('result.json');
+var contents = fs.readFileSync('./result.json');
 
 'use strict';
 var jscontent = JSON.parse(contents);
 
 //interruption
-var interrupted = jscontent.interrupted;
+var interruption = jscontent.interruption;
+var defaultuser = Object.keys(interruption)[0];
+//console.log('interruption name { values }: ', Object.keys(interruption)[0], interruption[Object.keys(interruption)[0]]);
+var interrupted = interruption[defaultuser].interrupted;
 // console.log('interrupted: ', interrupted);
 
-var interrupting = jscontent.interrupting;
+var interrupting = interruption[defaultuser].interrupting;
 // console.log('interrupting: ', interrupting);
 
 //participation
@@ -32,4 +35,4 @@ module.exports.interruption = [interrupting,interrupted];
 module.exports.totalparticipation = totalp;
 module.exports.participation = jscontent.participation;
 module.exports.turntaking = jscontent.turntaking;
-module.exports.user = jscontent.user;
+module.exports.user = defaultuser;

@@ -1,19 +1,31 @@
 {
-    "interrupted":75,
-    "interrupting":174,
+    "interruption":{
+        "Luis":{
+            "interrupted":37,
+            "interrupting":74
+        },
+        "Ru":{
+            "interrupted":15,
+            "interrupting":96
+        },
+        "Viv":{
+            "interrupted":0,
+            "interrupting":111
+        }
+    },
     "participation":{
-        "Luis":94.28206250000004,
-        "Ru":49.559999999999924,
-        "Viv":127.67199999999966,
-        "total":271.5140624999996
+        "Luis":83.99406250000006,
+        "Ru":47.36799999999991,
+        "Viv":85.87199999999991,
+        "total":217.23406249999988
     },
     "turntaking":{
-        "Luis-Ru":19,
-        "Luis-Viv":74,
-        "Ru-Luis":30,
-        "Ru-Viv":37,
-        "Viv-Luis":64,
-        "Viv-Ru":48
+        "Luis-Ru":27,
+        "Luis-Viv":37,
+        "Ru-Luis":32,
+        "Ru-Viv":26,
+        "Viv-Luis":33,
+        "Viv-Ru":31
     },
     "user":"Luis"
 }
