@@ -13,7 +13,7 @@ module.exports = function(io,uuid){
 
     client.on('FOCUS_JSON', function(data) {
        //fs.writeFile("JSON_Info_PlayerView.json",data);
-       fs.writeFile(data.JSONkey+".json", data.myJSONString);
+       fs.writeFile("../Data/"+data.JSONkey+".json", data.myJSONString);
     });
 
     client.on('uploader', function(data) {
