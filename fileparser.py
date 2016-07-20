@@ -23,14 +23,6 @@ def make_item(size,xmin,xmax):
     item.intervals = [size]
     return item
 
-# def make_interval(index,xmin,xmax,text):
-#     interval = Interval()
-#     interval.index = index
-#     interval.xmin = xmin
-#     interval.xmax = xmax
-#     interval.text = text
-#     return interval
-
 def make_interval(index,xmin,xmax,text,name):
     interval = Interval()
     interval.index = index
@@ -118,12 +110,21 @@ files = []
 dict = {}
 counter = 0 
 overlapcount = 0
-user = readFile(sys.argv[1])[0].name
-dict['user'] = user
-dict['interrupted'] = 0 #being interrupted
-dict['interrupting'] = 0 #interrupting others
+users = [] #readFile(sys.argv[1])[0].name
+for arg in sys.argv[1:]:
+    users.append(readFile(arg)[0].name)
+
+# dict['interrupted'] = 0 #being interrupted
+# dict['interrupting'] = 0 #interrupting others
+dict['interruption'] = {} #interruption duh
 dict['turntaking'] = {} #turn taking duh
 dict['participation'] = {} #speaking percentage duh
+dict['user'] = readFile(sys.argv[1])[0].name
+
+for user in users:
+    dict['interruption'][user] = {}
+    dict['interruption'][user]['interrupting'] = 0
+    dict['interruption'][user]['interrupted'] = 0
 
 for count in range(1,len(sys.argv)):
     for count2 in range(count+1,len(sys.argv)):
@@ -139,23 +140,26 @@ for count in range(1,len(sys.argv)):
         #total sounding duration
         dict['participation'][readFile(sys.argv[count])[0].name] = adds(readFile(sys.argv[count]))
         dict['participation'][readFile(sys.argv[count2])[0].name] =  adds(readFile(sys.argv[count2]))
+        
         #checking for overlap by comparing intervals in each audio
         for a in readFile(sys.argv[count]):
             for b in readFile(sys.argv[count2]):
                 if(float(a.xmin)>float(b.xmax)): continue #uncomparable
                 elif(float(b.xmin)>float(a.xmax)): continue #uncomparable
-                
                 #interruption
-                if(overlap(a,b)):
-                    # print a.name,a.xmin, a.xmax, b.name,b.xmin, b.xmax 
-                    if(a.xmin>b.xmin and user==a.name): 
-                        dict['interrupting'] += 1   
-                    elif(b.xmin>=a.xmin and user==a.name):
-                        dict['interrupted'] += 1
-                    else:
-                        dict['interrupting'] += 1 
-                        
-                    overlapcount+=1
+                #iterating client
+                # for user in users
+                for user in users:
+                    if(overlap(a,b)):
+                        # print a.name,a.xmin, a.xmax, b.name,b.xmin, b.xmax 
+                        if(a.xmin>b.xmin and user==a.name): 
+                            dict['interruption'][user]['interrupting'] += 1   
+                        elif(b.xmin>=a.xmin and user==a.name):
+                            dict['interruption'][user]['interrupted'] += 1
+                        else:
+                            dict['interruption'][user]['interrupting'] += 1 
+                            
+                        overlapcount+=1
 
 arr3 = []
 flag = []

@@ -17,6 +17,7 @@ import json
 import pprint
 import sys
 import speech_recognition as sr
+from pymongo import MongoClient
 
 from urllib import urlencode
 from urllib2 import Request, urlopen, URLError, HTTPError
@@ -24,6 +25,9 @@ from urllib2 import Request, urlopen, URLError, HTTPError
 class RequestError(Exception): pass
 
 pp = pprint.PrettyPrinter(indent=2)
+
+client = MongoClient()
+database = client['rocconf_data']
 
 #==================================================================================
 # Access keys for using IBM Bluemix. Generate these through a Bluemix Account
@@ -95,5 +99,4 @@ def process_tone(transcript_text):
 # Main Caller
 #=======================================================
 if __name__ == "__main__":
-    test_text = "Testing out IBM BLuemix. I think we should all be happy this works really well and quite easly. However we should also be very disappointed in the total cost of using this service."
     pp.pprint(process_tone(test_text))
