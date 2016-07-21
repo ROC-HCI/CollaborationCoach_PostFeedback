@@ -48,6 +48,9 @@ def process_speech_ibm(raw_filepath):
     basepath = os.path.dirname(__file__)
     filepath = os.path.abspath(os.path.join(basepath, raw_filepath))
 
+	return filepath
+	
+	'''
     r = sr.Recognizer()
     with sr.WavFile(filepath) as source:
         audio = r.record(source) 
@@ -62,6 +65,7 @@ def process_speech_ibm(raw_filepath):
     except sr.RequestError as e:
         print("Could not request results from IBM Speech to Text service; {0}".format(e))
         return "ERR"
+	'''
         
     
         
