@@ -48,23 +48,22 @@ def process_speech_ibm(raw_filepath):
     basepath = os.path.dirname(__file__)
     filepath = os.path.abspath(os.path.join(basepath, raw_filepath))
 
-	'''
-    r = sr.Recognizer()
-    with sr.WavFile(filepath) as source:
-        audio = r.record(source) 
+'''
+r = sr.Recognizer()
+with sr.WavFile(filepath) as source:
+	audio = r.record(source) 
 
-    try:
-        response = r.recognize_ibm(audio, username=IBM_SPEECH_USERNAME, password=IBM_SPEECH_PASSWORD, show_all=True)
-        pp.pprint(response)
-        return response
-    except sr.UnknownValueError:
-        print("IBM Speech to Text could not understand audio")
-        return "ERR"
-    except sr.RequestError as e:
-        print("Could not request results from IBM Speech to Text service; {0}".format(e))
-        return "ERR"
-	'''
-	
+try:
+	response = r.recognize_ibm(audio, username=IBM_SPEECH_USERNAME, password=IBM_SPEECH_PASSWORD, show_all=True)
+	pp.pprint(response)
+	return response
+except sr.UnknownValueError:
+	print("IBM Speech to Text could not understand audio")
+	return "ERR"
+except sr.RequestError as e:
+	print("Could not request results from IBM Speech to Text service; {0}".format(e))
+	return "ERR"
+'''
 	return filepath
         
     
