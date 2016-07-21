@@ -8,10 +8,8 @@ echo "Finish - Affdex"
 
 echo "Start - .wav Conversion"
 for file in Data/*.webm;
-	do ffmpeg -i "$file".webm "$file".wav;
-done
-
-#echo "Finish - .wav Conversion"
+	do ffmpeg -i "$file" $(basename "${file/.webm}").wav;
+echo "Finish - .wav Conversion"
 
 #echo "Start - Praat"
 
@@ -20,3 +18,4 @@ done
 #echo "Start - BlueMix"
 
 #echo "Finish - BlueMix"
+done
