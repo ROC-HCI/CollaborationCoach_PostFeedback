@@ -7,8 +7,10 @@ echo "Start - Affdex"
 echo "Finish - Affdex"
 
 echo "Start - .wav Conversion"
+
 for file in Data/*.webm;
 	do ffmpeg -i "$file" Data/$(basename "${file/.webm}").wav;
+	
 echo "Finish - .wav Conversion"
 
 #echo "Start - Praat"
