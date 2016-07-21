@@ -47,8 +47,6 @@ IBM_TONE_PASSWORD = "yVjLxiSri7As"
 def process_speech_ibm(raw_filepath):
     basepath = os.path.dirname(__file__)
     filepath = os.path.abspath(os.path.join(basepath, raw_filepath))
-
-	return filepath
 	
 	'''
     r = sr.Recognizer()
@@ -66,6 +64,8 @@ def process_speech_ibm(raw_filepath):
         print("Could not request results from IBM Speech to Text service; {0}".format(e))
         return "ERR"
 	'''
+	
+	return filepath
         
     
         
