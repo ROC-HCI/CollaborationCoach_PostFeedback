@@ -7,18 +7,18 @@ echo "Finish - Affdex"
 
 echo "Start - .wav Conversion"
 
-for file in Data/*.webm;
-	do ffmpeg -i "$file" Data/$(basename "${file/.webm}").wav;
+#for file in Data/*.webm;
+#	do ffmpeg -i "$file" Data/$(basename "${file/.webm}").wav;
 	
 echo "Finish - .wav Conversion"
 
 echo "Start - Praat"
-./praat --run auto.praat Data/
-python fileparser.py Data/Ru.wav.TextGrid Data/Luis.wav.TextGrid Data/Yichen.wav.TextGrid
-
+#./praat --run auto.praat Data/
+#python fileparser.py Data/Ru.wav.TextGrid Data/Luis.wav.TextGrid Data/Yichen.wav.TextGrid
 echo "Finish - Praat"
 
-#echo "Start - BlueMix"
+echo "Start - BlueMix"
+python bluemix_driver.py
+echo "Finish - BlueMix"
 
-#echo "Finish - BlueMix"
 done
