@@ -41,10 +41,10 @@ IBM_TONE_PASSWORD = "yVjLxiSri7As"
 #   - Includes timestamps, words, and confidence measurements.
 #==================================================================================
 def process_speech_ibm(raw_filepath):
-    #basepath = os.path.dirname(__file__)
-    #filepath = os.path.abspath(os.path.join(basepath, raw_filepath))
+    basepath = os.path.dirname(__file__)
+    filepath = os.path.abspath(os.path.join(basepath, raw_filepath))
 
-    #print filepath
+    print filepath
 
     r = sr.Recognizer()
     with sr.WavFile(raw_filepath) as source:
