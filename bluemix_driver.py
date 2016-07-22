@@ -17,7 +17,6 @@ import json
 import pprint
 import sys
 import speech_recognition as sr
-from pymongo import MongoClient
 
 from urllib import urlencode
 from urllib2 import Request, urlopen, URLError, HTTPError
@@ -25,9 +24,6 @@ from urllib2 import Request, urlopen, URLError, HTTPError
 class RequestError(Exception): pass
 
 pp = pprint.PrettyPrinter(indent=2)
-
-client = MongoClient()
-database = client['rocconf_data']
 
 #==================================================================================
 # Access keys for using IBM Bluemix. Generate these through a Bluemix Account
@@ -48,23 +44,31 @@ def process_speech_ibm(raw_filepath):
     basepath = os.path.dirname(__file__)
     filepath = os.path.abspath(os.path.join(basepath, raw_filepath))
 
-'''
-r = sr.Recognizer()
-with sr.WavFile(filepath) as source:
-	audio = r.record(source) 
+    r = sr.Recognizer()
+    with sr.WavFile(filepath) as source:
+        audio = r.record(source) 
 
-try:
-	response = r.recognize_ibm(audio, username=IBM_SPEECH_USERNAME, password=IBM_SPEECH_PASSWORD, show_all=True)
-	pp.pprint(response)
-	return response
-except sr.UnknownValueError:
-	print("IBM Speech to Text could not understand audio")
-	return "ERR"
-except sr.RequestError as e:
-	print("Could not request results from IBM Speech to Text service; {0}".format(e))
-	return "ERR"
-'''
-	return filepath
+    try:
+        response = r.recognize_ibm(audio, username=IBM_SPEECH_USERNAME, password=IBM_SPEECH_PASSWORD, show_all=True)
+        return response
+    except sr.UnknownValueError:
+        print("IBM Speech to Text could not understand audio")
+        return "ERR"
+    except sr.RequestError as e:
+        print("Could not request results from IBM Speech to Text service; {0}".format(e))
+        return "ERR"
+    
+#----------------------------------------------------------------------------------    
+def generate_ibm_simple_transcript(input):
+    transcript = ""
+    
+    json_data = json.loads(input)
+    
+    for e in json_data:
+        data = e['alternatives'][0]
+        transcript += data['transcript']
+        
+    return transcript
         
     
         
@@ -90,9 +94,9 @@ def process_tone(transcript_text):
     try:
         response = urlopen(request)
     except HTTPError as e:
-        raise RequestError("recognition request failed: {0}".format(getattr(e, "reason", "status {0}".format(e.code)))) # use getattr to be compatible with Python 2.6
+        raise RequestError("tone analysis request failed: {0}".format(getattr(e, "reason", "status {0}".format(e.code)))) # use getattr to be compatible with Python 2.6
     except URLError as e:
-        raise RequestError("recognition connection failed: {0}".format(e.reason))
+        raise RequestError("tone analysis connection failed: {0}".format(e.reason))
         
     response_text = response.read().decode("utf-8")
     result = json.loads(response_text)
@@ -102,4 +106,5 @@ def process_tone(transcript_text):
 # Main Caller
 #=======================================================
 if __name__ == "__main__":
-    pp.pprint(process_speech_ibm("Data/Luis.wav"))
+    process_speech_ibm("Data/Luis.wav")
+    print "Script terminated"
