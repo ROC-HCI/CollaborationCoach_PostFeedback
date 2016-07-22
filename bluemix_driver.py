@@ -47,7 +47,7 @@ def process_speech_ibm(raw_filepath):
     print filepath
 
     r = sr.Recognizer()
-    with sr.WavFile(filepath) as source:
+    with sr.WavFile("/home" + filepath) as source:
         audio = r.record(source) 
 
     try:
