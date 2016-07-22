@@ -20,5 +20,4 @@ echo "Finish - Praat"
 echo "Start - BlueMix"
 python bluemix_driver.py
 echo "Finish - BlueMix"
-
 done
