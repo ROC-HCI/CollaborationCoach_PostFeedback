@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "The script starts now"
 
 echo "Start - Affdex"
@@ -13,9 +12,11 @@ for file in Data/*.webm;
 	
 echo "Finish - .wav Conversion"
 
-#echo "Start - Praat"
+echo "Start - Praat"
+./praat --run auto.praat Data/
+python fileparser.py Data/Ru.wav.TextGrid Data/Luis.wav.TextGrid Data/Yichen.wav.TextGrid
 
-#echo "Finish - Praat"
+echo "Finish - Praat"
 
 #echo "Start - BlueMix"
 

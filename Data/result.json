@@ -1,0 +1,31 @@
+{
+    "interruption":{
+        "Luis":{
+            "interrupted":112,
+            "interrupting":211
+        },
+        "Ru":{
+            "interrupted":89,
+            "interrupting":234
+        },
+        "Yichen":{
+            "interrupted":0,
+            "interrupting":323
+        }
+    },
+    "participation":{
+        "Luis":94.28200000000012,
+        "Ru":49.31199999999983,
+        "Yichen":159.1920000000001,
+        "total":302.78600000000006
+    },
+    "turntaking":{
+        "Luis-Ru":8,
+        "Luis-Yichen":120,
+        "Ru-Luis":31,
+        "Ru-Yichen":52,
+        "Yichen-Luis":97,
+        "Yichen-Ru":75
+    },
+    "user":"Ru"
+}

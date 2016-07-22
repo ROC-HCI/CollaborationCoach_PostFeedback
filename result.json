@@ -1,0 +1,31 @@
+{
+    "interruption":{
+        "Data/Luis":{
+            "interrupted":112,
+            "interrupting":211
+        },
+        "Data/Ru":{
+            "interrupted":89,
+            "interrupting":234
+        },
+        "Data/Yichen":{
+            "interrupted":0,
+            "interrupting":323
+        }
+    },
+    "participation":{
+        "Data/Luis":94.28200000000012,
+        "Data/Ru":49.31199999999983,
+        "Data/Yichen":159.1920000000001,
+        "total":302.78600000000006
+    },
+    "turntaking":{
+        "Data/Luis-Data/Ru":8,
+        "Data/Luis-Data/Yichen":120,
+        "Data/Ru-Data/Luis":31,
+        "Data/Ru-Data/Yichen":52,
+        "Data/Yichen-Data/Luis":97,
+        "Data/Yichen-Data/Ru":75
+    },
+    "user":"Data/Ru"
+}
