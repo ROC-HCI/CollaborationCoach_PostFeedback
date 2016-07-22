@@ -42,7 +42,7 @@ IBM_TONE_PASSWORD = "yVjLxiSri7As"
 #==================================================================================
 def process_speech_ibm(raw_filepath):
     basepath = os.path.dirname(__file__)
-    filepath = os.path.abspath(os.path.join(os.path.expanduser('~'), basepath, raw_filepath))
+    filepath = os.path.abspath(os.path.join(basepath, raw_filepath))
 
     print filepath
 
