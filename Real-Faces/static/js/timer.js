@@ -6,6 +6,8 @@
 
 	function startPause(){
 		if(running == 0){
+			captureVideo(commonConfig);
+			startRecordingAfterActive();
 			running = 1;
 			increment();
 			document.getElementById("Start").innerHTML = "Pause";
@@ -23,7 +25,7 @@
 			JSONkey : JSONkey,
 			myJSONString : myJSONString
 		}
-
+		stopRecordingOnHangup();
 
 		realFaces.socket.socketio.emit("FOCUS_JSON", JSONData);
 		document.getElementById("Start").innerHTML = "Resume";
