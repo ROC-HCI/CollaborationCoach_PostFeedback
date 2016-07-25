@@ -91,6 +91,17 @@ server.get('/About', function(req,res){
   });
 });
 
+server.get('/Feedback', function(req,res){
+  res.render('pages/Feedback.jade', {
+    locals : {
+              title : 'Feedback'
+             ,description: 'About Real Faces'
+             ,author: 'Your Name'
+             ,analyticssiteid: 'XXXXXXX'
+            }
+  });
+});
+
 server.get('/Problems', function(req,res){
   res.render('pages/Problems.jade', {
     locals : {

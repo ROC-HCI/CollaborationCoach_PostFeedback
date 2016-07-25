@@ -1,0 +1,11 @@
+extends ./layout
+
+block content
+    .container
+      .header
+      h3.text-muted Feedback
+
+      |The following is a situational context timeline of your general mood throughout the conversation.
+
+      div(id='JSON')
+        script(src ='/js/JSONTest/JSONLoader.js')
