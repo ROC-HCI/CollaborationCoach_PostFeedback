@@ -51,9 +51,9 @@ else{
 			var total_time= (end_time - start_time)/1000;
 			var total_words = get_word_count(final_transcript);
 
-			total_time.innerHTML = "total speaking time is "+ (end_time - start_time)/100 +"seconds";
-			total_words.innerHTML = "total word count is "+ get_word_count(final_transcript);
-			wpm.innerHTML = "WPM = "+ total_words/ (total_time/60);
+			//total_time.innerHTML = "total speaking time is "+ (end_time - start_time)/100 +"seconds";
+			//total_words.innerHTML = "total word count is "+ get_word_count(final_transcript);
+			//wpm.innerHTML = "WPM = "+ total_words/ (total_time/60);
 			console.log("ended recognition");
 		}
 	}
@@ -69,10 +69,10 @@ else{
 			}
 		}
 		final_transcript = capitalize(final_transcript);
-		final_span.innerHTML = linebreak(final_transcript);
-		interim_span.innerHTML = linebreak(interim_transcript);
+		//final_span.innerHTML = linebreak(final_transcript);
+		//interim_span.innerHTML = linebreak(interim_transcript);
 
-		//console.log("final_transcript",final_transcript,"interim_transcript",interim_transcript);
+		console.log("final_transcript",final_transcript,"interim_transcript",interim_transcript);
 	}
 }
 
