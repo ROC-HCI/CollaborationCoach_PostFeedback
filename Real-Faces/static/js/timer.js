@@ -25,6 +25,7 @@
 			JSONkey : JSONkey,
 			myJSONString : myJSONString
 		}
+		
 		stopRecordingOnHangup();
 
 		realFaces.socket.socketio.emit("FOCUS_JSON", JSONData);
