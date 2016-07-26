@@ -5,6 +5,9 @@ echo "Yep you're on this page...";
 
 $connection = new MongoClient();
 
+echo var_dump($connection);
+
+echo "Tried to echo connection...";
 //===========================================================
 // Test code to insert a collection into a test database
 // and dump it.
