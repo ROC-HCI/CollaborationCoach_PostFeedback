@@ -72,7 +72,7 @@ function stopRecording(){
 }
 
 function startRecordingAfterActive(){
-    console.log(button);
+    console.log(button.recordRTC);
     button.recordRTC.startRecording();
 }
 
