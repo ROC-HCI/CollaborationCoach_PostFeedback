@@ -5,9 +5,11 @@ session_start();
 
 echo "Yep you're on this page...";
 
-$connection = new MongoClient();
+echo phpinfo();
 
-echo var_dump($connection);
+//$connection = new MongoClient();
+
+//echo var_dump($connection);
 
 echo "Tried to echo connection...";
 //===========================================================
