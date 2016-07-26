@@ -18,6 +18,13 @@ module.exports = function(io,uuid){
        fs.writeFile("../Data/"+data.JSONkey+".json", data.myJSONString);
     });
 
+    //tells all pre-existing clients to start recording
+    client.on('recording', function(data) {
+        console.log('start recording', data);
+        if(numberofUsers >= requiredUsercount)
+          client.broadcast.to(client.roomName).emit('start-recording', "start it");
+    });
+      
     client.on('select_room', function(roomName){
       client.join(roomName);
       client.roomName = roomName;
@@ -67,13 +74,6 @@ module.exports = function(io,uuid){
       client.on('translate', function(translation){
         client.broadcast.to(client.roomName).emit('move_other_player', {clientID:client.id, translation:translation});
         clientTranslations[client.roomName][client.id] = translation;
-      });
-
-      //tells all pre-existing clients to start recording
-      client.on('recording', function(data) {
-          console.log('start recording', data);
-          if(numberofUsers >= requiredUsercount)
-            client.broadcast.to(client.roomName).emit('start-recording', "start it");
       });
 
       //sets disconnect listener for new client
