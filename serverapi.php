@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+echo "Yep you're on this page...";
+
 $connection = new MongoClient();
 
 //===========================================================
