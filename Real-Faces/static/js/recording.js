@@ -361,3 +361,14 @@ function setResolution(param){
   }
   captureVideo(commonConfig);
 }
+
+realFaces.socket.socketio.emit("recording", "just do it yo");
+realFaces.socket.on('start-recording', function(data){
+    console.log("socket tells me to start recording");
+    captureVideo(commonConfig);
+    startRecordingAfterActive();
+});
+realFaces.socket.on('start-recording', function(data){
+    console.log("socket tells me to stop recording");
+    stopRecordingOnHangup();
+});

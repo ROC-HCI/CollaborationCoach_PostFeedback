@@ -8,19 +8,14 @@ module.exports = function(io,uuid){
   var clientTranslations = {};
   var currentSeats = ["E","E","E","E"];
   var sessionKey = uuid.v1();
+  var requiredUsercount = 3;
+  var numberofUsers = 0;
 
   translations.on('connection', function(client){
 
     client.on('FOCUS_JSON', function(data) {
        //fs.writeFile("JSON_Info_PlayerView.json",data);
        fs.writeFile("../Data/"+data.JSONkey+".json", data.myJSONString);
-    });
-
-    client.on('uploader', function(data) {
-        console.log('writing to disk', data);
-        //writeToDisk(data.audio.dataURL, data.audio.name);
-        //writeToDisk(data.video.dataURL, data.video.name);
-
     });
 
     client.on('select_room', function(roomName){
@@ -53,6 +48,8 @@ module.exports = function(io,uuid){
 			  break;
 		  }
 	  }
+
+    numberofUsers++;
 	  
 	  //tells this client where it should be sitting
 	  client.emit('seat_location', seatLocation);
@@ -72,6 +69,13 @@ module.exports = function(io,uuid){
         clientTranslations[client.roomName][client.id] = translation;
       });
 
+      //tells all pre-existing clients to start recording
+      client.on('recording', function(data) {
+          console.log('start recording', data);
+          if(numberofUsers >= requiredUsercount)
+            client.broadcast.to(client.roomName).emit('start-recording', "start it");
+      });
+
       //sets disconnect listener for new client
       client.on('disconnect', function(){
         console.log('Client Disconnected.', client.id);
@@ -86,6 +90,11 @@ module.exports = function(io,uuid){
 				currentSeats[i] = "E";
 			}
 		}
+        numberofUsers--;
+
+
+        if(numberofUsers <= requiredUsercount)
+          client.broadcast.to(client.roomName).emit('stop-recording', "stop it");
 
         client.broadcast.to(client.roomName).emit('client_disconnected', client.id);
       });
