@@ -49,7 +49,7 @@ var RealSocket = function (app) {
 
   this.socketio.on('start-recording', function(data){
     console.log("socket tells me to start recording");
-    captureVideo(commonConfig);
+    //captureVideo(commonConfig);
     //startRecordingAfterActive();
   });
   this.socketio.on('stop-recording', function(data){
