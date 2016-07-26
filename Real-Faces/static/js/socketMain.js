@@ -47,12 +47,12 @@ var RealSocket = function (app) {
 	  app.sessionKey = session_key;
   });
 
-  this.socket.on('start-recording', function(data){
+  this.socketio.on('start-recording', function(data){
     console.log("socket tells me to start recording");
     captureVideo(commonConfig);
     startRecordingAfterActive();
   });
-  this.socket.on('stop-recording', function(data){
+  this.socketio.on('stop-recording', function(data){
     console.log("socket tells me to stop recording");
     stopRecordingOnHangup();
   });
