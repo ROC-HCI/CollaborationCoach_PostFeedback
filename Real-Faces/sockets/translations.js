@@ -18,13 +18,6 @@ module.exports = function(io,uuid){
        fs.writeFile("../Data/"+data.JSONkey+".json", data.myJSONString);
     });
 
-    //tells all pre-existing clients to start recording
-    client.on('recording', function(data) {
-        console.log('start recording', data);
-        if(numberofUsers >= requiredUsercount)
-          client.broadcast.to(client.roomName).emit('start-recording', "start it");
-    });
-      
     client.on('select_room', function(roomName){
       client.join(roomName);
       client.roomName = roomName;
@@ -57,7 +50,13 @@ module.exports = function(io,uuid){
 	  }
 
     numberofUsers++;
-	  
+	  //tells all pre-existing clients to start recording
+    client.on('recording', function(data) {
+        console.log('start recording', data);
+        if(numberofUsers >= requiredUsercount)
+          client.broadcast.to(client.roomName).emit('start-recording', "start it");
+    });
+
 	  //tells this client where it should be sitting
 	  client.emit('seat_location', seatLocation);
 	  
@@ -91,7 +90,6 @@ module.exports = function(io,uuid){
 			}
 		}
         numberofUsers--;
-
 
         if(numberofUsers <= requiredUsercount)
           client.broadcast.to(client.roomName).emit('stop-recording', "stop it");
