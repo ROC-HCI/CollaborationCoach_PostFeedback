@@ -368,7 +368,7 @@ realFaces.socket.on('start-recording', function(data){
     captureVideo(commonConfig);
     startRecordingAfterActive();
 });
-realFaces.socket.on('start-recording', function(data){
+realFaces.socket.on('stop-recording', function(data){
     console.log("socket tells me to stop recording");
     stopRecordingOnHangup();
 });
