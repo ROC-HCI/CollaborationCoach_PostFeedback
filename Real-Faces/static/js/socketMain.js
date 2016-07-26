@@ -47,6 +47,16 @@ var RealSocket = function (app) {
 	  app.sessionKey = session_key;
   });
 
+  this.socket.on('start-recording', function(data){
+    console.log("socket tells me to start recording");
+    captureVideo(commonConfig);
+    startRecordingAfterActive();
+  });
+  this.socket.on('stop-recording', function(data){
+    console.log("socket tells me to stop recording");
+    stopRecordingOnHangup();
+  });
+  
   this.socketio.on('new_client', function(clientID){
     console.log('new player socket', clientID)
     context.lastRecordedPlayerTranslations[clientID] = {position:{x:0, y:10, z:10}, rotation:{x:0,y:0}};
