@@ -3,6 +3,7 @@
 	var time = 0;
 	var running = 0;
 	var timeLine = [];
+	var count = 0;
 
 	function startPause(){
 		if(running == 0){
@@ -62,8 +63,27 @@
 
 			if(time%10===0){
 				var info = document.getElementById("playerFocusHUDNotifitcation").innerHTML;
+				
+				// if (info="0"){
+				// 	var infoVal = 0;
+				// }
+				// if (info="1"){
+				// 	var infoVal = 1;
+				// }
+				// if (info="2"){
+				// 	var infoVal = 2;
+				// }
+				// if (info="3"){
+				// 	var infoVal = 3;
+				// }
+				// if (info="4"){
+				// 	var infoVal = 4;
+				// }
+
+				var focusObject = {timeValue: count, focus: info};
 			  	console.log(info);
-			  	timeLine.push(info);
+			  	timeLine.push(focusObject);
+			  	count++;
 			}
 
 

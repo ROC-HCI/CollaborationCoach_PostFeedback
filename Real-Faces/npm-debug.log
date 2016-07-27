@@ -7,7 +7,7 @@
 6 silly lifecycle realTalk@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle realTalk@1.0.0~start: realTalk@1.0.0
 8 verbose lifecycle realTalk@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle realTalk@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/luisnova/GitHub/RocConf/Real-Faces/node_modules/.bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+9 verbose lifecycle realTalk@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/luisnova/GitHub/RocConf/Real-Faces/node_modules/.bin:/usr/local/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 10 verbose lifecycle realTalk@1.0.0~start: CWD: /Users/luisnova/GitHub/RocConf/Real-Faces
 11 silly lifecycle realTalk@1.0.0~start: Args: [ '-c', 'node server.js' ]
 12 silly lifecycle realTalk@1.0.0~start: Returned: code: 1  signal: null
