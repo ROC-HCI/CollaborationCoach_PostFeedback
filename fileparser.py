@@ -4,6 +4,12 @@ import itertools
 import functools
 import json
 import requests
+import pymongo
+from pymongo import import MongoClient
+
+client = MongoClient()
+database = client['rocconf']
+collection = database['participation']
 
 class Item(object):
     xmin = ""
@@ -119,7 +125,7 @@ for arg in sys.argv[1:]:
 dict['interruption'] = {} #interruption duh
 dict['turntaking'] = {} #turn taking duh
 dict['participation'] = {} #speaking percentage duh
-dict['user'] = readFile(sys.argv[1])[0].name
+dict['session_key'] = readFile(sys.argv[1])[0].name
 
 for user in users:
     dict['interruption'][user] = {}
@@ -194,8 +200,11 @@ for key in sorted(dict['participation'],key=len):
 
 dict['participation']['total'] = total
 
+'''
 with open('result.json','w') as outfile:
     json.dump(dict, outfile, indent=4,sort_keys=True, separators=(',',':'), ensure_ascii=False)
+'''
+
 #does not work if there is no url duh
 # url = './display'
 # headers = {'content-type': 'application/json'}
