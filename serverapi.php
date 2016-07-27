@@ -5,9 +5,9 @@ session_start();
 
 echo "Yep you're on this page...";
 
-//echo phpinfo();
+echo phpinfo();
 
-$connection = new MongoClient();
+//$connection = new MongoClient();
 
 echo var_dump($connection);
 
