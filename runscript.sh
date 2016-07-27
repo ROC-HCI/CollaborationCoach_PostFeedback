@@ -13,7 +13,7 @@ echo "Start - Praat"
 #./praat --run auto.praat Data/
 
 py_args=""
-for i in Data/session_id_*.wav.TextGrid;
+for i in Data/{$session_id}_*.wav.TextGrid;
 	do $py_args+=$i;
 done
 
