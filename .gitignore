@@ -6,3 +6,6 @@
 
 #exclude everything in directory
 Data/* 
+
+chat/node_modules
+node_modules
