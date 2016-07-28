@@ -12,13 +12,7 @@ echo "Finish - Affdex"
 echo "Start - Praat"
 #./praat --run auto.praat Data/
 
-py_args=""
-for i in Data/{$session_id}_*.wav.TextGrid;
-	do $py_args+=$i;
-done
-
-echo $py_args;
-#python fileparser.py Data/Ru.wav.TextGrid Data/Luis.wav.TextGrid Data/Yichen.wav.TextGrid
+python fileparser.py $session_id
 echo "Finish - Praat"
 
 echo "Start - BlueMix"
