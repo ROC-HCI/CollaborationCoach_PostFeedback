@@ -52,7 +52,8 @@
     		li.appendChild(text);
 			$('#messages').append(li);
 			setTimeout(function(){
-				$('.active').text('Roboto: ' + msg);
+				li.removeChild(text);
+				li.appendChild(document.createTextNode('Roboto: ' + msg));
 			},2000)
 		})
 
