@@ -30,7 +30,7 @@
 		//sending 'chat message' event along with text input to the server
 		$('form').submit(function(){
 			socket.emit('chat message', $('#m').val(), function(msg, user){
-				$('#messages').append($('<li>').text(user +' : ' + msg));
+				$('#messages').append($('<li>').text(user +': ' + msg));
 				//get robot reply
 			}); 
 
@@ -40,7 +40,20 @@
 		});
 
 		socket.on('message success', function(msg){
-			$('#messages').append($('<li>').text('Roboto : ' + msg));
+			// var li = document.createElement('li').addClass('active');
+			// $(message).append(li);
+			// setTimeout(function(){
+			// 	$('#messages').append($('<li>').text('Roboto : ' + msg));
+			// },3000)
+
+			var li = document.createElement('li');
+			li.className = 'active';
+			var text = document.createTextNode('Roboto is typing...');
+    		li.appendChild(text);
+			$('#messages').append(li);
+			setTimeout(function(){
+				$('.active').text('Roboto: ' + msg);
+			},2000)
 		})
 
 	</script>
