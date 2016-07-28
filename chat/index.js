@@ -23,14 +23,22 @@ io.on('connection', function(socket){
 	var currentUser = user()
 
 	console.log('a user connected '+currentUser)
+	io.emit('welcome', currentUser)
 
 	//listen on the event 'chat message'
-	socket.on('chat message', function(msg){
+	socket.on('chat message', function(msg,fn){
 		console.log('message: ', msg + ' FROM '+currentUser)
-
+		fn(msg, currentUser)
+		//roboto gets it!
+		var str = currentUser +', I heard ya '+ msg 
+		io.emit('message success', str)
 		//broadcasting to html
-		io.emit('broadcast', currentUser, msg)
+		// io.emit('broadcast', currentUser, msg)
 
+	})
+
+	socket.on('roboto', function(msg){
+		console.log('messge from roboto read: ', msg)
 	})
 
 	socket.on('disconnect', function(){

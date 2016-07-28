@@ -21,19 +21,28 @@
 	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 	<script>
-	  var socket = io();
+		var socket = io();
 
-	  //sending 'chat message' event along with text input to the server
-	  $('form').submit(function(){
-	    socket.emit('chat message', $('#m').val()); 
-	    $('#m').val(''); //reset input
-	    return false; //remove default submit
-	  });
+		socket.on('welcome', function(user){
+			$('#messages').append($('<li>').text('Roboto : '+ 'Welcome to testingland, ' + user));
+		})
 
-	  //receiving data from server emitted event 'chat message', aka broadcasting
-	  socket.on('broadcast', function(user, msg){
-	      $('#messages').append($('<li>').text(user +' : ' + msg));
-	  });
+		//sending 'chat message' event along with text input to the server
+		$('form').submit(function(){
+			socket.emit('chat message', $('#m').val(), function(msg, user){
+				$('#messages').append($('<li>').text(user +' : ' + msg));
+				//get robot reply
+			}); 
+
+			$('#m').val(''); //reset input
+			return false; //remove default submit
+
+		});
+
+		socket.on('message success', function(msg){
+			$('#messages').append($('<li>').text('Roboto : ' + msg));
+		})
+
 	</script>
 </body>
 </html> 
