@@ -54,7 +54,9 @@ module.exports = function(io,uuid){
     client.on('recording', function(data) {
         console.log('start recording', data);
         if(numberofUsers >= requiredUsercount)
-          client.broadcast.to(client.roomName).emit('start-recording', "start it");
+          //client.broadcast.to(client.roomName).emit('start-recording', "start it");
+          io.sockets.in(client.roomName).emit('start-recording', 'start it');
+
     });
 
 	  //tells this client where it should be sitting
