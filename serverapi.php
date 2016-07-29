@@ -30,7 +30,7 @@ if($_GET['mode'] == 'participation')
 {
 	$session_key = $_GET['session_key'];
 	
-	$collection = $database=>selectCollection('participation');
+	$collection = $database->selectCollection('participation');
 	$query = array('session_key' => $session_key);
 	
 	$cursor = $collection->find($query);
