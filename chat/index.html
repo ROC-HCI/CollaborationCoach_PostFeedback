@@ -27,11 +27,18 @@
 			$('#messages').append($('<li>').text('Roboto : '+ 'Welcome to testingland, ' + user));
 		})
 
+		var li = document.createElement('li');
+		li.className = 'active';
+		var text = document.createTextNode('Roboto is typing...');
+		li.appendChild(text);
+	
 		//sending 'chat message' event along with text input to the server
 		$('form').submit(function(){
 			socket.emit('chat message', $('#m').val(), function(msg, user){
-				$('#messages').append($('<li>').text(user +': ' + msg));
-				//get robot reply
+				var newli = '<li>'+user+': '+msg+'</li>';
+				$('#messages').append(newli);
+				//waiting for roboto's reply
+				$('#messages').append(li);
 			}); 
 
 			$('#m').val(''); //reset input
@@ -46,15 +53,10 @@
 			// 	$('#messages').append($('<li>').text('Roboto : ' + msg));
 			// },3000)
 
-			var li = document.createElement('li');
-			li.className = 'active';
-			var text = document.createTextNode('Roboto is typing...');
-    		li.appendChild(text);
-			$('#messages').append(li);
 			setTimeout(function(){
-				li.removeChild(text);
-				li.appendChild(document.createTextNode('Roboto: ' + msg));
-			},2000)
+				$('#messages li:last').remove();
+				$('#messages').append('<li>Roboto: ' + msg +'</li>');
+			},500)
 		})
 
 	</script>

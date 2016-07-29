@@ -1,0 +1,30 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ibelu/.nvm/versions/node/v6.2.2/bin/node',
+1 verbose cli   '/home/ibelu/.nvm/versions/node/v6.2.2/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@3.9.5
+3 info using node@v6.2.2
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly rollbackFailedOptional Starting
+8 silly rollbackFailedOptional Finishing
+9 silly runTopLevelLifecycles Starting
+10 silly runTopLevelLifecycles Finishing
+11 silly install printInstalled
+12 verbose stack Error: ENOENT: no such file or directory, realpath '/home/ibelu/Documents/RocConf/chat/node_modules/node-wit'
+12 verbose stack     at Error (native)
+13 verbose cwd /home/ibelu/Documents/RocConf/chat
+14 error Linux 4.4.0-31-generic
+15 error argv "/home/ibelu/.nvm/versions/node/v6.2.2/bin/node" "/home/ibelu/.nvm/versions/node/v6.2.2/bin/npm" "install"
+16 error node v6.2.2
+17 error npm  v3.9.5
+18 error path /home/ibelu/Documents/RocConf/chat/node_modules/node-wit
+19 error code ENOENT
+20 error errno -2
+21 error syscall realpath
+22 error enoent ENOENT: no such file or directory, realpath '/home/ibelu/Documents/RocConf/chat/node_modules/node-wit'
+23 error enoent ENOENT: no such file or directory, realpath '/home/ibelu/Documents/RocConf/chat/node_modules/node-wit'
+23 error enoent This is most likely not a problem with npm itself
+23 error enoent and is related to npm not being able to find a file.
+24 verbose exit [ -2, true ]

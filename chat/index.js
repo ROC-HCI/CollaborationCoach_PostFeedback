@@ -2,6 +2,8 @@ var app = require('express')()
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
 
+var client = require('./wit/basic')
+
 app.get('/', function(req,res){
 	res.sendFile(__dirname + '/index.html')
 })
@@ -30,8 +32,14 @@ io.on('connection', function(socket){
 		console.log('message: ', msg + ' FROM '+currentUser)
 		fn(msg, currentUser)
 		//roboto gets it!
-		var str = currentUser +', I heard ya '+ msg 
-		io.emit('message success', str)
+		client.runActions(msg).then(function (res) {
+			// reply
+
+			console.log('roboto said: ', res.forecast) //only getting the response tagged 'forecast'
+			io.emit('message success', res.forecast)
+		})
+		// var str = currentUser +', I heard ya '+ msg 
+		// io.emit('message success', str)
 		//broadcasting to html
 		// io.emit('broadcast', currentUser, msg)
 

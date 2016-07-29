@@ -4,8 +4,10 @@ let Wit = null;
 let log = null;
 try {
   // if running from repo
-  Wit = require('../').Wit;
-  log = require('../').log;
+  //Wit = require('../').Wit;
+  //log = require('../').log;
+  log = require('./lib/log.js'),
+  Wit = require('./lib/wit.js').Wit
 } catch (e) {
   Wit = require('node-wit').Wit;
   log = require('node-wit').log;

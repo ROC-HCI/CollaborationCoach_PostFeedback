@@ -124,7 +124,7 @@ function Wit(opts) {
     if (!actions) throwMustHaveActions();
     const steps = maxSteps ? maxSteps : DEFAULT_MAX_STEPS;
     return this.converse(sessionId, message, context).then(
-      continueRunActions(sessionId, message, context, steps);
+      continueRunActions(sessionId, message, context, steps)
     );
   };
 
