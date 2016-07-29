@@ -5,7 +5,10 @@ import functools
 import json
 import requests
 import pymongo
-from pymongo import import MongoClient
+from pymongo import MongoClient
+import pprint
+
+pp = pprint.PrettyPrinter(indent=2)
 
 client = MongoClient()
 database = client['rocconf']
@@ -199,6 +202,9 @@ for key in sorted(dict['participation'],key=len):
     total+=dict['participation'][key] 
 
 dict['participation']['total'] = total
+
+
+pp.pprint(dict)
 
 '''
 with open('result.json','w') as outfile:

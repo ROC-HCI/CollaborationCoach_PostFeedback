@@ -17,9 +17,7 @@ for i in Data/$session_id*.wav.TextGrid;
 	do argpath="$argpath $i"
 done
 
-echo $argpath
-
-#python fileparser.py $session_id
+python fileparser.py $argpath
 echo "Finish - Praat"
 
 echo "Start - BlueMix"
