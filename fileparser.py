@@ -128,7 +128,11 @@ for arg in sys.argv[1:]:
 dict['interruption'] = {} #interruption duh
 dict['turntaking'] = {} #turn taking duh
 dict['participation'] = {} #speaking percentage duh
-dict['session_key'] = readFile(sys.argv[1])[0].name
+
+# get the session key for this data
+first = sys.argv[1].split('/')
+second = first[1].split('_')
+dict['session_key'] = second[0]
 
 for user in users:
     dict['interruption'][user] = {}
@@ -203,10 +207,9 @@ for key in sorted(dict['participation'],key=len):
 
 dict['participation']['total'] = total
 
-
+'''
 pp.pprint(dict)
 
-'''
 with open('result.json','w') as outfile:
     json.dump(dict, outfile, indent=4,sort_keys=True, separators=(',',':'), ensure_ascii=False)
 '''
