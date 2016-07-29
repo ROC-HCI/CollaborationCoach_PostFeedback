@@ -37,7 +37,7 @@ if($_GET['mode'] == 'participation')
 	
 	foreach($cursor as $document)
 	{
-		echo $document;
+		echo json_encode($document);
 	}	
 }
 
