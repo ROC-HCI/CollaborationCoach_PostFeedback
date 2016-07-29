@@ -11,9 +11,6 @@ try {
   log = require('node-wit').log;
 }
 
-const express = require('express');
-const app = express();
-
 const firstEntityValue = (entities, entity) => {
   const val = entities && entities[entity] &&
     Array.isArray(entities[entity]) &&
@@ -31,7 +28,7 @@ const actions = {
     const {sessionId, context, entities} = request;
     const {text, quickreplies} = response;
     return new Promise(function(resolve, reject) {
-      console.log('sending...', JSON.stringify(response));
+      // console.log('sending...', JSON.stringify(response));
       return resolve();
     });
   },
@@ -54,17 +51,26 @@ const logger = new log.Logger(log.DEBUG);
 
 const sessionId = require('node-uuid').v1();
 const context0 = {};
-const client = new Wit({accessToken: 'A6IWPIVFV5EPHNFSMKVY6QDVBE3KBT55', actions, logger})
-client.runActions(sessionId, 'Whats the weather in Paris', context0)
-.then((context1) => {
-  console.log('The session state is now: ' + JSON.stringify(context1, null, 2));
-  return client.runActions(sessionId, 'and in London?', context1);
-//   // return client.runActions(sessionId, 'The weather is', context1)
-})
-.then((context2) => {
-  console.log('The session state is now: ' + JSON.stringify(context2, null, 2));
-})
-.catch((e) => {
-  console.log('Oops! Got an error: ' + e);
-});
+// const client = new Wit({accessToken: 'A6IWPIVFV5EPHNFSMKVY6QDVBE3KBT55', actions, logger})
+const client = new Wit({accessToken: 'A6IWPIVFV5EPHNFSMKVY6QDVBE3KBT55', actions})
+exports.runActions = (msg) => {
+  return client.runActions(sessionId, msg, context0)
+  .then((context1) => {
+    // console.log(JSON.stringify(context1, null, 2))
+    return context1;
+  })
+  .catch((e) => {
+    console.log('Oops! Got an error: ' + e);
+  });
+}; 
+// client.runActions(sessionId, 'Whats the weather in New York', context0)
+// .then((context1) => {
+  // return JSON.stringify(context1, null, 2);
 
+// })
+// .then((context2) => {
+  // console.log('The session state is now: ' + JSON.stringify(context2, null, 2));
+// })
+// .catch((e) => {
+//   console.log('Oops! Got an error: ' + e);
+// });
