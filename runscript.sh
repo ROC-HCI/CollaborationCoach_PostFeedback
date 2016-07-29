@@ -14,7 +14,7 @@ echo "Start - Praat"
 
 argpath=""
 for i in Data/$session_id*.wav.TextGrid;
-	do $argpath+="$i";
+	do $argpath+=$(basename "$i");
 done
 
 echo $argpath
