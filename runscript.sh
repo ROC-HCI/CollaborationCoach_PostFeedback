@@ -12,9 +12,9 @@ echo "Finish - Affdex"
 echo "Start - Praat"
 #./praat --run auto.praat Data/
 
-argpath = ""
-for i in Data/$session_id*.wav.TextGrid
-	do argpath += $i
+argpath=""
+for i in Data/$session_id*.wav.TextGrid;
+	do $argpath+=$i;
 done
 
 echo $argpath
