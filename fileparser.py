@@ -207,12 +207,14 @@ for key in sorted(dict['participation'],key=len):
 
 dict['participation']['total'] = total
 
+'''
 pp.pprint(dict)
 
-'''
 with open('result.json','w') as outfile:
     json.dump(dict, outfile, indent=4,sort_keys=True, separators=(',',':'), ensure_ascii=False)
 '''
+
+pp.pprint(collection.insert_one(dict).inserted_id)
 
 #does not work if there is no url duh
 # url = './display'
