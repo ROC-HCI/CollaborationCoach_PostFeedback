@@ -12,7 +12,14 @@ echo "Finish - Affdex"
 echo "Start - Praat"
 #./praat --run auto.praat Data/
 
-python fileparser.py $session_id
+argpath = ""
+for i in Data/$session_id*.wav.TextGrid
+	do argpath += $i
+done
+
+echo $argpath
+
+#python fileparser.py $session_id
 echo "Finish - Praat"
 
 echo "Start - BlueMix"
@@ -20,4 +27,4 @@ echo "Start - BlueMix"
 echo "Finish - BlueMix"
 
 echo "Session Script Terminated..."
-done
+
