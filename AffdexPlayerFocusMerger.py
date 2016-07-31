@@ -34,12 +34,12 @@ out = json.dumps( [ row for row in reader ], indent = 1)
 print "JSON parsed!"
 
 # Saving the JSON
-f = open( 'Data/' + session_key + "_" + user_id + '.json', 'w')
+f = open( 'Data/' + session_key + "_" + user_id + 'CSV.json', 'w')
 f.write(out)
 f.close()
 
 #Reading the newly created JSON for merging with the PlayerFocus JSON
-g = open( 'Data/' + session_key + "_" + user_id + '.json', 'r' )
+g = open( 'Data/' + session_key + "_" + user_id + 'CSV.json', 'r' )
 
 #Loading the PlayerFocus JSON Content to an array
 focus = json.load(a)
