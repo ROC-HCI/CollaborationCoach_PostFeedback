@@ -11,11 +11,13 @@ done
 echo "Finish - .wav Conversion"
 
 echo "Start - Affdex"
-#$HOME/build/video-demo/./video-demo -d $HOME/affdex-sdk/data -l sdk_lnova@u.rochester.edu.license -i Data/Ru.webm
+for file in Data/$session_id*.webm;
+	do $HOME/build/video-demo/./video-demo -d $HOME/affdex-sdk/data -l sdk_lnova@u.rochester.edu.license -i $file
+done
 echo "Finish - Affdex"
 
 echo "Start - Praat"
-./praat --run auto.praat Data/$session_id*
+#./praat --run auto.praat Data/$session_id*
 #for file in Data/$session_id*.wav;
 #	do ./praat --run auto.praat $file
 #done
