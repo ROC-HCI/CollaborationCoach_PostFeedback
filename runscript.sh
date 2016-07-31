@@ -4,6 +4,12 @@ session_id=$1
 
 echo "Session Script Starting for: $session_id"
 
+echo "Start - .webm Header Correction"
+for file in Data/$session_id*.webm;
+	do ffmpeg -i "$file" -c copy -fflags +genpts Data/$(basename "${file/.webm}")_new.webm
+done
+echo "Finish - .webm Header Correction"
+
 # WORKING
 echo "Start - .wav Conversion"
 for file in Data/$session_id*.webm;
