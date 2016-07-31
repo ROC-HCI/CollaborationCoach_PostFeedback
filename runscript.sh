@@ -16,7 +16,7 @@ echo "Finish - Affdex"
 
 echo "Start - Praat"
 for file in Data/$session_id*.wav;
-	do ./praat --run auto.praat file
+	do ./praat --run auto.praat $file
 done
 echo "Finish - Praat"
 
