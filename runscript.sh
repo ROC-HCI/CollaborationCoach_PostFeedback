@@ -38,7 +38,7 @@ echo "Finish - Participation Analysis"
 
 echo "Start - AffdexPlayerFocus Merge"
 for file in Data/$session_id*.csv;
-	do echo (basename "${file/.csv}").json
+	echo (basename "${file/.csv}").json
 echo "Finish - AffdexPlayerFocus Merge"
 
 # NOT WORKING - License expired, need move to just tone analysis
