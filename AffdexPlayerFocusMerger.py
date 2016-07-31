@@ -57,12 +57,12 @@ for i in range (1,len(focus)):
 #    print affdex[i]
 
 #Dumping the contents of the newly adjusted Affdex array into a new array
-final = json.dumps(affdex, indent = 1)
+#final = json.dumps(affdex, indent = 1)
 
 final_dict = {}
 final_dict["session_key"] = session_key
 final_dict["user"] = user_id
-final_dict["data"] = final
+final_dict["data"] = affdex
 
 #Creating a new JSON file to store the contents of the final array (the one made right before this comment)
 #h = open( 'Final.json', 'w' )
@@ -72,7 +72,7 @@ final_dict["data"] = final
 
 #pp.pprint(final_dict)
 
-pp.pprint(collection.insert_one(affdex).inserted_id)
+pp.pprint(collection.insert_one(final_dict).inserted_id)
   
 print "JSON saved!"
 
