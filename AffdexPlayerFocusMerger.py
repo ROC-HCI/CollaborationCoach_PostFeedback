@@ -70,9 +70,9 @@ final_dict["data"] = affdex
 #Writing the contents of the final array to the newly made JSON file
 #h.write(final)
 
-pp.pprint(final_dict)
+#pp.pprint(final_dict)
 
-#pp.pprint(collection.insert_one(affdex).inserted_id)
+pp.pprint(collection.insert_one(affdex).inserted_id)
   
 print "JSON saved!"
 
