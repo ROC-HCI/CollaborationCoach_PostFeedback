@@ -56,13 +56,13 @@ for i in range (1,len(focus)):
     count+=1
 #    print affdex[i]
 
+#Dumping the contents of the newly adjusted Affdex array into a new array
+final = json.dumps(affdex, indent = 1)
+
 final_dict = {}
 final_dict["session_key"] = session_key
 final_dict["user"] = user_id
-final_dict["data"] = affdex
-
-#Dumping the contents of the newly adjusted Affdex array into a new array
-#final = json.dumps(affdex, indent = 1)
+final_dict["data"] = final
 
 #Creating a new JSON file to store the contents of the final array (the one made right before this comment)
 #h = open( 'Final.json', 'w' )
