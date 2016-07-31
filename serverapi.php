@@ -48,7 +48,7 @@ if($_GET['mode'] == 'affdexmerge')
 	$user = $_GET['user'];
 	
 	$collection = $database->selectCollection('affdexmerge');
-	$query = array('session_key' => $session_key
+	$query = array('session_key' => $session_key,
 				   'user' => $user);
 				   
 	$cursor = $collection->find($query);
