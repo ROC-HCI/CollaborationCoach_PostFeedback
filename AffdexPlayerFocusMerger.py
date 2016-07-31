@@ -56,8 +56,9 @@ for i in range (1,len(focus)):
     count+=1
 #    print affdex[i]
 
-affdex["session_key"] = session_key
-affdex["user"] = user_id
+final_dict["session_key"] = session_key
+final_dict["user"] = user_id
+final_dict["data"] = affdex
 
 #Dumping the contents of the newly adjusted Affdex array into a new array
 #final = json.dumps(affdex, indent = 1)
@@ -68,7 +69,7 @@ affdex["user"] = user_id
 #Writing the contents of the final array to the newly made JSON file
 #h.write(final)
 
-pp.pprint(affdex)
+pp.pprint(final_dict)
 
 #pp.pprint(collection.insert_one(affdex).inserted_id)
   
