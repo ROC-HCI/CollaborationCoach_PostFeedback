@@ -6,9 +6,9 @@ echo "Session Script Starting for: $session_id"
 
 # WORKING
 echo "Start - .wav Conversion"
-#for file in Data/$session_id*.webm;
-#	do ffmpeg -i "$file" Data/$(basename "${file/.webm}").wav
-#done
+for file in Data/$session_id*.webm;
+	do ffmpeg -i "$file" Data/$(basename "${file/.webm}").wav
+done
 echo "Finish - .wav Conversion"
 
 # NOT WORKING - License expired
@@ -21,9 +21,9 @@ echo "Finish - Affdex"
 # NOT WORKING - Incorrect directory location - To fix...
 echo "Start - Praat"
 #./praat --run auto.praat Data/$session_id*
-#for file in Data/$session_id*.wav;
-#	do ./praat --run auto.praat $file
-#done
+for file in Data/$session_id*.wav;
+	do ./praat --run auto.praat $file
+done
 echo "Finish - Praat"
 
 # WORKING - DB ENABLED
@@ -37,11 +37,11 @@ echo "Start - Participation Analysis"
 echo "Finish - Participation Analysis"
 
 echo "Start - AffdexPlayerFocus Merge"
-args=""
-for file in Data/$session_id*.csv;
-	do args=$file(basename "${file/.csv}").json
-done
-echo $args
+#args=""
+#for file in Data/$session_id*.csv;
+#	do args=$file(basename "${file/.csv}").json
+#done
+#echo $args
 echo "Finish - AffdexPlayerFocus Merge"
 
 # NOT WORKING - License expired, need move to just tone analysis
