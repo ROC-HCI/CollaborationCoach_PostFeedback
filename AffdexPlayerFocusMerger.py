@@ -56,6 +56,7 @@ for i in range (1,len(focus)):
     count+=1
 #    print affdex[i]
 
+final_dict = {}
 final_dict["session_key"] = session_key
 final_dict["user"] = user_id
 final_dict["data"] = affdex
