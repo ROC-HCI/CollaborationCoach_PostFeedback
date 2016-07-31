@@ -15,9 +15,10 @@ echo "Start - Affdex"
 echo "Finish - Affdex"
 
 echo "Start - Praat"
-for file in Data/$session_id*.wav;
-	do ./praat --run auto.praat $file
-done
+./praat --run auto.praat Data/$session_id*
+#for file in Data/$session_id*.wav;
+#	do ./praat --run auto.praat $file
+#done
 echo "Finish - Praat"
 
 echo "Start - Participation Analysis"
