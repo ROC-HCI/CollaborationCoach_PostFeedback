@@ -25,6 +25,29 @@ echo $collection2->count() . " documents";
 */
 //=============================================================
 
+//=============================================================
+// DANGER: The code below will wipe out the collections
+// 		   should only need to use this bit for any
+//         reset of the database for testing.
+//=============================================================
+/*
+$collection = $database->selectCollection('participation');
+$response = $collection->drop();
+
+echo print_r($response);
+
+$collection = $database->selectCollection('affdexmerge');
+$response = $collection->drop();
+
+echo print_r($response);
+*/
+//=============================================================
+
+
+//=============================================================
+// ACCESS POINTS FOR API GO BELOW THIS POINTS
+//=============================================================
+
 // Access point for participation data for a session key
 if($_GET['mode'] == 'participation')
 {
