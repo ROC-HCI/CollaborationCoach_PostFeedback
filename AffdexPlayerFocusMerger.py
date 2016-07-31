@@ -3,6 +3,7 @@ import json
 import sys
 import pymongo
 from pymongo import MongoClient
+import pprint
 
 pp = pprint.PrettyPrinter(indent=2)
 
