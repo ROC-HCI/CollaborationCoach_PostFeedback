@@ -28,10 +28,10 @@ echo "Finish - Praat"
 
 # WORKING - DB ENABLED
 echo "Start - Participation Analysis"
-#argpath=""
-#for i in Data/$session_id*.wav.TextGrid;
-	#do argpath="$argpath $i"
-#done
+argpath=""
+for i in Data/$session_id*.wav.TextGrid;
+	do argpath="$argpath $i"
+done
 
 #python fileparser.py $argpath
 echo "Finish - Participation Analysis"
