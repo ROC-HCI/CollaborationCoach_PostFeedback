@@ -12,14 +12,15 @@ database = client['rocconf']
 collection = database['affdexmerge']
   
 # Opening the CSV & Opening the player focus
-f = open( sys.argv[1])
-a = open( sys.argv[2])
+f = open(sys.argv[1])
+a = open(sys.argv[2])
 
 # get the session key and user for this data
 first = sys.argv[1].split('/')
 second = first[1].split('_')
+third = second[1].split('.')
 session_key = second[0]
-user_id = second[1]
+user_id = third[0]
 
 
 #Giving the values for the parsed CSV some fieldnames
@@ -55,10 +56,11 @@ for i in range (1,len(focus)):
     count+=1
 #    print affdex[i]
 
+affdex["session_key"] = session_key
+affdex["user"] = user_id
+
 #Dumping the contents of the newly adjusted Affdex array into a new array
-final = json.dumps(affdex, indent = 1)
-final["session_key"] = session_key
-final["user"] = user_id
+#final = json.dumps(affdex, indent = 1)
 
 #Creating a new JSON file to store the contents of the final array (the one made right before this comment)
 #h = open( 'Final.json', 'w' )
@@ -66,7 +68,9 @@ final["user"] = user_id
 #Writing the contents of the final array to the newly made JSON file
 #h.write(final)
 
-pp.pprint(final)
+pp.pprint(affdex)
+
+#pp.pprint(collection.insert_one(affdex).inserted_id)
   
 print "JSON saved!"
 
