@@ -1,0 +1,95 @@
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+html {
+  font-size: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Helvetica Neue",Helvetica,"Segoe UI",Tahoma,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: #555459;
+}
+
+form { 
+  position: fixed; 
+  bottom: 1.375rem; 
+  width: 100%; 
+  padding: 15px;
+}
+
+form input { 
+  width: 90%;
+  padding: 15px;
+  box-shadow: none;
+  border: 3px solid #e0e0e0;
+  border-radius: 6px 0 0 6px;
+}
+
+form button { 
+  color: white;
+  border: 4px solid rgb(130, 224, 255);
+  border-radius: 0px 6px 6px 0px;
+  background: rgb(130, 224, 255);
+  width: 9%;
+  padding: 15px;
+  margin-left: -7px;
+}
+
+.contain {
+  height: 350px;
+/*   background: aliceblue; */
+  overflow: auto;
+  padding-bottom: 50px;
+}
+
+.clr{
+    clear:both;
+    font-size:0;
+}
+
+#messages { 
+/*   display: relative; */
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+  overflow: auto;
+/*   height: 50%; */
+}
+
+#messages li { 
+  text-decoration: none;
+  padding: 5px 10px; 
+}
+
+/* #messages li:nth-child(odd) {           background: #eee; 
+} */
+
+span.name {
+  font-weight: 900;
+  color: #2c2d30!important;
+  line-height: 1.125rem;
+  clear: both;
+}
+
+.message-content {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+}
+
+.right {
+  padding-left: 0.625rem;
+}
+
+span.content {
+  display: block;
+  line-height: 1.5rem;
+  word-wrap: break-word;
+}

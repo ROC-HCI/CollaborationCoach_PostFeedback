@@ -1,12 +1,15 @@
-var app = require('express')()
+var express = require('express')
+var app = express()
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
 
-var client = require('./wit/basic')
+var client = require('../wit/basic')
 
 app.get('/', function(req,res){
 	res.sendFile(__dirname + '/index.html')
 })
+
+app.use(express.static('public'));
 
 //listening on io events
 io.on('connection', function(socket){
