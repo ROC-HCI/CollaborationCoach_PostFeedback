@@ -11,7 +11,7 @@
 
 <html>
 <head>
-	<link href="graphcs/public/css/style.css" rel = "stylesheet"/>
+	<link href="graphs/public/css/style.css" rel = "stylesheet"/>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet"/>
 </head>
 <body>
@@ -36,7 +36,7 @@
 	
 	<div class="outer">
 		<span id="id" class="chart-label" data-value="value">
-		<p>
+		<p label="chart1" value=>
 
 		</p>
 
@@ -57,6 +57,8 @@
 
 	<div class="outer">
 		<h1>Participation</h1>
+		<canvas id='chart3' class='chart' data-value='0' data-speaker='' />
+
 	</div>
 
 	<h1>Turn Taking<h1>
@@ -64,7 +66,7 @@
 
 
     <script src='https://code.jquery.com/jquery-3.1.0.min.js' />
-    <script src='/js/jquery.animateNumber.min.js' />
+    <script src='graphs/public/js/jquery.animateNumber.min.js' />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js' />
     <script src='https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js' />
     <script>
