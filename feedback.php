@@ -10,13 +10,23 @@
 ?>
 
 <html>
-
+<head>
 <script>
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexmerge&session_key=test-key-test&user=Luis", false);
 	xhttp.send();
-	console.log(xhttp.responseText);
-</script>
+	document.getElementById("Audio_Data").innerHTML = xhttp.responseText;
 
+	//console.log(xhttp.responseText);
+
+	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=participation&session_key=test-key-test", false);
+	xhttp.send();
+	document.getElementById("Video_Data").innerHTML = xhttp.responseText;
+</script>
+</head>
+
+<div id ="Audio_Data" ></div>
+<div id ="Video_Data"></div>
+<div id ="Text_Data"></div>
 
 </html>
