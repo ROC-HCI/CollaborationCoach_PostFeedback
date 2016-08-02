@@ -42,11 +42,13 @@ else{
 	};
 
 	recognition.onend = function(){
-		if(recognizing){
+		if(recognizing)
+		{
 			recognition.start();
 			console.log("restarting recognition");
 		}
-		else{
+		else
+		{
 			end_time = new Date().getTime();
 			var total_time= (end_time - start_time)/1000;
 			var total_words = get_word_count(final_transcript);
@@ -54,6 +56,28 @@ else{
 			//total_time.innerHTML = "total speaking time is "+ (end_time - start_time)/100 +"seconds";
 			//total_words.innerHTML = "total word count is "+ get_word_count(final_transcript);
 			//wpm.innerHTML = "WPM = "+ total_words/ (total_time/60);
+			
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = function() 
+			{
+				if(request.readyState == 4 && request.status == 200) 
+				{
+					console.log("upload successful");
+				}
+			};
+			
+			data_to_send = {'session_key':realFaces.sessionKey, 
+							'user':realFaces.userName,
+							'time':total_time, 
+							'words':total_words, 
+							'wpm':total_words/(total_time/60), 
+							'transcript':final_transcript};
+							
+			xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+			request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=speechupload');
+			request.send(JSON.stringify(data_to_send));
+	
 			console.log("ended recognition");
 		}
 	}

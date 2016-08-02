@@ -48,7 +48,7 @@ echo print_r($response);
 // ACCESS POINTS FOR API GO BELOW THIS POINTS
 //=============================================================
 
-// Access point for participation data for a session key
+// Access point for participation data for a session key.
 if($_GET['mode'] == 'participation')
 {
 	$session_key = $_GET['session_key'];
@@ -64,7 +64,8 @@ if($_GET['mode'] == 'participation')
 	}	
 }
 
-// Access point for merged focus and affdex data for a session key and user
+// Access point for merged focus and affdex data for a session key and user.
+// This is for raw output from these scripts.
 if($_GET['mode'] == 'affdexmerge')
 {
 	$session_key = $_GET['session_key'];
@@ -82,5 +83,18 @@ if($_GET['mode'] == 'affdexmerge')
 	}
 }
 
+// Access point for submitting Google speech transcript data to the database.
+if($_GET['mode'] == 'speechupload')
+{
+	$document = array();
+	
+	foreach($_POST as $key => $value)
+	{
+		$document[$key] = $value;
+	}
+	
+	$collection = $database->selectCollection('speechrawdata');
+	$collection->insert($document);
+}
 
 ?>
