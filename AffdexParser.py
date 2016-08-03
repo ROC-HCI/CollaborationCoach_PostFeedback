@@ -31,7 +31,7 @@ def parse_raw_data(session_key, user):
 			sample["focus"] = row["focus"]
 			sample["engagement"] = row["engagement"]
 			sample["attention"] = row["attention"]
-			sample["surprise"] = row["surprise"]
+			sample["suprise"] = row["suprise"]
 			sample["contempt"] = row["contempt"]
 			sample["joy"] = row["joy"]
 			sample["smirk"] = row["smirk"]
