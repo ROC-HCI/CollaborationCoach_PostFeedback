@@ -11,12 +11,12 @@ from pymongo import MongoClient
 import pprint
 
 pp = pprint.PrettyPrinter(indent=2)
-
+client = MongoClient()
+database = client['rocconf']
+	
 # Runnning through the raw data and extracting the stuff
 # we actually want to analyze
 def parse_raw_data(session_key, user):
-	client = MongoClient()
-	database = client['rocconf']
 	source_collection = database['affdexmerge']
 
 	document = source_collection.find_one({"session_key":session_key, "user":user})
