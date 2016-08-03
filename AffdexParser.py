@@ -27,17 +27,20 @@ def parse_raw_data(session_key, user):
 	pass_headers = 0
 	for row in affdex_data:
 		if pass_headers != 0:
-			sample = {}
-			sample["focus"] = row["focus"]
-			sample["engagement"] = row["engagement"]
-			sample["attention"] = row["attention"]
-			sample["suprise"] = row["suprise"]
-			sample["contempt"] = row["contempt"]
-			sample["joy"] = row["joy"]
-			sample["smirk"] = row["smirk"]
-			sample["relaxed"] = row["relaxed"]
-			sample["dissapointed"] = row["dissapointed"]
-			parsed_data.append(sample)
+			try:
+				sample = {}
+				sample["focus"] = row["focus"]
+				sample["engagement"] = row["engagement"]
+				sample["attention"] = row["attention"]
+				sample["suprise"] = row["suprise"]
+				sample["contempt"] = row["contempt"]
+				sample["joy"] = row["joy"]
+				sample["smirk"] = row["smirk"]
+				sample["relaxed"] = row["relaxed"]
+				sample["dissapointed"] = row["dissapointed"]
+				parsed_data.append(sample)
+			except KeyError:
+				pass
 		else:
 			pass_headers = 1
 			
