@@ -36,7 +36,7 @@ def parse_raw_data(session_key, user):
 			sample["joy"] = row["joy"]
 			sample["smirk"] = row["smirk"]
 			sample["relaxed"] = row["relaxed"]
-			sample["disappointed"] = row["disappointed"]
+			sample["dissapointed"] = row["dissapointed"]
 			parsed_data.append(sample)
 		else:
 			pass_headers = 1
