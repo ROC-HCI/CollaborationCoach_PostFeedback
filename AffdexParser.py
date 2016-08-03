@@ -10,7 +10,7 @@ import pymongo
 from pymongo import MongoClient
 import pprint
 
-pp = pprint.PrettyPrinter(indent=2)mon
+pp = pprint.PrettyPrinter(indent=2)
 
 client = MongoClient()
 database = client['rocconf']
