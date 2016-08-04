@@ -32,6 +32,7 @@
 	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=participation&session_key=test-key-test", false);
 	xhttp.send();
 	var data = xhttp.responseText;
+	data = JSON.parse(data);
 	var interruption = data.interruption;
 	var totalinterruption = data.totalinterruption;
 	var participation = data.participation;
