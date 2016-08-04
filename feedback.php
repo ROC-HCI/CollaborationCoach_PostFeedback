@@ -11,8 +11,10 @@
 
 <html>
 <head>
-	<link href="graphs/public/css/style.css" rel = "stylesheet"/>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet"/>
+		<link href="graphs/public/css/style.css" rel = "stylesheet"/>
 </head>
 <body>
 <div id ="Audio_Data" ></div>
@@ -29,53 +31,56 @@
 
 	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=participation&session_key=test-key-test", false);
 	xhttp.send();
+	var data = xhttp.responseText;
+	var interruption = data.interruption;
+	var totalinterruption = data.totalinterruption;
+	var participation = data.participation;
+	var totalparticipation = data.totalparticipation;
+	var turntaking = data.turntaking;
+	/*value1: interruption[0], 
+	value2: interruption[1], //interrupted
+	total: totalinterruption,
+	value3: participation,
+	value4: turntaking,
+	overalluser: data.user,*/
+
 	document.getElementById("Video_Data").innerHTML = xhttp.responseText;
 </script>
 
-	<h1>Interruption</h1>
-	
-	<div class="outer">
-		<span id="id" class="chart-label" data-value="value">
-		<p label="chart1" value=>
-
-		</p>
-
-		<p>
-			By You
-		</p>
-	</div>
-
-	<div class="outer">
-		<p>
-
-		</p>
-
-		<p>
-			By Others
-		</p>
-	</div>
-
-	<div class="outer">
-		<h1>Participation</h1>
-		<canvas id='chart3' class='chart' data-value='0' data-speaker='' />
-
-	</div>
-
-	<h1>Turn Taking<h1>
-	   <div class ="inner-contain3" id = "chart4" data-value='0' data-user=''></div>
-
-
-    <script src='https://code.jquery.com/jquery-3.1.0.min.js' />
-    <script src='graphs/public/js/jquery.animateNumber.min.js' />
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js' />
-    <script src='https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js' />
+<div class="text-center container">
+      <div class="inner-contain1">
+        <h1>Interruption</h1>
+        <div class="outer">
+          <p><span class="chart-label" id="chart1"></span>
+          </p>
+          <p>By You</p>
+        </div>
+        <div class="outer">
+          <p><span class="chart-label" id="chart2"></span>
+          </p>
+          <p>By Others</p>
+        </div>
+      </div>
+      <div class="inner-contain2">
+        <div class="outer2">
+          <h1>Participation</h1>
+          <canvas class="chart" id="chart3" data-value="0" data-speaker=""></canvas>
+        </div>
+      </div>
+      <h1>Turn Taking</h1>
+      <div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="graphs/public/js/jquery.animateNumber.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
+    <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
     <script>
         var total = total
-        var i1 = #{value1};
-        var i2 = #{value2};
-        var i3 = !{JSON.stringify(value3)};
-        var i4 = !{JSON.stringify(value4)};
-        var iuser = '#{overalluser}';
+        var i1 = interruption[0];
+        var i2 = interruption[1];
+        var i3 = !{JSON.stringify(participation)};
+        var i4 = !{JSON.stringify(turntaking)};
+        var iuser = data.user;
         var i3data = []
         var i3speaker = []
         var colorpalette = ['#90D0D5','#FBF172', '#B0D357', '#C88ABC', '#4B79BD']
@@ -87,7 +92,7 @@
             i3data.push(Math.round(i3[key]));
             i+=1;
         }
-        $.getScript('#{path}main.js',function(data,textStatus){
+        $.getScript('graphs/public/main.js',function(data,textStatus){
             console.log("load was performed. ");
         });
     </script>
