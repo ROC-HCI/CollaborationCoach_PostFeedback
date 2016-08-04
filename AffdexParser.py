@@ -34,25 +34,25 @@ def parse_raw_data(session_key, user):
 		sample = []
 		if pass_headers != 0:
 			try:
-				sample[0] = row["focus"]
-				sample[1] = row["engagement"]
-				sample[2] = row["attention"]
-				sample[3] = row["suprise"]
-				sample[4] = row["contempt"]
-				sample[5] = row["joy"]
-				sample[6] = row["smirk"]
-				sample[7] = row["relaxed"]
-				sample[8] = row["dissapointed"]
+				sample.append(row["focus"])
+				sample.append(row["engagement"])
+				sample.append(row["attention"])
+				sample.append(row["suprise"])
+				sample.append(row["contempt"])
+				sample.append(row["joy"])
+				sample.append(row["smirk"])
+				sample.append(row["relaxed"])
+				sample.append(row["dissapointed"])
 			except KeyError:
-				sample[0] = random.randint(1,4)
-				sample[1] = row["engagement"]
-				sample[2] = row["attention"]
-				sample[3] = row["suprise"]
-				sample[4] = row["contempt"]
-				sample[5] = row["joy"]
-				sample[6] = row["smirk"]
-				sample[7] = row["relaxed"]
-				sample[8] = row["dissapointed"]
+				sample.append(random.randint(1,4))
+				sample.append(row["engagement"])
+				sample.append(row["attention"])
+				sample.append(row["suprise"])
+				sample.append(row["contempt"])
+				sample.append(row["joy"])
+				sample.append(row["smirk"])
+				sample.append(row["relaxed"])
+				sample.append(row["dissapointed"])
 		else:
 			pass_headers = 1
 		parsed_data.append(sample)			
