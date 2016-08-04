@@ -103,8 +103,8 @@
         var total = total
         var i1 = interruption[0];
         var i2 = interruption[1];
-        var i3 = !{JSON.stringify(participation)};
-        var i4 = !{JSON.stringify(turntaking)};
+        var i3 = JSON.stringify(participation);
+        var i4 = JSON.stringify(turntaking);
         var iuser = data.user;
         var i3data = []
         var i3speaker = []
