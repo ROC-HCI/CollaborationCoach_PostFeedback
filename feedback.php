@@ -31,19 +31,43 @@
 
 	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=participation&session_key=test-key-test", false);
 	xhttp.send();
-	var data = xhttp.responseText;
-	data = JSON.parse(data);
+	var jscontent = JSON.parse(xhttp.responseText);
+
+	//interruption
+	var interruption = jscontent.interruption;
+	var defaultuser = Object.keys(interruption)[0]; //Luis interruption['Luis']
+	//console.log('interruption name { values }: ', Object.keys(interruption)[0], interruption[Object.keys(interruption)[0]]);
+	var interrupted = interruption[defaultuser].interrupted;
+	// console.log('interrupted: ', interrupted);
+
+	var interrupting = interruption[defaultuser].interrupting;
+	// console.log('interrupting: ', interrupting);
+
+	//participation
+	var totalp = jscontent.participation['total'];
+
+	for (var key in jscontent.participation){
+		if(key=='total')
+			// console.log(key+'(sec) : ', jscontent.participation[key], 'percentage: ', 100*jscontent.participation[key]/total);
+		// else 
+			delete jscontent.participation[key]; 
+	}	
+
+	var data = {};
+
+	data.totalinterruption = interrupted+interrupting;
+	data.interruption = [interrupting,interrupted];
+	data.totalparticipation = totalp;
+	data.participation = jscontent.participation;
+	data.turntaking = jscontent.turntaking;
+	data.user = defaultuser;
+
+
 	var interruption = data.interruption;
 	var totalinterruption = data.totalinterruption;
 	var participation = data.participation;
 	var totalparticipation = data.totalparticipation;
 	var turntaking = data.turntaking;
-	/*value1: interruption[0], 
-	value2: interruption[1], //interrupted
-	total: totalinterruption,
-	value3: participation,
-	value4: turntaking,
-	overalluser: data.user,*/
 
 	document.getElementById("Video_Data").innerHTML = xhttp.responseText;
 </script>

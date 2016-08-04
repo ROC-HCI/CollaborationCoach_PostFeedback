@@ -7,7 +7,7 @@ var jscontent = JSON.parse(contents);
 
 //interruption
 var interruption = jscontent.interruption;
-var defaultuser = Object.keys(interruption)[0];
+var defaultuser = Object.keys(interruption)[0]; //Luis interruption['Luis']
 //console.log('interruption name { values }: ', Object.keys(interruption)[0], interruption[Object.keys(interruption)[0]]);
 var interrupted = interruption[defaultuser].interrupted;
 // console.log('interrupted: ', interrupted);
