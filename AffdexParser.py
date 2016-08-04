@@ -85,10 +85,13 @@ def compute_averages(data, label):
 #=======================================================
 if __name__ == "__main__":
 	parsed_data = parse_raw_data(sys.argv[1], sys.argv[2])
+	pp.pprint(compute_averages(parsed_data,0))
+	'''
 	flag = 0
 	while flag < 5:
 		pp.pprint(compute_averages(parsed_data, flag))
 		flag = flag + 1
+	'''
 	
 		
 		
