@@ -25,9 +25,9 @@
 <script>
 
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexmerge&session_key=test-key-test&user=Luis", false);
-	xhttp.send();
-	document.getElementById("Audio_Data").innerHTML = xhttp.responseText;
+	//xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexmerge&session_key=test-key-test&user=Luis", false);
+	//xhttp.send();
+	//document.getElementById("Audio_Data").innerHTML = xhttp.responseText;
 
 	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=participation&session_key=test-key-test", false);
 	xhttp.send();
