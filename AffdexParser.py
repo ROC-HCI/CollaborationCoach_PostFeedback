@@ -59,7 +59,7 @@ def parse_raw_data(session_key, user):
 	return parsed_data
 
 # Compute average statistics about a set of records
-def compute_averages(data, label)
+def compute_averages(data, label):
 	data_to_average = []
 	
 	if label == 0:
