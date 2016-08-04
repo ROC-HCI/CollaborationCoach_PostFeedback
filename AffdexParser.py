@@ -59,15 +59,36 @@ def parse_raw_data(session_key, user):
 	return parsed_data
 
 # Compute average statistics about a set of records
-def compute_averages(data, label):
-	return ""
+def compute_averages(data, label)
+	data_to_average = []
+	
+	if label == 0:
+		data_to_average = data
+	else:
+		for e in data:
+			if e[0] == label:
+				data_to_average.append(e)
+				
+	length = float(len(data_to_average))
+	values = []
+	
+	for record in data_to_average:
+		values.append(record[1:])
+		
+	values = zip(*values)
+	averages = [sum(v) / length for v in values]
+	
+	return averages
 	
 #=======================================================
 # Main Caller
 #=======================================================
 if __name__ == "__main__":
     parsed_data = parse_raw_data(sys.argv[1], sys.argv[2])
-    pp.pprint(parsed_data)
+	flag = 0
+	while flag < 5:
+		pp.pprint(compute_averages(parsed_data, flag))
+		flag = flag + 1
 	
 		
 		
