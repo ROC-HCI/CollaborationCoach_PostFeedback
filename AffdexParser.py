@@ -49,9 +49,9 @@ def parse_raw_data(session_key, user):
 				sample.append(float(row["smirk"]))
 				sample.append(float(row["relaxed"]))
 				sample.append(float(row["dissapointed"]))
+			parsed_data.append(sample)
 		else:
-			pass_headers = 1
-		parsed_data.append(sample)			
+			pass_headers = 1	
 	return parsed_data
 
 # Compute average statistics about a set of records
@@ -71,25 +71,25 @@ def compute_averages(data, label):
 	for record in data_to_average:
 		values.append(record[1:])
 	
-	zip_data = zip(*values)
+	values = zip(*values)
 	
-	pp.pprint(zip_data)
-	#averages = [float(sum(v)/length) for v in zip(*values)]
-	averages = []
+	averages = [float(sum(v)/length) for v in zip(*values)]
+
 	return averages
 	
 #=======================================================
 # Main Caller
 #=======================================================
 if __name__ == "__main__":
-	parsed_data = parse_raw_data(sys.argv[1], sys.argv[2])
-	pp.pprint(compute_averages(parsed_data,0))
-	'''
+	session_key = sys.argv[1]
+	user = sys.argv[2]
+	parsed_data = parse_raw_data(session_key, user)
+
 	flag = 0
 	while flag < 5:
 		pp.pprint(compute_averages(parsed_data, flag))
 		flag = flag + 1
-	'''
+
 	
 		
 		
