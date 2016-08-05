@@ -79,13 +79,13 @@ def compute_averages(data, label):
 	
 	pp.pprint(values)
 	
-	zvalues = zip(values)
+	#zvalues = zip(values)
 	
 	#pp.pprint(zvalues)
 	
-	averages = [sum(v) / length for v in zvalues]
+	#averages = [sum(v) / length for v in zvalues]
 	
-	return averages
+	#return averages
 	
 #=======================================================
 # Main Caller
