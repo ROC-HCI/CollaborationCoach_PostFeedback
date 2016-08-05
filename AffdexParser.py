@@ -83,13 +83,10 @@ if __name__ == "__main__":
 	user = sys.argv[2]
 	parsed_data = parse_raw_data(session_key, user)
 
-	pp.pprint(computer_averages(parsed_data,0))
-	'''
 	flag = 0
 	while flag < 5:
 		pp.pprint(compute_averages(parsed_data, flag))
 		flag = flag + 1
-	'''
 
 	
 		
