@@ -81,7 +81,7 @@ def compute_averages(data, label):
 	
 	zvalues = zip(values)
 	
-	pp.pprint(values)
+	pp.pprint(zvalues)
 	
 	averages = [sum(v) / length for v in zvalues]
 	
