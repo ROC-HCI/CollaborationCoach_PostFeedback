@@ -110,8 +110,9 @@ if __name__ == "__main__":
 		data["dissapointed"] = average_data[7]
 		final_dict[flag] = data
 		flag = flag + 1
-		
-	pp.pprint(final_dict)
+	
+	collection = database['affdexaverages']	
+	pp.pprint(collection.insert_one(final_dict).inserted_id)
 
 	
 		
