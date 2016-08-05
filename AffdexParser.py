@@ -71,7 +71,9 @@ def compute_averages(data, label):
 	for record in data_to_average:
 		values.append(record[1:])
 	
-	averages = [float(sum(v)/length) for v in zip(*values)]
+	values = zip(*values)
+	
+	averages = [float(sum(v)/length) for v in values]
 
 	return averages
 	
