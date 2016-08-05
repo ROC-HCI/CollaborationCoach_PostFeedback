@@ -18,6 +18,7 @@ database = client['rocconf']
 # Runnning through the raw data and extracting the stuff
 # we actually want to analyze.
 # NOTE: the except using randint needs to not do that in the final version haha
+# NOTE: Faulty data is excluded from the records (generate NaN means no good)
 def parse_raw_data(session_key, user):
 	source_collection = database['affdexmerge']
 
@@ -78,8 +79,6 @@ def compute_averages(data, label):
 		values.append(record[1:])
 	
 	values = zip(*values)
-	
-	pp.pprint(values[0])
 	
 	averages = [float(sum(v)/length) for v in values]
 
