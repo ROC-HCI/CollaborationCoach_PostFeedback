@@ -69,6 +69,8 @@ def compute_averages(data, label):
 			if e[0] == label:
 				data_to_average.append(e)
 				
+	pp.pprint(data_to_average)
+	
 	length = float(len(data_to_average))
 	values = []
 	
