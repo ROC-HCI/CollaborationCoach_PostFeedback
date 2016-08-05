@@ -26,14 +26,14 @@
 <script src="http://www.chartjs.org/assets/Chart.js"></script>
 
 <script>
+var jscontent = []
 
-var path = "sample.csv";
-$.get( path, function( data ) {
+$( document ).ready(function(){
 
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=test-key-test&user=Luis", false);
   xhttp.send();
-  var jscontent = JSON.parse(xhttp.responseText);
+  jscontent = JSON.parse(xhttp.responseText);
   
   var overall_stats = jscontent["0"];
 	
