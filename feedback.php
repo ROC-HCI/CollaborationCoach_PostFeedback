@@ -108,7 +108,7 @@
         var i1 = interruption[0];
         var i2 = interruption[1];
         var i3 = JSON.stringify(participation);
-
+        cosole.log('a tag ', JSON.stringify(participation,null, 2));
         var i4 = JSON.stringify(turntaking);
         var iuser = data.user;
         var i3data = []
