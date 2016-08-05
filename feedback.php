@@ -107,9 +107,9 @@
         var total = total
         var i1 = interruption[0];
         var i2 = interruption[1];
-        var i3 = JSON.stringify(participation);
+        var i3 = JSON.parse(participation);
         // console.log('a tag ', JSON.stringify(participation,null, 2));
-        var i4 = JSON.stringify(turntaking);
+        var i4 = JSON.parse(turntaking);
         var iuser = data.user;
         var i3data = [];
         var i3speaker = [];
@@ -117,7 +117,7 @@
         var guests = {};
         var count = 0;
 
-        i3 = JSON.parse(i3);
+        //i3 = JSON.parse(i3);
 
         for (var key in i3){
         	console.log("LALALA ", count, i3[key]);
