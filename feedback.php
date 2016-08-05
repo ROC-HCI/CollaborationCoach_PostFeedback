@@ -45,12 +45,14 @@
 
 	//participation
 	var totalp = jscontent.participation['total'];
-
+	var count = 0;
 	for (var key in jscontent.participation){
+		console.log('lala', count, key);
 		if(key=='total')
 			// console.log(key+'(sec) : ', jscontent.participation[key], 'percentage: ', 100*jscontent.participation[key]/total);
 		// else 
 			delete jscontent.participation[key]; 
+		count+=1;
 	}	
 
 	var data = {};
