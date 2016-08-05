@@ -116,6 +116,9 @@
         var colorpalette = ['#90D0D5','#FBF172', '#B0D357', '#C88ABC', '#4B79BD'];
         var guests = {};
         var count = 0;
+
+        i3 = JSON.parse(i3);
+
         for (var key in i3){
         	console.log("LALALA ", count, i3[key]);
             i3speaker.push(key);
