@@ -48,10 +48,10 @@
 	var count = 0;
 	for (var key in jscontent.participation){
 		console.log('lala', count, key);
-		if(key=='total')
+		//if(key=='total')
 			// console.log(key+'(sec) : ', jscontent.participation[key], 'percentage: ', 100*jscontent.participation[key]/total);
 		// else 
-			delete jscontent.participation[key]; 
+			//delete jscontent.participation[key]; 
 		count+=1;
 	}	
 
@@ -119,7 +119,7 @@
         //i3 = JSON.parse(i3);
 
         for (var key in i3){
-        	console.log("LALALA ", count, i3[key]);
+        	  console.log("LALALA ", count, i3[key]);
             i3speaker.push(key);
             guests[key] = colorpalette[count];
             i3data.push(Math.round(i3[key]));
