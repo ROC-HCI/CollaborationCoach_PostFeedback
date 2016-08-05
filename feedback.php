@@ -62,6 +62,8 @@
 	data.turntaking = jscontent.turntaking;
 	data.user = defaultuser;
 
+	console.log(data);
+
 
 	var interruption = data.interruption;
 	var totalinterruption = data.totalinterruption;
