@@ -68,12 +68,12 @@ def compute_averages(data, label):
 	length = float(len(data_to_average))
 	values = []
 	
-	print length
-	
 	for record in data_to_average:
 		values.append(record[1:])
 	
-	print [list(v) for v in zip(*values)]
+	zip_data = zip(*values)
+	
+	pp.pprint(zip_data)
 	#averages = [float(sum(v)/length) for v in zip(*values)]
 	averages = []
 	return averages
