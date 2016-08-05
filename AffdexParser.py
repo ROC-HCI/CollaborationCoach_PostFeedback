@@ -108,7 +108,7 @@ if __name__ == "__main__":
 		data["smirk"] = average_data[5]
 		data["relaxed"] = average_data[6]
 		data["dissapointed"] = average_data[7]
-		final_dict[flag] = data
+		final_dict[str(flag)] = data
 		flag = flag + 1
 	
 	collection = database['affdexaverages']	
