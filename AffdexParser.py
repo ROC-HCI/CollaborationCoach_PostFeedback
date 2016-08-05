@@ -99,7 +99,7 @@ if __name__ == "__main__":
 	flag = 0
 	while flag < 5:
 		data = {}
-		average_data = compute_averages(parsed_data, flag))
+		average_data = compute_averages(parsed_data, flag)
 		data["engagement"] = average_data[0]
 		data["attention"] = average_data[1]
 		data["suprise"] = average_data[2]
