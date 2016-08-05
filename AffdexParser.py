@@ -68,8 +68,6 @@ def compute_averages(data, label):
 		for e in data:
 			if e[0] == label:
 				data_to_average.append(e)
-				
-	#pp.pprint(data_to_average)
 	
 	length = float(len(data_to_average))
 	values = []
@@ -77,15 +75,9 @@ def compute_averages(data, label):
 	for record in data_to_average:
 		values.append(record[1:])
 	
-	pp.pprint(values)
+	averages = [sum(v) / length for v in zip(*values)]
 	
-	#zvalues = zip(values)
-	
-	#pp.pprint(zvalues)
-	
-	#averages = [sum(v) / length for v in zvalues]
-	
-	#return averages
+	return averages
 	
 #=======================================================
 # Main Caller
