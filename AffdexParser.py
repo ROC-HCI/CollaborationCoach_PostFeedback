@@ -73,6 +73,8 @@ def compute_averages(data, label):
 	
 	values = zip(*values)
 	
+	pp.pprint(values)
+	
 	averages = [float(sum(v)/length) for v in values]
 
 	return averages
