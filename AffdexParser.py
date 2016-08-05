@@ -77,11 +77,11 @@ def compute_averages(data, label):
 	for record in data_to_average:
 		values.append(record[1:])
 	
-	#pp.pprint(values)
+	pp.pprint(values)
 	
 	zvalues = zip(values)
 	
-	pp.pprint(zvalues)
+	#pp.pprint(zvalues)
 	
 	averages = [sum(v) / length for v in zvalues]
 	
