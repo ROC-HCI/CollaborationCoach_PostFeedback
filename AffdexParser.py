@@ -13,10 +13,6 @@ import pprint
 pp = pprint.PrettyPrinter(indent=2)
 client = MongoClient()
 database = client['rocconf']
-
-# Debugging only, output raw data as CSV file
-def output_as_csv(session_key, user):
-	pass
 	
 # Runnning through the raw data and extracting the stuff
 # we actually want to analyze.
@@ -79,7 +75,7 @@ def compute_averages(data, label):
 	
 	[list(v) for v in zip(*values)]
 	#averages = [float(sum(v)/length) for v in zip(*values)]
-	
+	averages = []
 	return averages
 	
 #=======================================================
