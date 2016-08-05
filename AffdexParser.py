@@ -44,7 +44,7 @@ def parse_raw_data(session_key, user):
 				sample.append(float(row["relaxed"]))
 				sample.append(float(row["dissapointed"]))
 			except KeyError:
-				sample.append(random.randint(1,4))
+				sample.append(random.randint(0,4))
 				sample.append(float(row["engagement"]))
 				sample.append(float(row["attention"]))
 				sample.append(float(row["suprise"]))
@@ -69,7 +69,7 @@ def compute_averages(data, label):
 			if e[0] == label:
 				data_to_average.append(e)
 				
-	pp.pprint(data_to_average)
+	#pp.pprint(data_to_average)
 	
 	length = float(len(data_to_average))
 	values = []
@@ -78,6 +78,9 @@ def compute_averages(data, label):
 		values.append(record[1:])
 		
 	values = zip(*values)
+	
+	pp.pprint(values)
+	
 	averages = [sum(v) / length for v in values]
 	
 	return averages
