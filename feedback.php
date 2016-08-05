@@ -108,18 +108,20 @@
         var i1 = interruption[0];
         var i2 = interruption[1];
         var i3 = JSON.stringify(participation);
+
         var i4 = JSON.stringify(turntaking);
         var iuser = data.user;
         var i3data = []
         var i3speaker = []
         var colorpalette = ['#90D0D5','#FBF172', '#B0D357', '#C88ABC', '#4B79BD']
-        var guests = {}
-        var i = 0
+        var guests = {};
+        var count = 0;
         for (var key in i3){
+        	console.log("LALALA ", count, key);
             i3speaker.push(key);
-            guests[key] = colorpalette[i];
+            guests[key] = colorpalette[count];
             i3data.push(Math.round(i3[key]));
-            i+=1;
+            count+=1;
         }
         $.getScript('graphs/public/main.js',function(data,textStatus){
             console.log("load was performed. ");
