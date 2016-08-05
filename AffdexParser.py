@@ -9,6 +9,7 @@ import sys
 import pymongo
 from pymongo import MongoClient
 import pprint
+import math
 
 pp = pprint.PrettyPrinter(indent=2)
 client = MongoClient()
@@ -49,7 +50,12 @@ def parse_raw_data(session_key, user):
 				sample.append(float(row["smirk"]))
 				sample.append(float(row["relaxed"]))
 				sample.append(float(row["dissapointed"]))
-			parsed_data.append(sample)
+			nan_check = False
+			for element in sample:
+				if math.isnan(element):
+					nan_check = True
+			if not nan_check:
+				parsed_data.append(sample)
 		else:
 			pass_headers = 1	
 	return parsed_data
