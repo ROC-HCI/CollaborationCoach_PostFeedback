@@ -27,78 +27,43 @@
 
 <script>
 
-/*Papa.parse("sample.csv", {
-  delimeter : "",
-  header: true,
-
-  complete: function(results) {
-    console.log("Finished:", results.data);
-  }
-});*/
 var path = "sample.csv";
 $.get( path, function( data ) {
-  //$.get( "Data/timeline.csv", function( data ) {
-  //$( "#result" ).html( data );
-  var csv = Papa.parse(
 
-    data);
-  console.log(csv);
-
-  function averager(csvpart, value)
-  {
-    console.log("here");
-    var total = 0;
-    var count = 0;
-    //console.log(csvpart);
-    for(var i = 1; i < csvpart.length; i++)
-    {
-      if(isNumber(csvpart[i][value]))
-      {
-        count++;
-        console.log(csvpart[i][value] + "\n");
-
-        total+=csvpart[i][value]*1;
-      }
-      //console.log(total);
-    }
-    console.log(total);
-    return total/count;
-  }
-
-  function isNumber(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-  }
-
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=test-key-test&user=Luis", false);
+  xhttp.send();
+  var jscontent = JSON.parse(xhttp.responseText);
+  
+  var overall_stats = jscontent["0"];
+	
   var jsonobject = [];
 
-  //valence 16
-  console.log(averager(csv.data,17));
   
   //engagement 17
-  jsonobject.engagement = averager(csv.data,17);
+  jsonobject.engagement = overall_stats.engagement;
 
   //attention 32
-  jsonobject.attention = averager(csv.data,32);
+  jsonobject.attention = overall_stats.attention;
 
   //surprise 14
-  jsonobject.surprise = averager(csv.data,14);
+  jsonobject.surprise = overall_stats.surprise;
 
   //contempt 15
-  jsonobject.contempt = averager(csv.data,15);
+  jsonobject.contempt = overall_stats.contempt;
 
   //joy 9
-  jsonobject.joy = averager(csv.data,9);
+  jsonobject.joy = overall_stats.joy;
 
   //smirk 30
-  jsonobject.smirk = averager(csv.data,30);
+  jsonobject.smirk = overall_stats.smirk;
 
   //relaxed 33
-  jsonobject.relaxed = averager(csv.data,33);
+  jsonobject.relaxed = overall_stats.relaxed;
 
   //disappointed 37
-  jsonobject.disappointed = averager(csv.data,37);
+  jsonobject.disappointed = overall_stats.disappointed;
 
-  console.log("engagement",jsonobject.engagement);
 
   //radar chart data
   var radarData = {
