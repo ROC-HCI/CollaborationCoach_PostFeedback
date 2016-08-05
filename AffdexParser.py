@@ -91,11 +91,27 @@ if __name__ == "__main__":
 	session_key = sys.argv[1]
 	user = sys.argv[2]
 	parsed_data = parse_raw_data(session_key, user)
+	
+	final_dict = {}
+	final_dict["session_key"] = session_key
+	final_dict["user"] = user
 
 	flag = 0
 	while flag < 5:
-		pp.pprint(compute_averages(parsed_data, flag))
+		data = {}
+		average_data = compute_averages(parsed_data, flag))
+		data["engagement"] = average_data[0]
+		data["attention"] = average_data[1]
+		data["suprise"] = average_data[2]
+		data["contempt"] = average_data[3]
+		data["joy"] = average_data[4]
+		data["smirk"] = average_data[5]
+		data["relaxed"] = average_data[6]
+		data["dissapointed"] = average_data[7]
+		final_dict["user_flag"] = data
 		flag = flag + 1
+		
+	pp.pprint(final_dict)
 
 	
 		
