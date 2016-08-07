@@ -71,6 +71,7 @@ function setupChart(user)
 	else
 	{
 		user_stats = session_data[user];
+		
 		var user_data = [];		
 		user_data.engagement = user_stats.engagement;
 		user_data.attention = user_stats.attention;
@@ -80,6 +81,8 @@ function setupChart(user)
 		user_data.smirk = user_stats.smirk;
 		user_data.relaxed = user_stats.relaxed;
 		user_data.disappointed = user_stats.disappointed;
+		
+		alert(user_data);
 	
 		radarData = 
 		{
