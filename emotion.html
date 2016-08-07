@@ -24,8 +24,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
 
 <script>
+// JSON Data for this session, loaded via AJAX call
 var jscontent = []
 
+// Document ready function 
 $( document ).ready(function(){
 
   var xhttp = new XMLHttpRequest();
@@ -68,11 +70,10 @@ $( document ).ready(function(){
     labels : ["Engagement","Attention","Surprise","Contempt","Joy","Smirk","Relaxed","Disappointed"],
     datasets : [
       {
-         fillColor: "rgba(102,45,145,.1)",
-         strokeColor: "rgba(102,45,145,1)",
+        fillColor: "rgba(102,45,145,.1)",
+        strokeColor: "rgba(102,45,145,1)",
         pointColor : "rgba(220,220,220,1)",
         pointStrokeColor : "#fff",
-        /*data : [fljsonobject.enagement,jsonobject.attention,jsonobject.suprise,jsonobject.contempt,jsonobject.joy,jsonobject.smirk,jsonobject.relaxed,jsonobject.disappointed]*/
         data : [jsonobject.engagement,jsonobject.attention,jsonobject.surprise,jsonobject.contempt,jsonobject.joy,jsonobject.smirk,jsonobject.relaxed,jsonobject.disappointed]
 
       }/*,
@@ -87,10 +88,8 @@ $( document ).ready(function(){
   }
 
 //Create Radar chart
-var ctx2 = document.getElementById("radarChart").getContext("2d");
-var myNewChart = new Chart(ctx2).Radar(radarData);
-
-new Chart(ctx2).Radar(radarData,options);
+var ctx = document.getElementById("radarChart").getContext("2d");
+var myNewChart = new Chart(ctx,{type:'radar', data: radarData, option:"");
 
 })
 
