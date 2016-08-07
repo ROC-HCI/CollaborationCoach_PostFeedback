@@ -61,7 +61,7 @@ function setupChart(user)
 				{
 					label: "Overall",
 					backgroundColor: "rgba(58,87,214,.1)",
-					borderColor: "rgba(58,87,214,1)",
+					borderColor: "rgba(58,87,214,.2)",
 					pointBackgroundColor : "rgba(255,255,255,1)",
 					data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.smirk,overall_data.relaxed,overall_data.disappointed]
 				}
@@ -89,7 +89,7 @@ function setupChart(user)
 				{
 					label: "Overall",
 					backgroundColor: "rgba(58,87,214,.1)",
-					borderColor: "rgba(58,87,214,1)",
+					borderColor: "rgba(58,87,214,.2)",
 					pointBackgroundColor : "rgba(255,255,255,1)",
 					data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.smirk,overall_data.relaxed,overall_data.disappointed]
 				},
@@ -111,8 +111,8 @@ function setupChart(user)
 }
 
 // Document ready function 
-$( document ).ready(function(){
-
+$( document ).ready(function()
+{
   // Snag chart data from the database via the API
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=test-key-test&user=Luis", false);
