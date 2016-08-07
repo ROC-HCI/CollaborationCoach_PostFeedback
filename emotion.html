@@ -20,6 +20,12 @@
 </head>
 <body>
 <canvas id="radarChart" width="800" height="650"></canvas>
+<div id="userSelection>
+	<button onclick="setupChart('1');">User 1</button>
+	<button onclick="setupChart('2');">User 2</button>
+	<button onclick="setupChart('3');">User 3</button>
+	<button onclick="setupChart('4');">User 4</button>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
 
@@ -29,81 +35,90 @@ var session_data = []
 
 function setupChart(user)
 {
-	// Only main data in this case
+	var overall_stats = session_data["0"];		
+	var overall_data = [];		
+	overall_data.engagement = overall_stats.engagement;
+	overall_data.attention = overall_stats.attention;
+	overall_data.surprise = overall_stats.surprise;
+	overall_data.contempt = overall_stats.contempt;
+	overall_data.joy = overall_stats.joy;
+	overall_data.smirk = overall_stats.smirk;
+	overall_data.relaxed = overall_stats.relaxed;
+	overall_data.disappointed = overall_stats.disappointed;
+	
+	var radarData = {};
+	
 	if(user == "0")
 	{
-	
+		radarData = 
+		{
+			labels : ["Engagement","Attention","Surprise","Contempt","Joy","Smirk","Relaxed","Disappointed"],
+			datasets : 
+			[
+				{
+					label: "Overall",
+					fillColor: "rgba(58,87,214,.1)",
+					strokeColor: "rgba(58,87,214,1)",
+					pointColor : "rgba(255,255,255,1)",
+					pointStrokeColor : "#fff",
+					data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.smirk,overall_data.relaxed,overall_data.disappointed]
+				}
+			]
+		}
 	}
 	else
 	{
+		user_stats = session_data[user];
+		var user_data = [];		
+		user_data.engagement = user_stats.engagement;
+		user_data.attention = user_stats.attention;
+		user_data.surprise = user_stats.surprise;
+		user_data.contempt = user_stats.contempt;
+		user_data.joy = user_stats.joy;
+		user_data.smirk = user_stats.smirk;
+		user_data.relaxed = user_stats.relaxed;
+		user_data.disappointed = user_stats.disappointed;
 	
+		radarData = 
+		{
+			labels : ["Engagement","Attention","Surprise","Contempt","Joy","Smirk","Relaxed","Disappointed"],
+			datasets : 
+			[
+				{
+					label: "Overall",
+					fillColor: "rgba(58,87,214,.1)",
+					strokeColor: "rgba(58,87,214,1)",
+					pointColor : "rgba(255,255,255,1)",
+					pointStrokeColor : "#fff",
+					data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.smirk,overall_data.relaxed,overall_data.disappointed]
+				},
+				{
+					label: "User " + user,
+					fillColor: "rgba(144,212,153,.1)",
+					strokeColor: "rgba(144,212,153,1)",
+					pointColor : "rgba(144,212,153,1)",
+					pointStrokeColor : "#fff",
+					data : [user_data.engagement,user_data.attention,user_data.surprise,user_data.contempt,user_data.joy,user_data.smirk,user_data.relaxed,user_data.disappointed]
+				}
+			]
+		}
 	}
+	
+	//Create Radar chart
+	var ctx = document.getElementById("radarChart").getContext("2d");
+	var myNewChart = new Chart(ctx,{type:'radar', data: radarData, options:""});
 }
 
 // Document ready function 
 $( document ).ready(function(){
 
+  // Snag chart data from the database via the API
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=test-key-test&user=Luis", false);
   xhttp.send();
   session_data = JSON.parse(xhttp.responseText);
-  
-  var overall_stats = session_data["0"];
-	
-  var jsonobject = [];
 
-  
-  //engagement 17
-  jsonobject.engagement = overall_stats.engagement;
-
-  //attention 32
-  jsonobject.attention = overall_stats.attention;
-
-  //surprise 14
-  jsonobject.surprise = overall_stats.surprise;
-
-  //contempt 15
-  jsonobject.contempt = overall_stats.contempt;
-
-  //joy 9
-  jsonobject.joy = overall_stats.joy;
-
-  //smirk 30
-  jsonobject.smirk = overall_stats.smirk;
-
-  //relaxed 33
-  jsonobject.relaxed = overall_stats.relaxed;
-
-  //disappointed 37
-  jsonobject.disappointed = overall_stats.disappointed;
-
-
-  //radar chart data
-  var radarData = {
-    labels : ["Engagement","Attention","Surprise","Contempt","Joy","Smirk","Relaxed","Disappointed"],
-    datasets : [
-      {
-        fillColor: "rgba(102,45,145,.1)",
-        strokeColor: "rgba(102,45,145,1)",
-        pointColor : "rgba(220,220,220,1)",
-        pointStrokeColor : "#fff",
-        data : [jsonobject.engagement,jsonobject.attention,jsonobject.surprise,jsonobject.contempt,jsonobject.joy,jsonobject.smirk,jsonobject.relaxed,jsonobject.disappointed]
-
-      }/*,
-      {
-            fillColor: "rgba(63,169,245,.1)",
-              strokeColor: "rgba(63,169,245,1)",
-        pointColor : "rgba(151,187,205,1)",
-        pointStrokeColor : "#fff",
-        data : [28,48,40,19,96,27,100]
-      }*/
-    ]
-  }
-
-//Create Radar chart
-var ctx = document.getElementById("radarChart").getContext("2d");
-var myNewChart = new Chart(ctx,{type:'radar', data: radarData, options:""});
-
+  setupChart("0");
 })
 
 
