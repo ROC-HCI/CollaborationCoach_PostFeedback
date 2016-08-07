@@ -25,7 +25,20 @@
 
 <script>
 // JSON Data for this session, loaded via AJAX call
-var jscontent = []
+var session_data = []
+
+function setupChart(user)
+{
+	// Only main data in this case
+	if(user == "0")
+	{
+	
+	}
+	else
+	{
+	
+	}
+}
 
 // Document ready function 
 $( document ).ready(function(){
@@ -33,9 +46,9 @@ $( document ).ready(function(){
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=test-key-test&user=Luis", false);
   xhttp.send();
-  jscontent = JSON.parse(xhttp.responseText);
+  session_data = JSON.parse(xhttp.responseText);
   
-  var overall_stats = jscontent["0"];
+  var overall_stats = session_data["0"];
 	
   var jsonobject = [];
 
@@ -89,7 +102,7 @@ $( document ).ready(function(){
 
 //Create Radar chart
 var ctx = document.getElementById("radarChart").getContext("2d");
-var myNewChart = new Chart(ctx,{type:'radar', data: radarData, option:"");
+var myNewChart = new Chart(ctx,{type:'radar', data: radarData, options:""});
 
 })
 
