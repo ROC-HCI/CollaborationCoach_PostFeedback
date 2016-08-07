@@ -21,10 +21,13 @@
 <body>
 <canvas id="radarChart" width="800" height="650"></canvas>
 <div id="userSelection">
+<p align="center">
+	<button onclick="setupChart('0');">Overall</button>
 	<button onclick="setupChart('1');">User 1</button>
 	<button onclick="setupChart('2');">User 2</button>
 	<button onclick="setupChart('3');">User 3</button>
 	<button onclick="setupChart('4');">User 4</button>
+</p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
@@ -57,10 +60,9 @@ function setupChart(user)
 			[
 				{
 					label: "Overall",
-					fillColor: "rgba(58,87,214,.1)",
-					strokeColor: "rgba(58,87,214,1)",
-					pointColor : "rgba(255,255,255,1)",
-					pointStrokeColor : "#fff",
+					backgroundColor: "rgba(58,87,214,.1)",
+					borderColor: "rgba(58,87,214,1)",
+					pointBackgroundColor : "rgba(255,255,255,1)",
 					data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.smirk,overall_data.relaxed,overall_data.disappointed]
 				}
 			]
@@ -86,17 +88,16 @@ function setupChart(user)
 			[
 				{
 					label: "Overall",
-					fillColor: "rgba(58,87,214,.1)",
-					strokeColor: "rgba(58,87,214,1)",
-					pointColor : "rgba(255,255,255,1)",
-					pointStrokeColor : "#fff",
+					backgroundColor: "rgba(58,87,214,.1)",
+					borderColor: "rgba(58,87,214,1)",
+					pointBackgroundColor : "rgba(255,255,255,1)",
 					data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.smirk,overall_data.relaxed,overall_data.disappointed]
 				},
 				{
 					label: "User " + user,
-					fillColor: "rgba(144,212,153,.1)",
-					strokeColor: "rgba(144,212,153,1)",
-					pointColor : "rgba(144,212,153,1)",
+					backgroundColor: "rgba(144,212,153,.1)",
+					borderColor: "rgba(144,212,153,1)",
+					pointBackgroundColor : "rgba(144,212,153,1)",
 					pointStrokeColor : "#fff",
 					data : [user_data.engagement,user_data.attention,user_data.surprise,user_data.contempt,user_data.joy,user_data.smirk,user_data.relaxed,user_data.disappointed]
 				}
