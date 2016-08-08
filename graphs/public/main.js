@@ -280,7 +280,7 @@ function loadTheRest(user) {
       transform:'t0,100'
     });
 
-    // console.log(guests[guests.to[count].guest]);
+    console.log("guests", guests[guests.to[count].guest]);
     var indivicolor = guests[guests.to[count].guest];
     var innercircle = s.circle(100,100, 68, 68).attr({
       fill: indivicolor,
