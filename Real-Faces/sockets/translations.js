@@ -9,13 +9,12 @@ module.exports = function(io,uuid){
   var currentSeats = ["E","E","E","E"];
   var sessionKey = uuid.v1();
   var requiredUsercount = 2;
-  var numberofUsers = 0;
+  var sessionStarted = false;
 
   translations.on('connection', function(client){
 
-    client.on('FOCUS_JSON', function(data) {
-       //fs.writeFile("JSON_Info_PlayerView.json",data);
-       fs.writeFile("../Data/"+data.JSONkey+".json", data.myJSONString);
+    client.on('FOCUS_JSON', function(data){
+       fs.writeFile("../Data/" + data.JSONkey + ".json", data.myJSONString);
     });
 
     client.on('select_room', function(roomName){
@@ -49,16 +48,6 @@ module.exports = function(io,uuid){
 		  }
 	  }
 
-    numberofUsers++;
-	  //tells all pre-existing clients to start recording
-    client.on('recording', function(data) {
-        console.log('start recording', data);
-        if(numberofUsers >= requiredUsercount)
-          client.broadcast.to(client.roomName).emit('start-recording', "start it");
-          //io.sockets.in(client.roomName).emit('start-recording', 'start it');
-
-    });
-
 	  //tells this client where it should be sitting
 	  client.emit('seat_location', seatLocation);
 	  
@@ -70,6 +59,14 @@ module.exports = function(io,uuid){
 
       //tells all pre-existing clients about new client
       client.broadcast.to(client.roomName).emit('new_client', client.id);
+	  
+	  // If we've filled up all the seats and haven't started
+	  // the session, start the session.
+	  if(seatLocation == requiredUsercount && !sessionStarted)
+	  {
+		  client.broadcast.to(client.roomName).emit('start_session','start');
+		  client.emit('start_session','start');
+	  }
 
       //sets event listener for new client
       client.on('translate', function(translation){
@@ -91,10 +88,6 @@ module.exports = function(io,uuid){
 				currentSeats[i] = "E";
 			}
 		}
-        numberofUsers--;
-
-        if(numberofUsers <= requiredUsercount)
-          client.broadcast.to(client.roomName).emit('stop-recording', "stop it");
 
         client.broadcast.to(client.roomName).emit('client_disconnected', client.id);
       });
