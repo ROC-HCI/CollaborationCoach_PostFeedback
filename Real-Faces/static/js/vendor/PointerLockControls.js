@@ -62,6 +62,11 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
 		console.log("detected device motion!");
   };
 
+  window.ondevicemotion = function(event)
+  {
+		console.log("detected device motion! WINDOW");
+  };
+  
   var rotated = false;
   var onMouseMove = function ( event ) {
 
