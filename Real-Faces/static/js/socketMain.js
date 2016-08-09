@@ -54,7 +54,7 @@ var RealSocket = function (app) {
   });
   this.socketio.on('session_end', function(data){
     console.log("STOP");
-    stopRecordingOnHangup();
+    //stopRecordingOnHangup();
   });
   
   this.socketio.on('new_client', function(clientID){

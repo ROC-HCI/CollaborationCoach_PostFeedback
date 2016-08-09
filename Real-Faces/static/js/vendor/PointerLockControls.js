@@ -57,17 +57,10 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
     return {position:position, rotation:rotation};
   };
   
-  window.addEventListener('deviceorientation', deviceOrientationHandler, false);
-  
-  var deviceOrientationHandler = function( event ){
-	  
-	  alert("Orientation Change Detected!");
-	  
-	  console.log("Abs: " + event.absolute);
-	  console.log("Alpha: " + event.alpha);
-	  console.log("Beta: " + event.beta);
-	  console.log("Gamma: " + event.gamma);
-  }
+  var ondevicemotion = function(event)
+  {
+		console.log("detected device motion!");
+  };
 
   var rotated = false;
   var onMouseMove = function ( event ) {
