@@ -583,6 +583,9 @@ RealTHREE.prototype.pointerLock = function () {
 
     //instructions.innerHTML = 'Your browser doesn\'t seem to support Pointer Lock API';
 	realFaces.THREE.controls.enabled = true;
+	instructions.addEventListener( 'click', function ( event ) {
+		instructions.style.display = 'none';
+	}, false);
 
   }
   //POINTER LOCK
