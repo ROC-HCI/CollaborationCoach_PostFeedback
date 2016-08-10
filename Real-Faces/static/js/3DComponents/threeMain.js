@@ -583,10 +583,15 @@ RealTHREE.prototype.pointerLock = function () {
 
 	alert("Made it here!");
     //instructions.innerHTML = 'Your browser doesn\'t seem to support Pointer Lock API';
+	
 	realFaces.THREE.controls.enabled = true;
+	instruction.style.display = 'none';
+	/*
 	instructions.addEventListener( 'touchend', function ( event ) {
 		instructions.style.display = 'none';
 	}, false);
+	*/
+	
 	alert("Made it past the event listener");
 
   }
