@@ -585,7 +585,7 @@ RealTHREE.prototype.pointerLock = function () {
     //instructions.innerHTML = 'Your browser doesn\'t seem to support Pointer Lock API';
 	
 	realFaces.THREE.controls.enabled = true;
-	instruction.style.display = 'none';
+	instructions.style.display = 'none';
 	/*
 	instructions.addEventListener( 'touchend', function ( event ) {
 		instructions.style.display = 'none';
