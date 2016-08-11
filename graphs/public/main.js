@@ -37,6 +37,7 @@ $(function() {
       // loado();
       //get guest1's text and create the rest for guests
       guests = getKey(currentUser.attr('#text'));
+      console.log("initial guest assignment", guests);
       loadTheRest(currentUser.attr('#text'));
     });
 
