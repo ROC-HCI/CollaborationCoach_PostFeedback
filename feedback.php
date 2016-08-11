@@ -111,6 +111,7 @@
         //console.log('a tag ', JSON.stringify(participation,null, 2));
         var i4 = turntaking;
         var iuser = data.user;
+        console.log(iuser);
         var i3data = [];
         var i3speaker = [];
         var colorpalette = ['#90D0D5','#FBF172', '#B0D357', '#C88ABC', '#4B79BD'];
