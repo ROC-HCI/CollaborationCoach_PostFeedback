@@ -48,12 +48,12 @@ var RealSocket = function (app) {
   });
 
   this.socketio.on('session_start', function(data){
-    console.log("START");
+    console.log("START RECEIVED");
     //captureVideo(commonConfig);
     //startRecordingAfterActive();
   });
   this.socketio.on('session_end', function(data){
-    console.log("STOP");
+    console.log("STOP RECEIVED");
     //stopRecordingOnHangup();
   });
   
