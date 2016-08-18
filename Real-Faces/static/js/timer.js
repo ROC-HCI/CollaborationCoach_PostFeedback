@@ -7,7 +7,7 @@ var count = 0;
 
 function proposeStop()
 {
-	alert("TEST");
+	realFaces.socket.socketio.emit("propose_stop","stop");
 }
 
 /*

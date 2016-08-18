@@ -12,6 +12,15 @@ module.exports = function(io,uuid){
   var sessionStarted = false;
 
   translations.on('connection', function(client){
+	  
+	client.on('propose_stop', function(data){
+		if(sessionStarted)
+		{
+			sessionStarted = false;
+			client.broadcast.to(client.roomName).emit('session_end','end');
+			client.emit('session_end','end');
+		}
+	});
 
     client.on('FOCUS_JSON', function(data){
        fs.writeFile("../Data/" + data.JSONkey + ".json", data.myJSONString);
@@ -64,8 +73,8 @@ module.exports = function(io,uuid){
 	  // the session, start the session.
 	  if(seatLocation == requiredUsercount && !sessionStarted)
 	  {
-		  client.broadcast.to(client.roomName).emit('start_session','start');
-		  client.emit('start_session','start');
+		  client.broadcast.to(client.roomName).emit('session_start','start');
+		  client.emit('session_start','start');
 	  }
 
       //sets event listener for new client
