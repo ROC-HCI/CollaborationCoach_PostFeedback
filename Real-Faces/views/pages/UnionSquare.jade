@@ -21,16 +21,15 @@ block content
   //-  input(id="chatInput")
   //-  button(id="chatInputButton") Send!
   div(id = 'playerFocusHUDNotifitcation')
-  //- div(id = 'Start')
-
-  //- script(src ='/js/timer.js')
+  div(id = 'Controls')
+    button(id='proposeStop', onClick="proposeStop()") 
+    |End Session
 
   p(id='Output') 
   
-  button(id='proposeStop', onClick="proposeStop()") 
-    |End Session
 
-//-    button(id='Reset', onClick="location.href='Feedback';")
+
+//-  button(id='Reset', onClick="location.href='Feedback';")
 //-    |Reset
 //-
 //-  button(id='Reset', onClick="reset()")
