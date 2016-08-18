@@ -75,7 +75,7 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
     if ( scope.enabled === false ) return;
 
    // console.log("Mouse X: " + pitchObject.rotation.x);
-    console.log("Mouse Y: " + yawObject.rotation.y * 100);
+   // console.log("Mouse Y: " + yawObject.rotation.y * 100);
 
     var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
     var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
@@ -94,92 +94,92 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
 
     case 1:
     if((yawObject.rotation.y * 100) > 225 && (yawObject.rotation.y * 100) < 270){
-      console.log("You're looking at Group Member 3");
+      //console.log("You're looking at Group Member 3");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 3;
 
     }
     
     if((yawObject.rotation.y * 100) > 130 && (yawObject.rotation.y * 100) < 185){
-      console.log("You're looking at Group Member 2");
+      //console.log("You're looking at Group Member 2");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 2;
     }
 
     if((yawObject.rotation.y * 100) > 30 && (yawObject.rotation.y * 100) < 85){
-      console.log("You're looking at Group Member 4");
+      //console.log("You're looking at Group Member 4");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 4;
     }
  
     if((yawObject.rotation.y * 100) > 270 || ((yawObject.rotation.y) * 100 < 225 && (yawObject.rotation.y * 100) > 185) || ((yawObject.rotation.y * 100) < 130 && (yawObject.rotation.y * 100) > 85) || (yawObject.rotation.y * 100) < 30) {
-      console.log("Nobody here");
+      //console.log("Nobody here");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 0;
     }
     break;
 
     case 2:
     if((yawObject.rotation.y * 100) > (225-300) && (yawObject.rotation.y * 100) < (270-300)){
-      console.log("You're looking at Group Member 4");
+      //console.log("You're looking at Group Member 4");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 4;
 
     }
     
     if((yawObject.rotation.y * 100) > (130-300) && (yawObject.rotation.y * 100) < (185-300)){
-      console.log("You're looking at Group Member 1");
+      //console.log("You're looking at Group Member 1");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 1;
     }
 
     if((yawObject.rotation.y * 100) > (30-300) && (yawObject.rotation.y * 100) < (85-300)){
-      console.log("You're looking at Group Member 3");
+      //console.log("You're looking at Group Member 3");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 3;
     }
  
     if((yawObject.rotation.y * 100) > (270-300) || ((yawObject.rotation.y) * 100 < (225-300) && (yawObject.rotation.y * 100) > (185-300)) || ((yawObject.rotation.y * 100) < (130-300) && (yawObject.rotation.y * 100) > (85-300)) || (yawObject.rotation.y * 100) < (30-300)) {
-      console.log("Nobody here");
+      //console.log("Nobody here");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 0;
     }
     break;
 
     case 3:
     if((yawObject.rotation.y * 100) > (225-150) && (yawObject.rotation.y * 100) < (270-150)){
-      console.log("You're looking at Group Member 2");
+      //console.log("You're looking at Group Member 2");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 2;
 
     }
     
     if((yawObject.rotation.y * 100) > (130-150) && (yawObject.rotation.y * 100) < (185-150)){
-      console.log("You're looking at Group Member 4");
+      //console.log("You're looking at Group Member 4");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 4;
     }
 
     if((yawObject.rotation.y * 100) > (30-150) && (yawObject.rotation.y * 100) < (85-150)){
-      console.log("You're looking at Group Member 1");
+      //console.log("You're looking at Group Member 1");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 1;
     }
  
     if((yawObject.rotation.y * 100) > (270-150) || ((yawObject.rotation.y) * 100 < (225-150) && (yawObject.rotation.y * 100) > (185-150)) || ((yawObject.rotation.y * 100) < (130-150) && (yawObject.rotation.y * 100) > (85-150)) || (yawObject.rotation.y * 100) < (30-150)) {
-      console.log("Nobody here");
+      //console.log("Nobody here");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 0;
     }
     break;
 
    case 4:
     if((yawObject.rotation.y * 100) > (225+150) && (yawObject.rotation.y * 100) < (270+150)){
-      console.log("You're looking at Group Member 1");
+      //console.log("You're looking at Group Member 1");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 1;
 
     }
     
     if((yawObject.rotation.y * 100) > (130+150) && (yawObject.rotation.y * 100) < (185+150)){
-      console.log("You're looking at Group Member 3");
+      //console.log("You're looking at Group Member 3");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 3;
     }
 
     if((yawObject.rotation.y * 100) > (30+150) && (yawObject.rotation.y * 100) < (85+150)){
-      console.log("You're looking at Group Member 2");
+      //console.log("You're looking at Group Member 2");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 2;
     }
  
     if((yawObject.rotation.y * 100) > (270+150) || ((yawObject.rotation.y) * 100 < (225+150) && (yawObject.rotation.y * 100) > (185+150)) || ((yawObject.rotation.y * 100) < (130+150) && (yawObject.rotation.y * 100) > (85+150)) || (yawObject.rotation.y * 100) < (30+150)) {
-      console.log("Nobody here");
+      //console.log("Nobody here");
       document.getElementById("playerFocusHUDNotifitcation").innerHTML = 0;
     }
     break;
