@@ -74,7 +74,7 @@ else{
 							'transcript':final_transcript};
 							
 			request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=speechupload');				
-			request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");			
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");			
 			request.send(JSON.stringify(data_to_send));
 	
 			console.log("ended recognition");
