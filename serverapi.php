@@ -43,6 +43,20 @@ echo print_r($response);
 */
 //=============================================================
 
+//=============================================================
+// DEBUG ACCESS POINT
+// - Good place to put debug scripts for results.
+//=============================================================
+if($_GET['mode'] == 'debug')
+{
+	$collection = $database->selectCollection('speechrawdata');
+	
+	foreach($collection as $document)
+	{
+		echo var_dump($document);
+	}
+}
+
 
 //=============================================================
 // ACCESS POINTS FOR API GO BELOW THIS POINTS
