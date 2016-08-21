@@ -47,12 +47,14 @@ var RealSocket = function (app) {
 	  app.sessionKey = session_key;
   });
 
+  // ALL CLIENT FUNCTIONS THAT NEED TO START NEED TO START HERE - JW
   this.socketio.on('session_start', function(data){
     //captureVideo(commonConfig);
     //startRecordingAfterActive();
 	recognition.start();
   });
   
+  // ALL CLIENT FUNCTIONS THAT NEED TO STOP NEED TO STOP HERE - JW
   this.socketio.on('session_end', function(data){
     //stopRecordingOnHangup();
 	recognizing = false;
