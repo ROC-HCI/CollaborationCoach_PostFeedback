@@ -71,10 +71,11 @@ module.exports = function(io,uuid){
 	  
 	  // If we've filled up all the seats and haven't started
 	  // the session, start the session.
-	  if(seatLocation == requiredUsercount && !sessionStarted)
+	  if(seatLocation == (requiredUsercount - 1) && !sessionStarted)
 	  {
 		  client.broadcast.to(client.roomName).emit('session_start','start');
 		  client.emit('session_start','start');
+		  sessionStarted = true;
 	  }
 
       //sets event listener for new client

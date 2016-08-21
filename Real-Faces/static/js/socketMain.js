@@ -52,6 +52,7 @@ var RealSocket = function (app) {
     //captureVideo(commonConfig);
     //startRecordingAfterActive();
   });
+  
   this.socketio.on('session_end', function(data){
     console.log("STOP RECEIVED");
     //stopRecordingOnHangup();
