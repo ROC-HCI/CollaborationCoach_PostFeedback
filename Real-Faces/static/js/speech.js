@@ -73,6 +73,8 @@ else{
 							'wpm':total_words/(total_time/60), 
 							'transcript':final_transcript};
 							
+			alert(JSON.stringify(data_to_send);
+							
 			request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=speechupload');				
 			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");			
 			request.send(data_to_send);
