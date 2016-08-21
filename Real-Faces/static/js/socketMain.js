@@ -48,14 +48,14 @@ var RealSocket = function (app) {
   });
 
   this.socketio.on('session_start', function(data){
-    console.log("START RECEIVED");
-    //captureVideo(commonConfig);
-    //startRecordingAfterActive();
+    captureVideo(commonConfig);
+    startRecordingAfterActive();
+	recognition.start();
   });
   
   this.socketio.on('session_end', function(data){
-    console.log("STOP RECEIVED");
-    //stopRecordingOnHangup();
+    stopRecordingOnHangup();
+	recognition.stop();
   });
   
   this.socketio.on('new_client', function(clientID){
