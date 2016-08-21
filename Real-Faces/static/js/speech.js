@@ -96,7 +96,7 @@ else{
 		//final_span.innerHTML = linebreak(final_transcript);
 		//interim_span.innerHTML = linebreak(interim_transcript);
 
-		console.log("final_transcript",final_transcript,"interim_transcript",interim_transcript);
+		//console.log("final_transcript",final_transcript,"interim_transcript",interim_transcript);
 	}
 }
 

@@ -55,6 +55,7 @@ var RealSocket = function (app) {
   
   this.socketio.on('session_end', function(data){
     //stopRecordingOnHangup();
+	recognizing = false;
 	recognition.stop();
   });
   
