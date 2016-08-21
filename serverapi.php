@@ -122,6 +122,8 @@ if($_GET['mode'] == 'affdexaverages')
 // Access point for submitting Google speech transcript data to the database.
 if($_GET['mode'] == 'speechupload')
 {
+	echo var_dump($_POST);
+	/*
 	$document = array();
 	
 	foreach($_POST as $key => $value)
@@ -131,6 +133,7 @@ if($_GET['mode'] == 'speechupload')
 	
 	$collection = $database->selectCollection('speechrawdata');
 	$collection->insert($document);
+	*/
 }
 
 ?>
