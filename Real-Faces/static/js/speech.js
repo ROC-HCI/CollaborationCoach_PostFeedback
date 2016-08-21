@@ -62,7 +62,7 @@ else{
 			{
 				if(request.readyState == 4 && request.status == 200) 
 				{
-					console.log(JSON.stringify(request.response));
+					console.log(request.response);
 				}
 			};
 			
