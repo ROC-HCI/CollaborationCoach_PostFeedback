@@ -50,10 +50,11 @@ echo print_r($response);
 if($_GET['mode'] == 'debug')
 {
 	$collection = $database->selectCollection('speechrawdata');
+	$cursor = $collection->find();
 	
-	foreach($collection as $document)
+	foreach($cursor as $id => $document)
 	{
-		echo var_dump($document);
+		echo var_dump($document) . "<hr/>";
 	}
 }
 
