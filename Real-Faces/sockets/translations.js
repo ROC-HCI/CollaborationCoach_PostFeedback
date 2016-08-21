@@ -8,7 +8,7 @@ module.exports = function(io,uuid){
   var clientTranslations = {};
   var currentSeats = ["E","E","E","E"];
   var sessionKey = uuid.v1();
-  var requiredUsercount = 2;
+  var requiredUsercount = 1;
   var sessionStarted = false;
 
   translations.on('connection', function(client){
