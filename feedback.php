@@ -123,6 +123,7 @@
         	  console.log("LALALA ", count, i3[key]);
             i3speaker.push(key);
             guests[key] = colorpalette[count];
+            console.log("logging guests", guests);
             i3data.push(Math.round(i3[key]));
             count+=1;
         }
