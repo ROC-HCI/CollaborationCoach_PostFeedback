@@ -282,7 +282,7 @@ function loadTheRest(user) {
       transform:'t0,100'
     });
 
-    console.log("guests", count);
+    console.log("guests-right before",  guests);
     var indivicolor = guests[guests.to[count].guest];
     var innercircle = s.circle(100,100, 68, 68).attr({
       fill: indivicolor,
