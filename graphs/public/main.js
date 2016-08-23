@@ -192,7 +192,7 @@ function getKey(currentUser) {
   guests.current = currentUser;
   guests.to = []; //eg Viv-Ru means Ru talked after Viv
   guests.total = 0;
-  console.log(guests);
+  console.log("before loop", guests);
   for(var key in i4) {
 
     if(key.toString().split('-')[1]===currentUser) {
@@ -206,7 +206,8 @@ function getKey(currentUser) {
         guests.total+= i4[key];
     }
   }
-
+  
+  console.log("after loop", guests);
   return guests;
 }
 
