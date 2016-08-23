@@ -196,7 +196,7 @@ function getKey(currentUser) {
   for(var key in i4) {
     console.log("looping here");
     //if(key.toString().split('-')[1]===currentUser) {
-    if(key.toString()===currentUser) {
+    if(key===currentUser) {
 
         guests.current = currentUser;
         var node = {};
