@@ -10,7 +10,7 @@ $(function() {
 
     //create Snap canvas for user
     var s = Snap('#guest0');
-    Snap.load('./graphs/public/svg/Turn_taking_bllue.svg', function(fragment){
+    Snap.load('/graphs/public/svg/Turn_taking_bllue.svg', function(fragment){
 
       //border
       fragment.select('circle[stroke="#53C6D4"]').attr({
@@ -219,26 +219,26 @@ function drawArrows(count){
   // count = 4;
   var s = Snap('#guest-1');
   if(count===1){
-    Snap.load('.graphs/public/svg/straight-arrow.svg',function(f){
+    Snap.load('graphs/public/svg/straight-arrow.svg',function(f){
       // var g = f.select('g:nth-of-type(1)').clear();
       s.append(f);
     });
   }
   else if(count===2){
-    Snap.load('.graphs/public/svg/3_ppl_arrows.svg',function(f){
+    Snap.load('graphs/public/svg/3_ppl_arrows.svg',function(f){
       s.append(f).attr({
         'y': 60
       });
     });
   }else if(count===3){
-    Snap.load('.graphs/public/svg/4_ppl_arrows.svg',function(f){
+    Snap.load('graphs/public/svg/4_ppl_arrows.svg',function(f){
       s.append(f).attr({
         'y': 60
       });
     });
   }else{
     //4 guests
-    Snap.load('.graphs/public/svg/5_ppl_arrows.svg',function(f){
+    Snap.load('graphs/public/svg/5_ppl_arrows.svg',function(f){
       s.append(f).attr({
         'y': 60
       });
@@ -253,7 +253,7 @@ function loado(){
     var id = this.id.toString().match(/\d+/)[0];
     var s = Snap('#guest'+id);
     // s.clear();
-    Snap.load('.graphs/public/svg/Turn_taking_yellow.svg',function(fragment){
+    Snap.load('graphs/public/svg/Turn_taking_yellow.svg',function(fragment){
       s.append(fragment);
     });
   });
