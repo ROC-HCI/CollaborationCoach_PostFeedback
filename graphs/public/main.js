@@ -219,26 +219,26 @@ function drawArrows(count){
   // count = 4;
   var s = Snap('#guest-1');
   if(count===1){
-    Snap.load('.graphs/public/svg/straight-arrow.svg',function(f){
+    Snap.load('graphs/public/svg/straight-arrow.svg',function(f){
       // var g = f.select('g:nth-of-type(1)').clear();
       s.append(f);
     });
   }
   else if(count===2){
-    Snap.load('.graphs/public/svg/3_ppl_arrows.svg',function(f){
+    Snap.load('graphs/public/svg/3_ppl_arrows.svg',function(f){
       s.append(f).attr({
         'y': 60
       });
     });
   }else if(count===3){
-    Snap.load('.graphs/public/svg/4_ppl_arrows.svg',function(f){
+    Snap.load('graphs/public/svg/4_ppl_arrows.svg',function(f){
       s.append(f).attr({
         'y': 60
       });
     });
   }else{
     //4 guests
-    Snap.load('.graphs/public/svg/5_ppl_arrows.svg',function(f){
+    Snap.load('graphs/public/svg/5_ppl_arrows.svg',function(f){
       s.append(f).attr({
         'y': 60
       });
