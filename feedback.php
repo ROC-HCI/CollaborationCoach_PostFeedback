@@ -119,6 +119,17 @@
         var count = 0;
         //i3 = JSON.parse(i3);
 
+
+        var i5 = {};
+
+        for(var key in i4) {
+          keymod = key.replace(/Data\/test-key-test_/g, "");
+          i5[keymod] = i4[key];
+
+        }
+
+        i5 = i4;
+
         for (var key in i3){
         	  console.log("LALALA ", count, i3[key]);
             i3speaker.push(key);

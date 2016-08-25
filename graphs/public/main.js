@@ -188,14 +188,14 @@ function createGuest(index) {
 }
 
 function getKey(currentUser) {
-  currentUser = currentUser.replace(/Data\/test-key-test_/g, "");
+  //currentUser = currentUser.replace(/Data\/test-key-test_/g, "");
 
   guests.current = currentUser;
   guests.to = []; //eg Viv-Ru means Ru talked after Viv
   guests.total = 0;
   console.log("before loop", guests);
   for(var key in i4) {
-    key = key.replace(/Data\/test-key-test_/g, "");
+    //key = key.replace(/Data\/test-key-test_/g, "");
     console.log("all the keys", key);
 
     if(key.toString().split('-')[1]===currentUser) {
