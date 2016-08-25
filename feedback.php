@@ -128,7 +128,7 @@
 
         }
 
-        i5 = i4;
+        i4 = i5;
 
         for (var key in i3){
         	  console.log("LALALA ", count, i3[key]);
