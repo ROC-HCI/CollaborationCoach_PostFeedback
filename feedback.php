@@ -130,6 +130,8 @@
 
         i4 = i5;
 
+        console.log("i4 assignment", i4);
+
         for (var key in i3){
         	  console.log("LALALA ", count, i3[key]);
             i3speaker.push(key);
