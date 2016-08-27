@@ -90,7 +90,6 @@ function stopStream() {
     }
 }
 
-/*
 function captureVideo(config) {
 
     captureUserMedia({video: { 
@@ -115,21 +114,6 @@ function captureVideo(config) {
         });
     });
 	
-	startRecordingAfterActive();
-};
-*/
-
-function captureVideo(config) {
-    captureUserMedia({video: { 
-                width: {min: 320, ideal: captureresolution.width, max: 1920},
-                height: {min: 240, ideal: captureresolution.height, max: 1080}}, audio: true}, function(videoStream) {
-        recordingPlayer.srcObject = videoStream;
-        recordingPlayer.play();
-        
-        config.onMediaCaptured(videoStream);
-    }, function(error) {
-        config.onMediaCapturingFailed(error);
-    });
 };
 
 function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
