@@ -125,7 +125,7 @@ if($_GET['mode'] == 'affdexmerge')
 }
 
 // Access point for merged focus and affdex data for a session key and user.
-// This is for raw output from these scripts.
+// This is for 'average' calculated data.
 if($_GET['mode'] == 'affdexaverages')
 {
 	$session_key = $_GET['session_key'];
@@ -160,6 +160,25 @@ if($_GET['mode'] == 'speechupload')
 	$collection = $database->selectCollection('speechrawdata');
 	$collection->insert($document);
 	*/
+}
+
+// Access point for obtaining raw speech recognition detected by the 
+// google web speech API.
+if($_GET['mode'] == 'speechrawdata')
+{
+	$session_key = $_GET['session_key'];
+	$user = $_GET['user'];
+	
+	$collection = $database->selectCollection('speechrawdata');
+	$query = array('session_key' => $session_key,
+				   'user' => $user);
+				   
+	$cursor = $collection->find($query);
+	
+	foreach($cursor as $document)
+	{
+		echo json_encode($document);
+	}
 }
 
 ?>
