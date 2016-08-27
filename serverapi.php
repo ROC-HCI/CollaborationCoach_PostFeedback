@@ -33,15 +33,38 @@ echo $collection2->count() . " documents";
 //         reset of the database for testing.
 //=============================================================
 /*
+echo "Starting database cleanup..." . "<br/><br/>";
+
 $collection = $database->selectCollection('participation');
 $response = $collection->drop();
 
+echo "Dropped participation" . "<br/>";
 echo print_r($response);
+echo "<hr/>";
 
 $collection = $database->selectCollection('affdexmerge');
 $response = $collection->drop();
 
+echo "Dropped affdexmerge" . "<br/>";
 echo print_r($response);
+echo "<hr/>";
+
+$collection = $database->selectCollection('affdexaverages');
+$response = $collection->drop();
+
+echo "Dropped affdexaverages" . "<br/>";
+echo print_r($response);
+echo "<hr/>";
+
+$collection = $database->selectCollection('speechrawdata');
+$response = $collection->drop();
+
+echo "Dropped speechrawdata" . "<br/>";
+echo print_r($response);
+echo "<hr/>";
+
+echo "Database cleanup completed...";
+
 */
 //=============================================================
 
@@ -122,7 +145,9 @@ if($_GET['mode'] == 'affdexaverages')
 // Access point for submitting Google speech transcript data to the database.
 if($_GET['mode'] == 'speechupload')
 {
-	echo var_dump($_POST);
+	$json_string = file_get_contents('php://input');
+	
+	echo var_dump($json_string);
 	/*
 	$document = array();
 	
