@@ -148,18 +148,12 @@ if($_GET['mode'] == 'speechupload')
 {
 	$json_string = file_get_contents('php://input');
 	
-	echo var_dump($json_string);
-	/*
-	$document = array();
-	
-	foreach($_POST as $key => $value)
-	{
-		$document[$key] = $value;
-	}
+	$document = json_decode($json_string);
 	
 	$collection = $database->selectCollection('speechrawdata');
 	$collection->insert($document);
-	*/
+	
+	echo "speechrawdata submitted";
 }
 
 // Access point for obtaining raw speech recognition detected by the 
