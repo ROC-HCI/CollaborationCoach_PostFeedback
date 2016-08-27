@@ -1,5 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: https://conference.eastus.cloudapp.azure.com:8081');
+header('Access-Control-Allow-Headers: Content-type');
 
 session_start();
 
