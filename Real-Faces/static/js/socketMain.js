@@ -50,7 +50,7 @@ var RealSocket = function (app) {
   // ALL CLIENT FUNCTIONS THAT NEED TO START NEED TO START HERE - JW
   this.socketio.on('session_start', function(data){
     captureVideo(commonConfig);
-    //startRecordingAfterActive();
+    //startRecordingAfterActive(); We need a delayed call on this I think, still looking to fix - JW
 	recognition.start();
   });
   
