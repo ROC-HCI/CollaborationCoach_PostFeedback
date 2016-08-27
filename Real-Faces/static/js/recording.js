@@ -1,5 +1,5 @@
 var recordingPlayer;
-var button = document.createElement("Start");;
+var button = document.createElement("Start");
 var button2;
 var baseDataKey;
 var sessionCount = 0;
@@ -112,9 +112,9 @@ function captureVideo(config) {
         },
             frameInterval: typeof params.frameInterval !== 'undefined' ? parseInt(params.frameInterval) : 20 // minimum time between pushing frames to Whammy (in milliseconds)
         });
-
-        //startRecordingAfterActive();
     });
+	
+	startRecordingAfterActive();
 };
 
 function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
