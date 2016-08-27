@@ -113,7 +113,7 @@ function captureVideo(config) {
             frameInterval: typeof params.frameInterval !== 'undefined' ? parseInt(params.frameInterval) : 20 // minimum time between pushing frames to Whammy (in milliseconds)
         });
 
-        startRecordingAfterActive();
+        //startRecordingAfterActive();
     });
 };
 
