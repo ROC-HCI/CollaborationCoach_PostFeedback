@@ -51,6 +51,9 @@ var RealSocket = function (app) {
   this.socketio.on('session_start', function(data){
     captureVideo(commonConfig);
     //startRecordingAfterActive(); We need a delayed call on this I think, still looking to fix - JW
+	console.log("Capture Video Called");
+	setTimeout(startRecordingAfterActive,2000);
+	console.log("After Setting Timeout");
 	recognition.start();
   });
   
