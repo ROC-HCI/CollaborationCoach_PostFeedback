@@ -17,11 +17,11 @@ for file in Data/$session_id*.webm;
 done
 echo "Finish - .wav Conversion"
 
-# NOT WORKING - License expired
+# WORKING License until: 
 echo "Start - Affdex"
-#for file in Data/$session_id*.webm;
-#	do $HOME/build/video-demo/./video-demo -d $HOME/affdex-sdk/data -l sdk_lnova@u.rochester.edu.license -i $file
-#done
+for file in Data/$session_id*.webm;
+	do $HOME/build/video-demo/./video-demo -d $HOME/affdex-sdk/data -l sdk_lnova@u.rochester.edu.license -i $file
+done
 echo "Finish - Affdex"
 
 # NOT WORKING - Incorrect directory location - To fix...
@@ -32,21 +32,22 @@ for file in Data/$session_id*.wav;
 done
 echo "Finish - Praat"
 
-# WORKING - DB ENABLED
+# WORKING - DB REQUIRED
 echo "Start - Participation Analysis"
 argpath=""
 for i in Data/$session_id*.wav.TextGrid;
 	do argpath="$argpath $i"
 done
 
-#python fileparser.py $argpath
+python fileparser.py $argpath
 echo "Finish - Participation Analysis"
 
+# WORKING - DB REQUIRED
 echo "Start - AffdexPlayerFocus Merge"
-#args=""
-#for file in Data/$session_id*.csv;
-#	do args=$file(basename "${file/.csv}").json
-#done
+args=""
+for file in Data/$session_id*.csv;
+	do args=$file(basename "${file/.csv}").json
+done
 #echo $args
 echo "Finish - AffdexPlayerFocus Merge"
 
