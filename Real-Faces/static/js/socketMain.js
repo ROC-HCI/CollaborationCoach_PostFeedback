@@ -1,3 +1,8 @@
+function proposeStop()
+{
+	realFaces.socket.socketio.emit("propose_stop","stop");
+}
+
 var RealSocket = function (app) {
   console.log(location, location.pathname, location.search);
   this.socketInterval = 100;
@@ -49,16 +54,24 @@ var RealSocket = function (app) {
 
   // ALL CLIENT FUNCTIONS THAT NEED TO START NEED TO START HERE - JW
   this.socketio.on('session_start', function(data){
+	  
     captureVideo(commonConfig);
 	setTimeout(startRecordingAfterActive,1000);
-	recognition.start();
+	
+	recognition.start
+	
+	focus_running = 1;
+	setInterval(focus_sample,1000);
   });
   
   // ALL CLIENT FUNCTIONS THAT NEED TO STOP NEED TO STOP HERE - JW
   this.socketio.on('session_end', function(data){
     stopRecordingOnHangup();
+	
 	recognizing = false;
-	recognition.stop();
+	recognition.stop
+	
+	focus_end();
   });
   
   this.socketio.on('new_client', function(clientID){

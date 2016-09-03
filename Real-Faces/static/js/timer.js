@@ -1,13 +1,39 @@
-//var Stopwatch = function(){
-//https://www.youtube.com/watch?v=kDnfrlK2CLg
-var time = 0;
-var running = 0;
+
+var focus_running = 0;
+
 var timeLine = [];
 var count = 0;
 
 function proposeStop()
 {
 	realFaces.socket.socketio.emit("propose_stop","stop");
+}
+
+function focus_sample()
+{
+	
+}
+
+function focus_end()
+{
+	running = 0;
+	var myJSONString = JSON.stringify(timeLine); 
+	console.log(myJSONString);
+
+	console.log("Session key: "+realFaces.sessionKey);
+	console.log("Name: "+realFaces.userName);
+
+	var JSONkey = realFaces.sessionKey + "_" + realFaces.userName;
+	
+	var JSONData = {
+		JSONkey : JSONkey,
+		myJSONString : myJSONString
+	}
+
+	//stopRecordingOnHangup();
+
+	realFaces.socket.socketio.emit("FOCUS_JSON", JSONData);
+	document.getElementById("Start").innerHTML = "Resume";
 }
 
 /*
