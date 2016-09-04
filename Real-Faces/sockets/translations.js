@@ -40,7 +40,7 @@ module.exports = function(io,uuid){
 	});
 
     client.on('FOCUS_JSON', function(data){
-       fs.writeFile("../Data/" + data.JSONkey + ".json", data.myJSONString);
+       fs.writeFile("../Data/fixed_" + data.JSONkey + ".json", data.myJSONString);
     });
 
     client.on('select_room', function(roomName){
