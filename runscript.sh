@@ -46,8 +46,9 @@ echo "Finish - Participation Analysis"
 echo "Start - AffdexPlayerFocus Merge"
 args=""
 for file in Data/$session_id*.csv;
-	do args=$(basename "${file/.csv}").json
-	python AffdexPlayerFocusMerger.py "$file" "Data/$args"
+	echo "$file"
+	#do args=$(basename "${file/.csv}").json
+	#python AffdexPlayerFocusMerger.py "$file" "Data/$args"
 done
 
 echo "Finish - AffdexPlayerFocus Merge"
