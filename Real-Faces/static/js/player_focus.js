@@ -11,7 +11,7 @@ function focus_sample()
 		var info = document.getElementById("playerFocusHUDNotifitcation").innerHTML;
 
 		var focusObject = {timeValue: count, focus: info};
-		console.log(info + " : " + count);
+		//console.log(info + " : " + count);
 			
 		timeLine.push(focusObject);
 		count++;
