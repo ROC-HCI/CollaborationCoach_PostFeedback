@@ -80,7 +80,7 @@ else{
 	}
 
 	recognition.onresult = function(event){
-		console.log("speech recognition output: event.results", event.results);
+		//console.log("speech recognition output: event.results", event.results);
 		var interim_transcript = '';
 		for (var i = event.resultIndex; i < event.results.length; ++i) {
 			if (event.results[i].isFinal) {
