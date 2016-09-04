@@ -19,9 +19,9 @@ echo "Finish - .wav Conversion"
 
 # WORKING License until: NEED INSTALL
 echo "Start - Affdex"
-#for file in Data/$session_id*.webm;
-#	do $HOME/build/video-demo/./video-demo -d $HOME/affdex-sdk/data -l sdk_lnova@u.rochester.edu.license -i $file
-#done
+for file in Data/$session_id*.webm;
+	do $HOME/build/video-demo/./video-demo -d $HOME/affdex-sdk/data -l cuzinniko@gmail.com.license -i $file
+done
 echo "Finish - Affdex"
 
 # NOT WORKING - Incorrect directory location - To fix...
