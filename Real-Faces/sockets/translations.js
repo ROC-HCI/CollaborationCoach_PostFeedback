@@ -10,6 +10,7 @@ module.exports = function(io,uuid){
   var sessionKey = uuid.v1();
   var requiredUsercount = 1;
   var sessionStarted = false;
+  var uploads_finished = 0;
 
   translations.on('connection', function(client){
 	  
@@ -19,6 +20,22 @@ module.exports = function(io,uuid){
 			sessionStarted = false;
 			client.broadcast.to(client.roomName).emit('session_end','end');
 			client.emit('session_end','end');
+		}
+	});	
+	
+	client.on('upload_finished', function(data){
+		uploads_finished = upload_finished + 1;
+		
+		if(uploads_finished == requiredUsercount)
+		{
+			exec("../runscript.sh " + sessionKey, 
+				function(error, stdout, stderr){				
+					if(error != null)
+					{
+						console.log(error);
+					}
+					console.log('stdout: ' + stdout);
+			});
 		}
 	});
 
