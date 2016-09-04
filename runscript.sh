@@ -19,12 +19,12 @@ echo "Finish - .wav Conversion"
 
 # WORKING License until: NEED INSTALL
 echo "Start - Affdex"
-for file in Data/$session_id*.webm;
+for file in Data/fixed_$session_id*.webm;
 	do $HOME/build/video-demo/./video-demo -d $HOME/affdex-sdk/data -l cuzinniko@gmail.com.license -i $file
 done
 echo "Finish - Affdex"
 
-# NOT WORKING - Incorrect directory location - To fix...
+# WORKING
 echo "Start - Praat"
 #./praat --run auto.praat Data/$session_id*
 for file in Data/$session_id*.wav;
@@ -47,14 +47,19 @@ echo "Start - AffdexPlayerFocus Merge"
 args=""
 for file in Data/$session_id*.csv;
 	do args=$file(basename "${file/.csv}").json
+	echo $file
+	echo $args
+	#python AffdexPlayerFocusMerger.py $file $args
 done
-#echo $args
+
 echo "Finish - AffdexPlayerFocus Merge"
 
 # NOT WORKING - License expired, need move to just tone analysis
-echo "Start - BlueMix"
+# potential here to boost speech recognition using this service as well
+# if we find it necessary.
+#echo "Start - BlueMix"
 #python ./bluemix_driver.py
-echo "Finish - BlueMix"
+#echo "Finish - BlueMix"
 
 echo "Session Script Terminated..."
 
