@@ -48,6 +48,10 @@ var RealSocket = function (app) {
 	  app.THREE.setSpawn(seatID);
   });
   
+  this.socketio.on('confirmation', function(){
+      console.log("SHELL SCRIPT TRIGGER ACTIVATED!");
+  });
+  
   this.socketio.on('session_key', function(session_key){
 	  app.sessionKey = session_key;
   });
@@ -72,6 +76,9 @@ var RealSocket = function (app) {
 	recognition.stop();
 	
 	focus_end();
+	
+	while(!recording_upload_status);
+	this.socketio.emit('upload_finished');
   });
   
   this.socketio.on('new_client', function(clientID){

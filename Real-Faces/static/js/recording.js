@@ -4,6 +4,8 @@ var button2;
 var baseDataKey;
 var sessionCount = 0;
 
+var recording_upload_status = false;
+
 var MAX_SLICE_SIZE = 1024 * 1024; // 1MB chunk sizes.
 var MAX_ALLOWED_UPLOAD_ERRORS = 50;
 
@@ -159,6 +161,7 @@ function makeXMLHttpRequest(url, data, callback) {
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200) {
             callback('upload-ended');
+			recording_upload_status = true;
         }
     };
     request.upload.onloadstart = function() {
@@ -362,14 +365,3 @@ function setResolution(param){
   }
   captureVideo(commonConfig);
 }
-
-realFaces.socket.socketio.emit("recording", "just do it yo");
-/*realFaces.socket.on('start-recording', function(data){
-    console.log("socket tells me to start recording");
-    captureVideo(commonConfig);
-    startRecordingAfterActive();
-});
-realFaces.socket.on('stop-recording', function(data){
-    console.log("socket tells me to stop recording");
-    stopRecordingOnHangup();
-});*/

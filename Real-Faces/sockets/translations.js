@@ -28,6 +28,8 @@ module.exports = function(io,uuid){
 		
 		if(uploads_finished == requiredUsercount)
 		{
+			client.emit('confirmation','received');
+			/*
 			exec("../runscript.sh " + sessionKey, 
 				function(error, stdout, stderr){				
 					if(error != null)
@@ -36,6 +38,7 @@ module.exports = function(io,uuid){
 					}
 					console.log('stdout: ' + stdout);
 			});
+			*/
 		}
 	});
 
