@@ -17,7 +17,7 @@ for file in Data/$session_id*.webm;
 done
 echo "Finish - .wav Conversion"
 
-# WORKING License until: NEED INSTALL
+# WORKING
 echo "Start - Affdex"
 for file in Data/fixed_$session_id*.webm;
 	do $HOME/build/video-demo/./video-demo -d $HOME/affdex-sdk/data -l cuzinniko@gmail.com.license -i $file
@@ -46,7 +46,7 @@ echo "Finish - Participation Analysis"
 echo "Start - AffdexPlayerFocus Merge"
 args=""
 for file in Data/$session_id*.csv;
-	do args=$file(basename "${file/.csv}").json
+	do args=(basename "${file/.csv}").json
 	echo $file
 	echo $args
 	#python AffdexPlayerFocusMerger.py $file $args
