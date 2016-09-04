@@ -47,9 +47,7 @@ echo "Start - AffdexPlayerFocus Merge"
 args=""
 for file in Data/fixed_$session_id*.csv;
 	do args=$(basename "${file/.csv}").json
-	echo $file
-	echo $args
-	#python AffdexPlayerFocusMerger.py "$file" "Data/$args"
+	python AffdexPlayerFocusMerger.py "$file" "Data/$args"
 done
 
 echo "Finish - AffdexPlayerFocus Merge"
