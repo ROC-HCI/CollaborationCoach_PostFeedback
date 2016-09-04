@@ -42,7 +42,7 @@ done
 python fileparser.py $argpath
 echo "Finish - Participation Analysis"
 
-# WORKING - DB REQUIRED
+# NOT WORKING - NEEDS DEBUGGING
 echo "Start - AffdexPlayerFocus Merge"
 args=""
 for file in Data/fixed_$session_id*.csv;
