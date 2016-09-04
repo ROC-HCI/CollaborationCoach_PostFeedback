@@ -139,6 +139,7 @@ function drawFeaturePoints(img, featurePoints) {
   var vRatio = contxt.canvas.height / img.height;
   var ratio = Math.min(hRatio, vRatio);
 
+  console.log(featurePoints[0].x);
   contxt.strokeStyle = "#FFFFFF";
   for (var id in featurePoints) {
     contxt.beginPath();
