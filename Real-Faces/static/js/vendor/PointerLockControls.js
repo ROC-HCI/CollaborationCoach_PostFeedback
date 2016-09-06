@@ -318,7 +318,7 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
     movementX = movingx;
     //movementY = movingy;
 
-    if (Math.abs(movementX) > 0.04){
+    if (Math.abs(movementX) > 2){
 
       rotated = true;
 
