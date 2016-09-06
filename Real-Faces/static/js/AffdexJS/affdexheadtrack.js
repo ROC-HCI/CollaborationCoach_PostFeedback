@@ -101,7 +101,7 @@ function drawFeaturePoints(img, featurePoints) {
     flag = false;
   }
 
-  console.log(firstpoint);
+  console.log(featurePoints[12].x - firstpoint);
 
   realFaces.THREE.controls.move(featurePoints[12].x - firstpoint);
 
