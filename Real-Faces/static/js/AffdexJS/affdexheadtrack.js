@@ -101,13 +101,15 @@ function drawFeaturePoints(img, featurePoints) {
     flag = false;
   }
 
+  console.log(featurePoints[0].x - firstpoint);
+
   realFaces.THREE.controls.move(featurePoints[0].x - firstpoint);
 
   var hRatio = contxt.canvas.width / img.width;
   var vRatio = contxt.canvas.height / img.height;
   var ratio = Math.min(hRatio, vRatio);
 
-  console.log(featurePoints[0].x);
+  //console.log(featurePoints[0].x);
   contxt.strokeStyle = "#FFFFFF";
   for (var id in featurePoints) {
     contxt.beginPath();
