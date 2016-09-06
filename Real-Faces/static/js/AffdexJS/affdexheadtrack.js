@@ -91,9 +91,17 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
 });
 
 //Draw the detected facial feature points on the image
+var flag = true;
+var firstpoint;
 function drawFeaturePoints(img, featurePoints) {
   var contxt = $('#face_video_canvas')[0].getContext('2d');
-  realFaces.THREE.controls.move(featurePoints[0].x);
+
+  if (flag == true) {
+    firstpoint = featurePoints[0].x;
+    flag = false;
+  }
+
+  realFaces.THREE.controls.move(featurePoints[0].x - firstpoint);
 
   var hRatio = contxt.canvas.width / img.width;
   var vRatio = contxt.canvas.height / img.height;
