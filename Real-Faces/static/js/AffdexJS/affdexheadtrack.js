@@ -93,7 +93,7 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
 //Draw the detected facial feature points on the image
 function drawFeaturePoints(img, featurePoints) {
   var contxt = $('#face_video_canvas')[0].getContext('2d');
-  realFaces.THREE.controls.move(featurePoints[0].x,100);
+  realFaces.THREE.controls.move(featurePoints[0].x);
 
   var hRatio = contxt.canvas.width / img.width;
   var vRatio = contxt.canvas.height / img.height;

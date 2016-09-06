@@ -309,25 +309,26 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
 
   }();
 
-  this.move = function(movingx, movingy) {
+  this.move = function(movingx) {
 
     if ( scope.enabled === false ) return;
 
     //var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
     //var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
     movementX = movingx;
-    movementY = movingy;
+    //movementY = movingy;
 
-    if (Math.abs(movementX) > 0.04 || Math.abs(movementY) > 0.04){
+    if (Math.abs(movementX) > 0.04){
 
       rotated = true;
 
       yawObject.rotation.y -= movementX * 0.002;
-      pitchObject.rotation.x -= movementY * 0.002;
+      //pitchObject.rotation.x -= movementY * 0.002;
 
-      pitchObject.rotation.x = Math.max( - PI_2, Math.min( PI_2, pitchObject.rotation.x ) );
+      //pitchObject.rotation.x = Math.max( - PI_2, Math.min( PI_2, pitchObject.rotation.x ) );
 
     }
+
 
   };
 
