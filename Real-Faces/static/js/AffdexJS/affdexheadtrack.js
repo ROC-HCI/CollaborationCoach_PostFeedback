@@ -112,6 +112,7 @@ function drawFeaturePoints(img, featurePoints) {
   //console.log(featurePoints[0].x);
   contxt.strokeStyle = "#FFFFFF";
   for (var id in featurePoints) {
+    console.log(id, featurePoints[id].x + " " + featurePoints[id].y);
     contxt.beginPath();
     contxt.arc(featurePoints[id].x,
       featurePoints[id].y, 2, 0, 2 * Math.PI);
