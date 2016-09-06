@@ -97,13 +97,13 @@ function drawFeaturePoints(img, featurePoints) {
   var contxt = $('#face_video_canvas')[0].getContext('2d');
 
   if (flag == true) {
-    firstpoint = featurePoints[0].x;
+    firstpoint = featurePoints[12].x;
     flag = false;
   }
 
   console.log(firstpoint);
 
-  realFaces.THREE.controls.move(featurePoints[0].x - firstpoint);
+  realFaces.THREE.controls.move(featurePoints[12].x - firstpoint);
 
   var hRatio = contxt.canvas.width / img.width;
   var vRatio = contxt.canvas.height / img.height;
@@ -112,7 +112,7 @@ function drawFeaturePoints(img, featurePoints) {
   //console.log(featurePoints[0].x);
   contxt.strokeStyle = "#FFFFFF";
   for (var id in featurePoints) {
-    console.log(id, featurePoints[id].x + " " + featurePoints[id].y);
+    //console.log(id, featurePoints[id].x + " " + featurePoints[id].y);
     contxt.beginPath();
     contxt.arc(featurePoints[id].x,
       featurePoints[id].y, 2, 0, 2 * Math.PI);
