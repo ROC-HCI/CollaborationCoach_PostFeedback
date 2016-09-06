@@ -321,12 +321,13 @@ THREE.PointerLockControls = function ( camera, sceneVars, positiveBoundaryX, neg
     if (Math.abs(movementX) > 2){
 
       rotated = true;
-
-      yawObject.rotation.y -= movementX * 0.002;
+      boundary = (yawObject.rotation.y - movementX * 0.002) * 100;
+      if(boundary >= 30 && boundary <= 270)
+      {
+        yawObject.rotation.y -= movementX * 0.002;
       //pitchObject.rotation.x -= movementY * 0.002;
-
       //pitchObject.rotation.x = Math.max( - PI_2, Math.min( PI_2, pitchObject.rotation.x ) );
-
+      }
     }
 
 
