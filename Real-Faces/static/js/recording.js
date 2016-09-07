@@ -160,8 +160,8 @@ function makeXMLHttpRequest(url, data, callback) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200) {
-            callback('upload-ended');
 			recording_upload_status = true;
+            callback('upload-ended');			
         }
     };
     request.upload.onloadstart = function() {
