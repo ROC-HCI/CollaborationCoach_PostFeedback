@@ -3,14 +3,6 @@ function proposeStop()
 	realFaces.socket.socketio.emit("propose_stop","stop");
 }
 
-function recordingCheck()
-{
-	if(!recording_upload_status)
-	{
-		
-	}
-}
-
 var RealSocket = function (app) {
   console.log(location, location.pathname, location.search);
   this.socketInterval = 100;
@@ -85,8 +77,17 @@ var RealSocket = function (app) {
 	
 	focus_end();
 	
-	//while(!recording_upload_status);
-	this.socketio.emit('upload_finished');
+	function recording_check()
+	{
+		if(!recording_upload_status)
+		{
+			setTimeout(recording_check,100);
+			return;
+		}
+		this.socketio.emit('upload_finished');
+	}
+	
+	recording_check();
   });
   
   this.socketio.on('new_client', function(clientID){
