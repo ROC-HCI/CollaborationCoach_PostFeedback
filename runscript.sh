@@ -4,11 +4,11 @@ session_id=$1
 
 echo "Session Script Starting for: $session_id"
 
-echo "Start - .webm Header Correction"
-for file in Data/$session_id*.webm;
-	do ffmpeg -i "$file" -c copy -fflags +genpts Data/fixed_$(basename "${file/.webm}").webm
-done
-echo "Finish - .webm Header Correction"
+#echo "Start - .webm Header Correction"
+#for file in Data/$session_id*.webm;
+#	do ffmpeg -i "$file" -c copy -fflags +genpts Data/fixed_$(basename "${file/.webm}").webm
+#done
+#echo "Finish - .webm Header Correction"
 
 # WORKING
 echo "Start - .wav Conversion"
@@ -19,7 +19,7 @@ echo "Finish - .wav Conversion"
 
 # WORKING
 echo "Start - Affdex"
-for file in Data/fixed_$session_id*.webm;
+for file in Data/$session_id*.webm;
 	do $HOME/build/video-demo/./video-demo -d $HOME/affdex-sdk/data -l cuzinniko@gmail.com.license -i $file
 done
 echo "Finish - Affdex"
@@ -45,7 +45,7 @@ echo "Finish - Participation Analysis"
 # NOT WORKING - NEEDS DEBUGGING
 echo "Start - AffdexPlayerFocus Merge"
 args=""
-for file in Data/fixed_$session_id*.csv;
+for file in Data/$session_id*.csv;
 	do args=$(basename "${file/.csv}").json
 	python AffdexPlayerFocusMerger.py "$file" "Data/$args"
 done
