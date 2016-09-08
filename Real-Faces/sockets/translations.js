@@ -24,11 +24,13 @@ module.exports = function(io,uuid){
 	});	
 	
 	client.on('upload_finished', function(data){
-		uploads_finished = upload_finished + 1;
+		uploads_finished = uploads_finished + 1;
 		
 		if(uploads_finished == requiredUsercount)
 		{
 			client.emit('confirmation','received');
+			
+			//Execute the shell script for server side processing
 			/*
 			exec("../runscript.sh " + sessionKey, 
 				function(error, stdout, stderr){				
