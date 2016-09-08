@@ -77,6 +77,7 @@ var RealSocket = function (app) {
 	
 	focus_end();
 	
+	var thisPointer = this;
 	function recording_check()
 	{
 		if(!recording_upload_status)
@@ -86,7 +87,7 @@ var RealSocket = function (app) {
 			return;
 		}
 		console.log("Upload done! Told the server...");
-		this.socketio.emit('upload_finished','done');
+		thisPointer.socketio.emit('upload_finished','done');
 	}
 	
 	recording_check();
