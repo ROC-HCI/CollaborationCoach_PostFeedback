@@ -81,9 +81,11 @@ var RealSocket = function (app) {
 	{
 		if(!recording_upload_status)
 		{
+			console.log("Upload not done, waiting...");
 			setTimeout(recording_check,100);
 			return;
 		}
+		console.log("Upload done! Told the server...");
 		this.socketio.emit('upload_finished');
 	}
 	
