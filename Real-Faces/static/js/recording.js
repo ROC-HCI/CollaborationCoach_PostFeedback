@@ -230,8 +230,14 @@ MyRecording.prototype.uploadFileToServer = function(blob_slice) {
   request.upload.addEventListener("progress", function(evt) {
     if (evt.lengthComputable) {
       //progressBar.value = evt.loaded+recorder.lastFileSlice;
-      percentageCalc = Math.min(Math.round(100*(evt.loaded+recorder.lastFileSlice) / recorder.blob.size),100) + "% of "+recorder.type+" uploaded";
+      percentageCalc = Math.min(Math.round(100*(evt.loaded+recorder.lastFileSlice) / recorder.blob.size),100);
       console.log(percentageCalc);
+	  
+	  if(percentageCalc == 100)
+	  {
+		  recording_upload_status = true;
+	  }
+	  
       if(pendingUploads <= 1)
          document.getElementById('percentageCalc').innerHTML = percentageCalc;
       //percentageCalc.title = percentageCalc.innerHTML;
