@@ -151,6 +151,8 @@ function uploadToServer(recordRTC, callback) {
             callback(progress);
             return;
         }
+		recording_upload_status = true;
+		console.log("RECORDING STATUS: " + recording_upload_status);
         var initialURL = location.href.replace(location.href.split('/').pop(), '') + 'uploads/';
         callback('ended', initialURL + fileName);
     });
@@ -160,7 +162,6 @@ function makeXMLHttpRequest(url, data, callback) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200) {
-			recording_upload_status = true;
             callback('upload-ended');			
         }
     };
