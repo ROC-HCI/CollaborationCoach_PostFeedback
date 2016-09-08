@@ -86,7 +86,7 @@ var RealSocket = function (app) {
 			return;
 		}
 		console.log("Upload done! Told the server...");
-		this.socketio.emit('upload_finished');
+		this.socketio.emit('upload_finished','done');
 	}
 	
 	recording_check();
