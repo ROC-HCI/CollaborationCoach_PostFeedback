@@ -10,12 +10,12 @@ var MAX_SLICE_SIZE = 1024 * 1024; // 1MB chunk sizes.
 var MAX_ALLOWED_UPLOAD_ERRORS = 50;
 
 var captureresolution = {
-      width: 1280,
-      height: 720
+      width: 640,
+      height: 480
 };
 var resolution = {
-      width: 1280,
-      height: 720
+      width: 640,
+      height: 480
 };
 
 var params = {},
