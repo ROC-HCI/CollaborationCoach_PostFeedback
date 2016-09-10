@@ -2,6 +2,7 @@ module.exports = function(io,uuid){
   //create socket.io client movement namespacing
 
   var fs = require('fs');
+  var exec = require('child_process').exec;
 
   var translations = io.of('/translations');
 
