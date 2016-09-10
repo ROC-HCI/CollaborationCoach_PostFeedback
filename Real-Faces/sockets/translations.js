@@ -2,7 +2,7 @@ module.exports = function(io,uuid){
   //create socket.io client movement namespacing
 
   var fs = require('fs');
-  var exec = require('child_process').exec;
+  var exec = require('child_process').execFile;
 
   var translations = io.of('/translations');
 
@@ -32,7 +32,7 @@ module.exports = function(io,uuid){
 			client.emit('debug','uploads completed');
 			
 			//Execute the shell script for server side processing
-			exec("../runscript.sh " + sessionKey, 
+			exec('../runscript.sh', [sessionKey], 
 				function(error, stdout, stderr){				
 					if(error != null)
 					{
