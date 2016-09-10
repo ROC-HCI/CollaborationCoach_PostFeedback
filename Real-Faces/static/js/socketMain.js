@@ -48,8 +48,8 @@ var RealSocket = function (app) {
 	  app.THREE.setSpawn(seatID);
   });
   
-  this.socketio.on('confirmation', function(){
-      console.log("SHELL SCRIPT TRIGGER ACTIVATED!");
+  this.socketio.on('debug', function(message){
+      console.log('debug_message: ' + message);
   });
   
   this.socketio.on('session_key', function(session_key){

@@ -28,19 +28,18 @@ module.exports = function(io,uuid){
 		
 		if(uploads_finished == requiredUsercount)
 		{
-			client.emit('confirmation','received');
+			client.emit('debug','uploads completed');
 			
 			//Execute the shell script for server side processing
-			/*
 			exec("../runscript.sh " + sessionKey, 
 				function(error, stdout, stderr){				
 					if(error != null)
 					{
 						console.log(error);
 					}
+					client.emit('debug','running session script');
 					console.log('stdout: ' + stdout);
 			});
-			*/
 		}
 	});
 
