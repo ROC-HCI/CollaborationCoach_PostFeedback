@@ -75,6 +75,7 @@ echo "Database cleanup completed...";
 //=============================================================
 if($_GET['mode'] == 'debug')
 {
+	/*
 	$collection = $database->selectCollection('speechrawdata');
 	$cursor = $collection->find();
 	
@@ -82,6 +83,11 @@ if($_GET['mode'] == 'debug')
 	{
 		echo var_dump($document) . "<hr/>";
 	}
+	*/
+	$key = $_GET['key'];
+	
+	$output = exec(dirname(__FILE__) . '/runscript.sh ' . $key);
+	echo $output;
 }
 
 
