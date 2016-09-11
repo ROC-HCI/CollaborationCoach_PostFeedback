@@ -92,12 +92,14 @@ if($_GET['mode'] == 'debug')
 // Access point for running the shell script.
 if($_GET['mode'] == 'process')
 {
-	$key = $_GET['key'];
+	$key = $_GET['session_key'];
 	
 	$output = array();
 	
 	exec(dirname(__FILE__) . '/runscript.sh ' . $key, $output);
-	echo var_dump($output);
+	
+	foreach($output as $key => $value)
+		echo $value . "<br/>";
 }
 
 // Access point for participation data for a session key.
