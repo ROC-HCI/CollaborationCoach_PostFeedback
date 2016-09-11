@@ -8,7 +8,7 @@ var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
 var detector = new affdex.CameraDetector(divRoot, width, height, faceMode);
 
 //Enable detection of all Expressions, Emotions and Emojis classifiers.
-//detector.detectAllEmotions();
+detector.detectAllEmotions();
 //detector.detectAllExpressions();
 //detector.detectAllEmojis();
 //detector.detectAllAppearance();
@@ -78,11 +78,11 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
   log('#results', "Timestamp: " + timestamp.toFixed(2));
   log('#results', "Number of faces found: " + faces.length);
   if (faces.length > 0) {
-    /*log('#results', "Appearance: " + JSON.stringify(faces[0].appearance));
+    //log('#results', "Appearance: " + JSON.stringify(faces[0].appearance));
     log('#results', "Emotions: " + JSON.stringify(faces[0].emotions, function(key, val) {
       return val.toFixed ? Number(val.toFixed(0)) : val;
     }));
-    log('#results', "Expressions: " + JSON.stringify(faces[0].expressions, function(key, val) {
+    /*log('#results', "Expressions: " + JSON.stringify(faces[0].expressions, function(key, val) {
       return val.toFixed ? Number(val.toFixed(0)) : val;
     }));
     log('#results', "Emoji: " + faces[0].emojis.dominantEmoji);*/

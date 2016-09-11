@@ -74,6 +74,9 @@ var RealSocket = function (app) {
 	
 	recognizing = false;
 	recognition.stop();
+
+  //testing affdex realtime
+  onStart();
 	
 	//focus_end();
 	
