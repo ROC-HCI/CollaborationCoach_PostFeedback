@@ -118,6 +118,8 @@ if($_GET['mode'] == 'participation')
 	{
 		echo json_encode($document);
 	}	
+	
+	$connection->close();
 }
 
 // Access point for merged focus and affdex data for a session key and user.
@@ -137,6 +139,8 @@ if($_GET['mode'] == 'affdexmerge')
 	{
 		echo json_encode($document);
 	}
+	
+	$connection->close();
 }
 
 // Access point for merged focus and affdex data for a session key and user.
@@ -156,6 +160,8 @@ if($_GET['mode'] == 'affdexaverages')
 	{
 		echo json_encode($document);
 	}
+	
+	$connection->close();
 }
 
 // Access point for submitting Google speech transcript data to the database.
@@ -169,6 +175,8 @@ if($_GET['mode'] == 'speechupload')
 	$collection->insert($document);
 	
 	echo "speechrawdata submitted";
+	
+	$connection->close();
 }
 
 // Access point for obtaining raw speech recognition detected by the 
@@ -188,6 +196,8 @@ if($_GET['mode'] == 'speechrawdata')
 	{
 		echo json_encode($document);
 	}
+	
+	$connection->close();
 }
 
 ?>
