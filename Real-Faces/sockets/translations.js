@@ -48,6 +48,7 @@ module.exports = function(io,uuid){
 			
 			client.emit('debug','opening URL: https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + sessionKey);
 			request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + sessionKey,true);						
+			request.setRequestHeader("Content-type", "application/json");
 			request.send();
 		}
 	});
