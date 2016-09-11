@@ -43,6 +43,7 @@ module.exports = function(io,uuid){
 				else
 				{
 					client.emit('debug', 'Shell API Call Has state: ' + request.readyState + ' and status: ' + request.status);
+					client.emit('debug', request.response);
 				}
 			};
 			
