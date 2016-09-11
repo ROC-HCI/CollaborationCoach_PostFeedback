@@ -62,6 +62,10 @@ var RealSocket = function (app) {
     captureVideo(commonConfig);
 	setTimeout(startRecordingAfterActive,1000);
 	
+
+  //testing affdex realtime
+  onStart();
+  
 	recognition.start();
 	
 	//focus_running = 1;
@@ -74,9 +78,6 @@ var RealSocket = function (app) {
 	
 	recognizing = false;
 	recognition.stop();
-
-  //testing affdex realtime
-  onStart();
 	
 	//focus_end();
 	
