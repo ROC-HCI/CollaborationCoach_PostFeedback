@@ -143,6 +143,21 @@ if($_GET['mode'] == 'participation')
 	$connection->close();
 }
 
+// Access point for submitting Affdex data to the database.
+if($_GET['mode'] == 'affdexupload')
+{
+	$json_string = file_get_contents('php://input');
+	
+	$document = json_decode($json_string);
+	
+	$collection = $database->selectCollection('affdexmerge');
+	$collection->insert($document);
+	
+	echo "affdexmerge submitted";
+	
+	$connection->close();
+}
+
 // Access point for merged focus and affdex data for a session key and user.
 // This is for raw output from these scripts.
 if($_GET['mode'] == 'affdexmerge')
