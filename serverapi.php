@@ -75,7 +75,6 @@ echo "Database cleanup completed...";
 //=============================================================
 if($_GET['mode'] == 'debug')
 {
-	/*
 	$collection = $database->selectCollection('speechrawdata');
 	$cursor = $collection->find();
 	
@@ -83,17 +82,23 @@ if($_GET['mode'] == 'debug')
 	{
 		echo var_dump($document) . "<hr/>";
 	}
-	*/
-	$key = $_GET['key'];
-	
-	$output = exec(dirname(__FILE__) . '/runscript.sh ' . $key);
-	echo $output;
 }
 
 
 //=============================================================
 // ACCESS POINTS FOR API GO BELOW THIS POINTS
 //=============================================================
+
+// Access point for running the shell script.
+if($_GET['mode'] == 'process')
+{
+	$key = $_GET['key'];
+	
+	$output = array();
+	
+	exec(dirname(__FILE__) . '/runscript.sh ' . $key, $output);
+	echo var_dump($output);
+}
 
 // Access point for participation data for a session key.
 if($_GET['mode'] == 'participation')

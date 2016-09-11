@@ -29,18 +29,20 @@ module.exports = function(io,uuid){
 		
 		if(uploads_finished == requiredUsercount)
 		{
-			client.emit('debug','uploads completed');
+			client.emit('debug','uploads completed, executing the shell script');
 			
-			//Execute the shell script for server side processing
-			exec('../runscript.sh', [sessionKey], 
-				function(error, stdout, stderr){				
-					if(error != null)
-					{
-						console.log(error);
-					}
-					client.emit('debug','running session script');
-					console.log('stdout: ' + stdout);
-			});
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = function() 
+			{
+				if(request.readyState == 4 && request.status == 200) 
+				{
+					client.emit('debug', 'processing finished, output below.');
+					client.emit('debug', request.response);
+				}
+			};
+			
+			request.open('GET', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&key=' + sessionKey);						
+			request.send();
 		}
 	});
 
