@@ -13,7 +13,7 @@ catch(Exception $e)
 {
 	$retries = 5;
 	
-	for($counter = 1; $counter <= $retries, $counter++)
+	for($counter = 1; $counter <= $retries; $counter++)
 	{
 		try
 		{
