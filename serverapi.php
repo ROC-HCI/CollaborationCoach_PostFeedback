@@ -11,6 +11,8 @@ try
 }
 catch(Exception $e)
 {
+	// Common issue with MongoClient fails the first request,
+	// so retry a few times.
 	$retries = 5;
 	
 	for($counter = 1; $counter <= $retries; $counter++)
