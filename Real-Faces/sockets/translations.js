@@ -40,9 +40,14 @@ module.exports = function(io,uuid){
 					client.emit('debug', 'processing finished, output below.');
 					client.emit('debug', request.response);
 				}
+				else
+				{
+					client.emit('debug', 'Shell API Call Has state: ' + request.readyState + ' and status: ' + request.status);
+				}
 			};
 			
-			request.open('GET', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + sessionKey);						
+			client.emit('debug','opening URL: https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + sessionKey);
+			request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + sessionKey);						
 			request.send();
 		}
 	});
