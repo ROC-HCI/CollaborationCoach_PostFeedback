@@ -4,8 +4,29 @@ header('Access-Control-Allow-Headers: Content-type');
 
 session_start();
 
-$connection = new MongoClient();
-$database = $connection->selectDB("rocconf");
+try
+{
+	$connection = new MongoClient();
+	$database = $connection->selectDB("rocconf");
+}
+catch(Exception $e)
+{
+	$retries = 5;
+	
+	for($counter = 1; $counter <= $retries, $counter++)
+	{
+		try
+		{
+			$connection = new MongoClient();
+			$database = $connection->selectDB("rocconf");
+			break;
+		}
+		catch(Exception $e)
+		{
+			continue;
+		}
+	}
+}
 
 //===========================================================
 // Test code to insert a collection into a test database
