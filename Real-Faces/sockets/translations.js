@@ -3,6 +3,7 @@ module.exports = function(io,uuid){
 
   var fs = require('fs');
   var exec = require('child_process').execFile;
+  var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
   var translations = io.of('/translations');
 
