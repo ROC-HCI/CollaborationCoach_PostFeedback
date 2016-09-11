@@ -82,6 +82,8 @@ if($_GET['mode'] == 'debug')
 	{
 		echo var_dump($document) . "<hr/>";
 	}
+	
+	$connection->close();
 }
 
 
