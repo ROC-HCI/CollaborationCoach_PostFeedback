@@ -42,7 +42,7 @@ module.exports = function(io,uuid){
 				}
 			};
 			
-			request.open('GET', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&key=' + sessionKey);						
+			request.open('GET', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + sessionKey);						
 			request.send();
 		}
 	});
