@@ -79,9 +79,12 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
   log('#results', "Number of faces found: " + faces.length);
   if (faces.length > 0) {
     //log('#results', "Appearance: " + JSON.stringify(faces[0].appearance));
-    log('#results', "Emotions: " + JSON.stringify(faces[0].emotions, function(key, val) {
+    /*log('#results', "Emotions: " + JSON.stringify(faces[0].emotions, function(key, val) {
       return val.toFixed ? Number(val.toFixed(0)) : val;
-    }));
+    }));*/
+    sentiment = JSON.stringify(faces[0].emotions, function(key, val) {
+      return val.toFixed ? Number(val.toFixed(0)) : val;
+    })
     /*log('#results', "Expressions: " + JSON.stringify(faces[0].expressions, function(key, val) {
       return val.toFixed ? Number(val.toFixed(0)) : val;
     }));

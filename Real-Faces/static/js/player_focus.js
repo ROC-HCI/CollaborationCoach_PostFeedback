@@ -3,6 +3,7 @@ var focus_running = 0;
 
 var timeLine = [];
 var count = 0;
+var sentiment; 
 
 function focus_sample()
 {
@@ -15,6 +16,8 @@ function focus_sample()
 			
 		timeLine.push(focusObject);
 		count++;
+
+		console.log("sampling emotions", sentiment);
 	}
 }
 
