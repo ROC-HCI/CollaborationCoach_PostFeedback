@@ -65,11 +65,11 @@ var RealSocket = function (app) {
 
   //testing affdex realtime
   onStart();
-  
+
 	recognition.start();
 	
-	//focus_running = 1;
-	//setInterval(focus_sample,1000);
+	focus_running = 1;
+	setInterval(focus_sample,1000);
   });
   
   // ALL CLIENT FUNCTIONS THAT NEED TO STOP NEED TO STOP HERE - JW
@@ -79,7 +79,7 @@ var RealSocket = function (app) {
 	recognizing = false;
 	recognition.stop();
 	
-	//focus_end();
+	focus_end();
 	
 	function recording_check()
 	{
