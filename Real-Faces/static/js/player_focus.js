@@ -17,7 +17,9 @@ function focus_sample()
 		timeLine.push(focusObject);
 		count++;
 
-		console.log("sampling emotions", sentiment);
+		for()
+		timeLine.concat(sentiment);
+		console.log("sampling emotions", timeLine);
 	}
 }
 
