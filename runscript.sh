@@ -16,6 +16,8 @@ for file in Data/fixed_$session_id*.webm;
 done
 echo "Finish - .wav Conversion"
 
+#CAN WE USE FFMPEG TO DO FLACC CONVERSION?
+
 #echo "Start - Affdex"
 #for file in Data/fixed_$session_id*.webm;
 #	do $HOME/build/video-demo/./video-demo -d $HOME/affdex-sdk/data -l cuzinniko@gmail.com.license -i $file
@@ -46,6 +48,10 @@ echo "Finish - Participation Analysis"
 #done
 
 #echo "Finish - AffdexPlayerFocus Merge"
+
+#SETUP AVERAGES FOR AFFDEX FEATURES HERE
+
+#RUN BLUEMIX TONE ANALYSIS ON SUBMITTED SPEECH
 
 # NOT WORKING - License expired, need move to just tone analysis
 # potential here to boost speech recognition using this service as well
