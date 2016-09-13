@@ -11,35 +11,39 @@ function focus_sample()
 	{
 		var info = document.getElementById("playerFocusHUDNotifitcation").innerHTML;
 
-		var focusObject = {timeValue: count, focus: info};
-		//console.log(info + " : " + count);
-			
-		timeLine.push(focusObject);
-		count++;
+		var sample_element = sentiment;
+		sample_element['timeValue'] = count;
+		sample_element['focus'] = info;
 
-		timeLine.concat(sentiment);
-		console.log("sampling emotions", timeLine);
+		console.log(JSON.stringify(sample_element);
+			
+		timeLine.push(sample_element);
+		count++;
 	}
 }
 
 function focus_end()
 {
 	focus_running = 0;
-	var myJSONString = JSON.stringify(timeLine); 
-	
-	/*
-	console.log(myJSONString);
-	console.log("Session key: "+realFaces.sessionKey);
-	console.log("Name: "+realFaces.userName);
-	*/
 
-	var JSONkey = realFaces.sessionKey + "_" + realFaces.userName;
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = function() 
+	{
+		if(request.readyState == 4 && request.status == 200) 
+		{
+			console.log(request.response);
+		}
+	};
 	
-	var JSONData = {
-		JSONkey : JSONkey,
-		myJSONString : myJSONString
-	}
+	data_to_send = {'session_key':realFaces.sessionKey, 
+					'user':realFaces.userName,
+					'data':timeLine};
+							
+	string_data = JSON.stringify(data_to_send);				
+					
+	request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexupload');				
+	request.setRequestHeader("Content-type", "application/json");			
+	request.send(string_data);
 
-	realFaces.socket.socketio.emit("FOCUS_JSON", JSONData);
 }
 

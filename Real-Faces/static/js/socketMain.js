@@ -55,6 +55,27 @@ var RealSocket = function (app) {
   this.socketio.on('session_key', function(session_key){
 	  app.sessionKey = session_key;
   });
+  
+  this.socketio.on('shell_delegate', function(message){
+	  var request = new XMLHttpRequest();
+	  request.onreadystatechange = function() 
+	  {
+		if(request.readyState == 4 && request.status == 200) 
+		{
+			client.emit('debug', 'processing finished, output below.');
+			client.emit('debug', request.response);
+		}
+		else
+		{
+			client.emit('debug', 'Shell API Call Has state: ' + request.readyState + ' and status: ' + request.status);
+			client.emit('debug', request.response);
+		}
+	  };
+
+	  request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + app.sessionKey,true);						
+	  request.setRequestHeader("Content-type", "application/json");
+	  request.send();
+  });
 
   // ALL CLIENT FUNCTIONS THAT NEED TO START NEED TO START HERE - JW
   this.socketio.on('session_start', function(data){
@@ -62,9 +83,7 @@ var RealSocket = function (app) {
     captureVideo(commonConfig);
 	setTimeout(startRecordingAfterActive,1000);
 	
-
-  //testing affdex realtime
-  onStart();
+	onStart();
 
 	recognition.start();
 	

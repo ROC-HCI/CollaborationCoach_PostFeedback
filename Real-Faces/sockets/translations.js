@@ -30,33 +30,13 @@ module.exports = function(io,uuid){
 		
 		if(uploads_finished == requiredUsercount)
 		{
-			client.emit('debug','uploads completed, executing the shell script');
-			
-			var request = new XMLHttpRequest();
-			request.onreadystatechange = function() 
-			{
-				if(request.readyState == 4 && request.status == 200) 
-				{
-					client.emit('debug', 'processing finished, output below.');
-					client.emit('debug', request.response);
-				}
-				else
-				{
-					client.emit('debug', 'Shell API Call Has state: ' + request.readyState + ' and status: ' + request.status);
-					client.emit('debug', request.response);
-				}
-			};
-			
-			client.emit('debug','opening URL: https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + sessionKey);
-			request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + sessionKey,true);						
-			request.setRequestHeader("Content-type", "application/json");
-			request.send();
+			// This client is the last to finish uploading,
+			// so we'll delegate them to make the shell API call
+			// because doing it server to server doesn't seem
+			// to work for whatever reason.
+			client.emit('shell_delegate','tell the API to do the thing!');
 		}
 	});
-
-    client.on('FOCUS_JSON', function(data){
-       fs.writeFile("../Data/" + data.JSONkey + "_1.json", data.myJSONString);
-    });
 
     client.on('select_room', function(roomName){
       client.join(roomName);
