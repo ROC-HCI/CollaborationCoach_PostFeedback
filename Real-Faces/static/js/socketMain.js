@@ -82,11 +82,10 @@ var RealSocket = function (app) {
 	  
     captureVideo(commonConfig);
 	setTimeout(startRecordingAfterActive,1000);
-	
-	onStart();
 
 	recognition.start();
 	
+	onStart();
 	focus_running = 1;
 	setInterval(focus_sample,1000);
   });
@@ -98,6 +97,7 @@ var RealSocket = function (app) {
 	recognizing = false;
 	recognition.stop();
 	
+	onStop();
 	focus_end();
 	
 	function recording_check()
