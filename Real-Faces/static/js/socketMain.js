@@ -49,7 +49,7 @@ var RealSocket = function (app) {
   });
   
   this.socketio.on('debug', function(message){
-      console.log('debug_message: ' + message);
+      console.log('server debug message: ' + message);
   });
   
   this.socketio.on('session_key', function(session_key){
@@ -62,13 +62,13 @@ var RealSocket = function (app) {
 	  {
 		if(request.readyState == 4 && request.status == 200) 
 		{
-			client.emit('debug', 'processing finished, output below.');
-			client.emit('debug', request.response);
+			console.log('processing finished, output below.');
+			console.log(request.response);
 		}
 		else
 		{
-			client.emit('debug', 'Shell API Call Has state: ' + request.readyState + ' and status: ' + request.status);
-			client.emit('debug', request.response);
+			console.log('Shell API Call Has state: ' + request.readyState + ' and status: ' + request.status);
+			console.log('debug', request.response);
 		}
 	  };
 
