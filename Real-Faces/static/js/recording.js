@@ -233,11 +233,6 @@ MyRecording.prototype.uploadFileToServer = function(blob_slice) {
       percentageCalc = Math.min(Math.round(100*(evt.loaded+recorder.lastFileSlice) / recorder.blob.size),100);
       console.log(percentageCalc);
 	  
-	  if(percentageCalc == 100)
-	  {
-		  recording_upload_status = true;
-	  }
-	  
       if(pendingUploads <= 1)
          document.getElementById('percentageCalc').innerHTML = percentageCalc;
       //percentageCalc.title = percentageCalc.innerHTML;
@@ -276,6 +271,7 @@ MyRecording.prototype.uploadFileToServerCallback = function(message) {
   } else if (this.blob.size - this.lastFileSlice <= MAX_SLICE_SIZE && this.blob.size - this.lastFileSlice > 0) {
     this.uploadFileToServer(this.blob.slice(this.lastFileSlice,this.blob.size));
   } else {
+	recording_upload_status = true;
     pendingUploads -= 1;
     console.log("number of uploads: ", pendingUploads);
     if(pendingUploads == 0){
