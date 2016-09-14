@@ -17,7 +17,8 @@ detector.detectAllEmotions();
 detector.addEventListener("onInitializeSuccess", function() {
   log('#logs', "The detector reports initialized");
   //Display canvas instead of video feed because we want to draw the feature points on it
-  $("#face_video_canvas").css("display", "block");
+  
+  //$("#face_video_canvas").css("display", "block");
   $("#face_video").css("display", "none");
 });
 
@@ -90,7 +91,9 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
       return val.toFixed ? Number(val.toFixed(0)) : val;
     }));
     log('#results', "Emoji: " + faces[0].emojis.dominantEmoji);*/
-    drawFeaturePoints(image, faces[0].featurePoints);
+    
+    //turn on/off drawing on canvas
+    //drawFeaturePoints(image, faces[0].featurePoints);
   }
 });
 
