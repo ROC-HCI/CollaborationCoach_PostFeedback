@@ -86,7 +86,7 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
     sentiment = JSON.stringify(faces[0].emotions, function(key, val) {
       return val.toFixed ? Number(val.toFixed(0)) : val;
     })
-    console.log(sentiment);
+    //console.log(sentiment);
     /*log('#results', "Expressions: " + JSON.stringify(faces[0].expressions, function(key, val) {
       return val.toFixed ? Number(val.toFixed(0)) : val;
     }));
