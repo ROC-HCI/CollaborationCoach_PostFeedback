@@ -18,7 +18,7 @@ function focus_sample()
 			//sample_element['timeValue'] = count;
 			//sample_element['focus'] = info;
 
-			console.log(sample_element);
+			//console.log(sample_element);
 			//console.log(JSON.stringify(sample_element));
 				
 			timeLine.push(sample_element);
