@@ -3,7 +3,7 @@ var focus_running = 0;
 
 var timeLine = [];
 var count = 0;
-var sentiment; 
+var sentiment = 0; 
 
 function focus_sample()
 {
@@ -11,14 +11,19 @@ function focus_sample()
 	{
 		var info = document.getElementById("playerFocusHUDNotifitcation").innerHTML;
 
-		var sample_element = sentiment;
-		sample_element['timeValue'] = count;
-		sample_element['focus'] = info;
+		// If sentiment hasn't changed we haven't started affdex sampling yet.
+		if(sentiment != 0)
+		{
+			var sample_element = sentiment;
+			//sample_element['timeValue'] = count;
+			//sample_element['focus'] = info;
 
-		console.log(JSON.stringify(sample_element));
-			
-		timeLine.push(sample_element);
-		count++;
+			console.log(sample_element);
+			//console.log(JSON.stringify(sample_element));
+				
+			timeLine.push(sample_element);
+			count++;
+		}
 	}
 }
 
