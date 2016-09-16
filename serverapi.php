@@ -98,7 +98,7 @@ echo "Database cleanup completed...";
 //=============================================================
 if($_GET['mode'] == 'debug')
 {
-	$collection = $database->selectCollection('affdexmerge');
+	$collection = $database->selectCollection('speechrawdata');
 	$cursor = $collection->find();
 	
 	foreach($cursor as $id => $document)
