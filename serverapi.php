@@ -101,11 +101,14 @@ if($_GET['mode'] == 'debug')
 	$collection = $database->selectCollection('affdexmerge');
 	$cursor = $collection->find();
 	
+	$print_document = null;
+	
 	foreach($cursor as $id => $document)
 	{
-		echo var_dump($document) . "<hr/>";
+		$print_document = $document;
 	}
 	
+	echo var_dump)($print_document);
 	$connection->close();
 }
 
