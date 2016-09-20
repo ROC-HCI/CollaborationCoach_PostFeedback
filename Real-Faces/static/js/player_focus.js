@@ -15,6 +15,8 @@ function focus_sample()
 		if(sentiment != 0)
 		{
 			var sample_element = sentiment;
+			sample_element.timeValue = count;
+			sample_element.focusValue = info;
 			//sample_element['timeValue'] = count;
 			//sample_element['focus'] = info;
 
