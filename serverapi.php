@@ -108,7 +108,7 @@ if($_GET['mode'] == 'debug')
 		$print_document = $document;
 	}
 	
-	echo var_dump)($print_document);
+	echo var_dump($print_document);
 	$connection->close();
 }
 
