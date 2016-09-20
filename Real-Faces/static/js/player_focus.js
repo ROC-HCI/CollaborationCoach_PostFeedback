@@ -13,18 +13,11 @@ function focus_sample()
 
 		// If sentiment hasn't changed we haven't started affdex sampling yet.
 		if(sentiment != 0)
-		{
-			console.log(sentiment);
-			
-			var sample_element = sentiment;
-			sample_element.timeValue = count;
-			sample_element.focusValue = info;
-			//sample_element['timeValue'] = count;
-			//sample_element['focus'] = info;
-
-			//console.log(sample_element);
-			//console.log(JSON.stringify(sample_element));
-				
+		{			
+			var sample_element = {"timeValue":count,
+			                      "focus":info,
+			                      "sentiment": sentiment};
+			console.log(sample_element);
 			timeLine.push(sample_element);
 			count++;
 		}
