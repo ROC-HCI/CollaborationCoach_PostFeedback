@@ -220,13 +220,11 @@ final_dict = []
 interrupt_raw = dict['interruption']
 interrupt_fixed = []
 
-pp.pprint(interrupt_raw)
-
-for k,v in interrupt_raw:
+for k,v in interrupt_raw.iteritems():
 	interrupt_fixed[re.sub(r"/Data\/fixed_" + session_key + "_/g","",k)] = v
 
 	
-#pp.pprint(interrupt_fixed)
+pp.pprint(interrupt_fixed)
 
 #pp.pprint(collection.insert_one(dict).inserted_id)
 
