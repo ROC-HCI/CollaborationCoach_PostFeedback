@@ -30,35 +30,32 @@ def parse_raw_data(session_key, user):
 	pass_headers = 0
 	for row in affdex_data:
 		sample = []
-		if pass_headers != 0:
-			try:
-				sample.append(int(row["focus"]))
-				sample.append(float(row["engagement"]))
-				sample.append(float(row["attention"]))
-				sample.append(float(row["suprise"]))
-				sample.append(float(row["contempt"]))
-				sample.append(float(row["joy"]))
-				sample.append(float(row["smirk"]))
-				sample.append(float(row["relaxed"]))
-				sample.append(float(row["dissapointed"]))
-			except KeyError:
-				sample.append(random.randint(0,4))
-				sample.append(float(row["engagement"]))
-				sample.append(float(row["attention"]))
-				sample.append(float(row["suprise"]))
-				sample.append(float(row["contempt"]))
-				sample.append(float(row["joy"]))
-				sample.append(float(row["smirk"]))
-				sample.append(float(row["relaxed"]))
-				sample.append(float(row["dissapointed"]))
-			nan_check = False
-			for element in sample:
-				if math.isnan(element):
-					nan_check = True
-			if not nan_check:
-				parsed_data.append(sample)
-		else:
-			pass_headers = 1	
+		try:
+			sample.append(int(row["focus"]))
+			sample.append(float(row["engagement"]))
+			sample.append(float(row["attention"]))
+			sample.append(float(row["suprise"]))
+			sample.append(float(row["contempt"]))
+			sample.append(float(row["joy"]))
+			sample.append(float(row["smirk"]))
+			sample.append(float(row["relaxed"]))
+			sample.append(float(row["dissapointed"]))
+		except KeyError:
+			sample.append(random.randint(0,4))
+			sample.append(float(row["engagement"]))
+			sample.append(float(row["attention"]))
+			sample.append(float(row["suprise"]))
+			sample.append(float(row["contempt"]))
+			sample.append(float(row["joy"]))
+			sample.append(float(row["smirk"]))
+			sample.append(float(row["relaxed"]))
+			sample.append(float(row["dissapointed"]))
+		nan_check = False
+		for element in sample:
+			if math.isnan(element):
+				nan_check = True
+		if not nan_check:
+			parsed_data.append(sample)
 	return parsed_data
 
 # Compute average statistics about a set of records
