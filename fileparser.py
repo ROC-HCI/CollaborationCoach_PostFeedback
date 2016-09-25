@@ -218,17 +218,18 @@ with open('result.json','w') as outfile:
 final_dict = {}
 final_dict['session_key'] = dict['session_key']
 
+p = re.compile("Data/fixed_" + dict['session_key'] + "_")
+
 interrupt_raw = dict['interruption']
 interrupt_fixed = {}
 
 for k,v in interrupt_raw.iteritems():
-	p = re.compile("Data/fixed_" + dict['session_key'] + "_")
 	result = p.sub("",k)
 	final = result.split('_')
 	interrupt_fixed[final[0]] = v
 
-	
-pp.pprint(interrupt_fixed)
+final_dict['interruption'] = interrupt_fixed
+pp.pprint(final_dict)
 
 #pp.pprint(collection.insert_one(dict).inserted_id)
 
