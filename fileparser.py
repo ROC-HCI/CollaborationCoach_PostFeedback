@@ -223,7 +223,9 @@ interrupt_fixed = {}
 
 for k,v in interrupt_raw.iteritems():
 	p = re.compile("Data/fixed_" + dict['session_key'] + "_")
-	interrupt_fixed[p.sub("",k)] = v
+	result = p.sub("",k)
+	final = result.split('_')
+	interrupt_fixed[final[0]] = v
 
 	
 pp.pprint(interrupt_fixed)
