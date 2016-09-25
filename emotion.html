@@ -113,7 +113,7 @@ function setupChart(user)
 	var ctx = document.getElementById("barChart").getContext("2d");
 	//var myNewChart = new Chart(ctx,{type:'radar', data: radarData, options:""});
 
-	var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options: ""});
+	var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options: {responsive: true, maintainAspectRatio: true}});
 }
 
 // Document ready function 
