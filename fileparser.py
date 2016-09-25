@@ -214,7 +214,9 @@ with open('result.json','w') as outfile:
     json.dump(dict, outfile, indent=4,sort_keys=True, separators=(',',':'), ensure_ascii=False)
 '''
 
-pp.pprint(collection.insert_one(dict).inserted_id)
+pp.pprint(dict)
+
+#pp.pprint(collection.insert_one(dict).inserted_id)
 
 #does not work if there is no url duh
 # url = './display'
