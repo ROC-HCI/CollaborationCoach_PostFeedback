@@ -132,7 +132,7 @@ dict['participation'] = {} #speaking percentage duh
 # get the session key for this data
 first = sys.argv[1].split('/')
 second = first[1].split('_')
-dict['session_key'] = second[0]
+dict['session_key'] = second[1]
 
 for user in users:
     dict['interruption'][user] = {}
@@ -214,7 +214,17 @@ with open('result.json','w') as outfile:
     json.dump(dict, outfile, indent=4,sort_keys=True, separators=(',',':'), ensure_ascii=False)
 '''
 
-pp.pprint(dict)
+# Replacing keys here for more readable formatting
+final_dict = []
+
+interrupt_raw = dict['interruption']
+interrupt_fixed = []
+
+for k,v in interrupt_raw:
+	interrupt_fixed[re.sub(r"/Data\/fixed_" + session_key + "_/g","",k)] = v
+
+	
+pp.pprint(interrupt_fixed)
 
 #pp.pprint(collection.insert_one(dict).inserted_id)
 
