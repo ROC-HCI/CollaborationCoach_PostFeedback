@@ -19,7 +19,7 @@
   </style>
 </head>
 <body>
-<canvas id="radarChart" width="800" height="650"></canvas>
+<canvas id="barChart" width="600" height="450"></canvas>
 <div id="userSelection">
 <p align="center">
 	<button onclick="setupChart('0');">Overall</button>
@@ -49,11 +49,11 @@ function setupChart(user)
 	overall_data.relaxed = overall_stats.relaxed;
 	overall_data.disappointed = overall_stats.disappointed;
 	
-	var radarData = {};
+	var barData = {};
 	
 	if(user == "0")
 	{
-		radarData = 
+		barData = 
 		{
 			labels : ["Engagement","Attention","Surprise","Contempt","Joy","Smirk","Relaxed","Disappointed"],
 			datasets : 
@@ -84,7 +84,7 @@ function setupChart(user)
 		
 		alert(JSON.stringify(user_data));
 	
-		radarData = 
+		barData = 
 		{
 			labels : ["Engagement","Attention","Surprise","Contempt","Joy","Smirk","Relaxed","Disappointed"],
 			datasets : 
@@ -110,9 +110,9 @@ function setupChart(user)
 	
 	//Create Radar chart
 	var ctx = document.getElementById("radarChart").getContext("2d");
-	var myNewChart = new Chart(ctx,{type:'radar', data: radarData, options:""});
+	//var myNewChart = new Chart(ctx,{type:'radar', data: radarData, options:""});
 
-	var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: radarData, options: ""});
+	var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options: ""});
 }
 
 // Document ready function 
