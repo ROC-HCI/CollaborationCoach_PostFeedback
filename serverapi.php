@@ -98,17 +98,16 @@ echo "Database cleanup completed...";
 //=============================================================
 if($_GET['mode'] == 'debug')
 {
-	$collection = $database->selectCollection('affdexmerge');
+	$collection = $database->selectCollection('participation');
 	$cursor = $collection->find();
 	
 	$print_document = null;
 	
 	foreach($cursor as $id => $document)
 	{
-		$print_document = $document;
+		echo var_dump($document);
 	}
-	
-	echo var_dump($print_document);
+
 	$connection->close();
 }
 
