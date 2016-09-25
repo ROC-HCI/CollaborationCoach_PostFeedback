@@ -215,11 +215,11 @@ with open('result.json','w') as outfile:
 '''
 
 # Replacing keys here for more readable formatting
-final_dict = []
+final_dict = {}
 final_dict['session_key'] = dict['session_key']
 
 interrupt_raw = dict['interruption']
-interrupt_fixed = []
+interrupt_fixed = {}
 
 for k,v in interrupt_raw.iteritems():
 	interrupt_fixed[re.sub(r"/Data\/fixed_" + dict['session_key'] + "_/g","",k)] = v
