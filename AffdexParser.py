@@ -14,10 +14,22 @@ import math
 pp = pprint.PrettyPrinter(indent=2)
 client = MongoClient()
 database = client['rocconf']
+
+# Helper to get all users for this session.
+def get_user_list(session_key):
+	user_list = []
+	source_collection = database['affdexmerge']
+	
+	documents = source_collection.find({"session_key":session_key})
+	
+	for doc in documents:
+		user_list.append(doc["user"])
+		
+	return user_list
+	
 	
 # Runnning through the raw data and extracting the stuff
 # we actually want to analyze.
-# NOTE: the except using randint needs to not do that in the final version haha
 # NOTE: Faulty data is excluded from the records (generate NaN means no good)
 def parse_raw_data(session_key, user):
 	source_collection = database['affdexmerge']
@@ -27,29 +39,23 @@ def parse_raw_data(session_key, user):
 	affdex_data = document["data"]
 	parsed_data = []
 
-	pass_headers = 0
 	for row in affdex_data:
 		sample = []
+		sentiment_data = row["sentiment"]
 		try:
 			sample.append(int(row["focus"]))
-			sample.append(float(row["engagement"]))
-			sample.append(float(row["attention"]))
-			sample.append(float(row["suprise"]))
-			sample.append(float(row["contempt"]))
-			sample.append(float(row["joy"]))
-			sample.append(float(row["smirk"]))
-			sample.append(float(row["relaxed"]))
-			sample.append(float(row["dissapointed"]))
+			sample.append(float(sentiment["joy"]))
+			sample.append(float(sentiment["sadness"]))
+			sample.append(float(sentiment["disgust"]))
+			sample.append(float(sentiment["contempt"]))
+			sample.append(float(sentiment["anger"]))
+			sample.append(float(sentiment["fear"]))
+			sample.append(float(sentiment["surprise"]))
+			sample.append(float(sentiment["valence"]))
+			sample.append(float(sentiment["engagement"]))
 		except KeyError:
-			sample.append(random.randint(0,4))
-			sample.append(float(row["engagement"]))
-			sample.append(float(row["attention"]))
-			sample.append(float(row["suprise"]))
-			sample.append(float(row["contempt"]))
-			sample.append(float(row["joy"]))
-			sample.append(float(row["smirk"]))
-			sample.append(float(row["relaxed"]))
-			sample.append(float(row["dissapointed"]))
+			print "Error in parsing affdex merge data"
+			
 		nan_check = False
 		for element in sample:
 			if math.isnan(element):
@@ -86,30 +92,34 @@ def compute_averages(data, label):
 #=======================================================
 if __name__ == "__main__":
 	session_key = sys.argv[1]
-	user = sys.argv[2]
-	parsed_data = parse_raw_data(session_key, user)
 	
-	final_dict = {}
-	final_dict["session_key"] = session_key
-	final_dict["user"] = user
+	user_list = get_user_list(session_key)
+	
+	for user in user_list:
+		parsed_data = parse_raw_data(session_key, user)
+		
+		final_dict = {}
+		final_dict["session_key"] = session_key
+		final_dict["user"] = user
 
-	flag = 0
-	while flag < 5:
-		data = {}
-		average_data = compute_averages(parsed_data, flag)
-		data["engagement"] = average_data[0]
-		data["attention"] = average_data[1]
-		data["suprise"] = average_data[2]
-		data["contempt"] = average_data[3]
-		data["joy"] = average_data[4]
-		data["smirk"] = average_data[5]
-		data["relaxed"] = average_data[6]
-		data["dissapointed"] = average_data[7]
-		final_dict[str(flag)] = data
-		flag = flag + 1
-	
-	collection = database['affdexaverages']	
-	pp.pprint(collection.insert_one(final_dict).inserted_id)
+		flag = 0
+		while flag < 5:
+			data = {}
+			average_data = compute_averages(parsed_data, flag)
+			data["joy"] = average_data[0]
+			data["sadness"] = average_data[1]
+			data["disgust"] = average_data[2]
+			data["contempt"] = average_data[3]
+			data["anger"] = average_data[4]
+			data["fear"] = average_data[5]
+			data["surprise"] = average_data[6]
+			data["valence"] = average_data[7]
+			data["engagement"] = average_data[8]
+			final_dict[str(flag)] = data
+			flag = flag + 1
+		
+		collection = database['affdexaverages']	
+		pp.pprint(collection.insert_one(final_dict).inserted_id)
 
 	
 		
