@@ -111,6 +111,8 @@ function setupChart(user)
 	//Create Radar chart
 	var ctx = document.getElementById("radarChart").getContext("2d");
 	var myNewChart = new Chart(ctx,{type:'radar', data: radarData, options:""});
+
+	var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: radarData, options: ""});
 }
 
 // Document ready function 
@@ -123,6 +125,8 @@ $( document ).ready(function()
   session_data = JSON.parse(xhttp.responseText);
 
   setupChart("0");
+
+
 })
 
 
