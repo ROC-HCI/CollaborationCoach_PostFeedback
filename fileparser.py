@@ -222,7 +222,7 @@ interrupt_raw = dict['interruption']
 interrupt_fixed = {}
 
 for k,v in interrupt_raw.iteritems():
-	interrupt_fixed[re.sub(r"/Data\/fixed_" + dict['session_key'] + "_/g","",k)] = v
+	interrupt_fixed[re.sub(r"Data\/fixed_" + dict['session_key'] + "_/g","",k)] = v
 
 	
 pp.pprint(interrupt_fixed)
