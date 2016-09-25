@@ -105,7 +105,7 @@ if($_GET['mode'] == 'debug')
 	
 	foreach($cursor as $id => $document)
 	{
-		echo var_dump($document);
+		echo var_dump($document) . "<hr/>";
 	}
 
 	$connection->close();
