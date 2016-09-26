@@ -20,7 +20,22 @@
 <div id ="Audio_Data" ></div>
 <div id ="Video_Data"></div>
 <div id ="Text_Data"></div>
+<div align="center">
+  <h3> Your Attitude towards </h3>
+  <p align="center">
+    <button onclick="setupChart('0');">Overall</button>
+    <button onclick="setupChart('1');">User 1</button>
+    <button onclick="setupChart('2');">User 2</button>
+    <button onclick="setupChart('3');">User 3</button>
+    <button onclick="setupChart('4');">User 4</button>
+  </p>
+  <div style="max-width:400px; max-height:400px">
+    <canvas id="barChart" width="400" height="400"></canvas>
+  </div>
+</div>
 
+<div id="userSelection">
+</div>
 </body>
 <script>
 
@@ -147,4 +162,104 @@
             console.log("load was performed. ");
         });
     </script>
+
+    <script>
+    // JSON Data for this session, loaded via AJAX call
+    var session_data = []
+
+    function setupChart(user)
+    {
+      var overall_stats = session_data["0"];    
+      var overall_data = [];    
+      overall_data.engagement = overall_stats.engagement;
+      overall_data.attention = overall_stats.attention;
+      overall_data.surprise = overall_stats.surprise;
+      overall_data.contempt = overall_stats.contempt;
+      overall_data.joy = overall_stats.joy;
+      overall_data.smirk = overall_stats.smirk;
+      overall_data.relaxed = overall_stats.relaxed;
+      overall_data.disappointed = overall_stats.disappointed;
+      
+      var barData = {};
+      
+      if(user == "0")
+      {
+        barData = 
+        {
+          labels : ["Engagement","Attention","Surprise","Contempt","Joy","Smirk","Relaxed","Disappointed"],
+          datasets : 
+          [
+            {
+              label: "Overall",
+              backgroundColor: "rgba(58,87,214,.1)",
+              borderColor: "rgba(58,87,214,.2)",
+              pointBackgroundColor : "rgba(255,255,255,1)",
+              data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.smirk,overall_data.relaxed,overall_data.disappointed]
+            }
+          ]
+        }
+      }
+      else
+      {
+        user_stats = session_data[user];
+        
+        var user_data = [];   
+        user_data.engagement = user_stats.engagement;
+        user_data.attention = user_stats.attention;
+        user_data.surprise = user_stats.surprise;
+        user_data.contempt = user_stats.contempt;
+        user_data.joy = user_stats.joy;
+        user_data.smirk = user_stats.smirk;
+        user_data.relaxed = user_stats.relaxed;
+        user_data.disappointed = user_stats.disappointed;
+        
+        //alert(JSON.stringify(user_data));
+      
+        barData = 
+        {
+          labels : ["Engagement","Attention","Surprise","Contempt","Joy","Smirk","Relaxed","Disappointed"],
+          datasets : 
+          [
+            {
+              label: "Overall",
+              backgroundColor: "rgba(58,87,214,.1)",
+              borderColor: "rgba(58,87,214,.2)",
+              pointBackgroundColor : "rgba(255,255,255,1)",
+              data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.smirk,overall_data.relaxed,overall_data.disappointed]
+            },
+            {
+              label: "User " + user,
+              backgroundColor: "rgba(144,212,153,.1)",
+              borderColor: "rgba(144,212,153,1)",
+              pointBackgroundColor : "rgba(144,212,153,1)",
+              pointStrokeColor : "#fff",
+              data : [user_data.engagement,user_data.attention,user_data.surprise,user_data.contempt,user_data.joy,user_data.smirk,user_data.relaxed,user_data.disappointed]
+            }
+          ]
+        }
+      }
+      
+      //Create Radar chart
+      var ctx = document.getElementById("barChart").getContext("2d");
+      //var myNewChart = new Chart(ctx,{type:'radar', data: radarData, options:""});
+
+      var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
+          responsive: true,
+          maintainAspectRatio: false}}});
+    }
+
+    // Document ready function 
+    $( document ).ready(function()
+    {
+      // Snag chart data from the database via the API
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=test-key-test&user=Luis", false);
+      xhttp.send();
+      session_data = JSON.parse(xhttp.responseText);
+
+      setupChart("0");
+
+
+    })
+</script>
 </html>
