@@ -115,7 +115,8 @@
       <div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
     </div>
     
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <!--script src="https://code.jquery.com/jquery-3.1.0.min.js"></script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="graphs/public/js/jquery.animateNumber.min.js"></script>
     <!--script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
