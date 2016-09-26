@@ -75,6 +75,23 @@
 </script>
 
 <div class="text-center container">
+      <div align="center">
+        <h3> Your Attitude towards </h3>
+        <p align="center">
+          <button onclick="setupChart('0');">Overall</button>
+          <button onclick="setupChart('1');">User 1</button>
+          <button onclick="setupChart('2');">User 2</button>
+          <button onclick="setupChart('3');">User 3</button>
+          <button onclick="setupChart('4');">User 4</button>
+        </p>
+        <div style="max-width:400px; max-height:400px">
+          <canvas id="barChart" width="400" height="400"></canvas>
+        </div>
+      </div>
+
+      <div id="userSelection">
+      </div>
+      
       <div class="inner-contain1">
         <h1>Interruption</h1>
         <div class="outer">
@@ -96,23 +113,6 @@
       </div>
       <h1>Turn Taking</h1>
       <div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
-    </div>
-
-    <div align="center">
-      <h3> Your Attitude towards </h3>
-      <p align="center">
-        <button onclick="setupChart('0');">Overall</button>
-        <button onclick="setupChart('1');">User 1</button>
-        <button onclick="setupChart('2');">User 2</button>
-        <button onclick="setupChart('3');">User 3</button>
-        <button onclick="setupChart('4');">User 4</button>
-      </p>
-      <div style="max-width:400px; max-height:400px">
-        <canvas id="barChart" width="400" height="400"></canvas>
-      </div>
-    </div>
-
-    <div id="userSelection">
     </div>
     
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
