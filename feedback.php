@@ -91,7 +91,7 @@
 
       <div id="userSelection">
       </div>
-      
+
       <div class="inner-contain1">
         <h1>Interruption</h1>
         <div class="outer">
@@ -117,7 +117,9 @@
     
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="graphs/public/js/jquery.animateNumber.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
+
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
     
     <script>
