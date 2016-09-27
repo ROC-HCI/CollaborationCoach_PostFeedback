@@ -128,12 +128,13 @@
       </div>
       <h1>Turn Taking</h1>
       <div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
-  </div>
+    </div>
     
     <!--script src="https://code.jquery.com/jquery-3.1.0.min.js"></script-->
     <script src="graphs/public/js/jquery.animateNumber.min.js"></script>
     <!--script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
+
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
     
     <script>
@@ -257,10 +258,10 @@
       }
       
       //Create Radar chart
-      var ctx2 = document.getElementById("barChart").getContext("2d");
+      var ctx = document.getElementById("barChart").getContext("2d");
       //var myNewChart = new Chart(ctx,{type:'radar', data: radarData, options:""});
 
-      var myBarChart = new Chart(ctx2, {type: 'horizontalBar', data: barData, options:{ global: {
+      var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
           responsive: true,
           maintainAspectRatio: false}}});
     }
@@ -269,9 +270,9 @@
     $( document ).ready(function()
     {
       // Snag chart data from the database via the API
-      var xhttp2 = new XMLHttpRequest();
-      xhttp2.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=test-key-test&user=Luis", false);
-      xhttp2.send();
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=test-key-test&user=Luis", false);
+      xhttp.send();
       session_data = JSON.parse(xhttp.responseText);
 
       setupChart("1");
