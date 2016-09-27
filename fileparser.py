@@ -254,11 +254,9 @@ for k,v in turntaking_raw.iteritems():
 	second = inter[1].split('_')
 	turntaking_fixed[first[0] + '/' + second[0]] = v
 	
-pp.pprint(turntaking_fixed)
+final_dict['turntaking'] = turntaking_fixed
 
-
-
-#pp.pprint(collection.insert_one(dict).inserted_id)
+pp.pprint(collection.insert_one(final_dict).inserted_id)
 
 #does not work if there is no url duh
 # url = './display'
