@@ -232,6 +232,17 @@ final_dict['interruption'] = interrupt_fixed
 
 
 participation_raw = dict['participation']
+participation_fixed = {}
+
+for k,v in participation_raw.iteritems():
+	if(key != "total"):
+		result = p.sub("",k)
+		final = result.split('_')
+		participation_fixed[final[0]] = v
+	else:
+		participation_fixed[k] = v
+		
+pp.pprint(participation_fixed)
 
 #pp.pprint(collection.insert_one(dict).inserted_id)
 
