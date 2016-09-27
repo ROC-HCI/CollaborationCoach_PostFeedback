@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet"/>
+		<!--link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet"/!-->
 		<link href="graphs/public/css/style.css" rel = "stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <style>
@@ -99,9 +99,9 @@
           <button onclick="setupChart('3');">User 3</button>
           <button onclick="setupChart('4');">User 4</button>
         </p>
-        <!--div style="max-width:400px; max-height:400px"-->
+        <div style="max-width:400px; max-height:400px">
           <canvas id="barChart" width="400" height="400"></canvas>
-        <!--/div-->
+        </div>
       </div>
 
       <div id="userSelection">
@@ -128,13 +128,12 @@
       </div>
       <h1>Turn Taking</h1>
       <div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
-    </div>
+  </div>
     
     <!--script src="https://code.jquery.com/jquery-3.1.0.min.js"></script-->
     <script src="graphs/public/js/jquery.animateNumber.min.js"></script>
     <!--script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
-
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
     
     <script>
