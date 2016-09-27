@@ -15,6 +15,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet"/>
 		<link href="graphs/public/css/style.css" rel = "stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+
+    .axis {
+      font: 10px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    </style>
 </head>
 <body>
 <div id ="Audio_Data" ></div>
@@ -116,7 +131,6 @@
     </div>
     
     <!--script src="https://code.jquery.com/jquery-3.1.0.min.js"></script-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="graphs/public/js/jquery.animateNumber.min.js"></script>
     <!--script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
