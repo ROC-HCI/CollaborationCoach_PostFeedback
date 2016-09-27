@@ -84,9 +84,9 @@
           <button onclick="setupChart('3');">User 3</button>
           <button onclick="setupChart('4');">User 4</button>
         </p>
-        <div style="max-width:400px; max-height:400px">
+        <!--div style="max-width:400px; max-height:400px"-->
           <canvas id="barChart" width="400" height="400"></canvas>
-        </div>
+        <!--/div-->
       </div>
 
       <div id="userSelection">
