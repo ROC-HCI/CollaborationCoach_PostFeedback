@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-		<!--link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet"/!-->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet"/>
 		<link href="graphs/public/css/style.css" rel = "stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <style>
@@ -257,10 +257,10 @@
       }
       
       //Create Radar chart
-      var ctx = document.getElementById("barChart").getContext("2d");
+      var ctx2 = document.getElementById("barChart").getContext("2d");
       //var myNewChart = new Chart(ctx,{type:'radar', data: radarData, options:""});
 
-      var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
+      var myBarChart = new Chart(ctx2, {type: 'horizontalBar', data: barData, options:{ global: {
           responsive: true,
           maintainAspectRatio: false}}});
     }
@@ -269,9 +269,9 @@
     $( document ).ready(function()
     {
       // Snag chart data from the database via the API
-      var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=test-key-test&user=Luis", false);
-      xhttp.send();
+      var xhttp2 = new XMLHttpRequest();
+      xhttp2.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=test-key-test&user=Luis", false);
+      xhttp2.send();
       session_data = JSON.parse(xhttp.responseText);
 
       setupChart("1");
