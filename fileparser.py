@@ -229,7 +229,9 @@ for k,v in interrupt_raw.iteritems():
 	interrupt_fixed[final[0]] = v
 
 final_dict['interruption'] = interrupt_fixed
-pp.pprint(final_dict)
+
+
+participation_raw = dict['participation']
 
 #pp.pprint(collection.insert_one(dict).inserted_id)
 
