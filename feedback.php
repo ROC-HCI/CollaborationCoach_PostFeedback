@@ -138,7 +138,7 @@
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
     
     <script>
-        /*var total = total
+        var total = total
         var i1 = interruption[0];
         var i2 = interruption[1];
         var i3 = participation;
@@ -164,7 +164,7 @@
 
         i4 = i5;
 
-        console.log("i4 assignment", i4);
+        /*console.log("i4 assignment", i4);
 
         for (var key in i3){
         	  //console.log("LALALA ", count, i3[key]);
@@ -179,8 +179,8 @@
         console.log('is my speakers right ', i3speaker);
         $.getScript('graphs/public/main.js',function(data,textStatus){
             console.log("load was performed. ");
-        });
-    */
+        });*/
+
     //Affdex Data
     // JSON Data for this session, loaded via AJAX call
     var session_data = []
