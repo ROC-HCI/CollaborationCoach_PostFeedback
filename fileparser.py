@@ -242,7 +242,21 @@ for k,v in participation_raw.iteritems():
 	else:
 		participation_fixed[k] = v
 		
-pp.pprint(participation_fixed)
+final_dict['participation'] = participation_fixed
+
+turntaking_raw = dict['turntaking']
+turntaking_fixed = {}
+
+for k,v in turntaking_raw.iteritems():
+	result = p.sub("",k)
+	inter = result.split('/')
+	first = result[0].split('_')
+	second = result[1].split('_')
+	turntaking_fixed[first[0] + '/' + second[0]] = v
+	
+pp.pprint(turntaking_fixed)
+
+
 
 #pp.pprint(collection.insert_one(dict).inserted_id)
 
