@@ -164,7 +164,7 @@
 
         i4 = i5;
 
-        /*console.log("i4 assignment", i4);
+        console.log("i4 assignment", i4);
 
         for (var key in i3){
         	  //console.log("LALALA ", count, i3[key]);
@@ -174,7 +174,7 @@
             //console.log("logging guests", guests);
             i3data.push(Math.round(i3[key]));
             count+=1;
-        }
+        }/*
 
         console.log('is my speakers right ', i3speaker);
         $.getScript('graphs/public/main.js',function(data,textStatus){
