@@ -219,7 +219,7 @@
       }
       else
       {
-        user_stats = session_data[user];
+        user_stats = session_data[user2];
         
         var user_data = [];   
         user_data.engagement = user_stats.engagement;
