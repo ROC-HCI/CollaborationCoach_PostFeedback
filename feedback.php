@@ -91,7 +91,7 @@
 
 <div class="text-center container">
       <div align="center">
-        <h3> Your Attitude towards </h3>
+        <h1> Your Attitude towards </h1>
         <p align="center">
           <button onclick="setupChart('0');">Overall</button>
           <button onclick="setupChart('1');">User 1</button>
@@ -177,9 +177,7 @@
         }
 
         console.log('is my speakers right ', i3speaker);
-        $.getScript('graphs/public/main.js',function(data,textStatus){
-            console.log("load was performed. ");
-        });
+
 
     //Affdex Data
     // JSON Data for this session, loaded via AJAX call
@@ -277,6 +275,9 @@
 
       setupChart("1");
 
+        $.getScript('graphs/public/main.js',function(data,textStatus){
+            console.log("load was performed. ");
+        });
 
     })
 </script>
