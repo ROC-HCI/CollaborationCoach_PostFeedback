@@ -86,7 +86,7 @@
 	var totalparticipation = data.totalparticipation;
 	var turntaking = data.turntaking;
 
-	document.getElementById("Video_Data").innerHTML = xhttp.responseText;
+	//document.getElementById("Video_Data").innerHTML = xhttp.responseText;
 </script>
 
 <div class="text-center container">
