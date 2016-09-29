@@ -185,7 +185,7 @@
     // JSON Data for this session, loaded via AJAX call
     var session_data = []
 
-    function setupChart(user)
+    function setupChart(user2)
     {
       var overall_stats = session_data["0"];    
       var overall_data = [];    
@@ -200,7 +200,7 @@
       
       var barData = {};
       
-      if(user == "0")
+      if(user2 == "0")
       {
         barData = 
         {
@@ -246,7 +246,7 @@
               data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.smirk,overall_data.relaxed,overall_data.disappointed]
             },
             {
-              label: "User " + user,
+              label: "User " + user2,
               backgroundColor: "rgba(144,212,153,.1)",
               borderColor: "rgba(144,212,153,1)",
               pointBackgroundColor : "rgba(144,212,153,1)",
