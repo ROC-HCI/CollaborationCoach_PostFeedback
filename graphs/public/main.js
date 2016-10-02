@@ -248,7 +248,7 @@ function drawArrows(count){
 }
 
 //fake test
-function loado(){
+/*function loado(){
   $('svg[id^="guest"]:not("#guest0")').each(function(){
     console.log('lala');
     var id = this.id.toString().match(/\d+/)[0];
@@ -383,4 +383,4 @@ function swipe(name,color){
   //load the corresponding guest speakers
   loadTheRest(name);
 
-}
+}*/
