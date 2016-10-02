@@ -1,4 +1,4 @@
-/*$(function() {
+$(function() {
 
     //animate numbers - interruption
     Number('#chart1',i1);
@@ -43,7 +43,6 @@
 
     // loadArrow
 });
-*/
 
 // chart1,2 stuff
 /*function Number(id, data) {
@@ -58,7 +57,7 @@
 }*/
 
 //chart3 stuff
-/*function ChartJS(id) {
+function ChartJS(id) {
   var i3speakernew = i3speaker;
   
   for(var i=0;i<i3speakernew.length;i++) {
@@ -88,10 +87,10 @@
       }
   });
 
-}*/
+}
 
 //chart4 stuff
-/*function createSvg() {
+function createSvg() {
 
   var margin = getInitialMargin(i3speaker.length);
   //add arrows
@@ -134,7 +133,7 @@
 
   }
 
-}*/
+}
 
 function getInitialMargin(count) {
   var margin = 0;
@@ -248,7 +247,7 @@ function drawArrows(count){
 }
 
 //fake test
-/*function loado(){
+function loado(){
   $('svg[id^="guest"]:not("#guest0")').each(function(){
     console.log('lala');
     var id = this.id.toString().match(/\d+/)[0];
@@ -383,4 +382,4 @@ function swipe(name,color){
   //load the corresponding guest speakers
   loadTheRest(name);
 
-}*/
+}
