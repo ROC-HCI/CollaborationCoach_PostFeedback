@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 
     //animate numbers - interruption
     Number('#chart1',i1);
@@ -43,6 +43,7 @@ $(function() {
 
     // loadArrow
 });
+*/
 
 // chart1,2 stuff
 function Number(id, data) {
