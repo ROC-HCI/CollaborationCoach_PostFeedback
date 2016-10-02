@@ -1,15 +1,15 @@
 $(function() {
 
     //animate numbers - interruption
-    Number('#chart1',i1);
-    Number('#chart2',i2);
+    //Number('#chart1',i1);
+    //Number('#chart2',i2);
 
-    ChartJS('#chart3');
+    //ChartJS('#chart3');
     
-    createSvg();
+    //createSvg();
 
     //create Snap canvas for user
-    var s = Snap('#guest0');
+    //var s = Snap('#guest0');
     Snap.load('./graphs/public/svg/Turn_taking_bllue.svg', function(fragment){
 
       //border
