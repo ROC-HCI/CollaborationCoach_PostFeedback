@@ -60,6 +60,7 @@ def bluemix_call(filename):
 	
 	request = Request(url, data = flac_data, headers = {"Content-Type": "audio/x-flac"})
 	
+	print filename
 	print "Read the file and setup request!"
 
 
