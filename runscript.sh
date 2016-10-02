@@ -44,9 +44,10 @@ echo "Finish - average affdex features"
 
 echo "Start - Bluemix Speech Recognition"
 for file in Data/fixed_$session_id*.flac;
-	do echo "Sending File $file"
-	do python BluemixSpeech.py $file
-done
+	do 
+		echo "Sending File $file"
+		python BluemixSpeech.py $file
+	done
 echo "Finish - Bluemix Speech Recognition"
 
 echo "Start - Bluemix Tone Analysis"
