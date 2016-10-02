@@ -98,7 +98,7 @@ echo "Database cleanup completed...";
 //=============================================================
 if($_GET['mode'] == 'debug')
 {
-	$collection = $database->selectCollection('participation');
+	$collection = $database->selectCollection('speechrawdata');
 	$cursor = $collection->find();
 	
 	$print_document = null;
