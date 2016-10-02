@@ -46,7 +46,7 @@
 */
 
 // chart1,2 stuff
-function Number(id, data) {
+/*function Number(id, data) {
   $(id).animateNumber({
     number: data,
     color: 'green',
@@ -55,7 +55,7 @@ function Number(id, data) {
     easing: 'easeInQuad'
 
   },'normal');
-}
+}*/
 
 //chart3 stuff
 /*function ChartJS(id) {
