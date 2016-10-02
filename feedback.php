@@ -45,7 +45,7 @@
 	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=participation&session_key=test-key-test", false);
 	xhttp.send();
 	var jscontent = JSON.parse(xhttp.responseText);
-  document.getElementById("Audio_Data").innerHTML = jscontent;
+  document.getElementById("Audio_Data").innerHTML = xhttp.responseText;
 
 
 	//interruption
