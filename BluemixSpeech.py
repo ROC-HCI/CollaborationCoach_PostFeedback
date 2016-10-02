@@ -115,4 +115,4 @@ def process_speech(transcript_text, session_id, user_id):
 #=======================================================
 if __name__ == "__main__":
 	raw_data = bluemix_call(sys.argv[1])
-	pp.pprint(raw_data)
+	#pp.pprint(raw_data)
