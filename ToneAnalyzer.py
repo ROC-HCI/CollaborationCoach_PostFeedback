@@ -88,7 +88,7 @@ def process_tone(transcript_text, mode):
 
 	if(mode == "bluemix"):
 		pp.pprint(write_collection.insert_one(final_dict).inserted_id)
-	else if(mode == "google"):
+	elif(mode == "google"):
 		pp.pprint(write_collection2.insert_one(final_dict).inserted_id)
 
 
@@ -104,7 +104,7 @@ if __name__ == "__main__":
 	
 	if(mode == "bluemix"):
 		transcript = get_transcript_bluemix(session_key, user_id)
-	else if(mode == "google"):
+	elif(mode == "google"):
 		transcript = get_transcript_google(session_key, user_id)
 	else:
 		transcript = ""
