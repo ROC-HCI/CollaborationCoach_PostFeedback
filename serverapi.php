@@ -98,7 +98,7 @@ echo "Database cleanup completed...";
 //=============================================================
 if($_GET['mode'] == 'debug')
 {
-	$collection = $_GET['collection']
+	$collection = $_GET['collection'];
 	
 	$collection = $database->selectCollection($collection);
 	$cursor = $collection->find();
