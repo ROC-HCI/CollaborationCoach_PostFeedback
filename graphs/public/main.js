@@ -58,7 +58,7 @@ function Number(id, data) {
 }
 
 //chart3 stuff
-function ChartJS(id) {
+/*function ChartJS(id) {
   var i3speakernew = i3speaker;
   
   for(var i=0;i<i3speakernew.length;i++) {
@@ -88,7 +88,7 @@ function ChartJS(id) {
       }
   });
 
-}
+}*/
 
 //chart4 stuff
 function createSvg() {
