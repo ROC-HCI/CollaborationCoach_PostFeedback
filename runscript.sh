@@ -5,9 +5,9 @@ session_id=$1
 echo "Session Script Starting for: $session_id"
 
 echo "Start - .webm Header Correction"
-#for file in Data/$session_id*.webm;
-#	do ffmpeg -i "$file" -c copy -fflags +genpts Data/fixed_$(basename "${file/.webm}").webm
-#done
+for file in Data/$session_id*.webm;
+	do ffmpeg -i "$file" -c copy -fflags +genpts Data/fixed_$(basename "${file/.webm}").webm
+done
 echo "Finish - .webm Header Correction"
 
 echo "Start - .wav Conversion"
@@ -17,9 +17,9 @@ echo "Start - .wav Conversion"
 echo "Finish - .wav Conversion"
 
 echo "Start - .flacc conversion"
-for file in Data/fixed_$session_id*.wav;
-	do ffmpeg -i "$file" Data/$(basename "${file/.wav}").flac
-done
+#for file in Data/fixed_$session_id*.wav;
+#	do ffmpeg -i "$file" Data/$(basename "${file/.wav}").flac
+#done
 echo "End - .flacc conversion"
 
 echo "Start - Praat"
@@ -43,9 +43,9 @@ echo "Start - average affdex features"
 echo "Finish - average affdex features"
 
 echo "Start - Bluemix Speech Recognition"
-for file in Data/fixed_$session_id*.flac;
-	do python BluemixSpeech $file
-done
+#for file in Data/fixed_$session_id*.flac;
+#	do python BluemixSpeech $file
+#done
 echo "Finish - Bluemix Speech Recognition"
 
 #RUN BLUEMIX TONE ANALYSIS ON RECOGNIZED SPEECH
