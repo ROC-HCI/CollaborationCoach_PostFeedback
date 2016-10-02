@@ -55,12 +55,7 @@ def bluemix_call(filename):
 	flac_data = flac_file.read()
 
 	model = "{0}_BroadbandModel".format(language)
-    url = "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?{0}".format(urlencode({
-    "profanity_filter": "false",
-    "timestamps": "true",
-    "continuous": "true",
-    "model": model
-    }))
+	url = "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?{0}".format(urlencode({"profanity_filter": "false","timestamps": "true","continuous": "true","model": model}))
 
 	request = Request(url, data = flac_data, headers = {"Content-Type": "audio/x-flac"})
 
