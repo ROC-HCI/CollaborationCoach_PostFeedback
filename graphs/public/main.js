@@ -13,7 +13,7 @@ $(function() {
     Snap.load('./graphs/public/svg/Turn_taking_bllue.svg', function(fragment){
 
       //border
-      fragment.select('circle[stroke="#53C6D4"]').attr({
+      /*fragment.select('circle[stroke="#53C6D4"]').attr({
         stroke: '#53C6D4',
         strokeOpacity: .3,
         strokeWidth: 5
@@ -31,7 +31,7 @@ $(function() {
       currentUser.attr({
         'visibility':'hidden',
         '#text': iuser
-      });
+      });*/
 
       //fake for display
       // loado();
