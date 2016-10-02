@@ -46,8 +46,9 @@ IBM_TONE_PASSWORD = "yVjLxiSri7As"
 # 	and return the results to the caller
 #==================================================================================
 def bluemix_call(filename):
-
-	flac_file = open('/Data' + filename,'r+')
+	basepath = os.path.dirname(__file__)
+	filepath = os.path.abspath(os.path.join(basepath,filename))
+	flac_file = open(filepath,'r+')
 	flac_data = flac_file.read()
 
 	model = "{0}_BroadbandModel".format(language)
