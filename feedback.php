@@ -104,7 +104,7 @@
             for (var user in interruption) {
                 if (interruption.hasOwnProperty(user)) {
                     // do stuff
-                    document.write("<button onclick='setupChart(0);'>"+interruption[user]+"</button>");
+                    document.write("<button onclick='setupChart(0);'>"+user+"</button>");
                 }
             }
           </script>
