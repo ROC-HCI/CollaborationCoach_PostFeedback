@@ -1,19 +1,19 @@
 $(function() {
 
     //animate numbers - interruption
-    //Number('#chart1',i1);
-    //Number('#chart2',i2);
+    /*Number('#chart1',i1);
+    Number('#chart2',i2);
 
-    //ChartJS('#chart3');
+    ChartJS('#chart3');
     
-    //createSvg();
+    createSvg();
 
     //create Snap canvas for user
-    //var s = Snap('#guest0');
+    var s = Snap('#guest0');
     Snap.load('./graphs/public/svg/Turn_taking_bllue.svg', function(fragment){
 
       //border
-      /*fragment.select('circle[stroke="#53C6D4"]').attr({
+      fragment.select('circle[stroke="#53C6D4"]').attr({
         stroke: '#53C6D4',
         strokeOpacity: .3,
         strokeWidth: 5
@@ -31,15 +31,15 @@ $(function() {
       currentUser.attr({
         'visibility':'hidden',
         '#text': iuser
-      });*/
+      });
 
       //fake for display
       // loado();
       //get guest1's text and create the rest for guests
-      //guests = getKey(currentUser.attr('#text'));
-      //console.log("initial guest assignment", guests);
-      //loadTheRest(currentUser.attr('#text'));
-    });
+      guests = getKey(currentUser.attr('#text'));
+      console.log("initial guest assignment", guests);
+      loadTheRest(currentUser.attr('#text'));
+    });*/
 
     // loadArrow
 });
