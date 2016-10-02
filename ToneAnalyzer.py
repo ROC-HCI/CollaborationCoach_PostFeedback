@@ -71,7 +71,7 @@ def process_tone(transcript_text):
 	result = json.loads(response_text)
 
 	final_dict = {}
-	final_dict["session_key"] = session_id
+	final_dict["session_key"] = session_key
 	final_dict["user"] = user_id
 	final_dict["data"] = result
 
