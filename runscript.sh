@@ -52,7 +52,7 @@ echo "Finish - Bluemix Speech Recognition"
 
 echo "Start - Bluemix Tone Analysis"
 for file in Data/fixed_$session_id*.flac;
-	do python ToneAnalysis.py $file
+	do python ToneAnalyzer.py $file
 done
 echo "Finish - Bluemix Tone Analysis"
 
