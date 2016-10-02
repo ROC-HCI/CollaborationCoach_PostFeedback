@@ -46,6 +46,8 @@ IBM_TONE_PASSWORD = "yVjLxiSri7As"
 # 	and return the results to the caller
 #==================================================================================
 def bluemix_call(filename):
+	language = "en-US"
+
 	basepath = os.path.dirname(__file__)
 	filepath = os.path.abspath(os.path.join(basepath,filename))
 	
