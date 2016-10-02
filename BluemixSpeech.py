@@ -64,6 +64,13 @@ def bluemix_call(filename):
 	
 	request = Request(url, data = flac_data, headers = {"Content-Type": "audio/x-flac"})
 
+	if hasattr("", "encode"):
+        authorization_value = base64.standard_b64encode("{0}:{1}".format(IBM_TONE_USERNAME, IBM_TONE_PASSWORD).encode("utf-8")).decode("utf-8")
+    else:
+        authorization_value = base64.standard_b64encode("{0}:{1}".format(IBM_TONE_USERNAME, IBM_TONE_PASSWORD))
+    
+    request.add_header("Authorization", "Basic {0}" . format(authorization_value))
+	
 	try:
         response = urlopen(request)
     except HTTPError as e:
