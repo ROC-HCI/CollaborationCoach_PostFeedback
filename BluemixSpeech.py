@@ -48,6 +48,9 @@ IBM_TONE_PASSWORD = "yVjLxiSri7As"
 def bluemix_call(filename):
 	basepath = os.path.dirname(__file__)
 	filepath = os.path.abspath(os.path.join(basepath,filename))
+	
+	print filepath
+	
 	flac_file = open(filepath,'r+')
 	flac_data = flac_file.read()
 
@@ -60,9 +63,6 @@ def bluemix_call(filename):
     }))
 	
 	request = Request(url, data = flac_data, headers = {"Content-Type": "audio/x-flac"})
-	
-	print filename
-	print "Read the file and setup request!"
 
 
 #==================================================================================
