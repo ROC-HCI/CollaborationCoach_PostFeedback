@@ -100,6 +100,14 @@
           <button onclick="setupChart('2');">User 2</button>
           <button onclick="setupChart('3');">User 3</button>
           <button onclick="setupChart('4');">User 4</button>
+          <script>
+            for (var user in interruption) {
+                if (interruption.hasOwnProperty(user)) {
+                    // do stuff
+                    document.write("<button onclick='setupChart(0);'>"+interruption[user]+"</button>");
+                }
+            }
+          </script>
         </p>
         <div style="max-width:400px; max-height:400px">
           <canvas id="barChart" width="400" height="400"></canvas>
