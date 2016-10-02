@@ -180,6 +180,13 @@
         /*$.getScript('graphs/public/main.js',function(data,textStatus){
             console.log("load was performed. ");
         });*/
+        $.getScript( "graphs/public/main.js" )
+          .done(function( script, textStatus ) {
+            console.log( textStatus );
+          })
+          .fail(function( jqxhr, settings, exception ) {
+            console.log("error");
+          });
 
     //Affdex Data
     // JSON Data for this session, loaded via AJAX call
