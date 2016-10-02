@@ -137,8 +137,6 @@
 
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
     
-    <script src="graphs/public/main.js"></script>
- 
     <script>
         var total = total
         var i1 = interruption[0];
@@ -179,53 +177,11 @@
         }
 
         console.log('is my speakers right ', i3speaker);
-        /*$.getScript('graphs/public/main.js',function(data,textStatus){
+        $.getScript('graphs/public/main.js',function(data,textStatus){
             console.log("load was performed. ");
-        });*/
+        });
 
-    //<------ main.js 
-  
-    //animate numbers - interruption
-    /*Number('#chart1',i1);
-    Number('#chart2',i2);
 
-    ChartJS('#chart3');
-    
-    createSvg();
-
-    //create Snap canvas for user
-    var s = Snap('#guest0');
-    Snap.load('./graphs/public/svg/Turn_taking_bllue.svg', function(fragment){
-
-      //border
-      fragment.select('circle[stroke="#53C6D4"]').attr({
-        stroke: '#53C6D4',
-        strokeOpacity: .3,
-        strokeWidth: 5
-      });
-     
-      s.append(fragment);
-
-      var text = s.text(0,-30, 'You talked after');
-      text.attr({
-        'font-size': '30',
-        'fill': '#A7A9AC'
-      });
-
-      var currentUser = s.text(60,300, iuser+'');
-      currentUser.attr({
-        'visibility':'hidden',
-        '#text': iuser
-      });
-
-      //fake for display
-      // loado();
-      //get guest1's text and create the rest for guests
-      guests = getKey(currentUser.attr('#text'));
-      console.log("initial guest assignment", guests);
-      loadTheRest(currentUser.attr('#text'));
-    });*/
-    //main.js ------->
 
     //Affdex Data
     // JSON Data for this session, loaded via AJAX call

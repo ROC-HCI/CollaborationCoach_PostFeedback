@@ -1,8 +1,8 @@
 $(function() {
 
     //animate numbers - interruption
-    Number('#chart1',i1);
-    Number('#chart2',i2);
+    myNumber('#chart1',i1);
+    myNumber('#chart2',i2);
 
     ChartJS('#chart3');
     
@@ -45,7 +45,7 @@ $(function() {
 });
 
 // chart1,2 stuff
-/*function Number(id, data) {
+function myNumber(id, data) {
   $(id).animateNumber({
     number: data,
     color: 'green',
@@ -54,7 +54,7 @@ $(function() {
     easing: 'easeInQuad'
 
   },'normal');
-}*/
+}
 
 //chart3 stuff
 function ChartJS(id) {
