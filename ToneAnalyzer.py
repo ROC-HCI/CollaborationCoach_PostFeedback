@@ -22,7 +22,9 @@ user_id = ""
 client = MongoClient()
 database = client['rocconf']
 read_collection = database['transcript_bluemix']
+read_collection2 = database['speechrawdata']
 write_collection = database['toneanalysis_bluemix']
+write_collection2 = database['toneanalysis_google']
 
 pp = pprint.PrettyPrinter(indent=2)
 
@@ -36,8 +38,17 @@ IBM_TONE_PASSWORD = "FOG5rXrhNK0J"
 #==================================================================================
 # Get the text transcript for this user from MongoDB
 #==================================================================================
-def get_transcript(session_id, user_id):
+def get_transcript_bluemix(session_id, user_id):
 	db_data = read_collection.find({"session_key":session_id,"user":user_id})
+	item = db_data[0]
+	
+	transcript_text = item["transcript"]
+
+	return transcript_text
+
+#----------------------------------------------------------------------------------	
+def get_transcript_bluemix(session_id, user_id):
+	db_data = read_collection2.find({"session_key":session_id,"user":user_id})
 	item = db_data[0]
 	
 	transcript_text = item["transcript"]
@@ -48,7 +59,7 @@ def get_transcript(session_id, user_id):
 # Run this on a text based transcript to obtain tone analysis, add this
 # analysis data to the tone collection
 #==================================================================================
-def process_tone(transcript_text):
+def process_tone(transcript_text, mode):
 	url = "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?{0}" . format(urlencode({"version": "2016-05-19","text": transcript_text}))
 
 	request = Request(url, headers = {"Content-Type": "application/json"})
@@ -75,7 +86,11 @@ def process_tone(transcript_text):
 	final_dict["user"] = user_id
 	final_dict["data"] = result
 
-	pp.pprint(write_collection.insert_one(final_dict).inserted_id)
+	if(mode == "bluemix"):
+		pp.pprint(write_collection.insert_one(final_dict).inserted_id)
+	else if(mode == "google"):
+		pp.pprint(write_collection2.insert_one(final_dict).inserted_id)
+
 
 #=======================================================
 # Main Caller
@@ -85,5 +100,13 @@ if __name__ == "__main__":
 	session_key = final[1]
 	user_id = final[2]
 	
-	transcript = get_transcript(session_key, user_id)
+	mode = sys.argv[2]
+	
+	if(mode == "bluemix"):
+		transcript = get_transcript_bluemix(session_key, user_id)
+	else if(mode == "google"):
+		transcript = get_transcript_google(session_key, user_id)
+	else:
+		transcript = ""
+		
 	process_tone(transcript)

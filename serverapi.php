@@ -108,6 +108,13 @@ echo "Dropped toneanalysis_bluemix" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
 
+$collection = $database->selectCollection('toneanalysis_google');
+$response = $collection->drop();
+
+echo "Dropped toneanalysis_google" . "<br/>";
+echo print_r($response);
+echo "<hr/>";
+
 echo "Database cleanup completed...";
 
 */
