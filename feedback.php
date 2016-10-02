@@ -177,7 +177,9 @@
         }
 
         console.log('is my speakers right ', i3speaker);
-
+        $.getScript('graphs/public/main.js',function(data,textStatus){
+            console.log("load was performed. ");
+        });
 
     //Affdex Data
     // JSON Data for this session, loaded via AJAX call
@@ -275,9 +277,6 @@
 
       setupChart("1");
 
-        $.getScript('graphs/public/main.js',function(data,textStatus){
-            console.log("load was performed. ");
-        });
 
     })
 </script>

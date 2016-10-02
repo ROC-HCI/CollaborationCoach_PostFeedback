@@ -98,7 +98,9 @@ echo "Database cleanup completed...";
 //=============================================================
 if($_GET['mode'] == 'debug')
 {
-	$collection = $database->selectCollection('speechrawdata');
+	$collection = $_GET['collection']
+	
+	$collection = $database->selectCollection($collection);
 	$cursor = $collection->find();
 	
 	$print_document = null;
