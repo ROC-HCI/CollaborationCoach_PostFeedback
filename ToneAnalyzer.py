@@ -26,8 +26,8 @@ pp = pprint.PrettyPrinter(indent=2)
 # Access keys for using IBM Bluemix. Generate these through a Bluemix Account
 # http://www.ibm.com/cloud-computing/bluemix/
 #==================================================================================
-IBM_TONE_USERNAME = "459ca71f-efec-4a3c-8313-e07816be33d9"
-IBM_TONE_PASSWORD = "yVjLxiSri7As"
+IBM_TONE_USERNAME = "3020d7bb-7271-48a4-9f44-cc8918830788"
+IBM_TONE_PASSWORD = "FOG5rXrhNK0J"
 
 #==================================================================================
 # Get the text transcript for this user from MongoDB
