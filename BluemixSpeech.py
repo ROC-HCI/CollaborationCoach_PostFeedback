@@ -55,31 +55,31 @@ def bluemix_call(filename):
 	flac_data = flac_file.read()
 
 	model = "{0}_BroadbandModel".format(language)
-	url = "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?{0}".format(urlencode({
-	"profanity_filter": "false",
-	"timestamps": "true",
-	"continuous": "true",
-	"model": model
+    url = "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?{0}".format(urlencode({
+    "profanity_filter": "false",
+    "timestamps": "true",
+    "continuous": "true",
+    "model": model
     }))
-	
+
 	request = Request(url, data = flac_data, headers = {"Content-Type": "audio/x-flac"})
 
 	if hasattr("", "encode"):
-        authorization_value = base64.standard_b64encode("{0}:{1}".format(IBM_TONE_USERNAME, IBM_TONE_PASSWORD).encode("utf-8")).decode("utf-8")
-    else:
-        authorization_value = base64.standard_b64encode("{0}:{1}".format(IBM_TONE_USERNAME, IBM_TONE_PASSWORD))
-    
-    request.add_header("Authorization", "Basic {0}" . format(authorization_value))
+		authorization_value = base64.standard_b64encode("{0}:{1}".format(IBM_TONE_USERNAME, IBM_TONE_PASSWORD).encode("utf-8")).decode("utf-8")
+	else:
+		authorization_value = base64.standard_b64encode("{0}:{1}".format(IBM_TONE_USERNAME, IBM_TONE_PASSWORD))
+
+	request.add_header("Authorization", "Basic {0}" . format(authorization_value))
 	
 	try:
-        response = urlopen(request)
-    except HTTPError as e:
-        raise RequestError("speech recognition request failed: {0}".format(getattr(e, "reason", "status {0}".format(e.code)))) # use getattr to be compatible with Python 2.6
-    except URLError as e:
-        raise RequestError("speech recognition connection failed: {0}".format(e.reason))
-        
-    response_text = response.read().decode("utf-8")
-    result = json.loads(response_text)
+		response = urlopen(request)
+	except HTTPError as e:
+		raise RequestError("speech recognition request failed: {0}".format(getattr(e, "reason", "status {0}".format(e.code)))) # use getattr to be compatible with Python 2.6
+	except URLError as e:
+		raise RequestError("speech recognition connection failed: {0}".format(e.reason))
+
+	response_text = response.read().decode("utf-8")
+	result = json.loads(response_text)
 	
 	return result
 
