@@ -186,7 +186,7 @@
     //<------ main.js 
   
     //animate numbers - interruption
-    Number('#chart1',i1);
+    /*Number('#chart1',i1);
     Number('#chart2',i2);
 
     ChartJS('#chart3');
@@ -224,7 +224,7 @@
       guests = getKey(currentUser.attr('#text'));
       console.log("initial guest assignment", guests);
       loadTheRest(currentUser.attr('#text'));
-    });
+    });*/
     //main.js ------->
 
     //Affdex Data
