@@ -99,7 +99,7 @@ def process_transcript(raw_data):
 			if "transcript" in hypothesis:
 				transcription.append(hypothesis["transcript"])
 				
-	transcript = "\n".join(transcription)
+	transcript = ". ".join(transcription)
 
 	# Dump transcript into MongoDB for display and later analysis!
 	final_dict = {}
