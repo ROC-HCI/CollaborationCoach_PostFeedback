@@ -87,6 +87,20 @@ echo "Dropped speechrawdata" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
 
+$collection = $database->selectCollection('transcript_bluemix');
+$response = $collection->drop();
+
+echo "Dropped transcript_bluemix" . "<br/>";
+echo print_r($response);
+echo "<hr/>";
+
+$collection = $database->selectCollection('speechrawdata_bluemix');
+$response = $collection->drop();
+
+echo "Dropped speechrawdata_bluemix" . "<br/>";
+echo print_r($response);
+echo "<hr/>";
+
 echo "Database cleanup completed...";
 
 */

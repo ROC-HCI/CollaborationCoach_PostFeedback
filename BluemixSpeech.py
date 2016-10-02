@@ -1,6 +1,6 @@
 #==================================================================================
 # IBM Bluemix Speech Recognition for the RocConf Project
-#    - Jeffery A. White - July 2016
+#    - Jeffery A. White - September 2016
 #
 # Based upon the SpeechRecognition Library
 # SpeechRecognition - Zhang, A. (2015). 
@@ -27,7 +27,7 @@ class RequestError(Exception): pass
 client = MongoClient()
 database = client['rocconf']
 transcript_collection = database['transcript_bluemix']
-raw_data_collection = database['bluemix_raw']
+raw_data_collection = database['speechrawdata_bluemix']
 
 session_key = ""
 user_id = ""
@@ -76,11 +76,46 @@ def bluemix_call(filename):
 	response_text = response.read().decode("utf-8")
 	result = json.loads(response_text)
 	
+	# Dump to MongoDB for later analysis!
+	final_dict = {}
+	final_dict['session_key'] = session_key
+	final_dict['user'] = user_id
+	final_dict['results'] = json.loads(response_text)
+	
+	raw_data_collection.insert_one(final_dict).inserted_id
+	
 	return result
 
+#================================================================================================
+# Processing a text transcript from bluemix results data
+#================================================================================================
+def process_transcript(raw_data):
+	result = raw_data
+
+	transcription = []
+	for utterance in result["results"]:
+		if "alternatives" not in utterance: raise UnknownValueError()
+		for hypothesis in utterance["alternatives"]:
+			if "transcript" in hypothesis:
+				transcription.append(hypothesis["transcript"])
+				
+	transcript = "\n".join(transcription)
+
+	# Dump transcript into MongoDB for display and later analysis!
+	final_dict = {}
+	final_dict['session_key'] = session_key
+	final_dict['user'] = user_id
+	final_dict['transcript'] = transcript
+	
+	transcript_collection.insert_one(final_dict).inserted_id
+	
 #=======================================================
 # Main Caller
 #=======================================================
 if __name__ == "__main__":
+	final = sys.argv[1].split('_')
+	session_key = final[1]
+	user_id = final[2]
+	
 	raw_data = bluemix_call(sys.argv[1])
-	pp.pprint(raw_data)
+	process_transcript(raw_data)
