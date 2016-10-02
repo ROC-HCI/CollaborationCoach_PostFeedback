@@ -38,7 +38,7 @@ IBM_TONE_PASSWORD = "FOG5rXrhNK0J"
 #==================================================================================
 def get_transcript(session_id, user_id):
 	db_data = read_collection.find({"session_key":session_id,"user":user_id})
-	item = db_data[1]
+	item = db_data[0]
 	
 	transcript_text = item["transcript"]
 
@@ -85,5 +85,5 @@ if __name__ == "__main__":
 	session_key = final[1]
 	user_id = final[2]
 	
-	transcript = get_transcript(session_key, user)
+	transcript = get_transcript(session_key, user_id)
 	process_tone(transcript)
