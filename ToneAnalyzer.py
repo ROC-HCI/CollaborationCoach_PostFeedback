@@ -2,7 +2,7 @@
 # IBM Bluemix Tone Analyzer for the RocConf Project
 #    - Jeffery A. White - July 2016
 #
-# Usage - ToneAnalyzer.py {SESSION_KEY} {USER}
+# Usage - ToneAnalyzer.py {filename}
 #==================================================================================
 import pymongo
 from pymongo import MongoClient
@@ -16,9 +16,13 @@ from urllib2 import Request, urlopen, URLError, HTTPError
 
 class RequestError(Exception): pass
 
+session_key = ""
+user_id = ""
+
 client = MongoClient()
 database = client['rocconf']
-collection = database['transcript']
+read_collection = database['transcript_bluemix']
+write_collection = database['toneanalysis_bluemix']
 
 pp = pprint.PrettyPrinter(indent=2)
 
@@ -33,7 +37,10 @@ IBM_TONE_PASSWORD = "FOG5rXrhNK0J"
 # Get the text transcript for this user from MongoDB
 #==================================================================================
 def get_transcript(session_id, user_id):
-    transcript_text = "I'm creating a test bit of text before worry about pulling from the MongoDB. This is because we haven't nailed down the speech recognition bit just yet."
+    db_data = read_collection.find({"session_key":session_id,"user":user_id})
+	item = db_data[1]
+	
+	transcript_text = item["transcript"]
     
     return transcript_text
     
@@ -66,18 +73,20 @@ def process_tone(transcript_text, session_id, user_id):
     response_text = response.read().decode("utf-8")
     result = json.loads(response_text)
     
-    collection = database['tone']
-    
     final_dict = {}
     final_dict["session_key"] = session_id
     final_dict["user"] = user_id
     final_dict["data"] = result
     
-    pp.pprint(collection.insert_one(final_dict).inserted_id)
+    pp.pprint(write_collection.insert_one(final_dict).inserted_id)
 
 #=======================================================
 # Main Caller
 #=======================================================
 if __name__ == "__main__":
-    transcript = get_transcript(sys.argv[1], sys.argv[2])
-    process_tone(transcript, sys.argv[1], sys.argv[2])
+	final = sys.argv[1].split('_')
+	session_key = final[1]
+	user_id = final[2]
+	
+    transcript = get_transcript(session_key, user)
+    process_tone(transcript)

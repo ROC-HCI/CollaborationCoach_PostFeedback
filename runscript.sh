@@ -48,7 +48,11 @@ for file in Data/fixed_$session_id*.flac;
 done
 echo "Finish - Bluemix Speech Recognition"
 
-#RUN BLUEMIX TONE ANALYSIS ON RECOGNIZED SPEECH
+echo "Start - Bluemix Tone Analysis"
+for file in Data/fixed_$session_id*.flac;
+	do python ToneAnalysis.py $file
+done
+echo "Finish - Bluemix Tone Analysis"
 
 echo "Session Script Terminated..."
 
