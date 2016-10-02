@@ -91,7 +91,7 @@ function Number(id, data) {
 }*/
 
 //chart4 stuff
-function createSvg() {
+/*function createSvg() {
 
   var margin = getInitialMargin(i3speaker.length);
   //add arrows
@@ -134,7 +134,7 @@ function createSvg() {
 
   }
 
-}
+}*/
 
 function getInitialMargin(count) {
   var margin = 0;
