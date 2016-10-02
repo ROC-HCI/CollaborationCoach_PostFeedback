@@ -48,7 +48,7 @@ def get_transcript(session_id, user_id):
 # Run this on a text based transcript to obtain tone analysis, add this
 # analysis data to the tone collection
 #==================================================================================
-def process_tone(transcript_text, session_id, user_id):
+def process_tone(transcript_text):
 	url = "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?{0}" . format(urlencode({"version": "2016-05-19","text": transcript_text}))
 
 	request = Request(url, headers = {"Content-Type": "application/json"})
