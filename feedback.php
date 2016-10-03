@@ -102,7 +102,7 @@
           <button onclick="setupChart('4');">User 4</button>
           <script>
             var allusers = Object.keys(interruption);
-            for (var user in allusers) {
+            for (String users : allusers) {
               document.write("<button onclick='setupChart(0);'>"+user+"</button>");
             }
           </script>
