@@ -101,7 +101,7 @@
           <button onclick="setupChart('3');">User 3</button>
           <button onclick="setupChart('4');">User 4</button>
           <script>
-            allusers = Object.keys(arr);
+            var allusers = Object.keys(arr);
             for (var user in allusers) {
               document.write("<button onclick='setupChart(0);'>"+user+"</button>");
             }
