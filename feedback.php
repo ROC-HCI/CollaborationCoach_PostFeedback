@@ -101,9 +101,9 @@
           <button onclick="setupChart('3');">User 3</button>
           <button onclick="setupChart('4');">User 4</button>
           <script>
-            var allusers = Object.keys(jsontent.interruption);
-            console.log("object keys", allusers);
-            for (String user : allusers) {
+            var userlist = Object.keys(jsontent.interruption);
+            console.log("object keys", userlist);
+            for (var user in userlist) {
               document.write("<button onclick='setupChart(0);'>"+user+"</button>");
             }
           </script>
