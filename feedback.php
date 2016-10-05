@@ -103,7 +103,7 @@
           <script>
             var userlist = Object.keys(jscontent.interruption);
             console.log("object keys", userlist);
-            for (var i = 0; i <= userlist.length; i++) {
+            for (var i = 0; i < userlist.length; i++) {
               document.write("<button onclick='setupChart("+(i+1)+");'>"+userlist[i]+"</button>");
             }
           </script>
