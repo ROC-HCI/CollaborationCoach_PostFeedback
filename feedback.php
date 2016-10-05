@@ -96,15 +96,15 @@
         <h1> Your Attitude towards </h1>
         <p align="center">
           <button onclick="setupChart('0');">Overall</button>
-          <button onclick="setupChart('1');">User 1</button>
+          <!--button onclick="setupChart('1');">User 1</button>
           <button onclick="setupChart('2');">User 2</button>
           <button onclick="setupChart('3');">User 3</button>
-          <button onclick="setupChart('4');">User 4</button>
+          <button onclick="setupChart('4');">User 4</button!-->
           <script>
             var userlist = Object.keys(jscontent.interruption);
             console.log("object keys", userlist);
             for (var user in userlist) {
-              document.write("<button onclick='setupChart(0);'>"+user+"</button>");
+              document.write("<button onclick='setupChart(0);'>"+userlist[user]+"</button>");
             }
           </script>
         </p>
