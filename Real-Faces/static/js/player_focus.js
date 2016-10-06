@@ -9,7 +9,7 @@ function focus_sample()
 {
 	if(focus_running == 1)
 	{
-		var info = document.getElementById("playerFocusHUDNotifitcation").innerHTML;
+		var info = document.getElementById("bigFeed").getElementsByTagName("video").id;
 
 		// If sentiment hasn't changed we haven't started affdex sampling yet.
 		if(sentiment != 0)

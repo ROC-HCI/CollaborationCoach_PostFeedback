@@ -139,69 +139,69 @@ RealTHREE.prototype.createSceneOutdoors = function () {
 
 RealTHREE.prototype.createSceneArtGallery = function () {
 
-  var ambient = new THREE.AmbientLight( 0x444444 );
-  this.scene.add( ambient );
+  // var ambient = new THREE.AmbientLight( 0x444444 );
+  // this.scene.add( ambient );
 
-  var light = new THREE.SpotLight( 0xffffff, 0.85, 0, Math.PI / 2, 1 );
-  light.position.set( 0, 1500, 1000 );
-  light.target.position.set( 0, 0, 0 );
+  // var light = new THREE.SpotLight( 0xffffff, 0.85, 0, Math.PI / 2, 1 );
+  // light.position.set( 0, 1500, 1000 );
+  // light.target.position.set( 0, 0, 0 );
 
-  this.scene.add( light );
+  // this.scene.add( light );
 
-  //cannon fps copy floor
+  // //cannon fps copy floor
 
-  var floorTexture = new THREE.ImageUtils.loadTexture( 'images/grid.png' );
-  floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
-  floorTexture.repeat.set( 50, 30 );
-  var geometry = new THREE.PlaneBufferGeometry( 250, 150, 5, 5 );
-  geometry.applyMatrix( new THREE.Matrix4().makeRotationX( - Math.PI / 2 ) );
-  var material = new THREE.MeshLambertMaterial( { map: floorTexture} );
-  var floor = new THREE.Mesh( geometry, material );
-  floor.position.z = -25;
-  floor.position.x = -25;
+  // var floorTexture = new THREE.ImageUtils.loadTexture( 'images/grid.png' );
+  // floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
+  // floorTexture.repeat.set( 50, 30 );
+  // var geometry = new THREE.PlaneBufferGeometry( 250, 150, 5, 5 );
+  // geometry.applyMatrix( new THREE.Matrix4().makeRotationX( - Math.PI / 2 ) );
+  // var material = new THREE.MeshLambertMaterial( { map: floorTexture} );
+  // var floor = new THREE.Mesh( geometry, material );
+  // floor.position.z = -25;
+  // floor.position.x = -25;
 
-  floor.castShadow = false;
-  floor.receiveShadow = false;
-  this.scene.add( floor );
+  // floor.castShadow = false;
+  // floor.receiveShadow = false;
+  // this.scene.add( floor );
 
-  var context = this;
-  createWalls(context);
-      //fix this function call
-  createCeiling(null, context);
+  // var context = this;
+  // createWalls(context);
+  //     //fix this function call
+  // createCeiling(null, context);
 
-  createGalleryPictures(context);
+  // createGalleryPictures(context);
 
-  createSkybox('Sorsele3', this.sceneVars.skySize, context);
+  // createSkybox('Sorsele3', this.sceneVars.skySize, context);
 
-  ///////////////
-  // FURNITURE //
-  ///////////////
+  // ///////////////
+  // // FURNITURE //
+  // ///////////////
 
-  renderer = new THREE.WebGLRenderer({ antialias: true} );
-  renderer.context.canvas = WebGLDebugUtils.makeLostContextSimulatingCanvas(renderer.context.canvas);
-  renderer.context.canvas.addEventListener("webglcontextlost", function(event) {
-      event.preventDefault();
-      // animationID would have been set by your call to requestAnimationFrame
-      cancelAnimationFrame(animationID);
-      console.log('animation cancelled due to lost webGL context')
-  }, false);
-  //renderer.setClearColor( scene.fog.color );
-  //renderer.setPixelRatio( window.devicePixelRatio );
-  renderer.setSize( window.innerWidth, window.innerHeight );
-  //container.appendChild( renderer.domElement );
+  // renderer = new THREE.WebGLRenderer({ antialias: true} );
+  // renderer.context.canvas = WebGLDebugUtils.makeLostContextSimulatingCanvas(renderer.context.canvas);
+  // renderer.context.canvas.addEventListener("webglcontextlost", function(event) {
+  //     event.preventDefault();
+  //     // animationID would have been set by your call to requestAnimationFrame
+  //     cancelAnimationFrame(animationID);
+  //     console.log('animation cancelled due to lost webGL context')
+  // }, false);
+  // //renderer.setClearColor( scene.fog.color );
+  // //renderer.setPixelRatio( window.devicePixelRatio );
+  // renderer.setSize( window.innerWidth, window.innerHeight );
+  // //container.appendChild( renderer.domElement );
 
-  //renderer.autoClear = false;
+  // //renderer.autoClear = false;
 
 
-  this.verticalMirror = new THREE.Mirror( this.renderer, this.camera, { clipBias: 0.01, textureWidth: window.innerWidth, textureHeight: window.innerHeight } );
+  // this.verticalMirror = new THREE.Mirror( this.renderer, this.camera, { clipBias: 0.01, textureWidth: window.innerWidth, textureHeight: window.innerHeight } );
 
-  var verticalMirrorMesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 30, 25 ), this.verticalMirror.material );
-  verticalMirrorMesh.add( this.verticalMirror );
-  verticalMirrorMesh.position.y = 15;
-  verticalMirrorMesh.position.z = -47.49;
-  this.scene.add( verticalMirrorMesh );
+  // var verticalMirrorMesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 30, 25 ), this.verticalMirror.material );
+  // verticalMirrorMesh.add( this.verticalMirror );
+  // verticalMirrorMesh.position.y = 15;
+  // verticalMirrorMesh.position.z = -47.49;
+  // this.scene.add( verticalMirrorMesh );
 
-  document.body.appendChild( renderer.domElement );
+  // document.body.appendChild( renderer.domElement );
 
 }
 
