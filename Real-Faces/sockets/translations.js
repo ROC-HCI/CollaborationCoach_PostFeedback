@@ -85,9 +85,13 @@ module.exports = function(io,uuid){
 	  // the session, start the session.
 	  if(seatLocation == (requiredUsercount - 1) && !sessionStarted)
 	  {
-		  client.broadcast.to(client.roomName).emit('session_start','start');
-		  client.emit('session_start','start');
-		  sessionStarted = true;
+		  // Slight delay prior to running this.
+		  setTimeout(function (){
+			client.broadcast.to(client.roomName).emit('session_start','start');
+			client.emit('session_start','start');
+			sessionStarted = true;
+		  },6000);
+
 	  }
 
       //sets event listener for new client
