@@ -51,9 +51,9 @@ echo "Finish - Bluemix Tone Analysis - Google Results"
 echo "Start - Bluemix Speech Recognition"
 for file in Data/fixed_$session_id*.flac;
 	do 
-		echo "Sending File $file"
-		python BluemixSpeech.py $file
+		BluemixSpeech.py $file &
 	done
+	wait
 echo "Finish - Bluemix Speech Recognition"
 
 echo "Start - Bluemix Tone Analysis"
