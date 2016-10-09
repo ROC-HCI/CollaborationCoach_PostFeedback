@@ -109,4 +109,4 @@ if __name__ == "__main__":
 	else:
 		transcript = ""
 		
-	process_tone(transcript)
+	process_tone(transcript, mode)
