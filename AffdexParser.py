@@ -106,6 +106,9 @@ if __name__ == "__main__":
 		while flag < 5:
 			data = {}
 			average_data = compute_averages(parsed_data, flag)
+			
+			pp.pprint(average_data)
+			
 			data["joy"] = average_data[0]
 			data["sadness"] = average_data[1]
 			data["disgust"] = average_data[2]
