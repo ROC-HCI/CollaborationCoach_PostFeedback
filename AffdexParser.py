@@ -109,18 +109,30 @@ if __name__ == "__main__":
 			
 			pp.pprint(average_data)
 			
-			data["joy"] = average_data[0]
-			data["sadness"] = average_data[1]
-			data["disgust"] = average_data[2]
-			data["contempt"] = average_data[3]
-			data["anger"] = average_data[4]
-			data["fear"] = average_data[5]
-			data["surprise"] = average_data[6]
-			data["valence"] = average_data[7]
-			data["engagement"] = average_data[8]
-			final_dict[str(flag)] = data
-			flag = flag + 1
-		
+			try:
+				data["joy"] = average_data[0]
+				data["sadness"] = average_data[1]
+				data["disgust"] = average_data[2]
+				data["contempt"] = average_data[3]
+				data["anger"] = average_data[4]
+				data["fear"] = average_data[5]
+				data["surprise"] = average_data[6]
+				data["valence"] = average_data[7]
+				data["engagement"] = average_data[8]
+				final_dict[str(flag)] = data
+				flag = flag + 1
+			except:
+				data["joy"] = 0
+				data["sadness"] = 0
+				data["disgust"] = 0
+				data["contempt"] = 0
+				data["anger"] = 0
+				data["fear"] = 0
+				data["surprise"] = 0
+				data["valence"] = 0
+				data["engagement"] = 0
+				final_dict[str(flag)] = data
+				flag = flag + 1
 		collection = database['affdexaverages']	
 		pp.pprint(collection.insert_one(final_dict).inserted_id)
 
