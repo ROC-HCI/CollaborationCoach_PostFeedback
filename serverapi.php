@@ -221,12 +221,9 @@ if($_GET['mode'] == 'affdexaverages')
 	$query = array('session_key' => $session_key,
 				   'user' => $user);
 				   
-	$cursor = $collection->find($query);
-	
-	foreach($cursor as $document)
-	{
-		echo json_encode($document);
-	}
+	$document = $collection->findOne($query);
+
+	echo json_encode($document);
 	
 	$connection->close();
 }
@@ -257,12 +254,9 @@ if($_GET['mode'] == 'speechrawdata')
 	$query = array('session_key' => $session_key,
 				   'user' => $user);
 				   
-	$cursor = $collection->find($query);
-	
-	foreach($cursor as $document)
-	{
-		echo json_encode($document);
-	}
+	$document = $collection->findOne($query);
+
+	echo json_encode($document);
 	
 	$connection->close();
 }
