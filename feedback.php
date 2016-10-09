@@ -319,8 +319,10 @@
       setupChart("0");
 
       xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=tone_google&session_key=<?php echo $feedbackID ?>&user=<?php echo $userID ?>", false);
-      xtthp.send();
+      xhttp.send();
       tone_data = JSON.parse(xhttp.responseText);
+
+      setuptoneChart();
 
 
     })
