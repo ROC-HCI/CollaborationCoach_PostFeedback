@@ -167,9 +167,9 @@ if($_GET['mode'] == 'participation')
 	$collection = $database->selectCollection('participation');
 	$query = array('session_key' => $session_key);
 	
-	$cursor = $collection->find($query);
+	$document = $collection->findOne($query);
 
-	echo json_encode($cursor->next());	
+	echo json_encode($document);	
 	
 	$connection->close();
 }
