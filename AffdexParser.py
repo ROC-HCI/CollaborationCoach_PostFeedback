@@ -36,12 +36,12 @@ def parse_raw_data(session_key, user):
 
 	document = source_collection.find_one({"session_key":session_key, "user":user})
 
-	affdex_data = document["data"]
+	affdex_data = json.loads(document["data"])
 	parsed_data = []
 
 	for row in affdex_data:
 		sample = []
-		sentiment_data = row["sentiment"]
+		sentiment_data = json.loads(row["sentiment"])
 		try:
 			sample.append(int(row["focus"]))
 			sample.append(float(sentiment_data["joy"]))
