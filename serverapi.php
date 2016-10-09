@@ -169,7 +169,7 @@ if($_GET['mode'] == 'participation')
 	
 	$cursor = $collection->find($query);
 
-	echo json_encode($cursor[0]);	
+	echo json_encode($cursor->next());	
 	
 	$connection->close();
 }
