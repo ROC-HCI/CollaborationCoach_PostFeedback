@@ -100,17 +100,17 @@
         <h1> Your Attitude towards </h1>
         <p align="center">
           <button onclick="setupChart('0');">Overall</button>
-          <!--button onclick="setupChart('1');">User 1</button>
+          <button onclick="setupChart('1');">User 1</button>
           <button onclick="setupChart('2');">User 2</button>
           <button onclick="setupChart('3');">User 3</button>
-          <button onclick="setupChart('4');">User 4</button!-->
-          <script>
+          <button onclick="setupChart('4');">User 4</button>
+          <!--script>
             var userlist = Object.keys(jscontent.interruption);
             console.log("object keys", userlist);
             for (var i = 0; i < userlist.length; i++) {
               document.write("<button onclick='setupChart("+(i+1)+");'>"+userlist[i]+"</button>");
             }
-          </script>
+          </script-->
         </p>
         <div style="max-width:400px; max-height:400px">
           <canvas id="barChart" width="400" height="400"></canvas>
@@ -219,7 +219,7 @@
       {
         barData = 
         {
-          labels : ["Engagement","Attention","Surprise","Contempt","Joy","Smirk","Relaxed","Disappointed"],
+          labels : ["Engagement","Attention","Surprise","Contempt","Joy","Relaxed","Disappointed"],
           datasets : 
           [
             {
@@ -227,7 +227,7 @@
               backgroundColor: "rgba(58,87,214,.1)",
               borderColor: "rgba(58,87,214,.2)",
               pointBackgroundColor : "rgba(255,255,255,1)",
-              data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.smirk,overall_data.relaxed,overall_data.disappointed]
+              data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.relaxed,overall_data.disappointed]
             }
           ]
         }
@@ -250,7 +250,7 @@
       
         barData = 
         {
-          labels : ["Engagement","Attention","Surprise","Contempt","Joy","Smirk","Relaxed","Disappointed"],
+          labels : ["Engagement",,"Surprise","Contempt","Joy","Anger"],
           datasets : 
           [
             {
@@ -258,7 +258,7 @@
               backgroundColor: "rgba(58,87,214,.1)",
               borderColor: "rgba(58,87,214,.2)",
               pointBackgroundColor : "rgba(255,255,255,1)",
-              data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.smirk,overall_data.relaxed,overall_data.disappointed]
+              data : [overall_data.engagement,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.anger]
             },
             {
               label: "User " + user,
@@ -266,7 +266,7 @@
               borderColor: "rgba(144,212,153,1)",
               pointBackgroundColor : "rgba(144,212,153,1)",
               pointStrokeColor : "#fff",
-              data : [user_data.engagement,user_data.attention,user_data.surprise,user_data.contempt,user_data.joy,user_data.smirk,user_data.relaxed,user_data.disappointed]
+              data : [user_data.engagement,user_data.surprise,user_data.contempt,user_data.joy,user_data.anger]
             }
           ]
         }
