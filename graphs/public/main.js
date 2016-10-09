@@ -199,7 +199,6 @@ function getKey(currentUser) {
     console.log("all the keys", key);
 
     if(key.toString().split('\/')[1]===currentUser) {
-
         guests.current = currentUser;
         var node = {};
         node.guest = key.toString().split('-')[0];

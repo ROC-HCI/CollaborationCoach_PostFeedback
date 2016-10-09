@@ -280,7 +280,7 @@
     }
 
     // Document ready function 
-    /*$( document ).ready(function()
+    $( document ).ready(function()
     {
       // Snag chart data from the database via the API
       var xhttp = new XMLHttpRequest();
@@ -291,7 +291,7 @@
       setupChart("0");
 
 
-    })*/
+    })
 </script>
 </body>
 </html>
