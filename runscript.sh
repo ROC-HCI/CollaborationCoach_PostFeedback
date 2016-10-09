@@ -50,7 +50,7 @@ echo "Session Script Starting for: $session_id"
 echo "Start - Bluemix Speech Recognition"
 for file in Data/fixed_$session_id*.flac;
 	do 
-		BluemixSpeech.py $file &
+		python BluemixSpeech.py $file &
 	done
 	wait
 echo "Finish - Bluemix Speech Recognition"
