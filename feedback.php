@@ -282,7 +282,7 @@
     function setuptoneChart()
     {
 
-      socialtone_Data = tone_data.data.tonecategories[1].tones;
+      socialtone_Data = tone_data.data.document_tone.tone_categories[1].tones;
       var barData = {};
 
       barData = 
