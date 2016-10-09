@@ -252,7 +252,7 @@ for k,v in turntaking_raw.iteritems():
 	inter = result.split('-')
 	first = inter[0].split('_')
 	second = inter[1].split('_')
-	turntaking_fixed[first[0] + '/' + second[0]] = v
+	turntaking_fixed[first[0] + '-' + second[0]] = v
 	
 final_dict['turntaking'] = turntaking_fixed
 
