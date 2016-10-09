@@ -44,15 +44,15 @@ def parse_raw_data(session_key, user):
 		sentiment_data = row["sentiment"]
 		try:
 			sample.append(int(row["focus"]))
-			sample.append(float(sentiment["joy"]))
-			sample.append(float(sentiment["sadness"]))
-			sample.append(float(sentiment["disgust"]))
-			sample.append(float(sentiment["contempt"]))
-			sample.append(float(sentiment["anger"]))
-			sample.append(float(sentiment["fear"]))
-			sample.append(float(sentiment["surprise"]))
-			sample.append(float(sentiment["valence"]))
-			sample.append(float(sentiment["engagement"]))
+			sample.append(float(sentiment_data["joy"]))
+			sample.append(float(sentiment_data["sadness"]))
+			sample.append(float(sentiment_data["disgust"]))
+			sample.append(float(sentiment_data["contempt"]))
+			sample.append(float(sentiment_data["anger"]))
+			sample.append(float(sentiment_data["fear"]))
+			sample.append(float(sentiment_data["surprise"]))
+			sample.append(float(sentiment_data["valence"]))
+			sample.append(float(sentiment_data["engagement"]))
 		except KeyError:
 			print "Error in parsing affdex merge data"
 			
