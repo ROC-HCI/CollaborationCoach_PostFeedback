@@ -7,6 +7,8 @@
 	$data = curl_exec($ch);
 	curl_close($ch);
 	echo $data;*/
+  $feedbackID = $_GET['key'];
+
 ?>
 
 <html>
@@ -42,7 +44,7 @@
 	//xhttp.send();
 	//document.getElementById("Audio_Data").innerHTML = xhttp.responseText;
 
-	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=participation&session_key=test-key-test", false);
+	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=participation&session_key=$feedbackID", false);
 	xhttp.send();
 	var jscontent = JSON.parse(xhttp.responseText);
   document.getElementById("Audio_Data").innerHTML = xhttp.responseText;
@@ -282,11 +284,11 @@
     {
       // Snag chart data from the database via the API
       var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=test-key-test&user=Luis", false);
+      xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=$feedbackID&user=Luis", false);
       xhttp.send();
       session_data = JSON.parse(xhttp.responseText);
 
-      setupChart("1");
+      setupChart("0");
 
 
     })
