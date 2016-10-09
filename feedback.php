@@ -115,11 +115,18 @@
         <div style="max-width:400px; max-height:400px">
           <canvas id="barChart" width="400" height="400"></canvas>
         </div>
-      </div>
+
 
         <div style="max-width:400px; max-height:400px">
           <canvas id="barChart2" width="400" height="400"></canvas>
         </div>
+
+
+        <div style="max-width:400px; max-height:400px">
+          <canvas id="barChart3" width="400" height="400"></canvas>
+        </div>
+      </div>
+
       <div id="userSelection">
       </div>
 
@@ -282,7 +289,7 @@
     function setuptoneChart()
     {
 
-      socialtone_Data = tone_data.data.document_tone.tone_categories[1].tones;
+      languagetone_Data = tone_data.data.document_tone.tone_categories[1].tones;
       var barData = {};
 
       barData = 
@@ -295,7 +302,7 @@
             backgroundColor: "rgba(58,87,214,.1)",
             borderColor: "rgba(58,87,214,.2)",
             pointBackgroundColor : "rgba(255,255,255,1)",
-            data : [socialtone_Data[0].score, socialtone_Data[1].score, socialtone_Data[2].score]
+            data : [languagetone_Data[0].score, languagetone_Data[1].score,languagetone_Data[2].score]
           }
         ]
       }
@@ -305,6 +312,36 @@
       var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
           responsive: true,
           maintainAspectRatio: false}}});
+
+
+
+      socialtone_Data = tone_data.data.document_tone.tone_categories[2].tones;
+      var barData = {};
+
+      barData = 
+      {
+        labels : ["Openness","Conscientiousness","Extraversion","Agreeableness","Emotional Range"],
+        datasets : 
+        [
+          {
+            label: "Social Tones",
+            backgroundColor: "rgba(58,87,214,.1)",
+            borderColor: "rgba(58,87,214,.2)",
+            pointBackgroundColor : "rgba(255,255,255,1)",
+            data : [socialtone_Data[0].score, socialtone_Data[1].score, socialtone_Data[2].score, socialtone_Data[4].score, socialtone_Data[5].score]
+          }
+        ]
+      }
+
+      var ctx = document.getElementById("barChart3").getContext("2d");
+
+      var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
+          responsive: true,
+          maintainAspectRatio: false}}});
+
+
+
+
     }
 
     // Document ready function 
