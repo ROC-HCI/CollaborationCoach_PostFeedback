@@ -117,6 +117,9 @@
         </div>
       </div>
 
+        <div style="max-width:400px; max-height:400px">
+          <canvas id="barChart2" width="400" height="400"></canvas>
+        </div>
       <div id="userSelection">
       </div>
 
@@ -205,13 +208,10 @@
       var overall_stats = session_data["0"];    
       var overall_data = [];    
       overall_data.engagement = overall_stats.engagement;
-      overall_data.attention = overall_stats.attention;
       overall_data.surprise = overall_stats.surprise;
       overall_data.contempt = overall_stats.contempt;
       overall_data.joy = overall_stats.joy;
-      overall_data.smirk = overall_stats.smirk;
-      overall_data.relaxed = overall_stats.relaxed;
-      overall_data.disappointed = overall_stats.disappointed;
+      overall_data.relaxed = overall_stats.anger;
       
       var barData = {};
       
@@ -219,7 +219,7 @@
       {
         barData = 
         {
-          labels : ["Engagement","Attention","Surprise","Contempt","Joy","Relaxed","Disappointed"],
+          labels : ["Engagement","Surprise","Contempt","Joy","Anger"],
           datasets : 
           [
             {
@@ -227,7 +227,7 @@
               backgroundColor: "rgba(58,87,214,.1)",
               borderColor: "rgba(58,87,214,.2)",
               pointBackgroundColor : "rgba(255,255,255,1)",
-              data : [overall_data.engagement,overall_data.attention,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.relaxed,overall_data.disappointed]
+              data : [overall_data.engagement,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.anger]
             }
           ]
         }
@@ -238,13 +238,10 @@
         
         var user_data = [];   
         user_data.engagement = user_stats.engagement;
-        user_data.attention = user_stats.attention;
         user_data.surprise = user_stats.surprise;
         user_data.contempt = user_stats.contempt;
         user_data.joy = user_stats.joy;
-        user_data.smirk = user_stats.smirk;
-        user_data.relaxed = user_stats.relaxed;
-        user_data.disappointed = user_stats.disappointed;
+        user_data.anger = user_stats.anger;
         
         //alert(JSON.stringify(user_data));
       
@@ -281,6 +278,35 @@
           maintainAspectRatio: false}}});
     }
 
+    var tone_data = [];
+    function setuptoneChart()
+    {
+
+      socialtone_Data = tone_data.data.tonecategories[1].tones;
+      var barData = {};
+
+      barData = 
+      {
+        labels : ["Analytical","Confident","Tentative"],
+        datasets : 
+        [
+          {
+            label: "Language Tones",
+            backgroundColor: "rgba(58,87,214,.1)",
+            borderColor: "rgba(58,87,214,.2)",
+            pointBackgroundColor : "rgba(255,255,255,1)",
+            data : [socialtone_Data[0], socialtone_Data[1], socialtone_Data[2]]
+          }
+        ]
+      }
+
+      var ctx = document.getElementById("barChart2").getContext("2d");
+
+      var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
+          responsive: true,
+          maintainAspectRatio: false}}});
+    }
+
     // Document ready function 
     $( document ).ready(function()
     {
@@ -291,6 +317,10 @@
       session_data = JSON.parse(xhttp.responseText);
 
       setupChart("0");
+
+      xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=tone_google&session_key=<?php echo $feedbackID ?>&user=<?php echo $userID ?>", false);
+      xtthp.send();
+      tone_data = JSON.parse(xhttp.responseText);
 
 
     })
