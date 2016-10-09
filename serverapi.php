@@ -267,13 +267,47 @@ if($_GET['mode'] == 'speechrawdata')
 }
 
 // Access point for obtaining raw speech recognition detected by the 
-// google web speech API.
+// IBM Bluemix web speech API (transcribed).
+if($_GET['mode'] == 'speechrawdata_bluemix')
+{
+	$session_key = $_GET['session_key'];
+	$user = $_GET['user'];
+	
+	$collection = $database->selectCollection('transcript_bluemix');
+	$query = array('session_key' => $session_key,
+				   'user' => $user);
+				   
+	$document = $collection->findOne($query);
+
+	echo json_encode($document);
+	
+	$connection->close();
+}
+
+// Tone analysis results from the Google transcription
 if($_GET['mode'] == 'tone_google')
 {
 	$session_key = $_GET['session_key'];
 	$user = $_GET['user'];
 	
 	$collection = $database->selectCollection('toneanalysis_google');
+	$query = array('session_key' => $session_key,
+				   'user' => $user);
+				   
+	$document = $collection->findOne($query);
+
+	echo json_encode($document);
+	
+	$connection->close();
+}
+
+// Tone analysis results from the IBM transcription
+if($_GET['mode'] == 'tone_bluemix')
+{
+	$session_key = $_GET['session_key'];
+	$user = $_GET['user'];
+	
+	$collection = $database->selectCollection('toneanalysis_bluemix');
 	$query = array('session_key' => $session_key,
 				   'user' => $user);
 				   
