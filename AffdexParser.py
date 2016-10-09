@@ -36,7 +36,7 @@ def parse_raw_data(session_key, user):
 
 	document = source_collection.find_one({"session_key":session_key, "user":user})
 
-	affdex_data = json.loads(document["data"])
+	affdex_data = document["data"]
 	parsed_data = []
 
 	for row in affdex_data:
