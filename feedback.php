@@ -295,7 +295,7 @@
             backgroundColor: "rgba(58,87,214,.1)",
             borderColor: "rgba(58,87,214,.2)",
             pointBackgroundColor : "rgba(255,255,255,1)",
-            data : [socialtone_Data[0], socialtone_Data[1], socialtone_Data[2]]
+            data : [socialtone_Data[0].score, socialtone_Data[1].score, socialtone_Data[2].score]
           }
         ]
       }
