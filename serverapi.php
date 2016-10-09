@@ -168,11 +168,8 @@ if($_GET['mode'] == 'participation')
 	$query = array('session_key' => $session_key);
 	
 	$cursor = $collection->find($query);
-	
-	foreach($cursor as $document)
-	{
-		echo json_encode($document);
-	}	
+
+	echo json_encode($cursor[0]);	
 	
 	$connection->close();
 }
