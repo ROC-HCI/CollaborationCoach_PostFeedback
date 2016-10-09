@@ -80,7 +80,7 @@ def bluemix_call(filename):
 	final_dict = {}
 	final_dict['session_key'] = session_key
 	final_dict['user'] = user_id
-	final_dict['results'] = json.loads(response_text)
+	final_dict['data'] = result
 	
 	raw_data_collection.insert_one(final_dict).inserted_id
 	
@@ -90,7 +90,7 @@ def bluemix_call(filename):
 # Processing a text transcript from bluemix results data
 #================================================================================================
 def process_transcript(raw_data):
-	result = raw_data
+	result = json.loads(raw_data)
 
 	transcription = []
 	for utterance in result["results"]:
