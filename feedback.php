@@ -211,7 +211,7 @@
       overall_data.surprise = overall_stats.surprise;
       overall_data.contempt = overall_stats.contempt;
       overall_data.joy = overall_stats.joy;
-      overall_data.relaxed = overall_stats.anger;
+      overall_data.anger = overall_stats.anger;
       
       var barData = {};
       
