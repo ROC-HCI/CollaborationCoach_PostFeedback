@@ -262,4 +262,22 @@ if($_GET['mode'] == 'speechrawdata')
 	$connection->close();
 }
 
+// Access point for obtaining raw speech recognition detected by the 
+// google web speech API.
+if($_GET['mode'] == 'tone_google')
+{
+	$session_key = $_GET['session_key'];
+	$user = $_GET['user'];
+	
+	$collection = $database->selectCollection('toneanalysis_google');
+	$query = array('session_key' => $session_key,
+				   'user' => $user);
+				   
+	$document = $collection->findOne($query);
+
+	echo json_encode($document);
+	
+	$connection->close();
+}
+
 ?>
