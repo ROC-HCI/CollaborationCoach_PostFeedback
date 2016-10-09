@@ -188,7 +188,7 @@ function createGuest(index) {
 }
 
 function getKey(currentUser) {
-  currentUser = currentUser.replace(/Data\/test-key-test_/g, "");
+  //currentUser = currentUser.replace(/Data\/test-key-test_/g, "");
 
   guests.current = currentUser;
   guests.to = []; //eg Viv-Ru means Ru talked after Viv
