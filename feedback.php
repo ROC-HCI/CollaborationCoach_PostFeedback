@@ -286,7 +286,7 @@
     {
       // Snag chart data from the database via the API
       var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=<?php echo $feedbackID ?>&user=<?php echo $user ?>", false);
+      xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=<?php echo $feedbackID ?>&user=<?php echo $userID ?>", false);
       xhttp.send();
       session_data = JSON.parse(xhttp.responseText);
 
