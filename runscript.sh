@@ -47,19 +47,19 @@ echo "Session Script Starting for: $session_id"
 #done
 #echo "Finish - Bluemix Tone Analysis - Google Results"
 
-echo "Start - Bluemix Speech Recognition"
-for file in Data/fixed_$session_id*.flac;
-	do 
-		python BluemixSpeech.py $file &
-	done
-	wait
-echo "Finish - Bluemix Speech Recognition"
-
-#echo "Start - Bluemix Tone Analysis"
+#echo "Start - Bluemix Speech Recognition"
 #for file in Data/fixed_$session_id*.flac;
-#	do python ToneAnalyzer.py $file "bluemix"
-#done
-#echo "Finish - Bluemix Tone Analysis"
+#	do 
+#		python BluemixSpeech.py $file &
+#	done
+#	wait
+#echo "Finish - Bluemix Speech Recognition"
+
+echo "Start - Bluemix Tone Analysis"
+for file in Data/fixed_$session_id*.flac;
+	do python ToneAnalyzer.py $file "bluemix"
+done
+echo "Finish - Bluemix Tone Analysis"
 
 echo "Session Script Terminated..."
 
