@@ -47,7 +47,7 @@ def get_transcript_bluemix(session_id, user_id):
 	return transcript_text
 
 #----------------------------------------------------------------------------------	
-def get_transcript_bluemix(session_id, user_id):
+def get_transcript_google(session_id, user_id):
 	db_data = read_collection2.find({"session_key":session_id,"user":user_id})
 	item = db_data[0]
 	
