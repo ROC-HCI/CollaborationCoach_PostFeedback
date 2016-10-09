@@ -56,7 +56,7 @@ echo $collection2->count() . " documents";
 // 		   should only need to use this bit for any
 //         reset of the database for testing.
 //=============================================================
-/*
+
 echo "Starting database cleanup..." . "<br/><br/>";
 
 $collection = $database->selectCollection('participation');
@@ -66,12 +66,14 @@ echo "Dropped participation" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
 
+/*
 $collection = $database->selectCollection('affdexmerge');
 $response = $collection->drop();
 
 echo "Dropped affdexmerge" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
+*/
 
 $collection = $database->selectCollection('affdexaverages');
 $response = $collection->drop();
@@ -80,13 +82,16 @@ echo "Dropped affdexaverages" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
 
+/*
 $collection = $database->selectCollection('speechrawdata');
 $response = $collection->drop();
 
 echo "Dropped speechrawdata" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
+*/
 
+/*
 $collection = $database->selectCollection('transcript_bluemix');
 $response = $collection->drop();
 
@@ -114,7 +119,7 @@ $response = $collection->drop();
 echo "Dropped toneanalysis_google" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
-
+*/
 echo "Database cleanup completed...";
 
 */
