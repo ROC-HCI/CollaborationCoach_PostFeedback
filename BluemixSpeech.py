@@ -51,7 +51,7 @@ def bluemix_call(filename):
 	basepath = os.path.dirname(__file__)
 	filepath = os.path.abspath(os.path.join(basepath,filename))
 	
-	flac_file = open(filepath,'r+')
+	flac_file = open(filepath,'r')
 	flac_data = flac_file.read()
 
 	model = "{0}_BroadbandModel".format(language)
