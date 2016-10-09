@@ -90,8 +90,10 @@ def bluemix_call(filename):
 # Processing a text transcript from bluemix results data
 #================================================================================================
 def process_transcript(raw_data):
-	result = json.loads(raw_data)
+	result = raw_data
 
+	pp.pprint(raw_data)
+	
 	transcription = []
 	for utterance in result["results"]:
 		if "alternatives" not in utterance: raise UnknownValueError()
