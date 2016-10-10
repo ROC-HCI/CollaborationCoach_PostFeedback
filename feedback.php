@@ -361,11 +361,11 @@
 
     }
 
-    var tone_data = [];
+    var tone_data2 = [];
     function setuptoneChart2()
     {
 
-      languagetone_Data = tone_data.data.document_tone.tone_categories[1].tones;
+      languagetone_Data = tone_data2.data.document_tone.tone_categories[1].tones;
       var barData = {};
 
       barData = 
@@ -391,7 +391,7 @@
 
 
 
-      socialtone_Data = tone_data.data.document_tone.tone_categories[2].tones;
+      socialtone_Data = tone_data2.data.document_tone.tone_categories[2].tones;
       var barData = {};
 
       barData = 
