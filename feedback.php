@@ -132,7 +132,7 @@
         </div>
       </div>
 
-      <div align="center">
+      <div align="center" style="clear:both;">
 
         <div style="max-width:400px; max-height:400px;float:left;">
           <canvas id="barChart4" width="400" height="400"></canvas>
