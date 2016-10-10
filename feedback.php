@@ -248,7 +248,6 @@
           datasets : 
           [
             {
-              max: 100,
               label: "Overall",
               backgroundColor: "rgba(58,87,214,.1)",
               borderColor: "rgba(58,87,214,.2)",
@@ -276,7 +275,6 @@
           datasets : 
           [
             {
-              max: 100,
               label: "Overall",
               backgroundColor: "rgba(58,87,214,.1)",
               borderColor: "rgba(58,87,214,.2)",
@@ -284,7 +282,6 @@
               data : [overall_data.engagement,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.anger]
             },
             {
-              max: 100,
               label: "User " + user,
               backgroundColor: "rgba(144,212,153,.1)",
               borderColor: "rgba(144,212,153,1)",
@@ -302,6 +299,7 @@
 
       var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
           responsive: true,
+          max: 100,
           maintainAspectRatio: false}}});
     }
 
@@ -318,7 +316,6 @@
         datasets : 
         [
           {
-            max : 1,
             label: "Language Tones",
             backgroundColor: "rgba(0,255,255,.5)",
             borderColor: "rgba(58,87,214,.2)",
@@ -345,7 +342,6 @@
         datasets : 
         [
           {
-            max : 1,
             label: "Social Tones",
             backgroundColor: "rgba(128,255,0,.5)",
             borderColor: "rgba(58,87,214,.2)",
@@ -359,6 +355,7 @@
 
       var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
           responsive: true,
+          max: 1,
           maintainAspectRatio: false}}});
 
 
@@ -379,7 +376,6 @@
         datasets : 
         [
           {
-            max: 1,
             label: "Language Tones",
             backgroundColor: "rgba(0,255,255,.5)",
             borderColor: "rgba(58,87,214,.2)",
@@ -406,7 +402,6 @@
         datasets : 
         [
           {
-            max: 1,
             label: "Social Tones",
             backgroundColor: "rgba(128,255,0,.5)",
             borderColor: "rgba(58,87,214,.2)",
@@ -420,6 +415,7 @@
 
       var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
           responsive: true,
+          max: 1,
           maintainAspectRatio: false}}});
 
 
