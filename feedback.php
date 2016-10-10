@@ -134,12 +134,12 @@
 
       <div align="center">
 
-        <div style="max-width:400px; max-height:400px">
+        <div style="max-width:400px; max-height:400px;float:left;">
           <canvas id="barChart4" width="400" height="400"></canvas>
         </div>
 
 
-        <div style="max-width:400px; max-height:400px">
+        <div style="max-width:400px; max-height:400px;float:left;">
           <canvas id="barChart5" width="400" height="400"></canvas>
         </div>
 
