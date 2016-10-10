@@ -99,7 +99,7 @@
       <div align="center">
         <h1> Your Attitude towards </h1>
         <p align="center">
-          <button onclick="setupChart('0');">Overall</button>
+          <button onclick="setupChart('0');">Everyone</button>
           <button onclick="setupChart('1');">User 1</button>
           <button onclick="setupChart('2');">User 2</button>
           <button onclick="setupChart('3');">User 3</button>
