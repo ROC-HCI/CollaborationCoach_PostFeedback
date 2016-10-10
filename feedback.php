@@ -123,11 +123,11 @@
 
       <div align="center">
 
-        <div style="max-width:400px; max-height:400px">
+        <div style="max-width:400px; max-height:400px;float:left;">
           <canvas id="barChart2" width="400" height="400"></canvas>
         </div>
 
-        <div style="max-width:400px; max-height:400px">
+        <div style="max-width:400px; max-height:400px;float:left;">
           <canvas id="barChart3" width="400" height="400"></canvas>
         </div>
       </div>
@@ -316,7 +316,7 @@
         [
           {
             label: "Language Tones",
-            backgroundColor: "rgba(58,87,214,.1)",
+            backgroundColor: "rgba(0,255,255,.5)",
             borderColor: "rgba(58,87,214,.2)",
             pointBackgroundColor : "rgba(255,255,255,1)",
             data : [languagetone_Data[0].score, languagetone_Data[1].score,languagetone_Data[2].score]
@@ -342,7 +342,7 @@
         [
           {
             label: "Social Tones",
-            backgroundColor: "rgba(58,87,214,.1)",
+            backgroundColor: "rgba(128,255,0,.5)",
             borderColor: "rgba(58,87,214,.2)",
             pointBackgroundColor : "rgba(255,255,255,1)",
             data : [socialtone_Data[0].score, socialtone_Data[1].score, socialtone_Data[2].score, socialtone_Data[3].score, socialtone_Data[4].score]
@@ -375,7 +375,7 @@
         [
           {
             label: "Language Tones",
-            backgroundColor: "rgba(58,87,214,.1)",
+            backgroundColor: "rgba(0,255,255,.5)",
             borderColor: "rgba(58,87,214,.2)",
             pointBackgroundColor : "rgba(255,255,255,1)",
             data : [languagetone_Data[0].score, languagetone_Data[1].score,languagetone_Data[2].score]
@@ -401,7 +401,7 @@
         [
           {
             label: "Social Tones",
-            backgroundColor: "rgba(58,87,214,.1)",
+            backgroundColor: "rgba(128,255,0,.5)",
             borderColor: "rgba(58,87,214,.2)",
             pointBackgroundColor : "rgba(255,255,255,1)",
             data : [socialtone_Data[0].score, socialtone_Data[1].score, socialtone_Data[2].score, socialtone_Data[3].score, socialtone_Data[4].score]
