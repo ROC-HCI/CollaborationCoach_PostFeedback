@@ -146,9 +146,42 @@ if($_GET['mode'] == 'debug')
 	$connection->close();
 }
 
+//=============================================================
+// Transcript Comparison
+// - Looking at the different transcripts
+//=============================================================
+if($_GET['mode'] == 'transcript_checker')
+{
+	$key = 'bd3f7530-89b4-11e6-9414-799760e2546b';
+	$user = $_GET['user'];
+	
+	$collection = $database->selectCollection('speechrawdata');
+	$query = array('session_key' => $key,
+				   'user' => $user);
+				   
+	$document = $collection->findOne($query);
+
+	echo "<h2>Google Transcript</h2>";
+	
+	echo $document['transcript'];
+	
+	echo "<br/>";
+	echo "<hr/>";
+	echo "<br/>";
+	
+	echo "<h2>IBM Bluemix Transcript</h2>";
+	
+	$collection = $database->selectCollection('transcript_bluemix');
+	$query = array('session_key' => $key,
+				   'user' => $user);
+				   
+	$document = $collection->findOne($query);
+
+	echo $document['transcript'];
+}
 
 //=============================================================
-// ACCESS POINTS FOR API GO BELOW THIS POINTS
+// ACCESS POINTS FOR API GO BELOW THIS POINT
 //=============================================================
 
 // Access point for running the shell script.
