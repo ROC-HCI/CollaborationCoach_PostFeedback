@@ -122,6 +122,7 @@
       </div>
 
       <div align="center">
+        <h1> Tone Analyzer Google|Bluemix </h1>
 
         <div style="max-width:400px; max-height:400px;float:left;">
           <canvas id="barChart2" width="400" height="400"></canvas>
