@@ -415,8 +415,15 @@
 
       var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
           responsive: true,
-          max: 1,
-          maintainAspectRatio: false}}});
+          maintainAspectRatio: false},
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      max: 1,
+                  }
+              }]
+          }
+        }});
 
 
 
