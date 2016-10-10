@@ -271,7 +271,7 @@
       
         barData = 
         {
-          labels : ["Engagement",,"Surprise","Contempt","Joy","Anger"],
+          labels : ["Engagement","Surprise","Contempt","Joy","Anger"],
           datasets : 
           [
             {
