@@ -299,8 +299,15 @@
 
       var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
           responsive: true,
-          max: 100,
-          maintainAspectRatio: false}}});
+          maintainAspectRatio: false},
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      max: 100,
+                  }
+              }]
+          }
+        }});
     }
 
     var tone_data = [];
@@ -416,13 +423,6 @@
       var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
           responsive: true,
           maintainAspectRatio: false},
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      max: 1,
-                  }
-              }]
-          }
         }});
 
 
