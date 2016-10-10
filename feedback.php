@@ -112,21 +112,29 @@
             }
           </script-->
         </p>
+
+
         <div style="max-width:400px; max-height:400px">
           <canvas id="barChart" width="400" height="400"></canvas>
         </div>
 
+ 
+      </div>
+
+      <div align="center">
 
         <div style="max-width:400px; max-height:400px">
           <canvas id="barChart2" width="400" height="400"></canvas>
         </div>
 
-
         <div style="max-width:400px; max-height:400px">
           <canvas id="barChart3" width="400" height="400"></canvas>
         </div>
+      </div>
 
-                <div style="max-width:400px; max-height:400px">
+      <div align="center">
+
+        <div style="max-width:400px; max-height:400px">
           <canvas id="barChart4" width="400" height="400"></canvas>
         </div>
 
@@ -134,6 +142,7 @@
         <div style="max-width:400px; max-height:400px">
           <canvas id="barChart5" width="400" height="400"></canvas>
         </div>
+
       </div>
 
       <div id="userSelection">
