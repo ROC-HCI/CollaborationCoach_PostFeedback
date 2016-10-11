@@ -89,7 +89,7 @@ else{
 				interim_transcript += event.results[i][0].transcript;
 			}
 		}
-		final_transcript = capitalize(final_transcript);
+		final_transcript = capitalize(final_transcript) + " ";
 	}
 }
 
