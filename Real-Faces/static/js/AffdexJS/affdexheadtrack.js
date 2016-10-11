@@ -9,7 +9,7 @@ var detector = new affdex.CameraDetector(divRoot, width, height, faceMode);
 
 //Enable detection of all Expressions, Emotions and Emojis classifiers.
 detector.detectAllEmotions();
-//detector.detectAllExpressions();
+detector.detectAllExpressions();
 //detector.detectAllEmojis();
 //detector.detectAllAppearance();
 
