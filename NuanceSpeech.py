@@ -125,9 +125,9 @@ def process_transcript(raw_data):
 # Main Caller
 #=======================================================
 if __name__ == "__main__":
-	final = sys.argv[1].split('_')
-	session_key = final[1]
-	user_id = final[2]
+	#final = sys.argv[1].split('_')
+	#session_key = final[1]
+	#user_id = final[2]
 	
 	raw_data = bluemix_call(sys.argv[1])
 	#process_transcript(raw_data)
