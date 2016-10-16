@@ -129,5 +129,5 @@ if __name__ == "__main__":
 	#session_key = final[1]
 	#user_id = final[2]
 	
-	raw_data = bluemix_call(sys.argv[1])
+	raw_data = nuance_call(sys.argv[1])
 	#process_transcript(raw_data)
