@@ -54,8 +54,7 @@ def nuance_call(filename):
 	
 	analyze_function = read_wav_file_in_chunks(filepath)
 	
-	hdrs = 
-	{
+	hdrs = {
 		u"Content-Type": u"audio/x-wav;codec=pcm;bit=16;rate=8000",
 		u"Accept-Language": u"en_US",
 		u"Transfer-Encoding": u"chunked", 
