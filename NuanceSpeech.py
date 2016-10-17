@@ -18,6 +18,7 @@ import pprint
 import sys
 import os, base64, requests, wave
 import json
+from sys import stdout
 
 from urllib import urlencode
 from urllib2 import Request, urlopen, URLError, HTTPError
