@@ -37,7 +37,7 @@ pp = pprint.PrettyPrinter(indent=2)
 #==================================================================================
 # Access keys for using Nuance.
 #==================================================================================
-NUANCE_URL = "http://dictation.nuancemobility.net"
+NUANCE_URL = "https://dictation.nuancemobility.net"
 NUANCE_ENDPOINT = "/NMDPAsrCmdServlet/dictation"
 NUANCE_APPID = "NMDPTRIAL_jwhite637_gmail_com20161009231933"
 NUANCE_APPKEY = "811afaaf29e1ce63dd9c591634233a2a3ca55cdbb1e6a1659d00b180cb93394dad33fcd615ca39f26792089bb643c5f2e821ce9a086fffa56fb0253a435e87f0"
