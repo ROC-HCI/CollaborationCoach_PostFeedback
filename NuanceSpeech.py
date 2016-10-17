@@ -16,7 +16,7 @@ import pymongo
 from pymongo import MongoClient
 import pprint
 import sys
-import os, base64, requests
+import os, base64, requests, wave
 import json
 
 from urllib import urlencode
