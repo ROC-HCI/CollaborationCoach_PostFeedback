@@ -1,0 +1,303 @@
+<html>
+<head>
+<script src="/d3-cloud-master/lib/d3/d3.js"></script>
+<script src="/d3-cloud-master/d3.layout.cloud.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="css/component.css">
+<link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="css/multilevelmenu.css">
+<link href='https://fonts.googleapis.com/css?family=Leckerli+One' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript" src="js/jquery.dlmenu.js"></script>
+<script type="text/javascript" src="js/modernizr.custom.js"></script>
+<script type="text/javascript" src="js/pagetransitions.js"></script>
+<script src="/d3-cloud-master/lib/d3/d3.js"></script>
+<script src="/d3-cloud-master/d3.layout.cloud.js"></script>
+</head>
+<script>
+	var alltags =[];
+	var allstems = [];
+	var counter = 0;
+</script>
+<?php
+		$mysqli = new mysqli("localhost", "root", "test", "contspeakdb");
+		if (mysqli_connect_errno()) {
+			printf("Connect failed: %s\n", mysqli_connect_error());
+			exit();
+		}
+
+		$result = mysqli_query($mysqli,"SELECT idevaluators,vid_id,datakeys FROM evaluators where prompt = 5 And idevaluators < 145");
+
+
+		while($row = mysqli_fetch_array($result))
+		{
+    		//echo $row[2]."<br/>";
+    		//if($row[0] == 143)
+    			//break;
+    		$dataKey = $row[2];
+    		if($row[0] <= 143)
+    			$formattedAlignmentFilePath = "data/formatted-alignment-$dataKey.js";
+    		else
+  				$formattedAlignmentFilePath = "../workshop/data/formatted-alignment-$dataKey.js";
+
+    		if (file_exists($formattedAlignmentFilePath)) { ?>
+				<script type="text/javascript" src="<?php echo $formattedAlignmentFilePath; ?>"></script>
+				<script>
+
+					for (var stems in wordStemDict[0]) 
+					{ 
+						//console.log(stems);
+						allstems[stems] = wordStemDict[0][stems]; 
+					}
+
+
+				//console.log(wordTagCountData.length); 
+					for(var i = 0; i < wordTagCountData.length; i++)
+					{
+						var flag = false;
+						for(var j = 0; j < alltags.length; j++)
+						{
+							if(allstems[wordTagCountData[i].text] == allstems[alltags[j].text])
+							{
+								alltags[j].count++;
+								flag = true;
+								counter++;
+							}	
+							
+						}
+
+						if(flag == false){
+							//console.log("hello");
+							alltags.push({"text":wordTagCountData[i].text,"count":wordTagCountData[i].count});
+						}
+
+					}
+
+				/*for(var i = 0; i < wordStemDict.length; i++)
+				{
+										console.log(wordStemDict[i]);
+
+					if(allstems[wordStemDict[i]]==null)
+					{
+						allstems.push(wordStemDict[i]);
+					}
+				}*/
+				</script>
+
+<?php
+			
+			}
+		}
+
+		
+		$everything;
+		$result = mysqli_query($mysqli,"SELECT content FROM comments");
+		while($row = mysqli_fetch_array($result))
+		{
+    		//echo $row[2]."<br/>";
+    		//if($row[0] == 143)
+    			//break;
+			//echo $row[0];
+			$everything = $everything." ".$row[0];
+		}
+
+		$everything = explode(" ", $everything);
+		echo "<br><br><br>";
+?>
+<?php
+		/*for(var i = 0; i < wordTagCountData.length; i++)
+		{
+			var flag = false;
+			for(var j = 0; j < alltags.length; j++)
+			{
+				if(allstems[wordTagCountData[i].text] == allstems[alltags[j].text])
+				{
+					alltags[j].count++;
+					flag = true;
+					counter++;
+				}	
+				
+			}
+
+			if(flag == false){
+				//console.log("hello");
+				alltags.push({"text":wordTagCountData[i].text,"count":wordTagCountData[i].count});
+			}
+
+		}*/
+		$uniqueeverything = array();
+		for($i = 0; $i < count($everything); $i++){
+			$everything = preg_replace('/[^a-z]+/i', '_', $everything);
+			if($uniqueeverything[$everything[$i]] != NULL)
+			{
+				$uniqueeverything[$everything[$i]]++;
+			}else{
+				$uniqueeverything[$everything[$i]] = 1;
+			}
+			echo "test<br/>".$everything[$i];
+		}
+
+		print_r($uniqueeverything);
+
+
+
+		mysqli_close($mysqli);
+?>
+
+<script>
+	console.log(allstems);
+	var allwordscounter = 0;
+
+	for(var i = 0; i < alltags.length; i++)
+	{
+		allwordscounter+=alltags[i].count;
+	}
+
+	var commentwords = <?php echo json_encode($uniqueeverything) ?>;
+	console.log(commentwords);
+
+	var allcommenttags = [];
+	for(var i = 0; i < commentwords; i++){
+		allcommenttags.push({"text":commentwords[i],"count":[);
+
+	}
+	for (var word in commentwords) {
+	  if (commentwords.hasOwnProperty(word)) { 
+	  // or if (Object.prototype.hasOwnProperty.call(obj,prop)) for safety...
+	    //alert("prop: " + prop + " value: " + commentwords[word])
+	    allcommenttags.push({"text":word,"count":commentwords[word]);
+
+	  }
+	}
+
+	alltags = allcommenttags;
+	document.write("<h3>UniqueWord Count: " + alltags.length + "</h3>");
+	document.write("<h3>All Words Count: " + allwordscounter + "</h3>");
+
+	console.log(alltags.length);
+	console.log(counter);
+	alltags.sort(function(a, b){return a.count-b.count});
+	alltags.reverse();
+	/*for(var i = 0; i < alltags.length; i++){
+		console.log(alltags[i]);
+		document.write(alltags[i].text + "&nbsp;" + alltags[i].count +"<br/>");
+	}*/
+
+	/*var stemCount = {};
+	var tempWordCount = 0;
+	var	uniqueWordCount = 0;
+	for (var i=0;i<wordProsodyAudioData.length;i++) {
+	var wrd = wordProsodyAudioData[i].word;
+	if (wrd != "sp") {
+		  tempWordCount += 1;
+		  //if(wordStemDict[0][wrd] == undefined)
+			  //console.log(wordStemDict);
+		  var stem = wordStemDict[0][wrd];
+		  if (stem == undefined) console.log("undefined!","word:",wrd,", stem:",stem);
+		  if (stem in stemCount) {
+		    stemCount[stem] += 1;
+		  } else {
+		    stemCount[stem] = 1;
+		    uniqueWordCount += 1;
+		  }
+		}
+	}*/
+
+	wordTagCountData = alltags;
+	var COMMON_WORDS = "the,be,to,of,and,a,in,that,have,I,it,for,not,on,with,he,as,you,do,at,this,but,his,by,from,they,we,say,her,she,or,an,will,my,all,would,there,their,what,so,up,out,if,about,who,get,which,go,me,when,make,can,like,time,no,just,him,know,take,into,your,some,could,them,see,other,than,then,now,only,come,its,over,think,also,back,after,use,how,our,work,first,well,way,even,new,want,because,any,these,give,most,us,is,are,was,does,been,where,why,am,being,thing,really,something,however,said,got,such,I'm,I've,it's,don't,I'll,that's,what's,did,too,gotten,very,people".toUpperCase().split(",");
+	//one,two,people,year,good,look,day
+	var UNIMPORTANT_WORDS_DICT = {};
+	for (var i=0;i<COMMON_WORDS.length;i++) UNIMPORTANT_WORDS_DICT[COMMON_WORDS[i]] = 1;
+
+	var WEAK_LANGUAGE = "actually,literally,think,so,but,anyway,like,whatever,lol,ok,okay,dude,yeah,yea,totally,basically,well,um,anyways,guess,things,thing".toUpperCase().split(",");
+	var WEAK_LANGUAGE_DICT = {};
+	for (var i=0;i<WEAK_LANGUAGE.length;i++) WEAK_LANGUAGE_DICT[WEAK_LANGUAGE[i]] = 1;
+
+	var wordTagCountDataMax = 0; // Will set this properly later
+	var newWordTagCountData = [];
+	// For the word cloud, only keep important words
+	for (var i=0;i<wordTagCountData.length;i++) {
+	  //var tempWordTag = wordTagCountData[i].text.split(":");
+	  var tempWordTag = wordTagCountData[i].text;
+	  //if (!(tempWordTag[0] in UNIMPORTANT_WORDS_DICT)) {
+	  if (!(tempWordTag in UNIMPORTANT_WORDS_DICT) && wordTagCountData[i].count>0) {
+	    console.log(wordTagCountData[i]);
+	    wordTagCountDataMax = Math.max(wordTagCountDataMax, wordTagCountData[i].count);
+	    newWordTagCountData.push(wordTagCountData[i]);
+	  }
+	}
+
+	//var newWordTagCountData = newWordTagCountData.slice(0, 10);
+	//newWordTagCountData = wordTagCountData;
+	console.log(newWordTagCountData);
+	for(var i = 0; i < newWordTagCountData.length; i++){
+		console.log(newWordTagCountData[i]);
+		document.write(newWordTagCountData[i].text + "&nbsp;" + newWordTagCountData[i].count +"<br/>");
+	}
+
+
+</script>
+
+<body>
+
+<div id = "wordCloudDiv"></div>
+
+</body>
+
+<script>
+	var targetWordCloudW = 1200;
+	var targetWordCloudH = 800;
+	startDrawWordClound();
+
+	function startDrawWordClound() {
+	  /*console.log("wordcloud div width:",document.getElementById("wordCloudDiv").offsetWidth, document.getElementById("wordCloudDiv").style.width);
+	  console.log($("#serialChartPeriodSelectorDiv").width(), $("body").width());
+	  console.log("newWordTagCountData",newWordTagCountData.length);
+	  // If page width if 1183 px or more, only take up half the column space
+	  if ($("body").width() > 1182) targetWordCloudW = $("#serialChartPeriodSelectorDiv").width()/2;
+	  else targetWordCloudW = $("#serialChartPeriodSelectorDiv").width();
+	  targetWordCloudH;*/
+	  d3.layout.cloud().size([targetWordCloudW, targetWordCloudH])
+	    .words(newWordTagCountData.map(function(d) {
+	      return {text: d.text, size: 1+(d.count/wordTagCountDataMax)*39};
+	    }))
+	    .padding(5)
+	    .rotate(0)
+	    .font("Roboto")
+	    .fontSize(function(d) { return d.size; })
+	    .on("end", drawWordCloud)
+	    .start();
+	}
+
+	function drawWordCloud(words) {
+	  $("#wordCloudDiv").text("");
+	  d3.select("#wordCloudDiv").append("svg")
+	      .attr("width", targetWordCloudW)
+	      .attr("height", targetWordCloudH)
+	    .append("g")
+	      .attr("transform", "translate("+(targetWordCloudW/2)+","+(targetWordCloudH/2)+")")
+	    .selectAll("text")
+	      .data(words)
+	    .enter().append("text")
+	      .style("font-size", function(d) { return d.size + "px"; })
+	      .style("font-family", "Roboto")
+	      .style("fill", "#434343")
+	      .style("opacity", function(d) { return 0.5 + 0.5*((d.size-1)/39);})
+	      .attr("text-anchor", "middle")
+	      .attr("transform", function(d) {
+	        return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+	      })
+	      .text(function(d) { return d.text; });
+	}
+</script>
+
+
+</html>
