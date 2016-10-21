@@ -3,16 +3,16 @@ var app = express()
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
 
-var client = require('../wit/basic')
+//var client = require('../wit/basic')
 
 app.get('/', function(req,res){
-	res.sendFile(__dirname + '/index.html')
+	res.sendFile(__dirname + '/index3.html')
 })
 
 app.use(express.static('public'));
 
 //listening on io events
-io.on('connection', function(socket){
+/*io.on('connection', function(socket){
 
 	var user = function(){
 	    var d = new Date().getTime()
@@ -55,7 +55,7 @@ io.on('connection', function(socket){
 	socket.on('disconnect', function(){
 	console.log('user disconnected')
 	})
-})
+})*/
 
 http.listen(8000, function(){
 	console.log('listen at port 8000')
