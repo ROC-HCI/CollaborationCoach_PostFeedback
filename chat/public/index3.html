@@ -3,40 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Chat</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/daneden/animate.css/master/animate.min.css">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-
-
 </head>
 <body>
-	<!-- <header>
-	  <nav class="main-nav">
-	  	<ul class="list-inline">
-	  	    <li class="site-title"><a href="#">title</a></li>
-	  	    <li><a href="#">1nav</a></li>
-	  	    <li><a href="#">2nav</a></li>
-	  	    <li><a href="#">3nav</a></li>
-	  	</ul>
-	  </nav>
-	</header> -->
-
-	<!-- feedback filter -->
-			<div class="contain-filter">
-			    <h4>Feedback</h4>
-			    <a class="nav-btn" href="#">All</a>
-			    <a class="nav-btn" href="#">Group</a>
-			    <a class="nav-btn" href="#">Personal</a>
-			</div>
+	<header>
+	  <nav class="navbar navbar-dark" style="background-color: cornflowerblue;">
+	    <a href="#" class="navbar-brand">
+	      <!-- <img src="http://placehold.it/60x60" alt="" /> --> RocConf  
+	    </a>
+	    <!-- <form class="form-inline float-xs-left"> -->
+	      <a href="#" class="my-nav-link"><button class="active btn btn-link" type="button">My Calls</button></a>
+	      <a href="#" class="my-nav-link"><button class="btn btn-link" type="button">New Call</button></a>
+	      <a href="#" class="my-nav-link"><button class="btn btn-link" type="button">About</button></a>
+	  	<!-- </form> -->
+  		</nav>
+	</header>
 	<div class="main">
-			<div class="contain-graph">
-				
-				<!-- actual feedback diagram -->
-				<div id="graphContainer" class="inner-contain-graph">
-					<!-- some kind of navigation instruction -->
-				</div>
-			</div>
 			<div class="contain-body">
 		  		<div class="inner-contain-body">
 		     		<ul id="messages">
@@ -46,11 +31,17 @@
 		  		<div id="message-option" class="message-option">
 		  		</div>
 			</div>
+			<div class="contain-graph">
+				
+				<!-- actual feedback diagram -->
+				<div id="graphContainer" class="inner-contain-graph">
+					<!-- some kind of navigation instruction -->
+				</div>
+			</div>
 	</div>
-	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-	<script src="https://cdn.rawgit.com/mauriciosantos/Buckets-JS/master/dist/buckets.min.js"></script>
-	<script src="dialogue.js"></script>
+	<!-- <script src="dialogue.js"></script> -->
+	
 	<script>
 		$(document).ready(function(){
 			goto('start');
@@ -63,13 +54,14 @@
             'callfeedback': ['ok, Got it! Now viewing participation'],
             'cparticipation': ['Your participation is blabla. Any thoughts? [cturntaking: I can see that], [cturntaking: no], [cparticipation2: explain more]'],
             'cparticipation2': ['more participation'],
-            'cturntaking': ['end here to see if worked']
+            'cturntaking': ['end here to see if worked' ]
         };
         var track = 'start';
 
         function goto(line){
         	var message = $('#messages');
         	console.log('what', line, dialog[line.trim()]);
+
 	        setTimeout(function(){
 	        	message.append(
 	        		new item("Roboto", ButtonFix(dialog[line.trim()]+"")
@@ -129,8 +121,10 @@
 		}
 
 		var test = function(){
+			// $('#messages').append(new item("user", this.textContent).create());
 			goto(this.getAttribute('data-next'));
 			document.getElementById('message-option').innerHTML="";
+			//add a additional text
 		}
 		
 		option.prototype.create = function() {
