@@ -234,6 +234,21 @@ if($_GET['mode'] == 'affdexupload')
 	$connection->close();
 }
 
+// Access Point for submitting User -> Seat number relationship
+if($_GET['mode'] == 'seatupload')
+{
+	$json_string = file_get_contents('php://input');
+	
+	$document = json_decode($json_string);
+	
+	$collection = $database->selectCollection('affdexuserseat');
+	$collection->insert($document);
+	
+	echo "affdexuserseat submitted";
+	
+	$connection->close();
+}
+
 // Access point for merged focus and affdex data for a session key and user.
 // This is for raw output from these scripts.
 if($_GET['mode'] == 'affdexmerge')

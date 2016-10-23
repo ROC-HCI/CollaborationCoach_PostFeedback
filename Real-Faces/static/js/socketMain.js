@@ -46,6 +46,25 @@ var RealSocket = function (app) {
   
   this.socketio.on('seat_location', function(seatID){
 	  app.THREE.setSpawn(seatID);
+	  var request = new XMLHttpRequest();
+	  request.onreadystatechange = function() 
+	  {
+		if(request.readyState == 4 && request.status == 200) 
+		{
+			console.log('Stored my seat and user name to the Database.');
+			console.log(request.response);
+		}
+	  };
+	  
+	  data_to_send = {'session_key':realFaces.sessionKey, 
+					  'user':realFaces.userName,
+					  'seat':seatID};
+							
+	  string_data = JSON.stringify(data_to_send);		
+
+	  request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');				
+	  request.setRequestHeader("Content-type", "application/json");			
+	  request.send(string_data);
   });
   
   this.socketio.on('debug', function(message){

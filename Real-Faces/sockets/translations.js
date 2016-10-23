@@ -13,6 +13,7 @@ module.exports = function(io,uuid){
   var requiredUsercount = 3;
   var sessionStarted = false;
   var uploads_finished = 0;
+  var userSeats = {};
 
   translations.on('connection', function(client){
 	  
@@ -23,7 +24,7 @@ module.exports = function(io,uuid){
 			client.broadcast.to(client.roomName).emit('session_end','end');
 			client.emit('session_end','end');
 		}
-	});	
+	});
 	
 	client.on('upload_finished', function(data){
 		uploads_finished = uploads_finished + 1;
