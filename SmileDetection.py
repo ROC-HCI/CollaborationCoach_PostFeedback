@@ -74,8 +74,9 @@ if __name__ == "__main__":
 	# Computer paired smile detections between users
 	paired_detections = {}
 	for user in user_list:
-		for user2 in user_list:		
-			if (user + " - " + user2 not in paired_detections) and (user2 + " - " + user not in paired_detections):
+		for user2 in user_list:	
+			print user + " : " + user2
+			if (user != user2) and (user + " - " + user2 not in paired_detections) and (user2 + " - " + user not in paired_detections):
 				output = compute_pair_shared_smiles(raw_smile_data[user_list[0]],raw_smile_data[user])
 				paired_detections[user + " - " + user_list[0]] = output
 	
