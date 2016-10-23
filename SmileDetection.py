@@ -47,9 +47,15 @@ def parse_raw_data(session_key, user):
 
 # How many times did these two data sets share a smile
 def compute_pair_shared_smiles(user, other):
-	detections = []
+	detections = 0
 	
-	return "TEST"
+	detected = False
+	index = 0
+	
+	for value in user:
+		detections = detections + 1
+	
+	return detections
 	
 #=======================================================
 # Main Caller
