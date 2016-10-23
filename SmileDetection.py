@@ -98,7 +98,7 @@ if __name__ == "__main__":
 	length = 0	
 	for user in user_list:
 		temp_length = len(raw_smile_data[user])
-		if(length = 0):
+		if(length == 0):
 			length = temp_length
 		else:
 			if(len(raw_smile_data[user]) < length):
