@@ -188,13 +188,13 @@
 
 		function createGraph()
 		{
-			var participationDiv = $("<div style='display:none' class='outer2'><h3>Participation</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
+			var participationDiv = $("<div style='display:none' id='participation' class='outer2'><h3>Participation</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
 
 			$("#graphContainer").append(participationDiv);
 
 			console.log(participationDiv);
 			
-			$(participationDiv).show("slide", { direction: "up" }, 1000);
+			$('#participation').show("slide", { direction: "up" }, 1000);
 		}
 
     	function runEffect() {
