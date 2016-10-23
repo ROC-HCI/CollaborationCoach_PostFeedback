@@ -45,6 +45,8 @@
 			</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
 	<!-- <script src="dialogue.js"></script> -->
 	
 	<script>
