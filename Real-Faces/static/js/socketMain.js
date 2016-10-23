@@ -56,6 +56,8 @@ var RealSocket = function (app) {
 	  app.sessionKey = session_key;
   });
   
+  // One client is chosen by the server as a delegate to hit the shell scripts
+  // to start analysis work on the server.
   this.socketio.on('shell_delegate', function(message){
 	  var request = new XMLHttpRequest();
 	  request.onreadystatechange = function() 
@@ -87,7 +89,7 @@ var RealSocket = function (app) {
 	
 	onStart();
 	focus_running = 1;
-	setInterval(focus_sample,1000);
+	setInterval(focus_sample,100);
   });
   
   // ALL CLIENT FUNCTIONS THAT NEED TO STOP NEED TO STOP HERE - JW
