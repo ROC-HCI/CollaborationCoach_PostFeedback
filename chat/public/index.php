@@ -196,11 +196,11 @@
 
 			$("#graphContainer").append(participationDiv);
 
-			//gatherData();
+			gatherData();
 
-	        /*$.getScript('../../graphs/public/main.js',function(data,textStatus){
+	        $.getScript('../../graphs/public/main.js',function(data,textStatus){
 	            console.log("load was performed. ");
-	        });*/
+	        });
 
 			console.log(participationDiv);
 			
