@@ -64,11 +64,11 @@ def compute_pair_shared(user, other, length):
 	
 	for i in range(0,length):
 		if detected is False:
-			if(data_one[i] > SMILE_INTENSITY_THRESHOLD and data_two[i] > SMILE_INTENSITY_THRESHOLD):
+			if(data_one[i] > INTENSITY_THRESHOLD and data_two[i] > INTENSITY_THRESHOLD):
 				detected = True
 				cur_length = 1
 		else:
-			if(data_one[i] < SMILE_INTENSITY_THRESHOLD or data_two[i] < SMILE_INTENSITY_THRESHOLD):
+			if(data_one[i] < INTENSITY_THRESHOLD or data_two[i] < INTENSITY_THRESHOLD):
 				if((cur_length * COUNTER_VALUE) > DURATION_THRESHOLD):
 					detections = detections + 1
 					detected_length += cur_length
