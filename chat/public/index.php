@@ -37,10 +37,11 @@
 		  		</div>
 			</div>
 			<div class="contain-graph">
-				
-				<!-- actual feedback diagram -->
-				<div id="graphContainer" class="inner-contain-graph">
-					<!-- some kind of navigation instruction -->
+				<div class="container-layer">
+					<!-- actual feedback diagram -->
+					<div id="graphContainer" class="inner-contain-graph">
+						<!-- some kind of navigation instruction -->
+					</div>
 				</div>
 			</div>
 	</div>
@@ -52,6 +53,7 @@
 	<script>
 		$(document).ready(function(){
 			goto('start');
+			createGraph();
 		})
 		var dialog = {
             'start': ['Hi from me? [cleader:leading effective meeting],[cteamrole:my role in team], [cteam:overall team dynamics],[callfeedback:all]'],

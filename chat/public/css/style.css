@@ -223,3 +223,8 @@ form button {
   background: CornflowerBlue;
   padding: 15px;
 }
+
+.container-layer {
+  width: 80%;
+  margin-left: 10%;
+}
