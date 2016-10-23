@@ -9,7 +9,7 @@ import pymongo
 from pymongo import MongoClient
 import pprint
 
-INTENSITY_THRESHOLD = 75 # We only care about data points larger than this value
+INTENSITY_THRESHOLD = 60 # We only care about data points larger than this value
 DURATION_THRESHOLD = 0 # Placeholder - can use this for filtering length of shared value
 COUNTER_VALUE = 1 # How much time does each 'tick' represent
 
@@ -126,6 +126,9 @@ if __name__ == "__main__":
 	final_dict = {}
 	final_dict["session_key"] = session_key
 	final_dict["joy_data"] = compute(user_list, "joy")
+	final_dict["engagement_data"] = compute(user_list, "engagement")
+	final_dict["valence_data"] = compute(user_list, "valence")
+	final_dict["anger_data"] = computer(user_list, "anger")
 	
 	'''
 	collection = database['affdexshared']	
