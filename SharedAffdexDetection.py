@@ -128,7 +128,7 @@ if __name__ == "__main__":
 	final_dict["joy_data"] = compute(user_list, "joy")
 	final_dict["engagement_data"] = compute(user_list, "engagement")
 	final_dict["valence_data"] = compute(user_list, "valence")
-	final_dict["anger_data"] = computer(user_list, "anger")
+	final_dict["anger_data"] = compute(user_list, "anger")
 	
 	'''
 	collection = database['affdexshared']	
