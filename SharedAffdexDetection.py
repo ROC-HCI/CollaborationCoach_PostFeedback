@@ -133,13 +133,10 @@ if __name__ == "__main__":
 	final_dict["engagement_data"] = compute(user_list, "engagement")
 	final_dict["valence_data"] = compute(user_list, "valence")
 	final_dict["anger_data"] = compute(user_list, "anger")
-	
-	'''
+
 	collection = database['affdexshared']	
 	pp.pprint(collection.insert_one(final_dict).inserted_id)
-	'''
 
-	pp.pprint(final_dict)
 	
 
 	
