@@ -196,7 +196,7 @@
         //i3 = JSON.parse(i3);
 
 
-        var i5 = {};
+        /*var i5 = {};
 
         for(var key in i4) {
           keymod = key.replace(/Data\/test-key-test_/g, "");
@@ -204,7 +204,7 @@
 
         }
 
-        i4 = i5;
+        i4 = i5;*/
 
         console.log("i4 assignment", i4);
 
