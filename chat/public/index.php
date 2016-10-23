@@ -190,7 +190,7 @@
 		{
 			var participationDiv = $("<div class='outer2'><h3>Participation</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
 
-			$("graphContainer").append(participationDiv);
+			$("#graphContainer").append(participationDiv);
 
 		}
 
