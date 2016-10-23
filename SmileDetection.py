@@ -65,12 +65,14 @@ if __name__ == "__main__":
 	for user in user_list:
 		raw_smile_data[user] = parse_raw_data(session_key, user)
 	
-	
+	# Computer paired smile detections between users
 	paired_detections = {}
 	for user in user_list:
-		if user != user_list[0]:
-			output = compute_pair_shared_smiles(raw_smile_data[user_list[0]],raw_smile_data[user])
-			paired_detections[user + " - " + user_list[0]] = output
+		for user2 in user_list:		
+			if (user + " - " + user2 not in paired_detections) and 
+			   (user2 + " - " + user not in paired_detections):
+				output = compute_pair_shared_smiles(raw_smile_data[user_list[0]],raw_smile_data[user])
+				paired_detections[user + " - " + user_list[0]] = output
 	
 	pp.pprint(user_list)
 	pp.pprint(paired_detections)
