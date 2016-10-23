@@ -196,9 +196,18 @@
 
 			$("#graphContainer").append(participationDiv);
 
+			gatherData();
+
+	        $.getScript('../../graphs/public/main.js',function(data,textStatus){
+	            console.log("load was performed. ");
+	        });
+	        
 			console.log(participationDiv);
 			
 			$('#participation').show("slide", { direction: "up" }, 1000);
+
+
+
 		}
 
     	/*function runEffect() {
@@ -218,7 +227,7 @@
 	      $( "#effect" ).show( selectedEffect, options, 500, callback );
 	    };*/
 
-		/*function gatherData(){
+		function gatherData(){
 
 			var xhttp = new XMLHttpRequest();
 
@@ -265,7 +274,7 @@
 			var participation = data.participation;
 			var totalparticipation = data.totalparticipation;
 			var turntaking = data.turntaking;
-		}*/
+		}
 
 	</script>
 </body>
