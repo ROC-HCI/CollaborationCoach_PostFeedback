@@ -110,7 +110,7 @@ def compute(users, key):
 			key1 = user + " - " + user2
 			key2 = user2 + " - " + user
 			if (user != user2) and (key1 not in paired_detections) and (key2 not in paired_detections):
-				output = compute_pair_shared(raw_data[user_list[0]],raw_data[user], length)
+				output = compute_pair_shared(raw_data[user],raw_data[user2], length)
 				paired_detections[user + " - " + user2] = output
 				
 	return paired_detections
