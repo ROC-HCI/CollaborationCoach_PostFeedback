@@ -48,6 +48,7 @@
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
+	<link href="../../graphs/public/css/style.css" rel = "stylesheet"/>
 	<script src="../../graphs/public/js/jquery.animateNumber.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
@@ -202,15 +203,15 @@
 
 			gatherData();
 
-	        $.getScript('../../graphs/public/main.js',function(data,textStatus){
-	            console.log("load was performed. ");
-	        });
 
 			console.log(participationDiv);
 			
 			$('#participation').show("slide", { direction: "up" }, 1000);
 
 
+	        $.getScript('../../graphs/public/main.js',function(data,textStatus){
+	            console.log("load was performed. ");
+	        });
 
 		}
 
