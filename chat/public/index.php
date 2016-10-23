@@ -188,12 +188,28 @@
 
 		function createGraph()
 		{
-			var participationDiv = $("<div class='outer2'><h3>Participation</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
+			var participationDiv = $("<div style='display:none' class='outer2'><h3>Participation</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
 
 			$("#graphContainer").append(participationDiv);
-
+			$(participationDiv).show("slide", { direction: "up" }, 1000);
 		}
 
+    	function runEffect() {
+	     // get effect type from
+	      var selectedEffect = $( "#effectTypes" ).val();
+	 
+	      // Most effect types need no options passed by default
+	      var options = {};
+	      // some effects have required parameters
+	      if ( selectedEffect === "scale" ) {
+	        options = { percent: 50 };
+	      } else if ( selectedEffect === "size" ) {
+	        options = { to: { width: 280, height: 185 } };
+	      }
+	 
+	      // Run the effect
+	      $( "#effect" ).show( selectedEffect, options, 500, callback );
+	    };
 
 		/*function gatherData(){
 
