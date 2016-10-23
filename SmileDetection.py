@@ -51,7 +51,7 @@ def parse_raw_data(session_key, user):
 def compute_pair_shared_smiles(user, other):
 	detections = []
 	
-	return detections
+	return "TEST"
 	
 #=======================================================
 # Main Caller
@@ -74,10 +74,8 @@ if __name__ == "__main__":
 			output = compute_pair_shared_smiles(raw_smile_data[user_list[0]],raw_smile_data[user])
 			paired_detections[user + " - " + user_list[0]] = output
 	
-	for user in user_list:
-		print "********** " + user + " *************"
-		pp.pprint(paired_detections)
-		print "*************************************"
+	pp.pprint(user_list)
+	pp.pprint(paired_detections)
 	
 	
 
