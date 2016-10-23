@@ -16,7 +16,7 @@
 	    </a>
 	    <!-- <form class="form-inline float-xs-left"> -->
 	      <a href="#" class="my-nav-link"><button class="active btn btn-link" type="button">My Calls</button></a>
-	      <a href="https://conference.eastus.cloudapp.azure.com:8081/" class="my-nav-link"><button class="btn btn-link" type="button">New Call</button></a>
+	      <a href="#" class="my-nav-link"><button class="btn btn-link" type="button">New Call</button></a>
 	      <a href="#" class="my-nav-link"><button class="btn btn-link" type="button">About</button></a>
 	  	<!-- </form> -->
   		</nav>
@@ -40,89 +40,57 @@
 			</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-	<!-- <script src="dialogue.js"></script> -->
-	
+	<script src="./talktimeDialogue.js"></script>
 	<script>
+		var participation = parse(json);
+
 		$(document).ready(function(){
-			goto('start');
-		})
-		var dialog = {
-            'start': ['Hi from me? [cleader:leading effective meeting],[cteamrole:my role in team], [cteam:overall team dynamics],[callfeedback:all]'],
-            'cleader': ['ok, Got it! Now viewing participation [cgoon: cparticipation]'],
-            'cteamrole': ['ok, Got it! Now viewing participation'],
-            'cteam': ['ok, Got it! Now viewing participation'],
-            'callfeedback': ['ok, Got it! Now viewing participation'],
-            'cparticipation': ['Your participation is blabla. Any thoughts? [cturntaking: I can see that], [cturntaking: no], [cparticipation2: explain more]'],
-            'cparticipation2': ['more participation'],
-            'cturntaking': ['end here to see if worked' ]
-        };
-        var track = 'start';
+			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
+		});
 
-        function goto(line){
-        	var message = $('#messages');
-        	console.log('what', line, dialog[line.trim()]);
-
-	        setTimeout(function(){
-	        	message.append(
-	        		new item("Roboto", ButtonFix(dialog[line.trim()]+"")
-	        		).create()
-	        	);
-	        }, 500);
+        function gotoObject(object){
+        	console.log(typeof object);
+        	if(typeof object.body == "undefined"){
+        		(function(str){
+        			setTimeout(function(){
+        				$('#messages').append(new item("Server", str).create());	
+        			},600);
+        		})('the end');
+        	}else{
+	        	console.log('what', object.body.length); //already trimmed
+	        	console.log('buttons', object.buttons); //buttons
+	        	fixNewline(object);
+        	}
         }
 
-        function ButtonFix(str){
-        	return str+"".search(/[(.+):(.+)]/)!=-1? str.replace(/\[(.*?)\],?/g,function(match,$1){
-        		if($1.split(":")[0]=='cgoon'){
-        			console.log($1.split(":")[1]);
-        			goto($1.split(":")[1]+"");
-        		}else{
-        			$('#message-option').append(new option($1).create());
-        		}
-        		return '';
-        	}) : str;
+        function fixNewline(obj){
+        	var count = 1;
+        	for(var str of obj.body.split(/\\n/)){
+        		if(str=='') continue;
+        		(function(str){
+        			setTimeout(function(){
+        				$('#messages').append(new item("Roboto", str).create());	
+        			},count*600);
+        		})(str);
+        		count++;
+        	}
+
+        	for(var b of obj.buttons){
+        		console.log(b);
+        		$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
+        	}
         }
-        
-	// for(let i=0; i< dialogue.length; i++){
-	// 	line = dialogue[i];
-	// 	if(line.m){ //if line contains a message
-	// 		$('#messages').append(new item("Roboto", "Hi"+user+". "+line.m).create());
-	// 	}
-	// 	else if(line.question){ //if line contains a question
-	// 		$('#messages').append(new item("Roboto", line.question).create());
-	// 		for(i in line.options){
-	// 			//add buttons
-	// 			$('#message-option').append(new option(line.options[i]).create());
-	// 		}
-
-	// 		/*problem code*/
-	// 		var newindex = 0;
-	// 		$('#message-option button').click(function(){
-	// 				label = $(this).attr('data-next');
-	// 				newindex = jump(label);
-	// 				console.log('new index ', dialogue[newindex]);
-	// 		});
-	// 	}
-	// }
-
-		// function jump(label){
-		// 	for(i in dialogue){
-		// 		if(dialogue[i].label && dialogue[i].label == label){
-		// 			return i;
-		// 		}
-		// 	}
-		// 	return -1;
-		// }
 
 		//button 
 		function option(o){
-			this.next = o.split(":")[0];
-			this.text = o.split(":")[1];
+			this.text = o.split("|")[0];
+			this.next = o.split("|")[1];
 			this.button = document.createElement('button');
 		}
 
 		var test = function(e){
 			$('#messages').append(new item("user", this.textContent).create());
-			goto(this.getAttribute('data-next'));
+			gotoObject(this.getAttribute('data-next'));
 			document.getElementById('message-option').innerHTML="";
 			e.stopPropagation();
 			//add a additional text
@@ -181,10 +149,20 @@
 			// $('.right').append(content);
 		}
 
-		function creategraph()
-		{
-			$("graphContainer").append("div");
-
+		function parse(json){
+			var result = [];
+			for (var element of json){
+				result[element.title.trim()] = element; //assuming titles are unique
+				var bracket = element.body.match(/\[\[(.*?)\]\]/g);
+				if(bracket==null){
+					result[element.title.trim()].body = element.body.trim();
+				}
+				else{
+					result[element.title.trim()].buttons = element.body.match(/\[\[(.*?)\]\]/g);
+					result[element.title.trim()].body = /\b(.*)\b\s*(\[\[)/g.exec(element.body.trim())[1];
+				}
+			}
+			return result;
 		}
 
 	</script>
