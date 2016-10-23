@@ -198,10 +198,10 @@
 
 			gatherData();
 
-	        $.getScript('../../graphs/public/main.js',function(data,textStatus){
+	        /*$.getScript('../../graphs/public/main.js',function(data,textStatus){
 	            console.log("load was performed. ");
-	        });
-	        
+	        });*/
+
 			console.log(participationDiv);
 			
 			$('#participation').show("slide", { direction: "up" }, 1000);
