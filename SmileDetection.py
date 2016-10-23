@@ -55,10 +55,11 @@ def compute_pair_shared_smiles(user, other, length):
 	
 	detections_data = {}
 	
+	test_output = {}
+	
 	detections = 0	
 	detected = False
 	detected_length = 0
-	index = 0
 	
 	for i in range(0,length):
 		if not detected:
@@ -66,11 +67,14 @@ def compute_pair_shared_smiles(user, other, length):
 				detections = detections + 1
 				detected = True
 				detected_length = detected_length + 1
+				test_output[data_one[i] + " - " data_two[i]] = detected_length
 		else:
 			if(data_one[i] < SMILE_INTENSITY_THRESHOLD or data_two[i] < SMILE_INTENSITY_THRESHOLD):
 				detected = False
 			else:
 				detected_length = detected_length + 1
+	
+	pp.pprint(test_output)
 	
 	true_time = detected_length * COUNTER_VALUE
 	average_length = true_time / detections
