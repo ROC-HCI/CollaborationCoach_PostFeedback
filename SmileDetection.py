@@ -40,7 +40,7 @@ def parse_raw_data(session_key, user):
 	parsed_data = []
 
 	for row in affdex_data:
-		sample.append(float(row["smile"]))
+		parsed_data.append(float(row["smile"]))
 		
 	return parsed_data
 
