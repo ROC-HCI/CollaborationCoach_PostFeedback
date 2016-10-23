@@ -77,7 +77,11 @@ def compute_pair_shared(user, other, length):
 				cur_length = cur_length + 1
 	
 	true_time = detected_length * COUNTER_VALUE
-	average_length = true_time / detections
+	
+	if(detections > 0):
+		average_length = true_time / detections
+	else:
+		average_length = 0
 	
 	detections_data["Count"] = detections
 	detections_data["Avg"] = average_length
