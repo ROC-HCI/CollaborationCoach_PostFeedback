@@ -186,7 +186,7 @@
 			// $('.right').append(content);
 		}
 
-		function creategraph()
+		function createGraph()
 		{
 			var participationDiv; = $(
 			"<div class='outer2'>
@@ -199,7 +199,7 @@
 		}
 
 
-		function gatherData (){
+		function gatherData(){
 
 			var xhttp = new XMLHttpRequest();
 
