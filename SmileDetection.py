@@ -9,7 +9,7 @@ import pymongo
 from pymongo import MongoClient
 import pprint
 
-SMILE_INTENSITY_THRESHOLD = 95 # We only care about data points larger than this value
+SMILE_INTENSITY_THRESHOLD = 90 # We only care about data points larger than this value
 SMILE_DURATION_THRESHOLD = 0 # Placeholder - can use this for filtering length of shared value
 COUNTER_VALUE = 1 # How much time does each 'tick' represent
 
@@ -62,7 +62,7 @@ def compute_pair_shared_smiles(user, other, length):
 	detected_length = 0
 	
 	for i in range(0,length):
-		if not detected:
+		if detected == False:
 			if(data_one[i] > SMILE_INTENSITY_THRESHOLD and data_two[i] > SMILE_INTENSITY_THRESHOLD):
 				detections = detections + 1
 				detected = True
