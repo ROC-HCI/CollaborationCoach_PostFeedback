@@ -9,7 +9,7 @@ import pymongo
 from pymongo import MongoClient
 import pprint
 
-SMILE_THRESHOLD = 25 #We only care about smiles larger than this value
+SMILE_THRESHOLD = 75 #We only care about smiles larger than this value
 
 
 pp = pprint.PrettyPrinter(indent=2)
@@ -66,10 +66,17 @@ if __name__ == "__main__":
 	
 	for user in user_list:
 		raw_smile_data[user] = parse_raw_data(session_key, user)
-		
+	
+	
+	paired_detections = {}
+	for user in user_list:
+		if user != user_list[0]:
+			output = compute_pair_shared_smiles(raw_smile_data[user_list[0]],raw_smile_data[user])
+			paired_detections[user + " - " + user_list[0]] = output
+	
 	for user in user_list:
 		print "********** " + user + " *************"
-		pp.pprint(raw_smile_data[user])
+		pp.pprint(paired_detections)
 		print "*************************************"
 	
 	
