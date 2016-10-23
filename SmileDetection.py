@@ -75,10 +75,11 @@ if __name__ == "__main__":
 	paired_detections = {}
 	for user in user_list:
 		for user2 in user_list:	
-			print user + " : " + user2
-			if (user != user2) and (user + " - " + user2 not in paired_detections) and (user2 + " - " + user not in paired_detections):
+			key1 = user + " - " + user2
+			key2 = user2 + " - " + user
+			if (user != user2) and (key1 not in paired_detections) and (key2 not in paired_detections):
 				output = compute_pair_shared_smiles(raw_smile_data[user_list[0]],raw_smile_data[user])
-				paired_detections[user + " - " + user_list[0]] = output
+				paired_detections[user + " - " + user2] = output
 	
 	pp.pprint(user_list)
 	pp.pprint(paired_detections)
