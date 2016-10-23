@@ -10,7 +10,7 @@ from pymongo import MongoClient
 import pprint
 
 INTENSITY_THRESHOLD = 90 # We only care about data points larger than this value
-DURATION_THRESHOLD = 3 # Placeholder - can use this for filtering length of shared value
+DURATION_THRESHOLD = 1 # Placeholder - can use this for filtering length of shared value
 COUNTER_VALUE = 1 # How much time does each 'tick' represent
 
 pp = pprint.PrettyPrinter(indent=2)
