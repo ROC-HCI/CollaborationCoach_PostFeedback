@@ -120,10 +120,11 @@
 			this.button = document.createElement('button');
 		}
 
-		var test = function(){
-			// $('#messages').append(new item("user", this.textContent).create());
+		var test = function(e){
+			$('#messages').append(new item("user", this.textContent).create());
 			goto(this.getAttribute('data-next'));
 			document.getElementById('message-option').innerHTML="";
+			e.stopPropagation();
 			//add a additional text
 		}
 		
