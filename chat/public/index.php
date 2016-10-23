@@ -190,7 +190,7 @@
 
 		function createGraph()
 		{
-			var participationDiv = $("<div style='display:none' id='participation' class='outer2'><h3>Participation</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
+			var participationDiv = $("<div style='width:80%;height:40%;display:none' id='participation' class='outer2'><h3>Participation</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
 
 			$("#graphContainer").append(participationDiv);
 
@@ -199,7 +199,7 @@
 			$('#participation').show("slide", { direction: "up" }, 1000);
 		}
 
-    	function runEffect() {
+    	/*function runEffect() {
 	     // get effect type from
 	      var selectedEffect = $( "#effectTypes" ).val();
 	 
@@ -214,7 +214,7 @@
 	 
 	      // Run the effect
 	      $( "#effect" ).show( selectedEffect, options, 500, callback );
-	    };
+	    };*/
 
 		/*function gatherData(){
 
