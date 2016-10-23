@@ -40,10 +40,8 @@ def parse_raw_data(session_key, user):
 	parsed_data = []
 
 	for row in affdex_data:
-		try:
-			parsed_data.append(float(row["joy"]))
-		except ValueError:
-			pass
+		sentiment_data = json.loads(row["sentiment"])
+		parsed_data.append(float(sentiment_data["joy"]))
 		
 	return parsed_data
 
