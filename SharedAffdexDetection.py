@@ -9,7 +9,7 @@ import pymongo
 from pymongo import MongoClient
 import pprint
 
-INTENSITY_THRESHOLD = 90 # We only care about data points larger than this value
+INTENSITY_THRESHOLD = 75 # We only care about data points larger than this value
 DURATION_THRESHOLD = 0 # Placeholder - can use this for filtering length of shared value
 COUNTER_VALUE = 1 # How much time does each 'tick' represent
 
