@@ -62,7 +62,7 @@ def compute_pair_shared_smiles(user, other, length):
 	detected_length = 0
 	
 	for i in range(0,length):
-		if detected == False:
+		if detected is False:
 			if(data_one[i] > SMILE_INTENSITY_THRESHOLD and data_two[i] > SMILE_INTENSITY_THRESHOLD):
 				detections = detections + 1
 				detected = True
