@@ -94,18 +94,14 @@ $response = $collection->drop();
 echo "Dropped transcript_bluemix" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
-*/
 
-/*
 $collection = $database->selectCollection('speechrawdata_bluemix');
 $response = $collection->drop();
 
 echo "Dropped speechrawdata_bluemix" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
-*/
 
-/*
 $collection = $database->selectCollection('toneanalysis_bluemix');
 $response = $collection->drop();
 
@@ -124,6 +120,13 @@ $collection = $database->selectCollection('affdexshared');
 $response = $collection->drop();
 
 echo "Dropped shared affdex data" . "<br/>";
+echo print_r($response);
+echo "<hr/>";
+
+$collection = $database->selectCollection('affdexuserseat');
+$response = $collection->drop();
+
+echo "Dropped affdex user seat relationships" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
 
@@ -225,6 +228,9 @@ if($_GET['mode'] == 'affdexupload')
 	$json_string = file_get_contents('php://input');
 	
 	$document = json_decode($json_string);
+	
+	//TODO -> Parse this submission and use the uploaded
+	//seat:user information to fix the data points.
 	
 	$collection = $database->selectCollection('affdexmerge');
 	$collection->insert($document);
