@@ -42,7 +42,7 @@ def parse_raw_data(session_key, user):
 	for row in affdex_data:
 		try:
 			parsed_data.append(float(row["smile"]))
-		except: ValueError
+		except ValueError:
 			pass
 		
 	return parsed_data
