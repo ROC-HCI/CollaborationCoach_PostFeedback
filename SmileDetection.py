@@ -77,7 +77,7 @@ def compute_pair_shared_smiles(user, other, length):
 	
 	detections_data["Count"] = detections
 	detections_data["Avg"] = average_length
-	return detections
+	return detections_data
 	
 #=======================================================
 # Main Caller
