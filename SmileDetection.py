@@ -68,6 +68,7 @@ if __name__ == "__main__":
 		raw_smile_data[user] = parse_raw_data(session_key, user)
 		
 	for user in user_list:
+		print "********** " + user + " *************"
 		pp.pprint(raw_smile_data[user])
 		print "*************************************"
 	
