@@ -266,6 +266,21 @@ if($_GET['mode'] == 'affdexaverages')
 	$connection->close();
 }
 
+// Access point for shared emotional state for a session
+if($_GET['mode'] == 'affdexshared')
+{
+	$session_key = $_GET['session_key'];
+	
+	$collection = $database->selectCollection('affdexshared');
+	$query = array('session_key' => $session_key);
+				   
+	$document = $collection->findOne($query);
+
+	echo json_encode($document);
+	
+	$connection->close();
+}
+
 // Access point for submitting Google speech transcript data to the database.
 if($_GET['mode'] == 'speechupload')
 {
