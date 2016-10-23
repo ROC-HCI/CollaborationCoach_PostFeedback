@@ -41,6 +41,30 @@
 					<!-- actual feedback diagram -->
 					<div id="graphContainer" class="inner-contain-graph">
 						<!-- some kind of navigation instruction -->
+			 		
+			 		<div class="inner-contain1">
+			        <h1>Interruption</h1>
+			        <div class="outer">
+			          <p><span class="chart-label" id="chart1"></span>
+			          </p>
+			          <p>By You</p>
+			        </div>
+			        <div class="outer">
+			          <p><span class="chart-label" id="chart2"></span>
+			          </p>
+			          <p>By Others</p>
+			        </div>
+			      </div>
+			      <div class="inner-contain2">
+			        <div class="outer2">
+			          <h1>Participation</h1>
+			          <canvas class="chart" id="chart3" data-value="0" data-speaker=""></canvas>
+			        </div>
+			      </div>
+			      <h1>Turn Taking</h1>
+			      <div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
+
+
 					</div>
 				</div>
 			</div>
