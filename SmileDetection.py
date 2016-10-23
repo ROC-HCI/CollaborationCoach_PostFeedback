@@ -47,8 +47,8 @@ def parse_raw_data(session_key, user):
 		
 	return parsed_data
 
-# Compute average statistics about a set of records
-def computer_pair_shared_smiles(data, label):
+# How many times did these two data sets share a smile
+def compute_pair_shared_smiles(user, other):
 	detections = []
 	
 	return detections
@@ -62,7 +62,7 @@ if __name__ == "__main__":
 	user_list = get_user_list(session_key)
 	
 	# Get all the smile data for this set of users
-	raw_smile_data = []
+	raw_smile_data = {}
 	
 	for user in user_list:
 		raw_smile_data[user] = parse_raw_data(session_key, user)
