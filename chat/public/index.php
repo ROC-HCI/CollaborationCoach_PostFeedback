@@ -194,12 +194,12 @@
 	          <canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas>
 	        </div>");
 
-			$("graphContainer").append("div");
+			$("graphContainer").append(participationDiv);
 
 		}
 
 
-		function gatherData(){
+		/*function gatherData(){
 
 			var xhttp = new XMLHttpRequest();
 
@@ -246,7 +246,7 @@
 			var participation = data.participation;
 			var totalparticipation = data.totalparticipation;
 			var turntaking = data.turntaking;
-		}
+		}*/
 
 	</script>
 </body>
