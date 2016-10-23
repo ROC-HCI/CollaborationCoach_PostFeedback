@@ -113,6 +113,8 @@ def compute(users, key):
 				output = compute_pair_shared(raw_data[user_list[0]],raw_data[user], length)
 				paired_detections[user + " - " + user2] = output
 				
+	return paired_detections
+				
 #=======================================================
 # Main Caller
 #=======================================================
