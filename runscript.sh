@@ -41,6 +41,10 @@ echo "Start - average affdex features"
 python AffdexParser.py $session_id
 echo "Finish - average affdex features"
 
+echo "Start - shared affdex features"
+python SharedAffdexDetection.py $session_id
+echo "Finish - shared affdex features"
+
 echo "Start - Bluemix Tone Analysis - Google Results"
 for file in Data/fixed_$session_id*.flac;
 	do python ToneAnalyzer.py $file "google"
