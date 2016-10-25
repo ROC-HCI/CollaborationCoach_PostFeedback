@@ -232,11 +232,6 @@
 			
 			$('#participation').show("slide", { direction: "up" }, 1000);
 
-
-	        $.getScript('graphs/public/main.js',function(data,textStatus){
-	            console.log("load was performed. ");
-	        });
-
 		}
 
     	/*function runEffect() {
@@ -303,6 +298,10 @@
 			var participation = data.participation;
 			var totalparticipation = data.totalparticipation;
 			var turntaking = data.turntaking;
+
+				$.getScript('graphs/public/main.js',function(data,textStatus){
+	            console.log("load was performed. ");
+	        });
 		}
 
 	</script>
