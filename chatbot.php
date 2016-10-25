@@ -299,6 +299,33 @@
 			var totalparticipation = data.totalparticipation;
 			var turntaking = data.turntaking;
 
+			var total = total
+	        var i1 = interruption[0];
+	        var i2 = interruption[1];
+	        var i3 = participation;
+	        //console.log('a tag ', JSON.stringify(participation,null, 2));
+	        var i4 = turntaking;
+	        var iuser = data.user;
+	        console.log("what is iuser", iuser);
+	        var i3data = [];
+	        var i3speaker = [];
+	        var colorpalette = ['#90D0D5','#FBF172', '#B0D357', '#C88ABC', '#4B79BD'];
+	        var guests = {};
+	        var count = 0;
+
+
+	        console.log("i4 assignment", i4);
+
+	        for (var key in i3){
+	        	  //console.log("LALALA ", count, i3[key]);
+	            i3speaker.push(key);
+	            //keymod = key.replace(/Data\/test-key-test_/g, "");
+	            guests[key] = colorpalette[count];
+	            //console.log("logging guests", guests);
+	            i3data.push(Math.round(i3[key]));
+	            count+=1;
+	        }
+
 				$.getScript('graphs/public/main.js',function(data,textStatus){
 	            console.log("load was performed. ");
 	        });
