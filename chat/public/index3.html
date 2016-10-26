@@ -43,19 +43,21 @@
 	<script src="./talktimeDialogue.js"></script>
 	<script>
 		var participation = parse(json);
+		console.log(participation);
 
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 		});
 
         function gotoObject(object){
-        	console.log(typeof object);
+        	console.log(participation, object.title);
+        	//error occur
         	if(typeof object.body == "undefined"){
         		(function(str){
         			setTimeout(function(){
         				$('#messages').append(new item("Server", str).create());	
         			},600);
-        		})('the end');
+        		})('server crashed, please email us at xxx@xxx.edu to let us know what is causing the crash so we can fix it');
         	}else{
 	        	console.log('what', object.body.length); //already trimmed
 	        	console.log('buttons', object.buttons); //buttons
@@ -65,7 +67,9 @@
 
         function fixNewline(obj){
         	var count = 1;
-        	for(var str of obj.body.split(/\\n/)){
+        
+        	for(var str of participation[obj.title].body.split(/\\n/)){
+        		// console.log('whats my string ',str);
         		if(str=='') continue;
         		(function(str){
         			setTimeout(function(){
@@ -74,10 +78,11 @@
         		})(str);
         		count++;
         	}
-
-        	for(var b of obj.buttons){
-        		console.log(b);
-        		$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
+        	if(obj.buttons){
+        		for(var b of obj.buttons){
+        			console.log(b);
+        			$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
+        		}
         	}
         }
 
@@ -90,7 +95,8 @@
 
 		var test = function(e){
 			$('#messages').append(new item("user", this.textContent).create());
-			gotoObject(this.getAttribute('data-next'));
+			gotoObject(participation[this.getAttribute('data-next')]);
+			// gotoObject(this.getAttribute('data-next'));
 			document.getElementById('message-option').innerHTML="";
 			e.stopPropagation();
 			//add a additional text
@@ -153,13 +159,21 @@
 			var result = [];
 			for (var element of json){
 				result[element.title.trim()] = element; //assuming titles are unique
-				var bracket = element.body.match(/\[\[(.*?)\]\]/g);
-				if(bracket==null){
-					result[element.title.trim()].body = element.body.trim();
-				}
-				else{
-					result[element.title.trim()].buttons = element.body.match(/\[\[(.*?)\]\]/g);
-					result[element.title.trim()].body = /\b(.*)\b\s*(\[\[)/g.exec(element.body.trim())[1];
+
+				//empty node
+				if(element.body===undefined){
+					console.log('element.body fixed');
+					result[element.title.trim()].body = "empty node detected!";
+				}else{
+				//nonempty node
+					var bracket = element.body.match(/\[\[(.*?)\]\]/g);
+					if(bracket==null){
+							result[element.title.trim()].body = element.body.trim();
+					}
+					else{
+						result[element.title.trim()].buttons = element.body.match(/\[\[(.*?)\]\]/g);
+						result[element.title.trim()].body = /\b(.*)\b\s*(\[\[)/g.exec(element.body.trim())[1];
+					}
 				}
 			}
 			return result;
