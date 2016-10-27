@@ -1,7 +1,8 @@
-$(function() {
-
+//$(function() {
+function maketheGraphs(){
+  
     console.log("yo", i1);
-    
+
     //animate numbers - interruption
     myNumber('#chart1',i1);
     myNumber('#chart2',i2);
@@ -44,7 +45,8 @@ $(function() {
     });
 
     // loadArrow
-});
+//});
+}
 
 // chart1,2 stuff
 function myNumber(id, data) {

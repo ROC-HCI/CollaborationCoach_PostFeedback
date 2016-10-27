@@ -76,7 +76,8 @@
 	<script src="graphs/public/js/jquery.animateNumber.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
-    
+    <script src="graphs/public/main.js"></script>
+
 	<!-- <script src="dialogue.js"></script> -->
 	
 	<script>
@@ -251,6 +252,7 @@
 	      $( "#effect" ).show( selectedEffect, options, 500, callback );
 	    };*/
 
+	    var i1, i2, i3
 		function gatherData(){
 
 			var xhttp = new XMLHttpRequest();
@@ -326,9 +328,10 @@
 	            count+=1;
 	        }
 
-			$.getScript('graphs/public/main.js',function(data,textStatus){
+			/*$.getScript('graphs/public/main.js',function(data,textStatus){
 	            console.log("load was performed. ");
-	        });
+	        });*/
+			maketheGraphs();
 		}
 
 	</script>
