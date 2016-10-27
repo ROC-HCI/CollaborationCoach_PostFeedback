@@ -76,7 +76,7 @@
 			</div>
 	</div>
 
-	<link href="graphs/public/css/style.css" rel = "stylesheet"/>
+	<!-- link href="graphs/public/css/style.css" rel = "stylesheet"/-->
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<script src="graphs/public/js/jquery.animateNumber.min.js"></script>
@@ -231,12 +231,8 @@
 			var participationDiv = $("<div style='width:80%;height:40%;display:none' id='participation' class='outer2'><h3>Participation</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
 
 			$("#graphContainer").append(participationDiv);
-
 			gatherData();
-
-
-			console.log(participationDiv);
-			
+			console.log(participationDiv);			
 			$('#participation').show("slide", { direction: "up" }, 1000);
 
 		}
