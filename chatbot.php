@@ -59,15 +59,14 @@
 				          <p>By Others</p>
 				        </div>
 				        </div-->
-
+						<h3>Participation</h3>
 						<div class="graph-container">
 						<!--div class="outer2"-->
-							<h3>Participation</h3>
 							<canvas class="chart" id="chart3" data-value="0" data-speaker=""></canvas>
 						<!--/div-->
 						</div>
+						<h3>Turn Taking</h3>
 						<div class="graph-container">
-							<h3>Turn Taking</h3>
 							<div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
 						</div>
 			      	</div>
