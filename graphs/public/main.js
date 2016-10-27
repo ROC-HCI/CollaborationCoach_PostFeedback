@@ -1,6 +1,6 @@
 //$(function() {
 function maketheGraphs(){
-  
+
     console.log("yo", i1);
 
     //animate numbers - interruption

@@ -34,7 +34,7 @@ span.chart-label{
 
 .outer2 canvas {
   width: 100% !important;
-  height: auto !important;
+  //height: auto !important;
   min-width: 300px;
   margin: 0 auto;
 }
