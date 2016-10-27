@@ -123,7 +123,7 @@
 			</div>
 	</div>
 
-	<link href="graphs/public/css/style.css" rel = "stylesheet"/>
+	<!--link href="graphs/public/css/style.css" rel = "stylesheet"/-->
 	<script src="graphs/public/js/jquery.animateNumber.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
