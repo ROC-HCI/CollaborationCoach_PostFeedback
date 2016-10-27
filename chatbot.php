@@ -86,88 +86,64 @@
 
 	<!-- <script src="dialogue.js"></script> -->
 	
+	<script src="chat/public/talktimeDialogue.js"></script>
 	<script>
+		var participation = parse(json);
+		console.log(participation);
+
 		$(document).ready(function(){
-			goto('start');
 			createGraph();
-		})
-		var dialog = {
-            'start': ['Hi from me? [cleader:leading effective meeting],[cteamrole:my role in team], [cteam:overall team dynamics],[callfeedback:all]'],
-            'cleader': ['ok, Got it! Now viewing participation [cgoon: cparticipation]'],
-            'cteamrole': ['ok, Got it! Now viewing participation'],
-            'cteam': ['ok, Got it! Now viewing participation'],
-            'callfeedback': ['ok, Got it! Now viewing participation'],
-            'cparticipation': ['Your participation is blabla. Any thoughts? [cturntaking: I can see that], [cturntaking: no], [cparticipation2: explain more]'],
-            'cparticipation2': ['more participation'],
-            'cturntaking': ['end here to see if worked' ]
-        };
-        var track = 'start';
+			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
+		});
 
-        function goto(line){
-        	var message = $('#messages');
-        	console.log('what', line, dialog[line.trim()]);
-
-	        setTimeout(function(){
-	        	message.append(
-	        		new item("Roboto", ButtonFix(dialog[line.trim()]+"")
-	        		).create()
-	        	);
-	        }, 500);
+        function gotoObject(object){
+        	console.log(participation, object.title);
+        	//error occur
+        	if(typeof object.body == "undefined"){
+        		(function(str){
+        			setTimeout(function(){
+        				$('#messages').append(new item("Server", str).create());	
+        			},600);
+        		})('server crashed, please email us at xxx@xxx.edu to let us know what is causing the crash so we can fix it');
+        	}else{
+	        	console.log('what', object.body.length); //already trimmed
+	        	console.log('buttons', object.buttons); //buttons
+	        	fixNewline(object);
+        	}
         }
 
-        function ButtonFix(str){
-        	return str+"".search(/[(.+):(.+)]/)!=-1? str.replace(/\[(.*?)\],?/g,function(match,$1){
-        		if($1.split(":")[0]=='cgoon'){
-        			console.log($1.split(":")[1]);
-        			goto($1.split(":")[1]+"");
-        		}else{
-        			$('#message-option').append(new option($1).create());
-        		}
-        		return '';
-        	}) : str;
-        }
+        function fixNewline(obj){
+        	var count = 1;
         
-	// for(let i=0; i< dialogue.length; i++){
-	// 	line = dialogue[i];
-	// 	if(line.m){ //if line contains a message
-	// 		$('#messages').append(new item("Roboto", "Hi"+user+". "+line.m).create());
-	// 	}
-	// 	else if(line.question){ //if line contains a question
-	// 		$('#messages').append(new item("Roboto", line.question).create());
-	// 		for(i in line.options){
-	// 			//add buttons
-	// 			$('#message-option').append(new option(line.options[i]).create());
-	// 		}
-
-	// 		/*problem code*/
-	// 		var newindex = 0;
-	// 		$('#message-option button').click(function(){
-	// 				label = $(this).attr('data-next');
-	// 				newindex = jump(label);
-	// 				console.log('new index ', dialogue[newindex]);
-	// 		});
-	// 	}
-	// }
-
-		// function jump(label){
-		// 	for(i in dialogue){
-		// 		if(dialogue[i].label && dialogue[i].label == label){
-		// 			return i;
-		// 		}
-		// 	}
-		// 	return -1;
-		// }
+        	for(var str of participation[obj.title].body.split(/\\n/)){
+        		// console.log('whats my string ',str);
+        		if(str=='') continue;
+        		(function(str){
+        			setTimeout(function(){
+        				$('#messages').append(new item("Roboto", str).create());	
+        			},count*600);
+        		})(str);
+        		count++;
+        	}
+        	if(obj.buttons){
+        		for(var b of obj.buttons){
+        			console.log(b);
+        			$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
+        		}
+        	}
+        }
 
 		//button 
 		function option(o){
-			this.next = o.split(":")[0];
-			this.text = o.split(":")[1];
+			this.text = o.split("|")[0];
+			this.next = o.split("|")[1];
 			this.button = document.createElement('button');
 		}
 
 		var test = function(e){
 			$('#messages').append(new item("user", this.textContent).create());
-			goto(this.getAttribute('data-next'));
+			gotoObject(participation[this.getAttribute('data-next')]);
+			// gotoObject(this.getAttribute('data-next'));
 			document.getElementById('message-option').innerHTML="";
 			e.stopPropagation();
 			//add a additional text
@@ -224,6 +200,30 @@
 
 		    return this.li;
 			// $('.right').append(content);
+		}
+
+		function parse(json){
+			var result = [];
+			for (var element of json){
+				result[element.title.trim()] = element; //assuming titles are unique
+
+				//empty node
+				if(element.body.length==0){
+					console.log('element.body fixed');
+					result[element.title.trim()].body = "empty node detected!";
+				}else{
+				//nonempty node
+					var bracket = element.body.match(/\[\[(.*?)\]\]/g);
+					if(bracket==null){
+							result[element.title.trim()].body = element.body.trim();
+					}
+					else{
+						result[element.title.trim()].buttons = element.body.match(/\[\[(.*?)\]\]/g);
+						result[element.title.trim()].body = /\b(.*)\b\s*(\[\[)/g.exec(element.body.trim())[1];
+					}
+				}
+			}
+			return result;
 		}
 
 		function createGraph()
