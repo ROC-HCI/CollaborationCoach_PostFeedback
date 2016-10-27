@@ -252,7 +252,7 @@
 	      $( "#effect" ).show( selectedEffect, options, 500, callback );
 	    };*/
 
-	    var i1, i2, i3, i4, i3speaker, guests;
+	    var i1, i2, i3, i4, i3speaker, iuser, guests, count;
 		function gatherData(){
 
 			var xhttp = new XMLHttpRequest();
@@ -307,13 +307,13 @@
 	        i3 = participation;
 	        //console.log('a tag ', JSON.stringify(participation,null, 2));
 	        i4 = turntaking;
-	        var iuser = data.user;
+	        iuser = data.user;
 	        console.log("what is iuser", iuser);
 	        var i3data = [];
 	        i3speaker = [];
 	        var colorpalette = ['#90D0D5','#FBF172', '#B0D357', '#C88ABC', '#4B79BD'];
 	        guests = {};
-	        var count = 0;
+	        count = 0;
 
 
 	        console.log("i4 assignment", i4);
