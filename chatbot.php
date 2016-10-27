@@ -41,7 +41,8 @@
 					<!-- actual feedback diagram -->
 					<div id="graphContainer" class="inner-contain-graph">
 						<!-- some kind of navigation instruction -->
-			 		
+			 		<div id="accordion">
+
 			 		<d1iv class="inner-contain1">
 			        <h1>Interruption</h1>
 			        <div class="outer">
@@ -63,7 +64,7 @@
 			      </div>
 			      <h1>Turn Taking</h1>
 			      <div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
-
+			      <div>
 
 					</div>
 				</div>
@@ -332,6 +333,9 @@
 	            console.log("load was performed. ");
 	        });*/
 			maketheGraphs();
+
+			$( "#accordion" ).accordion();
+
 		}
 
 	</script>
