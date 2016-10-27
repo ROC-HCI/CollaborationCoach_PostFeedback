@@ -326,7 +326,7 @@
 	            count+=1;
 	        }
 
-				$.getScript('graphs/public/main.js',function(data,textStatus){
+			$.getScript('graphs/public/main.js',function(data,textStatus){
 	            console.log("load was performed. ");
 	        });
 		}

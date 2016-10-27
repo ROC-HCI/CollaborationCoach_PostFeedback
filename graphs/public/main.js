@@ -1,5 +1,7 @@
 $(function() {
 
+    console.log("yo", i1);
+    
     //animate numbers - interruption
     myNumber('#chart1',i1);
     myNumber('#chart2',i2);
