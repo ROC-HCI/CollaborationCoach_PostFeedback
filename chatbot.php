@@ -339,7 +339,7 @@
 	        });*/
 			maketheGraphs();
 
-			$( "#accordion" ).accordion();
+			//$( "#accordion" ).accordion();
 
 		}
 
