@@ -42,7 +42,7 @@
 					<div id="graphContainer" class="inner-contain-graph">
 						<!-- some kind of navigation instruction -->
 			 		
-			 		<!--d1iv class="inner-contain1">
+			 		<d1iv class="inner-contain1">
 			        <h1>Interruption</h1>
 			        <div class="outer">
 			          <p><span class="chart-label" id="chart1"></span>
@@ -62,7 +62,7 @@
 			        </div>
 			      </div>
 			      <h1>Turn Taking</h1>
-			      <div class="inner-contain3" id="chart4" data-value="0" data-user=""></div-->
+			      <div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
 
 
 					</div>
