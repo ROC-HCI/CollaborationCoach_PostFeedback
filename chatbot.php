@@ -44,7 +44,7 @@
 					<div id="graphContainer" class="inner-contain-graph">
 						<!-- some kind of navigation instruction -->
  
-			 		<!--div id="accordion"-->
+			 		<div id="accordion">
 
 				 		<!--div class="graph-container">
 				        <h1>Interruption</h1>
@@ -70,7 +70,7 @@
 							<h3>Turn Taking</h3>
 							<div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
 						</div>
-			      	<!--/div-->
+			      	</div>
 
 					</div>
 				</div>
@@ -336,7 +336,7 @@
 	        });*/
 			maketheGraphs();
 
-			//$( "#accordion" ).accordion();
+			$( "#accordion" ).accordion();
 
 		}
 
