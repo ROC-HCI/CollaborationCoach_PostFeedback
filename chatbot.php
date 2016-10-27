@@ -108,6 +108,9 @@
         	var message = $('#messages');
         	console.log('what', line, dialog[line.trim()]);
 
+        	//testing graph make
+        	createGraph();
+
 	        setTimeout(function(){
 	        	message.append(
 	        		new item("Roboto", ButtonFix(dialog[line.trim()]+"")
