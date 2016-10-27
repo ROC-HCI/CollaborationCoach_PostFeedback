@@ -123,7 +123,7 @@ a.nav-btn:hover {
 
 .inner-contain-graph {
   /*background: tomato;*/
-  width: 80%;
+  width: 100%;
   overflow: auto;
   overflow-y: scroll;
   height: 90%;
