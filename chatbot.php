@@ -12,6 +12,9 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="chat/public/css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
 </head>
 <body>
 	<header>
@@ -119,8 +122,6 @@
 				</div>
 			</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
 	<link href="graphs/public/css/style.css" rel = "stylesheet"/>
 	<script src="graphs/public/js/jquery.animateNumber.min.js"></script>
