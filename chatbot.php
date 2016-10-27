@@ -46,7 +46,7 @@
  
 			 		<div id="accordion">
 
-				 		<div class="inner-contain1">
+				 		<div class="graph-container">
 				        <h1>Interruption</h1>
 				        <div class="outer">
 				          <p><span class="chart-label" id="chart1"></span>
@@ -60,15 +60,16 @@
 				        </div>
 				        </div>
 
-						<div class="inner-contain2">
+						<div class="graph-container">
 						<div class="outer2">
 						  <h1>Participation</h1>
 						  <canvas class="chart" id="chart3" data-value="0" data-speaker=""></canvas>
 						</div>
 						</div>
+						<div class="graph-container">
 						<h1>Turn Taking</h1>
 						<div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
-	
+						</div>
 			      	</div>
 
 					</div>
