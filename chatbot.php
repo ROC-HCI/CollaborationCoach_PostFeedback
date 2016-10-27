@@ -12,8 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="chat/public/css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	
 
 </head>
 <body>
@@ -60,7 +59,7 @@
 				          <p>By Others</p>
 				        </div>
 				        </div>
-				        
+
 						<div class="inner-contain2">
 						<div class="outer2">
 						  <h1>Participation</h1>
@@ -77,12 +76,13 @@
 			</div>
 	</div>
 
-	<!--link href="graphs/public/css/style.css" rel = "stylesheet"/-->
+	<link href="graphs/public/css/style.css" rel = "stylesheet"/>
 	<script src="graphs/public/js/jquery.animateNumber.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
     <script src="graphs/public/main.js"></script>
-
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<!-- <script src="dialogue.js"></script> -->
 	
 	<script>
