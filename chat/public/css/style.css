@@ -322,3 +322,13 @@ span.chart-label{
   background: #f2f2f2;
   height:10%;
 }
+
+h5 {
+  background: white;
+
+}
+
+h5 > span{
+  padding-top: 10px;
+  padding-left: 10px;
+}
