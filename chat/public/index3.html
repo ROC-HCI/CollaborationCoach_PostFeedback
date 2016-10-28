@@ -51,9 +51,9 @@
 
         function gotoObject(object){
         	document.getElementById('message-option').innerHTML="";
-        	console.log(participation, object.title);
+        	// console.log(participation, object.title);
         	//error occur
-        	if(typeof object.body == "undefined"){
+        	if(typeof object.body == undefined || typeof object.title == undefined){
         		(function(str){
         			setTimeout(function(){
         				$('#messages').append(new item("Server", str).create());	
@@ -75,11 +75,14 @@
         		(function(str){
         			setTimeout(function(){
         				$('#messages').append(new item("Roboto", str).create());	
+        				$('.inner-contain-body').animate({ 
+			      scrollTop: $('#messages li:last-child').position().top + 'px'
+});
         			},count*600);
         		})(str);
         		count++;
         	}
-        	
+        	console.log('whats the count ', count);
         	if(obj.buttons){
         		(function(str){
         			setTimeout(function(){
@@ -101,10 +104,11 @@
 
 		var test = function(e){
 			$('#messages').append(new item("user", this.textContent).create());
+			$('.inner-contain-body').animate({ 
+			      scrollTop: $('#messages li:last-child').position().top + 'px'
+});
 			gotoObject(participation[this.getAttribute('data-next')]);
-			// gotoObject(this.getAttribute('data-next'));
-			// document.getElementById('message-option').innerHTML="";
-			e.stopPropagation();
+			// e.stopPropagation();
 			//add a additional text
 		}
 		
@@ -189,3 +193,4 @@
 	</script>
 </body>
 </html> 
+
