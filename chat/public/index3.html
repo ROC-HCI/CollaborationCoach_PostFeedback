@@ -71,7 +71,7 @@
         
         	for(var str of participation[obj.title].body.split(/\\n/)){
         		// console.log('whats my string ',str);
-        		if(str=='') continue;
+        		if(!/\S/.test(str)) continue;
         		(function(str){
         			setTimeout(function(){
         				$('#messages').append(new item("Roboto", str).create());	
