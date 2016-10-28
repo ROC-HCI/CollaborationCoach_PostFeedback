@@ -44,10 +44,9 @@
 					<div id="graphContainer" class="inner-contain-graph">
 						<!-- some kind of navigation instruction -->
  
-			 		<div id="accordion">
-
-				 		<!--div class="graph-container">
-				        <h1>Interruption</h1>
+			 		<!--div id="accordion">
+						<h3>Interruption</h3>
+				 		<div class="graph-container">
 				        <div class="outer">
 				          <p><span class="chart-label" id="chart1"></span>
 				          </p>
@@ -58,18 +57,18 @@
 				          </p>
 				          <p>By Others</p>
 				        </div>
-				        </div-->
+				        </div>
 						<h3>Participation</h3>
 						<div class="graph-container">
-						<!--div class="outer2"-->
+						<div class="outer2">
 							<canvas class="chart" id="chart3" data-value="0" data-speaker=""></canvas>
-						<!--/div-->
+						<!/div>
 						</div>
 						<h3>Turn Taking</h3>
 						<div class="graph-container">
 							<div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
 						</div>
-			      	</div>
+			      	</div-->
 
 					</div>
 				</div>
@@ -83,8 +82,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
     <script src="graphs/public/main.js"></script>
-
-	<!-- <script src="dialogue.js"></script> -->
 	
 	<script src="chat/public/talktimeDialogue.js"></script>
 	<script>
@@ -92,7 +89,7 @@
 		console.log(participation);
 
 		$(document).ready(function(){
-			createGraph();
+			gatherData();
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 		});
 
@@ -226,14 +223,28 @@
 			return result;
 		}
 
-		function createGraph()
+		function createGraph(type)
 		{
-			var participationDiv = $("<div style='display:none;' id='participation' class='graph-container'><h3>Participation</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
+			var graphDiv;
 
-			$("#graphContainer").append(participationDiv);
-			gatherData();
-			console.log(participationDiv);			
-			$('#participation').show("slide", { direction: "up" }, 1000);
+			switch (type) {
+
+				case "participation":
+					graphDiv = $("<div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
+					break;
+				case "interruption":
+					graphDiv = $("<div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
+					break;
+				case "turntaking":
+					graphDiv = $("<div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><div class='chart' d='chart4' data-value='0' data-user=''></div>/div>");
+					break;
+
+			}
+
+
+			$("#graphContainer").append(graphDiv);
+			console.log(graphDiv);			
+			$('#' + type).show("slide", { direction: "left" }, 1000);
 
 		}
 
@@ -318,9 +329,9 @@
 	            console.log("load was performed. ");
 	        });*/
 
-			maketheGraphs();
+			//maketheGraphs();
 
-			$( "#accordion" ).accordion();
+			//$( "#accordion" ).accordion();
 
 		}
 

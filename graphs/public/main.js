@@ -1,51 +1,56 @@
-//$(function() {
-function maketheGraphs(){
-    console.log("yo", i1);
+function make_Graph(type){
+  /*switch(type)
+  {
+    case "interruption":*/
+      //animate numbers - interruption
+      myNumber('#chart1',i1);
+      myNumber('#chart2',i2);
+    //  break;
+    //case "participation":
+      ChartJS('#chart3');
+      //break;
+    //case "turntaking":
+      //createSvg();
 
-    //animate numbers - interruption
-    myNumber('#chart1',i1);
-    myNumber('#chart2',i2);
+      //create Snap canvas for user
+      var s = Snap('#guest0');
+      Snap.load('./graphs/public/svg/Turn_taking_bllue.svg', function(fragment){
 
-    ChartJS('#chart3');
-    
-    createSvg();
+        //border
+        fragment.select('circle[stroke="#53C6D4"]').attr({
+          stroke: '#53C6D4',
+          strokeOpacity: .3,
+          strokeWidth: 5
+        });
+       
+        s.append(fragment);
 
-    //create Snap canvas for user
-    var s = Snap('#guest0');
-    Snap.load('./graphs/public/svg/Turn_taking_bllue.svg', function(fragment){
+        var text = s.text(0,-30, 'You talked after');
+        text.attr({
+          'font-size': '30',
+          'fill': '#A7A9AC'
+        });
 
-      //border
-      fragment.select('circle[stroke="#53C6D4"]').attr({
-        stroke: '#53C6D4',
-        strokeOpacity: .3,
-        strokeWidth: 5
+        var currentUser = s.text(60,300, iuser+'');
+        currentUser.attr({
+          'visibility':'hidden',
+          '#text': iuser
+        });
+
+        //fake for display
+        // loado();
+        //get guest1's text and create the rest for guests
+        guests = getKey(currentUser.attr('#text'));
+        console.log("initial guest assignment", guests);
+        loadTheRest(currentUser.attr('#text'));
       });
-     
-      s.append(fragment);
+      // loadArrow
+      //break;
 
-      var text = s.text(0,-30, 'You talked after');
-      text.attr({
-        'font-size': '30',
-        'fill': '#A7A9AC'
-      });
-
-      var currentUser = s.text(60,300, iuser+'');
-      currentUser.attr({
-        'visibility':'hidden',
-        '#text': iuser
-      });
-
-      //fake for display
-      // loado();
-      //get guest1's text and create the rest for guests
-      guests = getKey(currentUser.attr('#text'));
-      console.log("initial guest assignment", guests);
-      loadTheRest(currentUser.attr('#text'));
-    });
-
-    // loadArrow
-//});
+  }
 }
+
+
 
 // chart1,2 stuff
 function myNumber(id, data) {
@@ -97,7 +102,7 @@ function createSvg() {
 
   var margin = getInitialMargin(i3speaker.length);
   //add arrows
-  $('.inner-contain3').append(createGuest(-1));
+  $('#chart4').append(createGuest(-1));
   console.log('initial margin', margin);
   //iterate all users
   for(var i=0; i<i3speaker.length;i++){
@@ -132,7 +137,7 @@ function createSvg() {
     }
 
     //draw svg
-    $('.inner-contain3').append(svg);
+    $('#chart4').append(svg);
 
   }
 
