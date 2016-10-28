@@ -245,7 +245,7 @@
 					graphDiv = $("<h3>"+type+"</h3><div style='display:none;' id='"+type+"' class='graph-container'><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas><div class='container-background'></div></div>");
 					break;
 				case "turntaking":
-					graphDiv = $("<h3>"+type+"</h3><div style='display:none;' id='"+type+"' class='graph-container'><div class='inner-contain3' id='chart4' data-value='0' data-user=""></div><div class='container-background'></div></div>");
+					graphDiv = $("<h3>"+type+"</h3><div style='display:none;' id='"+type+"' class='graph-container'><div class='inner-contain3' id='chart4' data-value='0' data-user=''></div><div class='container-background'></div></div>");
 					break;
 
 			}
