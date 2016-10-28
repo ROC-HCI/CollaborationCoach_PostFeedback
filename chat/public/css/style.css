@@ -332,3 +332,7 @@ h5 > span{
   padding-top: 10px;
   padding-left: 10px;
 }
+
+.wrapper{
+  background: white;
+}
