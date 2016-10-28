@@ -69,7 +69,7 @@
 						<div class="graph-container">
 						<div class="outer2">
 							<canvas class="chart" id="chart3" data-value="0" data-speaker=""></canvas>
-						<!/div>
+						</div>
 						</div>
 						<h3>Turn Taking</h3>
 						<div class="graph-container">
