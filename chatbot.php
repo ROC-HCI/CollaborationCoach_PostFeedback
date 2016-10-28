@@ -230,13 +230,13 @@
 			switch (type) {
 
 				case "participation":
-					graphDiv = $("<div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
+					graphDiv = $("<h3>"+type+"</h3><div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
 					break;
 				case "interruption":
-					graphDiv = $("<div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
+					graphDiv = $("<h3>"+type+"</h3><div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
 					break;
 				case "turntaking":
-					graphDiv = $("<div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><div class='chart' d='chart4' data-value='0' data-user=''></div></div>");
+					graphDiv = $("<h3>"+type+"</h3><div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><div class='chart' d='chart4' data-value='0' data-user=''></div></div>");
 					break;
 
 			}
@@ -332,7 +332,7 @@
 
 			//maketheGraphs();
 
-			//$( "#accordion" ).accordion();
+			$( "#accordion" ).accordion();
 
 		}
 
