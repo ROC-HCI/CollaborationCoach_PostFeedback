@@ -253,7 +253,7 @@
 
 			$("#accordion").append(graphDiv);
 			console.log(graphDiv);	
-			$('#accordion').accordion("refresh");        
+			//$('#accordion').accordion("refresh");        
 		
 			$('#wrapper-' + type).show("slide", { direction: "left" }, 1000);
 			make_Graph(type);
