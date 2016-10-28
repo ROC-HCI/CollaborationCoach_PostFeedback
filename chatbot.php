@@ -236,7 +236,7 @@
 					graphDiv = $("<div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div>");
 					break;
 				case "turntaking":
-					graphDiv = $("<div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><div class='chart' d='chart4' data-value='0' data-user=''></div>/div>");
+					graphDiv = $("<div style='display:none;' id='"+type+"' class='graph-container'><h3>"+type+"</h3><div class='chart' d='chart4' data-value='0' data-user=''></div></div>");
 					break;
 
 			}
@@ -245,6 +245,7 @@
 			$("#graphContainer").append(graphDiv);
 			console.log(graphDiv);			
 			$('#' + type).show("slide", { direction: "left" }, 1000);
+			make_Graph(type);
 
 		}
 
