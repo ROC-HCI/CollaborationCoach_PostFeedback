@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="chat/public/css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	
+	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
