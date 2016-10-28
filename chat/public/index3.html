@@ -50,6 +50,7 @@
 		});
 
         function gotoObject(object){
+        	document.getElementById('message-option').innerHTML="";
         	console.log(participation, object.title);
         	//error occur
         	if(typeof object.body == "undefined"){
@@ -78,11 +79,16 @@
         		})(str);
         		count++;
         	}
+        	
         	if(obj.buttons){
-        		for(var b of obj.buttons){
-        			console.log(b);
-        			$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
-        		}
+        		(function(str){
+        			setTimeout(function(){
+						for(var b of obj.buttons){
+							console.log(b);
+							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
+						}	
+        			},count*600);
+        		})(str);
         	}
         }
 
@@ -97,7 +103,7 @@
 			$('#messages').append(new item("user", this.textContent).create());
 			gotoObject(participation[this.getAttribute('data-next')]);
 			// gotoObject(this.getAttribute('data-next'));
-			document.getElementById('message-option').innerHTML="";
+			// document.getElementById('message-option').innerHTML="";
 			e.stopPropagation();
 			//add a additional text
 		}
@@ -172,7 +178,8 @@
 					}
 					else{
 						result[element.title.trim()].buttons = element.body.match(/\[\[(.*?)\]\]/g);
-						result[element.title.trim()].body = /\b(.*)\b\s*(\[\[)/g.exec(element.body.trim())[1];
+						result[element.title.trim()].body = element.body.split(/\[\[/)[0];
+				
 					}
 				}
 			}
