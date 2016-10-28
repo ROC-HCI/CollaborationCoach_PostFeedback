@@ -3,9 +3,13 @@ extends layout
 block content
     .container
       .header
-        //link(href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css',rel='stylesheet',type='text/css')
         link(href='https://conference.eastus.cloudapp.azure.com/RocConf/chat/public/css/style.css',rel='stylesheet',type='text/css')
-        //link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css',rel='stylesheet',type='text/css')
+        nav.navbar.navbar-dark
+          .container-fluid
+            a.navbar-brand(href='#')
+              img.img-fluid(src='https://files.slack.com/files-pri/T1FSQC4CB-F2VMXLQ5D/rlogo.png', alt='')
+            .header-title
+              h1 Feeback Assistant
 
         ul.nav.nav-pills.pull-right
           //-li.active
@@ -16,7 +20,7 @@ block content
             //-a(href='./Problems') Problems
           //-li
             //-a(href='./Contact') Contact
-        h3.text-muted RocConf
+        //h3.text-muted RocConf
       .jumbotron
         h2 Welcome to RocConf
         p.lead
