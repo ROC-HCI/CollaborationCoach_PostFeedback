@@ -235,13 +235,12 @@ form button {
 }
 
 /*migrated css from graph to chatbot*/
-@import url(https://fonts.googleapis.com/css?family=Oswald);
+/*@import url(https://fonts.googleapis.com/css?family=Oswald);
 
 body {
-  /*background: #222428;*/
   font-family: "Oswald", sans-serif;
   color: #A7A9AC;
-}
+}*/
 
 .container {
   width: 100%;
