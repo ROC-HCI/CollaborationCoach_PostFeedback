@@ -1,16 +1,16 @@
 function make_Graph(type){
-  /*switch(type)
+  switch(type)
   {
-    case "interruption":*/
+    case "interruption":
       //animate numbers - interruption
       myNumber('#chart1',i1);
       myNumber('#chart2',i2);
-    //  break;
-    //case "participation":
+      break;
+    case "participation":
       ChartJS('#chart3');
-      //break;
-    //case "turntaking":
-      //createSvg();
+      break;
+    case "turntaking":
+      createSvg();
 
       //create Snap canvas for user
       var s = Snap('#guest0');
