@@ -12,9 +12,10 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="chat/public/css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	
+	<link rel="stylesheet" type="text/css" href="jquery/jquery-ui.css">
 
 </head>
+
 <body>
 	<header>
 	  <nav class="navbar navbar-dark" style="background-color: cornflowerblue;">
