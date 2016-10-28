@@ -239,7 +239,7 @@
 			switch (type) {
 
 				case "participation":
-					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>"+type+"</span></h5><div id='"+type+"' class='graph-container'><div style='height:200;'><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div></div></div></div>");
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>"+type+"</span></h5><div id='"+type+"' class='graph-container'><div style='height:230;'><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div></div></div></div>");
 					break;
 				case "interruption":
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>"+type+"</span></h5><div id='"+type+"' class='graph-container'><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div></div>");
