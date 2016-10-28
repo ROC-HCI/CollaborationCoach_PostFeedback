@@ -13,6 +13,8 @@
 	<link rel="stylesheet" type="text/css" href="chat/public/css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
@@ -111,8 +113,7 @@
 	</div>
 
 	<!-- link href="graphs/public/css/style.css" rel = "stylesheet"/-->
-	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
 	<script src="graphs/public/js/jquery.animateNumber.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
