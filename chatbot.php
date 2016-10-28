@@ -341,7 +341,7 @@
 
 			//maketheGraphs();
 
-			 $( "#accordion" ).accordion({ header: '> div.wrap > h3' });
+			 $( "#accordion" ).accordion({ header: '> div.wrapper > h3' });
 
 		}
 
