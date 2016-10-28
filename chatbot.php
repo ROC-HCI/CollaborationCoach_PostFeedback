@@ -12,7 +12,8 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="chat/public/css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="jquery/jquery-ui.css">
+	
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
 
 </head>
 
@@ -45,8 +46,8 @@
 					<div id="graphContainer" class="inner-contain-graph">
 						<!-- some kind of navigation instruction -->
  
-			 		<div id="accordion">
-						<!--h3>Interruption</h3>
+			 		<!--div id="accordion">
+						<h3>Interruption</h3>
 				 		<div class="graph-container">
 				        <div class="outer">
 				          <p><span class="chart-label" id="chart1"></span>
@@ -68,9 +69,42 @@
 						<h3>Turn Taking</h3>
 						<div class="graph-container">
 							<div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
-						</div-->
-			      	</div>
-
+						</div>
+			      	</div-->
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Collapsible Group Item #1
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default template">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Collapsible Group Item #2 (template panel)
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<button class="btn btn-lg btn-primary btn-add-panel">
+    <i class="glyphicon glyphicon-plus"></i> Add new panel
+</button>
 					</div>
 				</div>
 			</div>
@@ -340,6 +374,19 @@
 			$( "#accordion" ).accordion();
 
 		}
+
+		var $template = $(".template");
+
+var hash = 2;
+$(".btn-add-panel").on("click", function () {
+    var $newPanel = $template.clone();
+    $newPanel.find(".collapse").removeClass("in");
+    $newPanel.find(".accordion-toggle").attr("href",  "#" + (++hash))
+             .text("Dynamic panel #" + hash);
+    $newPanel.find(".panel-collapse").attr("id", hash).addClass("collapse").removeClass("in");
+    $("#accordion").append($newPanel.fadeIn());
+});
+
 
 	</script>
 </body>
