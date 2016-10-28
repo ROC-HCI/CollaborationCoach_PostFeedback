@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	
 	<!--link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"-->
-	<link rel="stylesheet" type="text/css" href="jquery/jquery-ui.theme.css">
+	<!--link rel="stylesheet" type="text/css" href="jquery/jquery-ui.theme.css"-->
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
@@ -245,7 +245,7 @@
 					graphDiv = $("<h3>"+type+"</h3><div style='display:none;' id='"+type+"' class='graph-container'><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas><div class='container-background'></div></div>");
 					break;
 				case "turntaking":
-					graphDiv = $("<h3>"+type+"</h3><div style='display:none;' id='"+type+"' class='graph-container'><div class='chart' d='chart4' data-value='0' data-user=''></div><div class='container-background'></div></div>");
+					graphDiv = $("<h3>"+type+"</h3><div style='display:none;' id='"+type+"' class='graph-container'><div class='chart' id='chart4' data-value='0' data-user=''></div><div class='container-background'></div></div>");
 					break;
 
 			}
