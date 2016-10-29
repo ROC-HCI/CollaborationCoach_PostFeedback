@@ -14,7 +14,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Tahoma, Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   letter-spacing: 0.1px;
-  font-size: 1.62rem;
+  font-size: 1.8rem;
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -29,7 +29,8 @@ header nav .navbar-brand img {
 }
 
 .header-title {
-  padding-left: 50%;
+  padding-left: 40%;
+  /*margin: 0 auto;*/
 }
 .header-title h1 {
   line-height: 2;
@@ -130,29 +131,27 @@ header nav .navbar-brand img {
   /*margin-top: 5em;*/
   /*padding: 15px;*/
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 /*   height: 50%; */
 }
 #messages li { 
   text-decoration: none;
-  padding: 5px 10px; 
+  padding: 5px 10px;
+  display: inline-block; 
 }
 
 /*optional roboto's name*/
-span.name {
+/*span.name {
   font-weight: 900;
   color: #2c2d30!important;
   line-height: 1.125rem;
   clear: both;
-}
+}*/
 
 .message-content {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
-  padding: 15px;
-}
-
-.user {
-  float: right;
 }
 
 .profile {
@@ -165,20 +164,21 @@ span.name {
 }
 
 .right {
-  padding-left: 10rem;
   background: #2ba2db;
-  width: 70%;
-  padding: 15px;
+  width: 75%;
+  padding: 15px 15px 10px 15px;
   border-radius: 10px;
 }
 
 .user-right {
   background: #f1f0f0;
   color: black;
+  padding-right: 2rem;
+  width: 100%;
 }
 
 span.content {
-  display: block;
+  /*display: block;*/
   line-height: 2rem;
   word-wrap: break-word;
 }
@@ -202,8 +202,8 @@ span.content {
   flex: 1 0 auto;
   margin: 0 5px;
   color: white!important;
-  border: 4px solid CornflowerBlue;
+  border: 4px solid #2ba2db;
   border-radius: 6px 6px 6px 6px;
-  background: CornflowerBlue;
+  background: #2ba2db;
   padding: 15px;
 }
