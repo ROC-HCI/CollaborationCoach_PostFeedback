@@ -132,8 +132,6 @@
 		item.prototype.create = function() {
 			var div = document.createElement('div');
 			div.className = 'message-content';
-			var left = document.createElement('div');
-			left.className = 'left';
 			var image = document.createElement('img');
 			image.className = 'profile';
 			// image.className = 'img-rounded';
@@ -151,19 +149,24 @@
 			if(this.user=='Roboto'){
 				// console.log(this.user);
 				image.src='https://files.slack.com/files-pri/T1FSQC4CB-F2VN90X19/chatbot.png';
+				var left = document.createElement('div');
+				left.className = 'left';
+				left.appendChild(image);
 			}else{
 				//its a user
-				image.src='http://placehold.it/50x50';
+				// image.src='http://placehold.it/50x50';
 				//bug add additional class
-				div.className+=" user";
+				this.li.className="text-xs-right";
 				right.className+=" user-right";
+				// this.li.className = "text-xs-center";
+				// this.li.className += " text-xs-right";
 			}
-			left.appendChild(image);
+
 
 			// right.appendChild(name);
 			right.appendChild(content);
 
-		    div.appendChild(left);
+		    if(left) div.appendChild(left);
 		    div.appendChild(right);
 		    this.li.appendChild(div);
 
