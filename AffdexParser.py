@@ -68,7 +68,7 @@ def parse_raw_data(session_key, user):
 def compute_averages(data, label):
 	data_to_average = []
 	
-	if label == 0:
+	if label == "ALL":
 		data_to_average = data
 	else:
 		for e in data:
@@ -102,9 +102,14 @@ if __name__ == "__main__":
 		final_dict["session_key"] = session_key
 		final_dict["user"] = user
 
-		flag = 0
-		while flag < 5:
+		for user_flag in user_list:
 			data = {}
+			
+			if user_flag == user:
+				flag = "ALL"
+			else:
+				flag = user_flag
+				
 			average_data = compute_averages(parsed_data, flag)
 			
 			try:
@@ -117,8 +122,7 @@ if __name__ == "__main__":
 				data["surprise"] = average_data[6]
 				data["valence"] = average_data[7]
 				data["engagement"] = average_data[8]
-				final_dict[str(flag)] = data
-				flag = flag + 1
+				final_dict[flag] = data
 			except:
 				data["joy"] = 0
 				data["sadness"] = 0
@@ -129,8 +133,7 @@ if __name__ == "__main__":
 				data["surprise"] = 0
 				data["valence"] = 0
 				data["engagement"] = 0
-				final_dict[str(flag)] = data
-				flag = flag + 1
+				final_dict[flag] = data
 		collection = database['affdexaverages']	
 		pp.pprint(collection.insert_one(final_dict).inserted_id)
 

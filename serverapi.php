@@ -226,11 +226,40 @@ if($_GET['mode'] == 'participation')
 if($_GET['mode'] == 'affdexupload')
 {
 	$json_string = file_get_contents('php://input');
+	$submitted_data = json_decode($json_string);
 	
-	$document = json_decode($json_string);
+	// Get the submitted seat to user relationship
+	$relation = array();
 	
-	//TODO -> Parse this submission and use the uploaded
-	//seat:user information to fix the data points.
+	$session_key = $json_string["session_key"];
+	$collection = $database->selectCollection('affdexuserseat');
+	$query = array('session_key' => $session_key);				   
+	$cursor = $collection->find($query);
+	
+	foreach($cursor as $location)
+	{
+		$relation[$location["seat"]] = $location["user"];
+	}
+	
+	// Parse the submitted data to put in the actual user
+	$data_to_parse = $submitted_data["data"];
+	$final_data = array();
+	
+	foreach($data_to_parse as $element)
+	{
+		$new_element = array();
+		$new_element["timeValue"] = $element["timeValue"];
+		$new_element["focus"] = $relation[$element["focus"]];
+		$new_element["sentiment"] = $element["sentiment"];
+		
+		$final_data[] = $new_element;
+	}
+
+	// Form up the new document for submission
+	$document = array();
+	$document['session_key'] = $session_key;
+	$document['user'] = $submitted_data['user'];
+	$document['data'] = $final_data;
 	
 	$collection = $database->selectCollection('affdexmerge');
 	$collection->insert($document);
