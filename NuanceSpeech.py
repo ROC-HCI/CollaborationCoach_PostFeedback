@@ -79,6 +79,7 @@ def nuance_call(filename):
 		
 	url = ret = "%s%s?appId=%s&appKey=%s&id=%s" % (NUANCE_URL, NUANCE_ENDPOINT, NUANCE_APPID, NUANCE_APPKEY, NUANCE_REQUESTORID)
 
+	print(url)
 	res = requests.post(url, data=wav_data, headers=hdrs)
 	
 	
