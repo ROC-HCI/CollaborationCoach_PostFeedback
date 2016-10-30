@@ -373,7 +373,7 @@
 			xhttp.send();
 			var jscontent = JSON.parse(xhttp.responseText);
 			
-			smile_data = jscontent["joy_data"];
+			var smile_data = jscontent["joy_data"];
 			console.log("SMILE DATA OUTPUT TEST");
 			var smile_index = 0;
 			for(var key in smile_data)
