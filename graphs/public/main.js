@@ -47,7 +47,7 @@ function make_Graph(type){
       // loadArrow
       break;
 	case "smilesharing":
-		var ctx = document.getElementById("chart5").getContext("2d");
+		var ctx = document.getElementById("joychart").getContext("2d");
 		
 		var chart_data = [0,0,0];
 		var color_data = ["#FF6384","#4BC0C0","#FFCE56"];
