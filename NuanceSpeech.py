@@ -61,7 +61,7 @@ def nuance_call(filename):
 	numFrames = file_to_play.getnframes()
 	wav_data = ""
 	
-	print("Sample Rate: " + wav.getframerate())
+	print("Sample Rate: " + file_to_play.getframerate())
 	print("Reading in " + numFrames + " for the file")
 	for i in range(0,numFrames):
 		wav_data += file_to_play.readframes(1)
