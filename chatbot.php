@@ -367,7 +367,7 @@
 
 			// Gather the shared smile metrics.
 			var xhttp = new XMLHttpRequest();
-			var userid = <?php echo $userID; ?>;
+			var userid = "<?php echo $userID; ?>";
 
 			xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexshared&session_key=<?php echo $feedbackID ?>", false);
 			xhttp.send();
