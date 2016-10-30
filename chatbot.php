@@ -123,7 +123,7 @@
         			setTimeout(function(){
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
-			      scrollTop: $('#messages li:last-child').position().top + 'px'
+        				scrollTop: $('#messages').height()
 				});
         			},count*600);
         		})(str);
