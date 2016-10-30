@@ -280,6 +280,7 @@
 	    var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, count, colorpalette;
 		function gatherData(){
 
+			// Gather participation data.
 			var xhttp = new XMLHttpRequest();
 
 			xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=participation&session_key=<?php echo $feedbackID ?>", false);
@@ -361,6 +362,25 @@
 
 			 $( "#accordion" ).accordion({ header: '> div.wrapper > h5' });
 
+			// Gather the shared smile metrics.
+			var xhttp = new XMLHttpRequest();
+
+			xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexshared&session_key=<?php echo $feedbackID ?>", false);
+			xhttp.send();
+			var jscontent = JSON.parse(xhttp.responseText);
+			
+			smile_data = jscontent["joy_data"];
+			console.log("SMILE DATA OUTPUT");
+			for(var key in smile_data)
+			{
+				if(smile_data.hasOwnProperty(key))
+				{
+					console.log(key + " -> " + smile_data[key]);
+				}
+			}
+			
+			var userid = <?php echo $userID; ?>;
+			 
 		}
 
 	</script>
