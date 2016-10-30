@@ -280,7 +280,7 @@
 
 
 	    var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, count, colorpalette;
-		var smile_graph_data[3];
+		var smile_graph_data = [];
 		function gatherData(){
 
 			// Gather participation data.
