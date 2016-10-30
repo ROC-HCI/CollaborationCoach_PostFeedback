@@ -50,7 +50,7 @@ function make_Graph(type){
 		var ctx = document.getElementById("joychart").getContext("2d");
 		
 		var chart_data = [0,0,0];
-		var color_data = ["#FF6384","#4BC0C0","#FFCE56"];
+		var color_data = ["#90D0D5","#FBF172","#B0D357"];
 		var chart_label = "Shared Joy";
 		var data_labels = [];
 		
