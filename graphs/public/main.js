@@ -69,6 +69,100 @@ function make_Graph(type){
 			type: 'polarArea'});
 		break;
 
+    case "valence":{
+      FusionCharts.ready(function () {
+      var ccChart = new FusionCharts({
+        type: 'hlineargauge',
+        renderAt: 'graphDiv',
+        id: 'cs-linear-gauge',
+        width: '400',
+        height: '140',
+        dataFormat: 'json',
+        dataSource: {
+            "chart": {
+                "caption": "Valence",
+                "captionFontColor": "#000000",
+                "bgColor": "#ffffff",
+                "showBorder": "0",
+                "lowerLimit": "0",
+                "upperLimit": "100",
+                "numberSuffix": "%",                    
+                "valueAbovePointer": "0",                    
+                "showShadow": "0",
+                "gaugeFillMix": "{light}",
+                "valueBgColor": "#ffffff",  
+                "valueBgAlpha":"60",
+                "valueFontColor":"#000000",
+                "pointerBgColor": "#ffffff",
+                "pointerBgAlpha": "50",
+                "baseFontColor": "#ffffff"
+            },
+            "colorRange": {
+                "color": [
+                    {
+                        "minValue": "0",
+                        "maxValue": "16",
+                        //"label": "Low",
+                        "code": "#ff6347"
+                    }, 
+                    {
+                        "minValue": "16",
+                        "maxValue": "32",
+                        //"label": "Almost Low",
+                        "code": "#ffb6c1"
+                    },
+                    {
+                        "minValue": "32",
+                        "maxValue": "48",
+                        //"label": "Neutral",
+                        "code": "#fff0f5"
+                    }, 
+                     {
+                        "minValue": "48",
+                        "maxValue": "52",
+                        //"label": "Neutral",
+                        "code": "#ffffff"
+                    }, 
+                    {
+                        "minValue": "52",
+                        "maxValue": "68",
+                        //"label": "Neutral",
+                        "code": "#f5fffa"
+                    }, 
+                    {
+                        "minValue": "68",
+                        "maxValue": "84",
+                        //"label": "Almost High",
+                        "code": "#7fffd4"
+                    },
+                    {
+                        "minValue": "84",
+                        "maxValue": "100",
+                        //"label": "High",
+                        "code": "#00fa9a"
+                    },
+                ]
+            },
+            "pointers": {
+                "pointer": [
+                    {
+                        "value": "50"
+                    }
+                ]
+            }
+        },
+        "events": {
+            "rendered" : function (evtObj, argObj){
+                var intervalVar = setInterval(function () {
+                    var prcnt = 65 + parseInt( Math.floor(Math.random() * 10), 10);
+                }, 5000);
+            }
+        }
+    })
+    .render();
+    });
+    }
+
   }
 }
 
