@@ -365,7 +365,7 @@
 
 			 $( "#accordion" ).accordion({ header: '> div.wrapper > h5' });
 
-			// Gather the shared smile metrics.
+			// SHARED JOY DATA.
 			var xhttp = new XMLHttpRequest();
 			var userid = "<?php echo $userID; ?>";
 
@@ -374,7 +374,6 @@
 			var jscontent = JSON.parse(xhttp.responseText);
 			
 			var smile_data = jscontent["joy_data"];
-			console.log("SMILE DATA OUTPUT TEST");
 			var smile_index = 0;
 			for(var key in smile_data)
 			{
@@ -398,7 +397,7 @@
 				}
 			}
 			
-			console.log(JSON.stringify(smile_graph_data));
+			//console.log(JSON.stringify(smile_graph_data));
 			 
 		}
 

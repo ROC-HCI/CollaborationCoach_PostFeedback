@@ -45,7 +45,60 @@ function make_Graph(type){
         loadTheRest(currentUser.attr('#text'));
       });
       // loadArrow
-      //break;
+      break;
+	case:
+		var ctx = document.getElementById("chart5").getContext("2d");
+		smile_graph_data
+		
+		var chart_data = [0,0,0];
+		var color_data = ["#FF6384","#4BC0C0","#FFCE56"];
+		var label = "Shared Joy";
+		var data_labels = [];
+		
+		for(i = 0; i < smile_graph_data.length(); i++)
+		{
+			var e = smile_graph_data[i];
+			chart_data[i] = e["value"];
+			data_labels[i] = e["user"];
+		}
+		
+		var data = {datasets:[{data:chart_data, backgroundColor: color_data, label: chart_label}],
+			        labels: data_labels};
+					
+					/*
+		var data = {
+    datasets: [{
+        data: [
+            11,
+            16,
+            7,
+            3,
+            14
+        ],
+        backgroundColor: [
+            "#FF6384",
+            "#4BC0C0",
+            "#FFCE56",
+            "#E7E9ED",
+            "#36A2EB"
+        ],
+        label: 'My dataset' // for legend
+    }],
+    labels: [
+        "Red",
+        "Green",
+        "Yellow",
+        "Grey",
+        "Blue"
+    ]
+};
+*/
+		new Chart(ctx, {
+			data: data,
+			type: 'polarArea',
+			options: {elements: {arc: {borderColor: "#000000"}}}
+		});
+		break;
 
   }
 }
