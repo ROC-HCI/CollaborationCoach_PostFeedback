@@ -316,7 +316,7 @@ span.chart-label{
   width:100%;
   height: 250px;
   background-color: white;
-  margin-bottom:8%;
+  /*margin-bottom:8%;*/
 
 }
 
@@ -333,4 +333,5 @@ h5 {
 
 .wrapper{
   background: white;
+  padding-top:6%;
 }
