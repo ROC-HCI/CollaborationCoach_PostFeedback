@@ -72,7 +72,7 @@ def nuance_call(filename):
 	hdrs = {
 		u"Content-Type": u"audio/x-wav;codec=pcm;bit=16;rate=8000",
 		u"Accept-Language": u"en_US",
-		u"Content-Length": total_size - 44, 
+		u"Content-Length": total_size, 
 		u"Accept": u"text/plain",
 		u"Accept-Topic": u"Dictation"
 	}
