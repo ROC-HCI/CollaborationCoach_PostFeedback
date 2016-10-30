@@ -263,7 +263,9 @@
 				case "turntaking":
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>"+type+"</span></h5><div id='"+type+"' class='graph-container'><div class='inner-contain3' id='chart4' data-value='0' data-user=''></div></div></div>");
 					break;
-
+				case "smilesharing":
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>"+type+"</span></h5><div id='"+type+"' class='graph-container'><div class='inner-contain3' id='chart5' data-value='0' data-user=''></div></div></div>");
+					break;
 			}
 
 
@@ -278,6 +280,7 @@
 
 
 	    var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, count, colorpalette;
+		var smile_graph_data[3];
 		function gatherData(){
 
 			// Gather participation data.
@@ -364,22 +367,38 @@
 
 			// Gather the shared smile metrics.
 			var xhttp = new XMLHttpRequest();
+			var userid = <?php echo $userID; ?>;
 
 			xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexshared&session_key=<?php echo $feedbackID ?>", false);
 			xhttp.send();
 			var jscontent = JSON.parse(xhttp.responseText);
 			
 			smile_data = jscontent["joy_data"];
-			console.log("SMILE DATA OUTPUT");
+			console.log("SMILE DATA OUTPUT TEST");
+			var smile_index = 0;
 			for(var key in smile_data)
 			{
 				if(smile_data.hasOwnProperty(key))
 				{
-					console.log(key + " -> " + smile_data[key]);
+					var res = key.split(" - ");
+					if(res[0] == userid || res[1] == userid)
+					{
+						var smile_user = "";
+						
+						if(res[0] != userid)
+							smile_user = res[0];
+						else
+							smile_user = res[1];
+						
+						var data_point = smile_data[key];
+						element = {user: smile_user, value: data_point["Count"]}
+						smile_graph_data[smile_index] = element;
+						smile_index = smile_index + 1;
+					}
 				}
 			}
 			
-			var userid = <?php echo $userID; ?>;
+			console.log(JSON.stringify(smile_graph_data));
 			 
 		}
 
