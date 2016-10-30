@@ -66,8 +66,7 @@ function make_Graph(type){
 
 		new Chart(ctx, {
 			data: data,
-			type: 'polarArea',
-			options: {elements: {arc: {borderColor: "#000000"}}}
+			type: 'polarArea'}
 		});
 		break;
 
