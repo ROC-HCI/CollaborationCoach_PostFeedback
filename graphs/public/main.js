@@ -46,9 +46,8 @@ function make_Graph(type){
       });
       // loadArrow
       break;
-	case:
+	case "smilesharing":
 		var ctx = document.getElementById("chart5").getContext("2d");
-		smile_graph_data
 		
 		var chart_data = [0,0,0];
 		var color_data = ["#FF6384","#4BC0C0","#FFCE56"];
@@ -64,35 +63,7 @@ function make_Graph(type){
 		
 		var data = {datasets:[{data:chart_data, backgroundColor: color_data, label: chart_label}],
 			        labels: data_labels};
-					
-					/*
-		var data = {
-    datasets: [{
-        data: [
-            11,
-            16,
-            7,
-            3,
-            14
-        ],
-        backgroundColor: [
-            "#FF6384",
-            "#4BC0C0",
-            "#FFCE56",
-            "#E7E9ED",
-            "#36A2EB"
-        ],
-        label: 'My dataset' // for legend
-    }],
-    labels: [
-        "Red",
-        "Green",
-        "Yellow",
-        "Grey",
-        "Blue"
-    ]
-};
-*/
+
 		new Chart(ctx, {
 			data: data,
 			type: 'polarArea',
