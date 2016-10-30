@@ -391,7 +391,7 @@
 							smile_user = res[1];
 						
 						var data_point = smile_data[key];
-						element = {user: smile_user, value: data_point["Count"]}
+						element = {user: smile_user, value: data_point["Count"]};
 						smile_graph_data[smile_index] = element;
 						smile_index = smile_index + 1;
 					}
