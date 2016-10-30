@@ -24,15 +24,13 @@
 
 <body>
 	<header>
-	  <nav class="navbar navbar-dark" style="background-color: cornflowerblue;">
-	    <a href="#" class="navbar-brand">
-	      <!-- <img src="http://placehold.it/60x60" alt="" /> --> RocConf  
-	    </a>
-	    <!-- <form class="form-inline float-xs-left"> -->
-	      <a href="#" class="my-nav-link"><button class="active btn btn-link" type="button">My Calls</button></a>
-	      <a href="https://conference.eastus.cloudapp.azure.com:8081/" class="my-nav-link"><button class="btn btn-link" type="button">New Call</button></a>
-	      <a href="#" class="my-nav-link"><button class="btn btn-link" type="button">About</button></a>
-	  	<!-- </form> -->
+		<nav class="navbar navbar-dark">
+      		<div class="container-fluid">
+        		<a class="navbar-brand" href="#">
+    				<img src="https://files.slack.com/files-pri/T1FSQC4CB-F2VMXLQ5D/rlogo.png" class="img-fluid" alt="">
+        		</a> 
+        		<div class="header-title"><h1>Feeback Assistant</h1></div>
+     		</div>
   		</nav>
 	</header>
 	<div class="main">
@@ -94,14 +92,15 @@
 		console.log(participation);
 
 		$(document).ready(function(){
-			gatherData();
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
+			gatherData();
 		});
 
         function gotoObject(object){
-        	console.log(participation, object.title);
+        	document.getElementById('message-option').innerHTML="";
+        	// console.log(participation, object.title);
         	//error occur
-        	if(typeof object.body == "undefined"){
+        	if(typeof object.body == undefined || typeof object.title == undefined){
         		(function(str){
         			setTimeout(function(){
         				$('#messages').append(new item("Server", str).create());	
@@ -111,10 +110,6 @@
 	        	console.log('what', object.body.length); //already trimmed
 	        	console.log('buttons', object.buttons); //buttons
 	        	fixNewline(object);
-
-	        	//refresh accordion everytime button presses
-	        	$('#accordion').accordion("refresh");        
-
         	}
         }
 
@@ -122,20 +117,28 @@
         	var count = 1;
         
         	for(var str of participation[obj.title].body.split(/\\n/)){
-        		// console.log('whats my string ',str);
-        		if(str=='') continue;
+        		console.log('whats my string ',str.length);
+        		if(!/\S/.test(str)) continue;
         		(function(str){
         			setTimeout(function(){
         				$('#messages').append(new item("Roboto", str).create());	
+        				$('.inner-contain-body').animate({ 
+			      scrollTop: $('#messages li:last-child').position().top + 'px'
+				});
         			},count*600);
         		})(str);
         		count++;
         	}
+        	console.log('whats the count ', count);
         	if(obj.buttons){
-        		for(var b of obj.buttons){
-        			console.log(b);
-        			$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
-        		}
+        		(function(str){
+        			setTimeout(function(){
+						for(var b of obj.buttons){
+							console.log(b);
+							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
+						}	
+        			},count*600);
+        		})(str);
         	}
         }
 
@@ -148,10 +151,11 @@
 
 		var test = function(e){
 			$('#messages').append(new item("user", this.textContent).create());
+			$('.inner-contain-body').animate({ 
+			      scrollTop: $('#messages li:last-child').position().top + 'px'
+			});
 			gotoObject(participation[this.getAttribute('data-next')]);
-			// gotoObject(this.getAttribute('data-next'));
-			document.getElementById('message-option').innerHTML="";
-			e.stopPropagation();
+			// e.stopPropagation();
 			//add a additional text
 		}
 		
@@ -177,30 +181,41 @@
 		item.prototype.create = function() {
 			var div = document.createElement('div');
 			div.className = 'message-content';
-			var left = document.createElement('div');
-			left.className = 'left';
 			var image = document.createElement('img');
-			image.className = 'img-rounded';
+			image.className = 'profile';
+			// image.className = 'img-rounded';
 
-			if(this.user=='roboto'){
-				// console.log(this.user);
-				image.src='http://placehold.it/50x50';
-			}else{
-				image.src='http://placehold.it/50x50';
-			}
-			left.appendChild(image);
+			
 			var right = document.createElement('div');
 			right.className = 'right';
-			var name = document.createElement('span');
-			name.className = 'name';
-			name.innerHTML = this.user;
+			// var name = document.createElement('span');
+			// name.className = 'name';
+			// name.innerHTML = this.user;
 			var content = document.createElement('span');
 			content.className = 'content';
 			content.innerHTML = this.text;
-			right.appendChild(name);
+
+			if(this.user=='Roboto'){
+				// console.log(this.user);
+				image.src='https://files.slack.com/files-pri/T1FSQC4CB-F2VN90X19/chatbot.png';
+				var left = document.createElement('div');
+				left.className = 'left';
+				left.appendChild(image);
+			}else{
+				//its a user
+				// image.src='http://placehold.it/50x50';
+				//bug add additional class
+				this.li.className="text-xs-right";
+				right.className+=" user-right";
+				// this.li.className = "text-xs-center";
+				// this.li.className += " text-xs-right";
+			}
+
+
+			// right.appendChild(name);
 			right.appendChild(content);
 
-		    div.appendChild(left);
+		    if(left) div.appendChild(left);
 		    div.appendChild(right);
 		    this.li.appendChild(div);
 
@@ -225,7 +240,8 @@
 					}
 					else{
 						result[element.title.trim()].buttons = element.body.match(/\[\[(.*?)\]\]/g);
-						result[element.title.trim()].body = /\b(.*)\b\s*(\[\[)/g.exec(element.body.trim())[1];
+						result[element.title.trim()].body = element.body.split(/\[\[/)[0];
+				
 					}
 				}
 			}
