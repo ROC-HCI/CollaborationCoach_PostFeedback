@@ -52,8 +52,10 @@ def nuance_call(filename):
 	basepath = os.path.dirname(__file__)
 	filepath = os.path.abspath(os.path.join(basepath,filename))
 	
+	total_size = os.path.getsize(filepath) - 44
+	
 	analyze_function = read_wav_file_in_chunks(filepath)
-	#wav_data = analyze_function
+	wav_data = analyze_function
 	
 	#file_to_play = wave.open(filepath, 'r')
 	#wav_data = file_to_play.read()
@@ -61,14 +63,14 @@ def nuance_call(filename):
 	hdrs = {
 		u"Content-Type": u"audio/x-wav;codec=pcm;bit=16;rate=8000",
 		u"Accept-Language": u"en_US",
-		u"Transfer-Encoding": u"chunked", 
+		u"Content-Length": total_size, 
 		u"Accept": u"text/plain",
 		u"Accept-Topic": u"Dictation"
 	}
 		
 	url = ret = "%s%s?appId=%s&appKey=%s&id=%s" % (NUANCE_URL, NUANCE_ENDPOINT, NUANCE_APPID, NUANCE_APPKEY, NUANCE_REQUESTORID)
 
-	res = requests.post(url, data=analyze_function, headers=hdrs)
+	res = requests.post(url, data=wav_data, headers=hdrs)
 	
 	
 	pp.pprint(res)
