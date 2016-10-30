@@ -54,7 +54,7 @@ function make_Graph(type){
 		var chart_label = "Shared Joy";
 		var data_labels = [];
 		
-		for(var i = 0; i < smile_graph_data.length(); i++)
+		for(var i = 0; i < smile_graph_data.length; i++)
 		{
 			var e = smile_graph_data[i];
 			chart_data[i] = e["value"];
