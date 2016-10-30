@@ -58,18 +58,21 @@ def nuance_call(filename):
 	#wav_data = analyze_function
 	
 	file_to_play = wave.open(filepath, 'r')
-	numFrames = file_to_play.getnframes();
+	numFrames = file_to_play.getnframes()
 	wav_data = ""
 	
+	print("Sample Rate: " + wav.getframerate())
+	print("Reading in " + numFrames + " for the file")
 	for i in range(0,numFrames):
 		wav_data += file_to_play.readframes(1)
 		
 	total_size = sys.getsizeof(wav_data)
+	print("Total Size: " + total_size)
 	
 	hdrs = {
 		u"Content-Type": u"audio/x-wav;codec=pcm;bit=16;rate=8000",
 		u"Accept-Language": u"en_US",
-		u"Content-Length": total_size, 
+		u"Content-Length": total_size - 44, 
 		u"Accept": u"text/plain",
 		u"Accept-Topic": u"Dictation"
 	}
