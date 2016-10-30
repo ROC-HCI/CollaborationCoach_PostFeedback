@@ -70,29 +70,28 @@ function make_Graph(type){
 		break;
 
     case "valence":{
-      FusionCharts.ready(function () {
-      var ccChart = new FusionCharts({
+     var ccChart = new FusionCharts({
         type: 'hlineargauge',
-        renderAt: 'graphDiv',
+        renderAt: 'chart-container',
         id: 'cs-linear-gauge',
         width: '400',
         height: '140',
         dataFormat: 'json',
         dataSource: {
             "chart": {
-                "caption": "Valence",
+               // "caption": "Mood",
                 "captionFontColor": "#000000",
                 "bgColor": "#ffffff",
                 "showBorder": "0",
                 "lowerLimit": "0",
                 "upperLimit": "100",
                 "numberSuffix": "%",                    
-                "valueAbovePointer": "0",                    
+                //"valueAbovePointer": "0",                    
                 "showShadow": "0",
                 "gaugeFillMix": "{light}",
-                "valueBgColor": "#ffffff",  
-                "valueBgAlpha":"60",
-                "valueFontColor":"#000000",
+                //"valueBgColor": "#ffffff",  
+                //"valueBgAlpha":"60",
+                //"valueFontColor":"#000000",
                 "pointerBgColor": "#ffffff",
                 "pointerBgAlpha": "50",
                 "baseFontColor": "#ffffff"
@@ -160,7 +159,6 @@ function make_Graph(type){
         }
     })
     .render();
-    });
     }
 
   }

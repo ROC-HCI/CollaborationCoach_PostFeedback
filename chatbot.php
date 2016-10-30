@@ -17,6 +17,9 @@
 	<!--link rel="stylesheet" type="text/css" href="jquery/jquery-ui.theme.css"-->
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<script src="fusioncharts/fusioncharts.js"></script>
+	<script src="fusioncharts/fusioncharts.charts.js"></script>
+	<script src="fusioncharts/fusioncharts.widgets.js"></script>
 
 	<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
 
