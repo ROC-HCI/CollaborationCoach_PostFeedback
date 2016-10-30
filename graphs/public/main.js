@@ -47,7 +47,7 @@ function make_Graph(type){
       // loadArrow
       break;
 	case "smilesharing":
-		$("#chart5").height(300px);
+		$("#chart5").height(300);
 		var ctx = document.getElementById("joychart").getContext("2d");
 		
 		var chart_data = [0,0,0];
