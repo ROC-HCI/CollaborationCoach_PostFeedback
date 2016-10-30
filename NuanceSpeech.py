@@ -52,13 +52,19 @@ def nuance_call(filename):
 	basepath = os.path.dirname(__file__)
 	filepath = os.path.abspath(os.path.join(basepath,filename))
 	
-	total_size = os.path.getsize(filepath) - 44
+	#total_size = os.path.getsize(filepath) - 44
 	
-	analyze_function = read_wav_file_in_chunks(filepath)
-	wav_data = analyze_function
+	#analyze_function = read_wav_file_in_chunks(filepath)
+	#wav_data = analyze_function
 	
-	#file_to_play = wave.open(filepath, 'r')
-	#wav_data = file_to_play.read()
+	file_to_play = wave.open(filepath, 'r')
+	numFrames = file_to_play.getnframes();
+	wav_data = ""
+	
+	for i in range(0,numFrames):
+		wav_data += file_to_play.readframes(1)
+		
+	total_size = sys.getsizeof(wav_data)
 	
 	hdrs = {
 		u"Content-Type": u"audio/x-wav;codec=pcm;bit=16;rate=8000",
