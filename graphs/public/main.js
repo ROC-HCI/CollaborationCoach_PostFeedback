@@ -66,8 +66,7 @@ function make_Graph(type){
 
 		new Chart(ctx, {
 			data: data,
-			type: 'polarArea'}
-		});
+			type: 'polarArea'});
 		break;
 
   }
