@@ -62,12 +62,12 @@ def nuance_call(filename):
 	wav_data = ""
 	
 	print("Sample Rate: " + file_to_play.getframerate())
-	print("Reading in " + numFrames + " for the file")
+	print("Reading in " + str(numFrames) + " for the file")
 	for i in range(0,numFrames):
 		wav_data += file_to_play.readframes(1)
 		
 	total_size = sys.getsizeof(wav_data)
-	print("Total Size: " + total_size)
+	print("Total Size: " + str(total_size))
 	
 	hdrs = {
 		u"Content-Type": u"audio/x-wav;codec=pcm;bit=16;rate=8000",
