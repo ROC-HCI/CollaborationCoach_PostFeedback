@@ -51,10 +51,10 @@ function make_Graph(type){
 		
 		var chart_data = [0,0,0];
 		var color_data = ["#FF6384","#4BC0C0","#FFCE56"];
-		var label = "Shared Joy";
+		var chart_label = "Shared Joy";
 		var data_labels = [];
 		
-		for(i = 0; i < smile_graph_data.length(); i++)
+		for(var i = 0; i < smile_graph_data.length(); i++)
 		{
 			var e = smile_graph_data[i];
 			chart_data[i] = e["value"];
