@@ -72,7 +72,7 @@ function make_Graph(type){
     case "valence":{
      var ccChart = new FusionCharts({
         type: 'hlineargauge',
-        renderAt: 'chart-container',
+        renderAt: 'chart6',
         id: 'cs-linear-gauge',
         width: '400',
         height: '140',
