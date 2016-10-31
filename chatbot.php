@@ -98,7 +98,16 @@
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 			gatherData();
 		});
-
+	
+	function addGraph(obj){
+        	//if participation, add participation graph
+        	//check tag
+        	//if 1 participation
+        	//2 hatever
+        	//3 ..
+        	if(participation[obj.title].tags=='1') 
+        		createGraph('participation');
+        }
 	
         function gotoObject(object){
         	document.getElementById('message-option').innerHTML="";
