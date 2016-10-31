@@ -70,7 +70,7 @@ header nav .navbar-brand img {
   width: 40%;
   /*margin-top: 65px;*/
   overflow: auto;
-  border-right: #2ba2db;
+  border-left: #2ba2db;
   border-style: inset;
 }
 
