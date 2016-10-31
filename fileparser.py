@@ -93,9 +93,17 @@ def readFile(file):
     # print len(sounds)
     return sounds
 
-def overlap(a,b):
-    # interval a min, max, interval b min, max
-    return a.xmin <= b.xmax and b.xmin <= a.xmax
+def overlap(a,b):	
+	# Is a contained within b?
+	if (a.xmin <= b.xmax and a.xmin >= b.xmin and a.xmax >= b.xmin and a.xmax <= b.xmax):
+		return true
+	# Is b contained within a?
+	elif(b.xmin <= a.xmax and b.xmin >= a.xmin and b.xmax >= a.xmin and b.xmax <= a.xmax):
+		return true
+	else:
+		# These two are not contained in the other
+		return false
+    return a.xmin <= b.xmax and b.xmin <= a.xmax and a.xmin >= b.xmin and 
 
 def sameSegment(max,min):
     return max == min
@@ -256,7 +264,9 @@ for k,v in turntaking_raw.iteritems():
 	
 final_dict['turntaking'] = turntaking_fixed
 
-pp.pprint(collection.insert_one(final_dict).inserted_id)
+pp.pprint(final_dict)
+
+#pp.pprint(collection.insert_one(final_dict).inserted_id)
 
 #does not work if there is no url duh
 # url = './display'
