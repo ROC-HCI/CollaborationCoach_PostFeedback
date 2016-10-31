@@ -271,10 +271,24 @@
 					break;
 				//needs fixing
 				case "interruption": 
-					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>"+type+"</span></h5><div id='"+type+"' class='graph-container'><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div></div>");
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div></div>");
 					break;
 				case "attitude":
-					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>"+type+"</span></h5><div id='"+type+"' class='graph-container'><div style='margin-left:.5em;' id='chart6' data-value='0' data-user=''></div></div></div>");
+					//graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Attitude</span></h5><div id='"+type+"' class='graph-container'>
+					graphDiv = $("<div align='center'>
+							<h6> your attitude towards </h6>
+					    <p align='center'>
+					      <button onclick='setupChart(0);'>Everyone</button>
+					      <button onclick='setupChart(1);'>Samiha</button>
+					      <button onclick='setupChart(2);'>Ru</button>
+					      <button onclick='setupChart(3);''>Vivian</button>
+					    </p>
+					    <div style='max-width:400px; max-height:400px'>
+					      <canvas id='barChart' width='250' height='250'></canvas>
+					    </div>
+					  </div>
+					  </div>
+					</div>");
 					break;
 			}
 
