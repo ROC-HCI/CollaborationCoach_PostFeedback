@@ -43,7 +43,7 @@ var json =
     {
         "title": "overlap_1",
         "tags": "1",
-        "body": "Now moving onto interruption.\\nOn average you overlapped with others for ______ seconds and about ___ times\n[[what's this mean?|overlap_2]]",
+        "body": "Now moving onto interruption.\\nOn average you overlapped with others for ______ seconds and about ___ times\n[[What's this mean?|overlap_2]]",
         "position": {
             "x": -47,
             "y": 140
@@ -83,7 +83,7 @@ var json =
     {
         "title": "turntaking_2",
         "tags": "1",
-        "body": "\n[[neutral|turntaking_3]]\n[[good|turntaking_4]]",
+        "body": "\n[[Neutral|turntaking_3]]\n[[good|Turntaking_4]]",
         "position": {
             "x": 191,
             "y": 399
@@ -154,7 +154,7 @@ var json =
     {
         "title": "sharedsmile_1",
         "tags": "",
-        "body": "Great! So first let me tell you what it represents.\\nSmile is one of the parameters for passing assurance and building bonds. Shared smile is how much one person smiled with another for the same period - which can tell a lot about group dynamics.\\nHere goes your performance analysisâ€¦\n[[View|sharedsmile_2]]",
+        "body": "Great! So first let me tell you what it represents.\\nSmile is one of the parameters for passing assurance and building bonds. Shared smile is how much one person smiled with another for the same period - which can tell a lot about group dynamics.\\nHere goes your performance analysis...¦\n[[View|sharedsmile_2]]",
         "position": {
             "x": 32,
             "y": 702
