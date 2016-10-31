@@ -33,7 +33,7 @@ var json =
     {
         "title": "participation_4",
         "tags": "",
-        "body": "Team management experts have found that, equal participation help the participants resolve any confusion and shed light on the discussion from different perspectives.\\nAlongside, listening to teammates' viewpoints is also valuable.\\\\nRemember, balance is the key!\n[[Got it!|overlap_1]]",
+        "body": "Team management experts have found that, equal participation help the participants resolve any confusion and shed light on the discussion from different perspectives.\\nAlongside, listening to teammates' viewpoints is also valuable.\\nRemember, balance is the key!\n[[Got it!|overlap_1]]",
         "position": {
             "x": 839,
             "y": 99
@@ -43,7 +43,16 @@ var json =
     {
         "title": "overlap_1",
         "tags": "1",
-        "body": "Now moving onto interruption.\\nOn average you overlapped with others for ______ seconds and about ___ times\n[[What's this mean?|overlap_2]]",
+        "body": "Now moving onto overlaps.\\n[[What's this mean?|overlap_2]]",
+        "position": {
+            "x": -47,
+            "y": 140
+        },
+        "colorID": 0
+    },
+    { "title": "overlap_notinuse",
+        "tags": "",
+        "body": "Now moving onto overlaps.\\nOn average you overlapped with others for ______ seconds and about ___ times\n[[What's this mean?|blah]]",
         "position": {
             "x": -47,
             "y": 140
@@ -73,7 +82,7 @@ var json =
     {
         "title": "overlap_3",
         "tags": "",
-        "body": "Overlaps can sometimes be called interruptions, when you break someone off before they are done.\\nBut they are also good for showing that you are engaged in the conversation.[[Cool|turntaking_1]]",
+        "body": "Overlaps can sometimes be called interruptions, which is when you break someone off before they are done.\\nBut they are also good for showing that you are engaged in the conversation.[[Cool|turntaking_1]]",
         "position": {
             "x": 393,
             "y": 138
@@ -83,7 +92,7 @@ var json =
     {
         "title": "turntaking_2",
         "tags": "1",
-        "body": "\n[[Neutral|turntaking_3]]\n[[good|Turntaking_4]]",
+        "body": "\n[[Okay|emotion_1]]",
         "position": {
             "x": 191,
             "y": 399
@@ -91,7 +100,7 @@ var json =
         "colorID": 0
     },
     {
-        "title": "turntaking_3",
+        "title": "turntaking_inactive",
         "tags": "",
         "body": "You spoke after ____ the most and ___ the least. [[Okay|turntaking_4]]",
         "position": {
@@ -101,7 +110,7 @@ var json =
         "colorID": 0
     },
     {
-        "title": "turntaking_4",
+        "title": "turntaking_inactive2",
         "tags": "",
         "body": "You spoke after everyone about equally. Looks like it was an involved conversation [[Yup!|emotion_1]]",
         "position": {

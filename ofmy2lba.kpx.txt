@@ -1,0 +1,52 @@
+﻿Merge remote-tracking branch 'refs/remotes/origin/master' into Vivian_WebFront
+
+# Conflicts:
+#	chat/index.html
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch Vivian_WebFront
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	new file:   AffdexParser.py
+#	new file:   AffdexPlayerFocusMerger.py
+#	deleted:    Data/Luis.wav.TextGrid
+#	new file:   Data/PYTHONServer/AffdexPlayerFocusMerger.py
+#	new file:   Data/PYTHONServer/Final.json
+#	new file:   Data/PYTHONServer/LuisCSV.json
+#	new file:   Data/PYTHONServer/README.rtf
+#	new file:   Data/PYTHONServer/f35efde0-5429-11e6-bcaf-7197b5789799_Luis.json
+#	deleted:    Data/Ru.wav.TextGrid
+#	deleted:    Data/Vivian.wav.TextGrid
+#	deleted:    Data/Yichen.wav.TextGrid
+#	modified:   Real-Faces/sockets/translations.js
+#	modified:   Real-Faces/static/js/speech.js
+#	modified:   Real-Faces/static/js/vendor/PointerLockControls.js
+#	new file:   ToneAnalyzer.py
+#	modified:   auto.praat
+#	new file:   chat/public/css/style.css
+#	new file:   chat/public/index.html
+#	renamed:    chat/index.js -> chat/public/index.js
+#	new file:   chat/wit/.gitignore
+#	new file:   chat/wit/CHANGES.md
+#	new file:   chat/wit/LICENSE
+#	new file:   chat/wit/README.md
+#	new file:   chat/wit/basic.js
+#	new file:   chat/wit/lib/log.js
+#	new file:   chat/wit/lib/wit.js
+#	new file:   chat/wit/package.json
+#	new file:   feedback.php
+#	modified:   fileparser.py
+#	new file:   graphs/public/views/index.html
+#	modified:   runscript.sh
+#	modified:   serverapi.php
+#	new file:   serverapi.php~
+#
+
