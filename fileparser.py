@@ -103,7 +103,6 @@ def overlap(a,b):
 	else:
 		# These two are not contained in the other
 		return false
-    return a.xmin <= b.xmax and b.xmin <= a.xmax and a.xmin >= b.xmin and 
 
 def sameSegment(max,min):
     return max == min
