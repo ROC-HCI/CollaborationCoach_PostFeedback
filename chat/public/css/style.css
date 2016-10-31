@@ -62,6 +62,7 @@ header nav .navbar-brand img {
   /*width: 120%; */
   overflow: auto;
   height: 65%;
+  padding-top: 10px;
 }
 
 .contain-graph {
@@ -69,6 +70,8 @@ header nav .navbar-brand img {
   width: 40%;
   /*margin-top: 65px;*/
   overflow: auto;
+  border-right: #2ba2db;
+  border-style: inset;
 }
 
 .contain-filter {
