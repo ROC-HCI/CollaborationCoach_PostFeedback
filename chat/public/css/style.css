@@ -315,3 +315,22 @@ h5 {
   background: white;
   margin-top: 7%;
 }
+
+/*stuff for RocConf main page*/
+.btn-success {
+  background: #2ba2db;
+  border-color: #2ba2db;
+}
+
+.jumbotron {
+  background: #2ba2db;
+}
+
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.indexContainer {
+  width: 80%;
+}
