@@ -32,7 +32,7 @@
         		<a class="navbar-brand" href="#">
     				<img src="https://files.slack.com/files-pri/T1FSQC4CB-F2VMXLQ5D/rlogo.png" class="img-fluid" alt="">
         		</a> 
-        		<div class="header-title"><h1>Feeback Assistant</h1></div>
+        		<div class="header-title"><h1>Feedback Assistant</h1></div>
      		</div>
   		</nav>
 	</header>
@@ -284,8 +284,14 @@
 			console.log(graphDiv);	
 			//$('#accordion').accordion("refresh");        
 		
+			//$('#accordion').append(createGraph);	
+    		$('.inner-contain-graph').animate({ 
+    			scrollTop: $('.wrapper').height()
+			});
+
 			$('#wrapper-' + type).show("slide", { direction: "left" }, 1000);
 			make_Graph(type);
+
 
 		}
 
