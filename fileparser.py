@@ -96,13 +96,13 @@ def readFile(file):
 def overlap(a,b):	
 	# Is a contained within b?
 	if (a.xmin <= b.xmax and a.xmin >= b.xmin and a.xmax >= b.xmin and a.xmax <= b.xmax):
-		return true
+		return True
 	# Is b contained within a?
 	elif(b.xmin <= a.xmax and b.xmin >= a.xmin and b.xmax >= a.xmin and b.xmax <= a.xmax):
-		return true
+		return True
 	else:
 		# These two are not contained in the other
-		return false
+		return False
 
 def sameSegment(max,min):
     return max == min
