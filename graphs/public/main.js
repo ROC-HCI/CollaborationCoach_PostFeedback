@@ -58,11 +58,11 @@ function make_Graph(type){
 		chart_data[0] = single_data["Count"];
 		data_labels[0] = single_joy_data["user"];
 		
-		for(var i = 1; i < smile_graph_data.length; i++)
+		for(var i = 0; i < smile_graph_data.length; i++)
 		{
 			var e = smile_graph_data[i];
-			chart_data[i] = e["value"];
-			data_labels[i] = e["user"];
+			chart_data[i + 1] = e["value"];
+			data_labels[i + 1] = e["user"];
 		}
 		
 		var data = {datasets:[{data:chart_data, backgroundColor: color_data, label: chart_label}],
