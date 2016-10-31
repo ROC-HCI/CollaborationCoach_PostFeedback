@@ -99,6 +99,7 @@
 			gatherData();
 		});
 
+	
         function gotoObject(object){
         	document.getElementById('message-option').innerHTML="";
         	// console.log(participation, object.title);
@@ -232,6 +233,10 @@
 				result[element.title.trim()] = element; //assuming titles are unique
 
 				//empty node
+				if(element.tags){
+					result[element.title.trim()].tags = element.tags;
+					// result[element.title.trim()].body = "empty node detected!";
+				} 
 				if(element.body.length==0){
 					console.log('element.body fixed');
 					result[element.title.trim()].body = "empty node detected!";
