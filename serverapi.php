@@ -115,6 +115,7 @@ $response = $collection->drop();
 echo "Dropped toneanalysis_google" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
+*/
 
 $collection = $database->selectCollection('affdexshared');
 $response = $collection->drop();
@@ -123,6 +124,7 @@ echo "Dropped shared affdex data" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
 
+/*
 $collection = $database->selectCollection('affdexuserseat');
 $response = $collection->drop();
 
