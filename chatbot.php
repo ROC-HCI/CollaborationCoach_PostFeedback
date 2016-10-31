@@ -267,7 +267,7 @@
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Mutual Smile</span></h5><div id='"+type+"' class='graph-container'><div style='height:230px;'><canvas class='chart' id='joychart' data-value='0' data-speaker=''></canvas></div></div></div></div>");
 					break;
 				case "valence":
-					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Valence</span></h5><div id='"+type+"' class='graph-container'><div style='margin-left:.5em;' id='chart6' data-value='0' data-user=''></div></div></div>");
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Mood</span></h5><div id='"+type+"' class='graph-container'><div style='margin-left:.5em;' id='chart6' data-value='0' data-user=''></div></div></div>");
 					break;
 				//needs fixing
 				case "interruption": 
