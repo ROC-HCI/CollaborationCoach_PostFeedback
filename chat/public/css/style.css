@@ -270,7 +270,7 @@ span.chart-label{
 
 /*chart3*/
 .inner-contain3 {
-  width: 50%;
+  width: 60%;
   padding-top: 10%;
   margin: 0 auto;
   position: relative;
@@ -290,10 +290,10 @@ span.chart-label{
 }
 
 #guest-1 {
-  top: 80%;
+  top: 10%;
   left: 20%;
   width:80%;
-  z-index: -1;
+  /*z-index: -1;*/
 }
 
 .graph-container {
