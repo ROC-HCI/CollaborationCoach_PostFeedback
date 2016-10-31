@@ -293,7 +293,7 @@ span.chart-label{
   top: 10%;
   left: 20%;
   width:80%;
-  /*z-index: -1;*/
+  z-index: -1;
 }
 
 .graph-container {
