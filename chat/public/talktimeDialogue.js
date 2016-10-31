@@ -33,7 +33,7 @@ var json =
     {
         "title": "participation_4",
         "tags": "",
-        "body": "Team management experts have found that, equal participation helps the participants resolve any confusion.\\nAlongside, listening to teammates' viewpoints is also valuable.\\nRemember, balance is the key!\n[[Got it!|overlap_1]]",
+        "body": "Team management experts have found that, equal participation helps resolving confusions.\\n listening to teammates' viewpoints is also valuable.\\nRemember, balance is the key!\n[[Got it!|overlap_1]]",
         "position": {
             "x": 839,
             "y": 99
