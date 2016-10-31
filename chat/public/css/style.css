@@ -168,7 +168,7 @@ header nav .navbar-brand img {
 
 .right {
   background: #2ba2db;
-  width: 75%;
+  max-width: 50rem;
   padding: 15px 15px 10px 15px;
   border-radius: 10px;
 }
