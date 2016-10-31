@@ -94,7 +94,6 @@ def readFile(file):
     return sounds
 
 def overlap(a,b):	
-	print float(a.xmax)
 	# Filtering for duration of the speech
 	if((float(a.xmax) - float(a.xmin)) < 0.6):
 		return False
@@ -271,9 +270,9 @@ for k,v in turntaking_raw.iteritems():
 	
 final_dict['turntaking'] = turntaking_fixed
 
-pp.pprint(final_dict)
+#pp.pprint(final_dict)
 
-#pp.pprint(collection.insert_one(final_dict).inserted_id)
+pp.pprint(collection.insert_one(final_dict).inserted_id)
 
 #does not work if there is no url duh
 # url = './display'

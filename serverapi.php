@@ -59,7 +59,7 @@ echo $collection2->count() . " documents";
 
 /*
 echo "Starting database cleanup..." . "<br/><br/>";
-
+*/
 $collection = $database->selectCollection('participation');
 $response = $collection->drop();
 
@@ -67,6 +67,7 @@ echo "Dropped participation" . "<br/>";
 echo print_r($response);
 echo "<hr/>";
 
+/*
 $collection = $database->selectCollection('affdexmerge');
 $response = $collection->drop();
 
