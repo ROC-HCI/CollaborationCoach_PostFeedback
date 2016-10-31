@@ -95,10 +95,10 @@ def readFile(file):
 
 def overlap(a,b):	
 	# Filtering for duration of the speech
-	if(a.xmax - a.xmin < 2.0)
+	if(a.xmax - a.xmin < 2.0):
 		return False
 		
-	if(b.xmax - b.xmin < 2.0)
+	if(b.xmax - b.xmin < 2.0):
 		return False
 
 	# Is a contained within b?
