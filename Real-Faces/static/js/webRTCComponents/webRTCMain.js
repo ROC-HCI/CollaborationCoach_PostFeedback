@@ -24,6 +24,16 @@ var RealWebRTC =  function (clientID) {
     if (data.type === 'setClientID') {
       peer.socketID = data.payload;
       updateCubeWithVideo(peer.id+'_video_incoming', data.payload);
+      data_to_send = {'session_key':realFaces.sessionKey, 
+            'user':realFaces.userName,
+            'seat':data.payload};
+              
+    string_data = JSON.stringify(data_to_send);   
+
+    request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');       
+    request.setRequestHeader("Content-type", "application/json");     
+    request.send(string_data);
+
       //add clientID to DOM video node
       document.getElementById(peer.id+'_video_incoming').setAttribute("id", data.payload);
     } else if (data.type === 'chatMessage'){
