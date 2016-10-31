@@ -155,7 +155,7 @@
 		var test = function(e){
 			$('#messages').append(new item("user", this.textContent).create());
 			$('.inner-contain-body').animate({ 
-			      scrollTop: $('#messages li:last-child').position().top + 'px'
+			      scrollTop: $('#messages').height()
 			});
 			gotoObject(participation[this.getAttribute('data-next')]);
 			// e.stopPropagation();
