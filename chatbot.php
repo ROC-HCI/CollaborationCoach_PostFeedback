@@ -275,20 +275,7 @@
 					break;
 				case "attitude":
 					//graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Attitude</span></h5><div id='"+type+"' class='graph-container'>
-					graphDiv = $("<div align='center'>
-							<h6> your attitude towards </h6>
-					    <p align='center'>
-					      <button onclick='setupChart(0);'>Everyone</button>
-					      <button onclick='setupChart(1);'>Samiha</button>
-					      <button onclick='setupChart(2);'>Ru</button>
-					      <button onclick='setupChart(3);''>Vivian</button>
-					    </p>
-					    <div style='max-width:400px; max-height:400px'>
-					      <canvas id='barChart' width='250' height='250'></canvas>
-					    </div>
-					  </div>
-					  </div>
-					</div>");
+					graphDiv = $("<div align='center'><h6> your attitude towards </h6><p align='center'><button onclick='setupChart(0);'>Everyone</button><button onclick='setupChart(1);'>Samiha</button><button onclick='setupChart(2);'>Ru</button><button onclick='setupChart(3);''>Vivian</button></p><div style='max-width:400px; max-height:400px'><canvas id='barChart' width='250' height='250'></canvas></div></div></div></div>");
 					break;
 			}
 
