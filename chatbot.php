@@ -286,7 +286,7 @@
 		
 			//$('#accordion').append(createGraph);	
     		$('.inner-contain-graph').animate({ 
-    			scrollTop: "400px"
+    			scrollTop: $('#wrapper-'+type).height()
 			});
 
 			$('#wrapper-' + type).show("slide", { direction: "left" }, 1000);
