@@ -161,6 +161,10 @@ function make_Graph(type){
     })
     .render();
     }
+    break;
+    case "attitude":
+      setupChart(0);
+    break;
 
   }
 }
