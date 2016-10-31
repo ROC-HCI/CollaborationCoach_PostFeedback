@@ -94,6 +94,13 @@ def readFile(file):
     return sounds
 
 def overlap(a,b):	
+	# Filtering for duration of the speech
+	if(a.xmax - a.xmin < 2.0)
+		return False
+		
+	if(b.xmax - b.xmin < 2.0)
+		return False
+
 	# Is a contained within b?
 	if (a.xmin <= b.xmax and a.xmin >= b.xmin and a.xmax >= b.xmin and a.xmax <= b.xmax):
 		return True
