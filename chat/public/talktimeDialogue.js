@@ -3,7 +3,7 @@ var json =
     {
         "title": "intro_1",
         "tags": "",
-        "body": "Hi, I'm Roboto, your personal feedback assistant!\\nI've analyzed your performance of the previous session. Let's walk through it, shall we?\n[[Sure, let's|participation_1]]",
+        "body": "Hi, I'm Roboto, your personal feedback assistant!\\nI've analyzed your performance of the previous session. Let's walk through it, shall we?\n[[Sure, let's do this|participation_1]]",
         "position": {
             "x": 27,
             "y": 96
@@ -13,7 +13,7 @@ var json =
     {
         "title": "participation_1",
         "tags": "",
-        "body": "First, moving towards talktime as participation.\n[[Okay|participation_2]]",
+        "body": "First, let's talk about participation.\n[[Okay|participation_2]]",
         "position": {
             "x": 301,
             "y": 96
@@ -33,7 +33,7 @@ var json =
     {
         "title": "participation_4",
         "tags": "",
-        "body": "Team management experts have found that, equal participation help the participants resolve any confusion and shed light on the discussion from different perspectives.\\nAlongside, listening to teammates' viewpoints is also valuable.\\nRemember, balance is the key!\n[[Got it!|overlap_1]]",
+        "body": "Team management experts have found that, equal participation helps the participants resolve any confusion.\\nAlongside, listening to teammates' viewpoints is also valuable.\\nRemember, balance is the key!\n[[Got it!|overlap_1]]",
         "position": {
             "x": 839,
             "y": 99
@@ -72,7 +72,7 @@ var json =
     {
         "title": "turntaking_1",
         "tags": "",
-        "body": "While we're on overlaps, they have a lot to do with turn-taking. They can help decide who speaks next.\n [[Interesting|turntaking_2]]",
+        "body": "Overlaps also play a key role in deciding who speaks next. Let's look at who you usually talked after.\n [[Interesting|turntaking_2]]",
         "position": {
             "x": -36,
             "y": 395
@@ -123,7 +123,7 @@ var json =
     {
         "title": "emotion_1",
         "tags": "",
-        "body": "I think now is a good time to talk about emotion. These discrete short-term feelings can both derive from and affect group discussion.\n[[Show mine|emotion_2]]",
+        "body": "I think now is a good time to talk about emotion.\\nThese feelings can both derive from and affect group discussion.\n[[Show mine|emotion_2]]",
         "position": {
             "x": 28,
             "y": 418
@@ -143,7 +143,7 @@ var json =
     {
         "title": "emotion_3",
         "tags": "1",
-        "body": "Building onto that, now I break down your individual sentiments which are engaged, joyous, relaxed and negative. You can also see how the group sentiment went.\n[[Why should I care?|emotion_4]]",
+        "body": "\n[[Why should I care?|emotion_4]]",
         "position": {
             "x": 576,
             "y": 415
@@ -153,7 +153,7 @@ var json =
     {
         "title": "emotion_4",
         "tags": "",
-        "body": "Positive sentiments and emotions can flow cooperativeness within the group, whereas negative ones can reduce the group performance. These can even affect the bonds within the group members.\\n On this note, wanna see how much you bonded with the group?\n[[Of course!|sharedsmile_1]]",
+        "body": "Positive sentiments can improve cooperation within the group, whereas negative ones can hurt it.\\nThese can even affect the bonds within the group members.\\n On this note, wanna see how much you bonded with the group?\n[[Of course!|sharedsmile_1]]",
         "position": {
             "x": 860,
             "y": 413
@@ -163,7 +163,7 @@ var json =
     {
         "title": "sharedsmile_1",
         "tags": "",
-        "body": "Great! So first let me tell you what it represents.\\nSmile is one of the parameters for passing assurance and building bonds. Shared smile is how much one person smiled with another for the same period - which can tell a lot about group dynamics.\\nHere goes your performance analysis...¦\n[[View|sharedsmile_2]]",
+        "body": "Great! So first let me tell you what it represents.\\nShared smile is how much one person smiled with another for the same period. This can tell a lot about group dynamics.\\nHere goes your performance analysis...\n[[View|sharedsmile_2]]",
         "position": {
             "x": 32,
             "y": 702
@@ -173,7 +173,7 @@ var json =
     {
         "title": "sharedsmile_2",
         "tags": "1",
-        "body": "\n[[Sweet!|finish_1]]",
+        "body": "\n[[Sweet!|finish_1]]\n[[Whaaaat?!|finish_1]]",
         "position": {
             "x": 294,
             "y": 701
