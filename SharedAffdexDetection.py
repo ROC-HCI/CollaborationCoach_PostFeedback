@@ -9,7 +9,7 @@ import pymongo
 from pymongo import MongoClient
 import pprint
 
-INTENSITY_THRESHOLD = 60 # We only care about data points larger than this value
+INTENSITY_THRESHOLD = 75 # We only care about data points larger than this value
 DURATION_THRESHOLD = 0 # Placeholder - can use this for filtering length of shared value
 COUNTER_VALUE = 1 # How much time does each 'tick' represent
 
@@ -46,6 +46,53 @@ def parse_raw_data(session_key, user, key):
 		parsed_data.append(float(sentiment_data[key]))
 		
 	return parsed_data
+	
+#------------------------------------------------------------------------------------
+# How many times did this user smile?
+#
+def compute_single(users, key):
+	# Get all the data for this set of users
+	raw_data = {}	
+	final_data = {}
+	
+	for user in users:
+		raw_data[user] = parse_raw_data(session_key, user, key)
+		
+	for user in users:
+		analysis_data = raw_data[user]
+		length = len(analysis_data)
+		
+		detections_data = {}
+		detections = 0
+		detected = False
+		detected_length = 0
+		cur_length = 0
+		for i in range(0,length):
+			if detected is False:
+				if(analysis_data[i] > INTENSITY_THRESHOLD):
+					detected = True
+					cur_length = 1
+			else:
+				if(analysis_data[i] < INTENSITY_THRESHOLD):
+					if((cur_length * COUNTER_VALUE) > DURATION_THRESHOLD):
+						detections = detections + 1
+						detected_length += cur_length
+					detected = False
+				else:
+					cur_length = cur_length + 1
+	
+		true_time = detected_length * COUNTER_VALUE
+	
+		if(detections > 0):
+			average_length = true_time / detections
+		else:
+			average_length = 0
+	
+		detections_data["Count"] = detections
+		detections_data["Avg"] = average_length
+		final_data[user] = detections_data
+	return final_data
+
 
 #------------------------------------------------------------------------------------	
 # How many times did these two data sets share above the threshold
@@ -93,13 +140,13 @@ def compute(users, key):
 	# Get all the data for this set of users
 	raw_data = {}	
 	
-	for user in user_list:
+	for user in users:
 		raw_data[user] = parse_raw_data(session_key, user, key)
 		
 	# Detect the minimum length of data we have
 	# so we don't overun the end on one.
 	length = 0	
-	for user in user_list:
+	for user in users:
 		temp_length = len(raw_data[user])
 		if(length == 0):
 			length = temp_length
@@ -109,8 +156,8 @@ def compute(users, key):
 	
 	# Compute paired detections between users
 	paired_detections = {}
-	for user in user_list:
-		for user2 in user_list:	
+	for user in users:
+		for user2 in users:	
 			key1 = user + " - " + user2
 			key2 = user2 + " - " + user
 			if (user != user2) and (key1 not in paired_detections) and (key2 not in paired_detections):
@@ -129,13 +176,15 @@ if __name__ == "__main__":
 	
 	final_dict = {}
 	final_dict["session_key"] = session_key
+	final_dict["single_joy_data"] = compute_single(user_list,"joy")
 	final_dict["joy_data"] = compute(user_list, "joy")
 	final_dict["engagement_data"] = compute(user_list, "engagement")
 	final_dict["valence_data"] = compute(user_list, "valence")
 	final_dict["anger_data"] = compute(user_list, "anger")
 
-	collection = database['affdexshared']	
-	pp.pprint(collection.insert_one(final_dict).inserted_id)
+	pp.pprint(final_dict)
+	#collection = database['affdexshared']	
+	#pp.pprint(collection.insert_one(final_dict).inserted_id)
 
 	
 
