@@ -31,7 +31,7 @@ var json =
     {
 		"title": "overlap_1",
 		"tags": "",
-		"body": "Now moving onto interruption.\\nOn average you overlapped with others for ______ seconds and about ___ times [[what's this mean?|overlap_2]]",
+		"body": "Now moving onto overlaps.\\nOn average you overlapped with others for ______ seconds and about ___ times [[what's this mean?|overlap_2]]",
 		"position": {
 			"x": -47,
 			"y": 140
