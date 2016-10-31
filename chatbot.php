@@ -288,6 +288,7 @@
 
 	    var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, count, colorpalette;
 		var smile_graph_data = [];
+		var session_data = []
 		function gatherData(){
 
 			// Gather participation data.
@@ -404,7 +405,15 @@
 				}
 			}
 			
-			//console.log(JSON.stringify(smile_graph_data));
+
+
+			//Affdex Data
+			var xhttp = new XMLHttpRequest();
+	     	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=<?php echo $feedbackID ?>&user=<?php echo $userID ?>", false);
+	      	xhttp.send();
+	     	session_data = JSON.parse(xhttp.responseText);
+
+	      	//setupChart("0");
 			 
 		}
 

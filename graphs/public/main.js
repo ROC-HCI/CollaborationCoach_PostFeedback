@@ -145,7 +145,8 @@ function make_Graph(type){
             "pointers": {
                 "pointer": [
                     {
-                        "value": "50"
+                        //refer to overall average for now
+                        "value": (session_data["0"].valence+100)/200
                     }
                 ]
             }
@@ -164,50 +165,127 @@ function make_Graph(type){
   }
 }
 
-
+function setupChart(user)
+{
+  var overall_stats = session_data["0"];    
+  var overall_data = [];    
+  overall_data.engagement = overall_stats.engagement;
+  overall_data.surprise = overall_stats.surprise;
+  overall_data.contempt = overall_stats.contempt;
+  overall_data.joy = overall_stats.joy;
+  overall_data.anger = overall_stats.anger;
+  
+  var barData = {};
+  
+  if(user == "0")
+  {
+    barData = 
+    {
+      labels : ["Engagement","Surprise","Contempt","Joy","Anger"],
+      datasets : 
+      [
+        {
+          label: "Overall",
+          backgroundColor: "rgba(58,87,214,.1)",
+          borderColor: "rgba(58,87,214,.2)",
+          pointBackgroundColor : "rgba(255,255,255,1)",
+          data : [overall_data.engagement,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.anger]
+        }
+      ]
+    }
+  }
+  else
+  {
+    user_stats = session_data[user];
+    
+    var user_data = [];   
+    user_data.engagement = user_stats.engagement;
+    user_data.surprise = user_stats.surprise;
+    user_data.contempt = user_stats.contempt;
+    user_data.joy = user_stats.joy;
+    user_data.anger = user_stats.anger;
+    
+  
+    barData = 
+    {
+      labels : ["Engagement","Surprise","Contempt","Joy","Anger"],
+      datasets : 
+      [
+        {
+          label: "Overall",
+          backgroundColor: "rgba(58,87,214,.1)",
+          borderColor: "rgba(58,87,214,.2)",
+          pointBackgroundColor : "rgba(255,255,255,1)",
+          data : [overall_data.engagement,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.anger]
+        },
+        {
+          label: "User " + user,
+          backgroundColor: "rgba(144,212,153,.1)",
+          borderColor: "rgba(144,212,153,1)",
+          pointBackgroundColor : "rgba(144,212,153,1)",
+          pointStrokeColor : "#fff",
+          data : [user_data.engagement,user_data.surprise,user_data.contempt,user_data.joy,user_data.anger]
+        }
+      ]
+    }
+  }
+  
+  var ctx = document.getElementById("barChart").getContext("2d");
+  var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {
+      responsive: true,
+      maintainAspectRatio: false},
+      scales: {
+          yAxes: [{
+              ticks: {
+                  max: 100,
+              }
+          }]
+      }
+    }});
+}
 
 // chart1,2 stuff
 function myNumber(id, data) {
-  $(id).animateNumber({
-    number: data,
-    color: 'green',
-    'font-size': '30px',
+$(id).animateNumber({
+  number: data,
+  color: 'green',
+  'font-size': '30px',
 
-    easing: 'easeInQuad'
+  easing: 'easeInQuad'
 
-  },'normal');
+},'normal');
 }
 
 //chart3 stuff
 function ChartJS(id) {
-  var i3speakernew = i3speaker;
-  
-  for(var i=0;i<i3speakernew.length;i++) {
-    console.log(i3speakernew[i], 'user: ',iuser);
-    if(i3speakernew[i]==iuser) 
-      i3speakernew[i] = 'You';
-  }
-  var chart = new Chart($(id),{
-      type: 'pie',
-      data: {
-          labels: i3speakernew,
-          datasets: [{
-              data: i3data,
-              backgroundColor: colorpalette
-          }]
-      },
-      options: {
-          
-          maintainAspectRatio: false,
-          legend: {
-              position: 'bottom',
-              responsive: true,
-          }
-      },
-      animation:{
-          animateScale:true
-      }
-  });
+var i3speakernew = i3speaker;
+
+for(var i=0;i<i3speakernew.length;i++) {
+  console.log(i3speakernew[i], 'user: ',iuser);
+  if(i3speakernew[i]==iuser) 
+    i3speakernew[i] = 'You';
+}
+var chart = new Chart($(id),{
+    type: 'pie',
+    data: {
+        labels: i3speakernew,
+        datasets: [{
+            data: i3data,
+            backgroundColor: colorpalette
+        }]
+    },
+    options: {
+        
+        maintainAspectRatio: false,
+        legend: {
+            position: 'bottom',
+            responsive: true,
+        }
+    },
+    animation:{
+        animateScale:true
+    }
+});
 
 }
 
