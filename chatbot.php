@@ -292,7 +292,9 @@
 
 	    var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, count, colorpalette;
 		var smile_graph_data = [];
-		var session_data = []
+		var session_data = [];		
+		var single_smile_data = [];
+		
 		function gatherData(){
 
 			// Gather participation data.
@@ -377,13 +379,16 @@
 
 			 $( "#accordion" ).accordion({ header: '> div.wrapper > h5' });
 
-			// SHARED JOY DATA.
+			// SINGLE AND SHARED JOY DATA.
 			var xhttp = new XMLHttpRequest();
 			var userid = "<?php echo $userID; ?>";
 
 			xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexshared&session_key=<?php echo $feedbackID ?>", false);
 			xhttp.send();
 			var jscontent = JSON.parse(xhttp.responseText);
+			
+			var single = jscontent["single_joy_data"];
+			single_joy_data = {user: userid, data: single[userid]};
 			
 			var smile_data = jscontent["joy_data"];
 			var smile_index = 0;
