@@ -216,11 +216,11 @@ function setupChart(user)
     user_stats = session_data["3"];
     
     var user_data2 = [];   
-    user_data2.engagement = user_stats2.engagement;
-    user_data2.surprise = user_stats2.surprise;
-    user_data2.contempt = user_stats2.contempt;
-    user_data2.joy = user_stats2.joy;
-    user_data2.anger = user_stats2.anger;
+    user_data2.engagement = user_stats.engagement;
+    user_data2.surprise = user_stats.surprise;
+    user_data2.contempt = user_stats.contempt;
+    user_data2.joy = user_stats.joy;
+    user_data2.anger = user_stats.anger;
     
   
     barData = 
