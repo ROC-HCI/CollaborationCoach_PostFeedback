@@ -124,6 +124,7 @@
 	        	console.log('what', object.body.length); //already trimmed
 	        	console.log('buttons', object.buttons); //buttons
 	        	fixNewline(object);
+			addGraph(object);
         	}
         }
 
