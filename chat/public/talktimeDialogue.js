@@ -33,7 +33,7 @@ var json =
     {
         "title": "participation_4",
         "tags": "",
-        "body": "Team management experts have found that, equal participation helps resolving confusions.\\n listening to teammates' viewpoints is also valuable.\\nRemember, balance is the key!\n[[Got it!|overlap_1]]",
+        "body": "Team management experts have found that, equal participation is healthy for a group.\\nSpeaking about own opinion can remove confusions, whereas listening to teammates' viewpoints is also valuable.\\nRemember, balance is the key!\n[[Got it!|overlap_1]]",
         "position": {
             "x": 839,
             "y": 99
@@ -163,7 +163,7 @@ var json =
     {
         "title": "sharedsmile_1",
         "tags": "",
-        "body": "Great! So first let me tell you what it represents.\\nShared smile is how much one person smiled with another for the same period. This can tell a lot about group dynamics.\\nHere goes your performance analysis...\n[[View|sharedsmile_2]]",
+        "body": "Great! So first let me tell you what it represents.\\nShared smile is how much time two persons smiled simultaneously. This can tell a lot about group dynamics.\n[[Oh, I see. Show my score|sharedsmile_2]]",
         "position": {
             "x": 32,
             "y": 702
@@ -183,7 +183,7 @@ var json =
     {
         "title": "finish_1",
         "tags": "",
-        "body": "This is all I have. Good job expressing!\\nAll these feedback might help you in your future group meetings.\\nHope you have a great team discussion next time!\n[[Thanks, bye!|]]",
+        "body": "This is all I have. Good job expressing!\\nAll these feedback might help you in your future team meetings.\\nHope you have a great group discussion next time!\n[[Thanks, bye!|]]",
         "position": {
             "x": 589,
             "y": 704
