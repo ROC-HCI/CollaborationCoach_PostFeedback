@@ -121,6 +121,7 @@
 					createGraph(graphType[countType]);
     				countType++;
         		}
+        	}
         }
 
         function fixNewline(obj){
