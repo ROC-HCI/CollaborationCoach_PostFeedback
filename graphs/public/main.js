@@ -204,7 +204,7 @@ function setupChart(user)
   }
   else
   {*/
-    user_stats = session_data[user];
+    user_stats = session_data["2"];
     
     var user_data = [];   
     user_data.engagement = user_stats.engagement;
@@ -212,6 +212,15 @@ function setupChart(user)
     user_data.contempt = user_stats.contempt;
     user_data.joy = user_stats.joy;
     user_data.anger = user_stats.anger;
+
+    user_stats = session_data["3"];
+    
+    var user_data2 = [];   
+    user_data2.engagement = user_stats2.engagement;
+    user_data2.surprise = user_stats2.surprise;
+    user_data2.contempt = user_stats2.contempt;
+    user_data2.joy = user_stats2.joy;
+    user_data2.anger = user_stats2.anger;
     
   
     barData = 
@@ -221,26 +230,26 @@ function setupChart(user)
       [
         {
           label: "Overall",
-          backgroundColor: "purple",
-          borderColor: "purple",
-          pointBackgroundColor : "purple",
+          backgroundColor: "#90D0D5",
+          borderColor: "#90D0D5",
+          pointBackgroundColor : "#90D0D5",
           data : [overall_data.engagement,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.anger]
         },
         {
           label: "Ru",
-          backgroundColor: "rgba(144,212,153,.1)",
-          borderColor: "rgba(144,212,153,1)",
-          pointBackgroundColor : "rgba(144,212,153,1)",
+          backgroundColor: "#FBF172",
+          borderColor: "#FBF172",
+          pointBackgroundColor : "#FBF172",
           pointStrokeColor : "#fff",
           data : [user_data.engagement,user_data.surprise,user_data.contempt,user_data.joy,user_data.anger]
         },
         {
           label: "vivian",
-          backgroundColor: "rgba(144,212,153,.1)",
-          borderColor: "rgba(144,212,153,1)",
-          pointBackgroundColor : "rgba(144,212,153,1)",
+          backgroundColor: "#B0D357",
+          borderColor: "#B0D357",
+          pointBackgroundColor : "#B0D357",
           pointStrokeColor : "#fff",
-          data : [user_data.engagement,user_data.surprise,user_data.contempt,user_data.joy,user_data.anger]
+          data : [user_data2.engagement,user_data2.surprise,user_data2.contempt,user_data2.joy,user_data2.anger]
         }
       ]
     }
