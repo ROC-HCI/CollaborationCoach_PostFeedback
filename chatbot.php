@@ -99,16 +99,8 @@
 			gatherData();
 		});
 	
-	function addGraph(obj){
-        	//if participation, add participation graph
-        	//check tag
-        	//if 1 participation
-        	//2 hatever
-        	//3 ..
-		console.log("yooo", participation[obj.title].tags, typeof participation[obj.title].tags);
-        	if(participation[obj.title].tags=='1') 
-        		createGraph('participation');
-        }
+		var countType = 0;
+		var graphType = ["participation", "interruption", "turntaking", "valence", "attitude", "smilesharing"];
 	
         function gotoObject(object){
         	document.getElementById('message-option').innerHTML="";
@@ -124,8 +116,11 @@
 	        	console.log('what', object.body.length); //already trimmed
 	        	console.log('buttons', object.buttons); //buttons
 	        	fixNewline(object);
-			addGraph(object);
-        	}
+	        	if(participation[object.title].tags=='1') 
+        		{
+					createGraph(graphType[countType]);
+    				countType++;
+        		}
         }
 
         function fixNewline(obj){
