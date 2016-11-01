@@ -185,7 +185,7 @@ function setupChart(user)
   
   var barData = {};
   
-  if(user == "0")
+  /*if(user == "0")
   {
     barData = 
     {
@@ -203,7 +203,7 @@ function setupChart(user)
     }
   }
   else
-  {
+  {*/
     user_stats = session_data[user];
     
     var user_data = [];   
@@ -221,13 +221,21 @@ function setupChart(user)
       [
         {
           label: "Overall",
-          backgroundColor: "rgba(58,87,214,.1)",
-          borderColor: "rgba(58,87,214,.2)",
-          pointBackgroundColor : "rgba(255,255,255,1)",
+          backgroundColor: "purple",
+          borderColor: "purple",
+          pointBackgroundColor : "purple",
           data : [overall_data.engagement,overall_data.surprise,overall_data.contempt,overall_data.joy,overall_data.anger]
         },
         {
-          label: "User " + user,
+          label: "Ru",
+          backgroundColor: "rgba(144,212,153,.1)",
+          borderColor: "rgba(144,212,153,1)",
+          pointBackgroundColor : "rgba(144,212,153,1)",
+          pointStrokeColor : "#fff",
+          data : [user_data.engagement,user_data.surprise,user_data.contempt,user_data.joy,user_data.anger]
+        }
+        {
+          label: "vivian",
           backgroundColor: "rgba(144,212,153,.1)",
           borderColor: "rgba(144,212,153,1)",
           pointBackgroundColor : "rgba(144,212,153,1)",
@@ -236,7 +244,7 @@ function setupChart(user)
         }
       ]
     }
-  }
+  //}
   
   var ctx = document.getElementById("barChart").getContext("2d");
   var myBarChart = new Chart(ctx, {type: 'horizontalBar', data: barData, options:{ global: {

@@ -47,7 +47,7 @@
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 		});
 		
-	function addGraph(obj){
+		function addGraph(obj){
         	//if participation, add participation graph
         	//check tag
         	//if 1 participation
@@ -85,7 +85,7 @@
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
 			      scrollTop: $('#messages').height()
-});
+					});
         			},count*600);
         		})(str);
         		count++;
