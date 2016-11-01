@@ -233,7 +233,7 @@ function setupChart(user)
           pointBackgroundColor : "rgba(144,212,153,1)",
           pointStrokeColor : "#fff",
           data : [user_data.engagement,user_data.surprise,user_data.contempt,user_data.joy,user_data.anger]
-        }
+        },
         {
           label: "vivian",
           backgroundColor: "rgba(144,212,153,.1)",
