@@ -229,7 +229,7 @@ function setupChart(user)
       datasets : 
       [
         {
-          label: "Overall",
+          label: "Everyone",
           backgroundColor: "#90D0D5",
           borderColor: "#90D0D5",
           pointBackgroundColor : "#90D0D5",
