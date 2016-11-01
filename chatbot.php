@@ -286,11 +286,9 @@
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><div class='outer'><p><span class='chart-label' id='chart1'></span></p><p>By You</p></div><div class='outer'><p><span class='chart-label' id='chart2'></span></p><p>By Others</p></div></div></div>");
 					break;
 				case "attitude":
-					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Attitude</span></h5><div id='"+type+"' class='graph-container'><div align='center'><h6> your attitude towards </h6><div style='max-width:455px; max-height:250px'><canvas id='barChart' width='250px' height='250px'></canvas></div></div></div></div>");
-					break;
 					//graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Attitude</span></h5><div id='"+type+"' class='graph-container'>
-					//graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Attitude</span></h5><div id='"+type+"' class='graph-container'><div align='center'><h6> your attitude towards </h6><p align='center'><button onclick='setupChart(0);'>Everyone</button><button onclick='setupChart(1);'>You</button><button onclick='setupChart(2);'>Ru</button><button onclick='setupChart(3);'>vivian</button></p><div style='max-width:455px; max-height:250px'><canvas id='barChart' width='250px' height='250px'></canvas></div></div></div></div>");
-					
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Attitude</span></h5><div id='"+type+"' class='graph-container'><div align='center'><h6> your attitude towards </h6><p align='center'><button onclick='setupChart(0);'>Everyone</button><button onclick='setupChart(1);'>You</button><button onclick='setupChart(2);'>Ru</button><button onclick='setupChart(3);'>vivian</button></p><div style='max-width:455px; max-height:250px'><canvas id='barChart' width='250px' height='250px'></canvas></div></div></div></div>");
+					break;
 			}
 
 
