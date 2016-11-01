@@ -298,7 +298,7 @@
 		
 			//$('#accordion').append(createGraph);	
     		$('.inner-contain-graph').animate({ 
-    			scrollTop: $('#wrapper-'+type).height()
+			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			});
 
 			$('#wrapper-' + type).show("slide", { direction: "left" }, 1000);
