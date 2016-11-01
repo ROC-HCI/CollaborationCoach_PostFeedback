@@ -105,6 +105,7 @@
         	//if 1 participation
         	//2 hatever
         	//3 ..
+		console.log("yooo", participation[obj.title].tags, typeof participation[obj.title].tags);
         	if(participation[obj.title].tags=='1') 
         		createGraph('participation');
         }
