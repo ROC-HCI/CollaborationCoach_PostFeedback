@@ -3,7 +3,7 @@ var json =
     {
         "title": "intro_1",
         "tags": "",
-        "body": "Hi, I'm Roboto, your personal feedback assistant!\\nI've analyzed your performance of the previous session. Let's walk through it, shall we?\n[[Sure, let's do this|participation_1]]",
+        "body": "Hi, I'm Roboto, your personal feedback assistant!\\nI've analyzed your performance of the previous session. Let's walk through it, shall we?\n[[Sure, let's do this!|participation_1]]",
         "position": {
             "x": 27,
             "y": 96
@@ -13,7 +13,7 @@ var json =
     {
         "title": "participation_1",
         "tags": "",
-        "body": "First, let's talk about participation.\n[[Ok|participation_2]]",
+        "body": "First, let's begin with participation. It refelcts much time you spoke during the whole conversation.\n[[Okay|participation_2]]",
         "position": {
             "x": 301,
             "y": 96
@@ -33,7 +33,7 @@ var json =
     {
         "title": "participation_4",
         "tags": "",
-        "body": "Team management experts have found that, equal participation is healthy for a group.\\nSpeaking about own opinion can remove confusions, whereas listening to teammates' viewpoints is also valuable.\\nRemember, balance is the key!\n[[Got it!|overlap_1]]",
+        "body": "Team management experts have found that, equal participation is healthy for a group.\\nSpeaking about your own opinion can remove confusions, whereas listening to teammates' viewpoints is also valuable.\\nRemember, balance is the key!\n[[Got it!|overlap_1]]",
         "position": {
             "x": 839,
             "y": 99
@@ -42,17 +42,8 @@ var json =
     },
     {
         "title": "overlap_1",
-        "tags": "1",
-        "body": "Now moving onto overlaps.\\n[[What's this mean?|overlap_2]]",
-        "position": {
-            "x": -47,
-            "y": 140
-        },
-        "colorID": 0
-    },
-    { "title": "overlap_notinuse",
         "tags": "",
-        "body": "Now moving onto overlaps.\\nOn average you overlapped with others for ______ seconds and about ___ times\n[[What's this mean?|blah]]",
+        "body": "Moving onto speech overlap.\\n[[I get what you mean|overlap_3]] [[How does it work?|overlap_2]]",
         "position": {
             "x": -47,
             "y": 140
@@ -62,7 +53,7 @@ var json =
     {
         "title": "overlap_2",
         "tags": "",
-        "body": "Overlaps are when you are speaking at the same time as another person. \\n They can add or take away from a conversation. Just something to keep in mind.[[Good to know|turntaking_1]] [[Explain more|overlap_3]]",
+        "body": "Speech overlap happens when someone speaks before another person finishes.\\nSometimes these can encourage the conversation, but sometimes can be unpleasant as well.\\nJust something to keep in mind.[[Good to know|overlap_3]]",
         "position": {
             "x": 179,
             "y": 141
@@ -70,22 +61,22 @@ var json =
         "colorID": 0
     },
     {
-        "title": "turntaking_1",
-        "tags": "",
-        "body": "Overlaps also play a key role in deciding who speaks next. Let's look at who you usually talked after.\n [[Interesting|turntaking_2]]",
+        "title": "overlap_3",
+        "tags": "1",
+        "body": "\\n[[|I see|turntaking_1]]",
         "position": {
-            "x": -36,
-            "y": 395
+            "x": -47,
+            "y": 140
         },
         "colorID": 0
     },
     {
-        "title": "overlap_3",
+        "title": "turntaking_1",
         "tags": "",
-        "body": "Overlaps can sometimes be called interruptions, which is when you break someone off before they are done.\\nBut they are also good for showing that you are engaged in the conversation.[[Cool|turntaking_1]]",
+        "body": "Speaking of overlap, it also plays a key role in deciding who speaks next. Let's find out who you usually talked after.\n [[Interesting|turntaking_2]]",
         "position": {
-            "x": 393,
-            "y": 138
+            "x": -36,
+            "y": 395
         },
         "colorID": 0
     },
@@ -100,30 +91,9 @@ var json =
         "colorID": 0
     },
     {
-        "title": "turntaking_inactive",
-        "tags": "",
-        "body": "You spoke after ____ the most and ___ the least. [[Okay|turntaking_4]]",
-        "position": {
-            "x": 636,
-            "y": 413
-        },
-        "colorID": 0
-    },
-    {
-        "title": "turntaking_inactive2",
-        "tags": "",
-        "body": "You spoke after everyone about equally. Looks like it was an involved conversation [[Yup!|emotion_1]]",
-        "position": {
-            "x": 643,
-            "y": 173
-        },
-        "colorID": 0
-    },
-
-    {
         "title": "emotion_1",
         "tags": "",
-        "body": "I think now is a good time to talk about emotion.\\nThese feelings can both derive from and affect group discussion.\n[[Show mine|emotion_2]]",
+        "body": "Time for discussing valence.\\nValence or emotion can both derive from and affect group discussion.\n[[Show mine|emotion_2]]",
         "position": {
             "x": 28,
             "y": 418
@@ -143,7 +113,7 @@ var json =
     {
         "title": "emotion_3",
         "tags": "1",
-        "body": "\n[[Why should I care?|emotion_4]]",
+        "body": "\n[[Why is this immportant?|emotion_4]] [[I got this|sharedsmile_0]]",
         "position": {
             "x": 576,
             "y": 415
@@ -153,7 +123,17 @@ var json =
     {
         "title": "emotion_4",
         "tags": "",
-        "body": "Positive sentiments can improve cooperation within the group, whereas negative ones can hurt it.\\nThese can even affect the bonds within the group members.\\n On this note, wanna see how much you bonded with the group?\n[[Of course!|sharedsmile_1]]",
+        "body": "Positive sentiments can improve cooperation within the group, whereas negative ones can hurt it.\\nThese can even affect the bonds within the group members.\n[[Sounds powerful|sharedsmile_0]]",
+        "position": {
+            "x": 860,
+            "y": 413
+        },
+        "colorID": 0
+    },
+     {
+        "title": "sharedsmile_0",
+        "tags": "",
+        "body": "On this note, do you want to see how much you bonded with the group?\n[[Of course!|sharedsmile_1]]",
         "position": {
             "x": 860,
             "y": 413
@@ -163,7 +143,7 @@ var json =
     {
         "title": "sharedsmile_1",
         "tags": "",
-        "body": "Great! So first let me tell you what it represents.\\nShared smile is how much time two persons smiled simultaneously. This can tell a lot about group dynamics.\n[[Oh, I see. Show my score|sharedsmile_2]]",
+        "body": "Great! So first let me tell you what it represents.\\nShared smile is how much time two persons smile simultaneously. It can express a lot about group dynamics.\n[[Show my score|sharedsmile_2]]",
         "position": {
             "x": 32,
             "y": 702
@@ -173,7 +153,7 @@ var json =
     {
         "title": "sharedsmile_2",
         "tags": "1",
-        "body": "\n[[Sweet!|finish_1]]\n[[Whaaaat?!|finish_1]]",
+        "body": "\n[[All right then|finish_1]]",
         "position": {
             "x": 294,
             "y": 701
