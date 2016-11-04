@@ -110,7 +110,7 @@
         		(function(str){
         			setTimeout(function(){
         				$('#messages').append(new item("Server", str).create());	
-        			},600);
+        			},1000);
         		})('server crashed, please email us at xxx@xxx.edu to let us know what is causing the crash so we can fix it');
         	}else{
 	        	console.log('what', object.body.length); //already trimmed
@@ -136,7 +136,7 @@
         				$('.inner-contain-body').animate({ 
         				scrollTop: $('#messages').height()
 				});
-        			},count*600);
+        			},count*1000);
         		})(str);
         		count++;
         	}
@@ -148,7 +148,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},count*600);
+        			},count*1000);
         		})(str);
         	}
         }
