@@ -94,7 +94,7 @@
 		var participation = parse(json);
 		console.log(participation);
 
-		var thinking = $('#thinking');
+		var thinking = $('#messages li:last');
 
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
@@ -135,11 +135,7 @@
         		if(!/\S/.test(str)) continue;
         		(function(str){
         			setTimeout(function(){
-        			if (thinking!=undefined){
-        				thinking.remove();
-        				console.log('how many time do i appear ');
-
-        			} 
+						thinking.remove();        			
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
         				scrollTop: $('#messages').height()
@@ -171,7 +167,8 @@
 		var test = function(e){
 
 			$('#messages').append(new item("user", this.textContent).create());
-			$('#messages').append("<li id='thinking' style='color: black;'>Roboto is thinking..</li>");
+			$('#messages').append(new item("Roboto","Roboto is thinking...").create());
+			thinking= $('#messages li:last');
 		//	thinking = $('#messages #thinking');
 			$('.inner-contain-body').animate({ 
 			      scrollTop: $('#messages').height()
