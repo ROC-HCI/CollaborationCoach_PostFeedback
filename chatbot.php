@@ -140,7 +140,7 @@
         				$('.inner-contain-body').animate({ 
         				scrollTop: $('#messages').height()
 				});
-        			},count*2500);
+        			},count*2200);
         		})(str);
         		count++;
         	}
@@ -152,7 +152,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(count-1)*2500+1000);
+        			},(count-1)*2200+1000);
         		})(str);
         	}
         }
@@ -310,7 +310,7 @@
     		$('.inner-contain-graph').animate({ 
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			}, function() {
-				$('#wrapper-' + type).show("slide", { direction: "up" }, 2500);
+				$('#wrapper-' + type).show("slide", { direction: "up" }, 2200);
 			});
 			make_Graph(type);
 

@@ -13,7 +13,7 @@ var json =
     {
         "title": "participation_1",
         "tags": "",
-        "body": "First, let's begin with participation. It refelcts how much time you spoke during the whole conversation.\n[[Got it|participation_2]]",
+        "body": "Starting with participation. It refelcts how much time you spoke during the whole conversation.\n[[Got it|participation_2]]",
         "position": {
             "x": 301,
             "y": 96
@@ -65,7 +65,7 @@ var json =
         "tags": "1",
         "body": "\\n[[|I see|turntaking_1]]",
         "position": {
-            "x": -47,
+            "x": 188,
             "y": 140
         },
         "colorID": 0
