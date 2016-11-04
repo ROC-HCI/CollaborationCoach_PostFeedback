@@ -132,6 +132,7 @@
         		if(!/\S/.test(str)) continue;
         		(function(str){
         			setTimeout(function(){
+        			if (document.querySelector('#thinking')!=undefined) 
         				document.querySelector('#thinking').style.display="none";
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
