@@ -152,7 +152,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},count*500);
+        			},count*1800);
         		})(str);
         	}
         }
