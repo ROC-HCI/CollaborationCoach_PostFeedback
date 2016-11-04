@@ -274,7 +274,7 @@ if($_GET['mode'] == 'seatupload')
 {
 	$json_string = file_get_contents('php://input');
 	
-	$document = json_decode($json_string);
+	$document = json_decode($json_string,true);
 	$document["submitted"] = date("Y-m-d h:i:sa",time());
 	
 	$collection = $database->selectCollection('affdexuserseat');
