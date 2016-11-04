@@ -112,7 +112,7 @@
         		(function(str){
         			setTimeout(function(){
         				$('#messages').append(new item("Server", str).create());	
-        			},2000);
+        			},1500);
         		})('server crashed, please email us at xxx@xxx.edu to let us know what is causing the crash so we can fix it');
         	}else{
 	        	console.log('what', object.body.length); //already trimmed
@@ -140,7 +140,7 @@
         				$('.inner-contain-body').animate({ 
         				scrollTop: $('#messages').height()
 				});
-        			},count*2000);
+        			},count*1500);
         		})(str);
         		count++;
         	}
@@ -152,7 +152,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(count-1)*2000+700);
+        			},(count-1)*1500+1000);
         		})(str);
         	}
         }
@@ -310,7 +310,7 @@
     		$('.inner-contain-graph').animate({ 
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			}, function() {
-				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
+				$('#wrapper-' + type).show("slide", { direction: "up" }, 1500);
 			});
 			make_Graph(type);
 

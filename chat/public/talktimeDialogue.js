@@ -13,7 +13,7 @@ var json =
     {
         "title": "participation_1",
         "tags": "",
-        "body": "First, let's begin with participation. It refelcts much time you spoke during the whole conversation.\n[[Okay|participation_2]]",
+        "body": "First, let's begin with participation. It refelcts how much time you spoke during the whole conversation.\n[[Got it|participation_2]]",
         "position": {
             "x": 301,
             "y": 96
@@ -53,7 +53,7 @@ var json =
     {
         "title": "overlap_2",
         "tags": "",
-        "body": "Speech overlap happens when someone speaks before another person finishes.\\nSometimes these can encourage the conversation, but sometimes can be unpleasant as well.\\nJust something to keep in mind.[[Good to know|overlap_3]]",
+        "body": "Speech overlap happens when someone speaks before another person finishes.\\nSometimes these can encourage the conversation, but sometimes can be unpleasant as well.\\nJust something to keep in mind.\n[[Good to know|overlap_3]]",
         "position": {
             "x": 179,
             "y": 141
