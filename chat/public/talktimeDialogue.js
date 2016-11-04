@@ -63,7 +63,7 @@ var json =
     {
         "title": "overlap_3",
         "tags": "1",
-        "body": "\\n[[|I see|turntaking_1]]",
+        "body": "\\n[[I see|turntaking_1]]",
         "position": {
             "x": 188,
             "y": 140
