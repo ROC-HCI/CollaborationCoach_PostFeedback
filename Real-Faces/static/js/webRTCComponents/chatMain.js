@@ -53,9 +53,11 @@ chatInit();
 
 //check if user is typing every 50ms
   //if they are typing, disable controls
+/*
 setInterval(function(){  
   controls.enabled = ( $('#chatInput').is( ":focus" ) ) ? false : true;
 }, 50);
+*/
 
 playerEvents.addListener('start_chat_typing', startChatTyping);
 playerEvents.addListener('sendChatMessage', sendChatMessage);
