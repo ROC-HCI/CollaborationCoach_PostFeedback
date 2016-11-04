@@ -303,7 +303,7 @@
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			});
 
-			$('#wrapper-' + type).show("slide", { direction: "up" }, 10);
+			$('#wrapper-' + type).show("slide", { direction: "up" }, 500);
 			make_Graph(type);
 
 
