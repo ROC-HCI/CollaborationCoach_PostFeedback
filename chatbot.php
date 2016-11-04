@@ -163,7 +163,7 @@
 
 		var test = function(e){
 			$('#messages').append(new item("user", this.textContent).create());
-			$('messages').append("<li id='thinking' style='color: black;'>Roboto is thinking..</li>");
+			$('#messages').append("<li id='thinking' style='color: black;'>Roboto is thinking..</li>");
 			$('.inner-contain-body').animate({ 
 			      scrollTop: $('#messages').height()
 			});
