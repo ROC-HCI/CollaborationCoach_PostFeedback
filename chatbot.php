@@ -132,8 +132,11 @@
         		if(!/\S/.test(str)) continue;
         		(function(str){
         			setTimeout(function(){
-        			if (document.querySelector('#thinking')!=undefined) 
+        			if (document.querySelector('#thinking')!=undefined){
         				document.querySelector('#thinking').style.display="none";
+        				console.log('how many time do i appear ');
+
+        			} 
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
         				scrollTop: $('#messages').height()
@@ -163,7 +166,7 @@
 		}
 
 		var test = function(e){
-			
+
 			$('#messages').append(new item("user", this.textContent).create());
 			$('#messages').append("<li id='thinking' style='color: black;'>Roboto is thinking..</li>");
 			$('.inner-contain-body').animate({ 
