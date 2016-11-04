@@ -152,7 +152,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},count*2000);
+        			},count*500);
         		})(str);
         	}
         }
@@ -309,9 +309,9 @@
 			//$('#accordion').append(createGraph);	
     		$('.inner-contain-graph').animate({ 
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+			}, function() {
+				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
 			});
-
-			$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
 			make_Graph(type);
 
 
