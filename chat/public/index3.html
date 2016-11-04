@@ -43,6 +43,8 @@
 		var participation = parse(json);
 		console.log(participation);
 
+		var thinking = $('#messages li:last');
+
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 		});
@@ -82,6 +84,7 @@
         		if(!/\S/.test(str)) continue;
         		(function(str){
         			setTimeout(function(){
+        				thinking.remove();
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
 			      scrollTop: $('#messages').height()
@@ -112,6 +115,8 @@
 
 		var test = function(e){
 			$('#messages').append(new item("user", this.textContent).create());
+			$('#messages').append(new item("Roboto", "Roboto is thinking..").create());
+			thinking = $('#messages li:last');
 			$('.inner-contain-body').animate({ 
 			      scrollTop: $('#messages').height()
 });
