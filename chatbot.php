@@ -110,7 +110,7 @@
         		(function(str){
         			setTimeout(function(){
         				$('#messages').append(new item("Server", str).create());	
-        			},1000);
+        			},2000);
         		})('server crashed, please email us at xxx@xxx.edu to let us know what is causing the crash so we can fix it');
         	}else{
 	        	console.log('what', object.body.length); //already trimmed
@@ -132,11 +132,12 @@
         		if(!/\S/.test(str)) continue;
         		(function(str){
         			setTimeout(function(){
+        				document.querySelector('#thinking').style.display="none";
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
         				scrollTop: $('#messages').height()
 				});
-        			},count*1000);
+        			},count*2000);
         		})(str);
         		count++;
         	}
@@ -148,7 +149,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},count*1000);
+        			},count*2000);
         		})(str);
         	}
         }
@@ -162,6 +163,7 @@
 
 		var test = function(e){
 			$('#messages').append(new item("user", this.textContent).create());
+			$('messages').append("<li id='thinking' style='color: black;'>Roboto is thinking..</li>");
 			$('.inner-contain-body').animate({ 
 			      scrollTop: $('#messages').height()
 			});
@@ -303,7 +305,7 @@
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			});
 
-			$('#wrapper-' + type).show("slide", { direction: "up" }, 500);
+			$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
 			make_Graph(type);
 
 
