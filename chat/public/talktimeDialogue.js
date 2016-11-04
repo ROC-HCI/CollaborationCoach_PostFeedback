@@ -13,7 +13,7 @@ var json =
     {
         "title": "participation_1",
         "tags": "",
-        "body": "First, let's talk about participation.\n[[Okay|participation_2]]",
+        "body": "First, let's talk about participation.\n[[Ok|participation_2]]",
         "position": {
             "x": 301,
             "y": 96
