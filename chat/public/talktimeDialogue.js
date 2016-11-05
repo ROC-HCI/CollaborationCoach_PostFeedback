@@ -13,7 +13,7 @@ var json =
     {
         "title": "participation_1",
         "tags": "",
-        "body": "Starting with participation. It refelcts how much time you spoke during the whole conversation.\n[[Got it|participation_2]]",
+        "body": "Starting with participation. It reflects how much time you spoke during the whole conversation.\n[[Got it|participation_2]]",
         "position": {
             "x": 301,
             "y": 96
@@ -93,7 +93,7 @@ var json =
     {
         "title": "emotion_1",
         "tags": "",
-        "body": "Time for discussing valence.\\nValence or emotion can both derive from and affect group discussion.\n[[Show mine|emotion_2]]",
+        "body": "Time for discussing valence.\\nValence, in other words - emotion range, can both derive from and affect group discussion.\n[[Show mine|emotion_2]]",
         "position": {
             "x": 28,
             "y": 418
