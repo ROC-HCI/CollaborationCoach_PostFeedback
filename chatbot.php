@@ -140,16 +140,18 @@
         		console.log('whats my string ',str.length);
         		if(!/\S/.test(str)) continue;
         		(function(str){
-        			if(thinkingflag == 0){
-        				thinking.remove();        			
-        				$('#messages').append(new item("Roboto", str).create());	
-        				$('.inner-contain-body').animate({ 
-        					scrollTop: $('#messages').height()
-						});
+        			if(thinkingflag == 1){
+        				setTimeout(function(){
+	           				thinkingflag = 0;
+	        				thinking.remove();        			
+	        				$('#messages').append(new item("Roboto", str).create());	
+	        				$('.inner-contain-body').animate({ 
+	        					scrollTop: $('#messages').height()
+							});
+        				},count*500);
         			}
         			else
 	        			setTimeout(function(){
-	        				thinkingflag = 0;
 							thinking.remove();        			
 	        				$('#messages').append(new item("Roboto", str).create());	
 	        				$('.inner-contain-body').animate({ 
