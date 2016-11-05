@@ -335,8 +335,11 @@
 			}, function() {
 				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
 			});
-			console.log('type value==========',type);
+
 			make_Graph(type);
+			$('.inner-contain-graph').animate({ 
+			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+			});
 
 
 		}
