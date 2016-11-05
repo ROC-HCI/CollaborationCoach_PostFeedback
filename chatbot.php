@@ -121,10 +121,12 @@
 	        	fixNewline(object);
 	        	if(participation[object.title].tags=='1') 
         		{
-        			$('#messages').append(new item("Roboto","Roboto is thinking...").create());
-					thinking= $('#messages li:last');
-					createGraph(graphType[countType]);
-    				countType++;
+        			setTimeout(function(){
+        				$('#messages').append(new item("Roboto","Roboto is thinking...").create());
+						thinking= $('#messages li:last');
+						createGraph(graphType[countType]);
+    					countType++;
+    				},2200);
         		}
         	}
         }
