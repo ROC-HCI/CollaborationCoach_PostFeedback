@@ -121,7 +121,6 @@
 	        	fixNewline(object);
 	        	if(participation[object.title].tags=='1') 
         		{
-        			thinkingflag = 1;
        				$('#messages').append(new item("Roboto","Roboto is thinking...").create());
        				thinking= $('#messages li:last');			
     				
@@ -150,7 +149,7 @@
         			}
         			else
 	        			setTimeout(function(){
-	        				thinkingflag = 1;
+	        				thinkingflag = 0;
 							thinking.remove();        			
 	        				$('#messages').append(new item("Roboto", str).create());	
 	        				$('.inner-contain-body').animate({ 
@@ -183,6 +182,7 @@
 		var test = function(e){
 
 			$('#messages').append(new item("user", this.textContent).create());
+			thinkingflag = 1;
 			$('.inner-contain-body').animate({ 
 			      scrollTop: $('#messages').height()
 			});
