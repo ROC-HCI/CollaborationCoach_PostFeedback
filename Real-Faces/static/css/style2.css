@@ -247,3 +247,7 @@ body {
   margin-left: 5%;
   float: left;
 }
+
+#localVideo {
+  display: hidden;
+}
