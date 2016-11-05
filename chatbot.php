@@ -341,6 +341,9 @@
 				$('.inner-contain-graph').animate({ 
 			    	  scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 				});
+				$('.inner-contain-graph').animate({ 
+			    	  scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+				});
 			//},600);
 
 
