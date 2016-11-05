@@ -313,11 +313,11 @@
 				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
 			});
 			make_Graph(type);
-			setTimeout(function()){
-				$('.inner-contain-graph').animate({ 
-			    	  scrollTop: $('.wrapper:last').height()+$('#accordion').height()
-				});
-			},600);
+		//	setTimeout(function()){
+		//		$('.inner-contain-graph').animate({ 
+		//	    	  scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+		//		});
+		//	},600);
 		}
 	    var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, count, colorpalette;
 		var smile_graph_data = [];
