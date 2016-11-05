@@ -98,7 +98,6 @@
 		var thinkingflag = 0;
 		var graphappeared = 1;
 
-
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 			gatherData();
@@ -333,15 +332,14 @@
 			//$('#accordion').append(createGraph);	
     		$('.inner-contain-graph').animate({ 
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
-			   
 			}, function() {
 				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
 			});
 			make_Graph(type);
 			//setTimeout(function()){
-			//	$('.inner-contain-graph').animate({ 
-			  //  	  scrollTop: $('.wrapper:last').height()+$('#accordion').height()
-			//	});
+				$('.inner-contain-graph').animate({ 
+			    	  scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+				});
 			//},600);
 
 
