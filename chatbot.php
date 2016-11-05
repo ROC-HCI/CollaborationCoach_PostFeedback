@@ -142,22 +142,23 @@
         		(function(str){
         			if(thinkingflag == 1){
         				setTimeout(function(){
-	           				thinkingflag = 0;
 	        				thinking.remove();        			
 	        				$('#messages').append(new item("Roboto", str).create());	
 	        				$('.inner-contain-body').animate({ 
 	        					scrollTop: $('#messages').height()
 							});
-        				},count*500);
+        				},count*1000);
+           				thinkingflag = 0;
         			}
         			else
 	        			setTimeout(function(){
+
 							thinking.remove();        			
 	        				$('#messages').append(new item("Roboto", str).create());	
 	        				$('.inner-contain-body').animate({ 
 	        				scrollTop: $('#messages').height()
-					});
-	        			},count*2000);
+						});
+        			},count*2000);
         		})(str);
         		count++;
         	}
@@ -169,7 +170,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(count-1)*2000+1200);
+        			},(1)*2000+1000);
         		})(str);
         	}
         }
