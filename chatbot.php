@@ -336,8 +336,7 @@
 				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
 			});
 			make_Graph(type);
-
-make_Graph(type);
+			createGraph(graphType[countType]);
 		}
 
 
