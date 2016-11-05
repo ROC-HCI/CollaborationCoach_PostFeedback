@@ -5,8 +5,12 @@ function make_Graph(type){
       //animate numbers - interruption
       myNumber('#chart1',i1);
       myNumber('#chart2',i2);
-      var s = Snap('#chart1');
-      Snap.load('./graphs/public/svg/Turn_taking_bllue.svg', function(fragment){}
+      var ss = Snap('#chart1');
+      Snap.load('./graphs/public/svg/Turn_taking_bllue.svg', function(f){
+        f.select("polygon[fill='#09B39C']").attr({fill: "#bada55"});
+        g = f.select("g");
+        s.append(g);
+      }
       break;
     case "participation":
       ChartJS('#chart3');
