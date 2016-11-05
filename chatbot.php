@@ -95,7 +95,6 @@
 		console.log(participation);
 		var thinking = $('#messages li:last');
 		var thinkingflag = 0;
-		var graphappeared = 1;
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 			gatherData();
@@ -120,15 +119,12 @@
 	        	fixNewline(object);
 	        	if(participation[object.title].tags=='1') 
         		{
-        			graphappeared = 0;
-       				$('#messages').append(new item("Roboto","Roboto is thinking...").create());
-       				thinking= $('#messages li:last');			
-    				
-					setTimeout(function(){
+        			setTimeout(function(){
+        				$('#messages').append(new item("Roboto","Roboto is thinking...").create());
+						thinking= $('#messages li:last');
 						createGraph(graphType[countType]);
     					countType++;
-    				},2000);
-    				graphappeared = 1;
+    				},2200);
         		}
         	}
         }
@@ -139,40 +135,25 @@
         		console.log('whats my string ',str.length);
         		if(!/\S/.test(str)) continue;
         		(function(str){
-        			if(thinkingflag == 1){
-        				setTimeout(function(){
-	        				thinking.remove();        			
-	        				$('#messages').append(new item("Roboto", str).create());	
-	        				$('.inner-contain-body').animate({ 
-	        					scrollTop: $('#messages').height()
-							});
-        				},count*1000);
-           				thinkingflag = 0;
-        			}
-        			else
-        			{
-	        			setTimeout(function(){
-							thinking.remove();        			
-	        				$('#messages').append(new item("Roboto", str).create());	
-	        				$('.inner-contain-body').animate({ 
-	        					scrollTop: $('#messages').height()
-	        				});
-	        			},count*2000);
-	        		}
-	        	})(str);
-	        	count++;
-	        }
+        			setTimeout(function(){
+						thinking.remove();        			
+        				$('#messages').append(new item("Roboto", str).create());	
+        				$('.inner-contain-body').animate({ 
+        				scrollTop: $('#messages').height()
+				});
+        			},count*2200);
+        		})(str);
+        		count++;
+        	}
         	console.log('whats the count ', count);
         	if(obj.buttons){
-        		var waitvalue = (count - 1) * 2000 + 1000;
         		(function(str){
-        		
         			setTimeout(function(){
 						for(var b of obj.buttons){
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},waitvalue);
+        			},(count-1)*2200+1000);
         		})(str);
         	}
         }
@@ -184,7 +165,6 @@
 		}
 		var test = function(e){
 			$('#messages').append(new item("user", this.textContent).create());
-			thinkingflag = 1;
 			$('.inner-contain-body').animate({ 
 			      scrollTop: $('#messages').height()
 			});
@@ -310,14 +290,9 @@
     		$('.inner-contain-graph').animate({ 
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			}, function() {
-				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
+				$('#wrapper-' + type).show("slide", { direction: "up" }, 2200);
 			});
 			make_Graph(type);
-		//	setTimeout(function()){
-		//		$('.inner-contain-graph').animate({ 
-		//	    	  scrollTop: $('.wrapper:last').height()+$('#accordion').height()
-		//		});
-		//	},600);
 		}
 	    var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, count, colorpalette;
 		var smile_graph_data = [];
