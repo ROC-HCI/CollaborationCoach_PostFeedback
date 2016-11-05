@@ -50,32 +50,32 @@ function make_Graph(type){
       });
       // loadArrow
       break;
-	case "smilesharing":
-		var ctx = document.getElementById("joychart").getContext("2d");
-		
-		var chart_data = [0,0,0,0];
-		var color_data = ["#90D0D5","#FBF172","#B0D357","#C88ABC"];
-		var chart_label = "Shared Joy";
-		var data_labels = [];
-		
-		var single_data = single_joy_data["data"];
-		chart_data[0] = single_data["Count"];
-		data_labels[0] = single_joy_data["user"];
-		
-		for(var i = 0; i < smile_graph_data.length; i++)
-		{
-			var e = smile_graph_data[i];
-			chart_data[i + 1] = e["value"];
-			data_labels[i + 1] = e["user"];
-		}
-		
-		var data = {datasets:[{data:chart_data, backgroundColor: color_data, label: chart_label}],
-			        labels: data_labels};
+  case "smilesharing":
+    var ctx = document.getElementById("joychart").getContext("2d");
+    
+    var chart_data = [0,0,0,0];
+    var color_data = ["#90D0D5","#FBF172","#B0D357","#C88ABC"];
+    var chart_label = "Shared Joy";
+    var data_labels = [];
+    
+    var single_data = single_joy_data["data"];
+    chart_data[0] = single_data["Count"];
+    data_labels[0] = single_joy_data["user"];
+    
+    for(var i = 0; i < smile_graph_data.length; i++)
+    {
+      var e = smile_graph_data[i];
+      chart_data[i + 1] = e["value"];
+      data_labels[i + 1] = e["user"];
+    }
+    
+    var data = {datasets:[{data:chart_data, backgroundColor: color_data, label: chart_label}],
+              labels: data_labels};
 
-		new Chart(ctx, {
-			data: data,
-			type: 'polarArea'});
-		break;
+    new Chart(ctx, {
+      data: data,
+      type: 'polarArea'});
+    break;
 
     case "valence":{
      var ccChart = new FusionCharts({
