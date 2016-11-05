@@ -121,10 +121,11 @@
 	        	fixNewline(object);
 	        	if(participation[object.title].tags=='1') 
         		{
-        			setTimeout(function(){
-        				$('#messages').append(new item("Roboto","Roboto is thinking...").create());
-						thinking= $('#messages li:last');
-					
+        			thinkingflag = 1;
+       				$('#messages').append(new item("Roboto","Roboto is thinking...").create());
+       				thinking= $('#messages li:last');			
+    				
+					setTimeout(function(){
 						createGraph(graphType[countType]);
     					countType++;
     				},2000);
@@ -140,13 +141,22 @@
         		console.log('whats my string ',str.length);
         		if(!/\S/.test(str)) continue;
         		(function(str){
-        			setTimeout(function(){
-						thinking.remove();        			
+        			if(thinkingflag == 0){
+        				thinking.remove();        			
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
-        				scrollTop: $('#messages').height()
-				});
-        			},count*2000);
+        					scrollTop: $('#messages').height()
+						});
+        			}
+        			else
+	        			setTimeout(function(){
+	        				thinkingflag = 1;
+							thinking.remove();        			
+	        				$('#messages').append(new item("Roboto", str).create());	
+	        				$('.inner-contain-body').animate({ 
+	        				scrollTop: $('#messages').height()
+					});
+	        			},count*2000);
         		})(str);
         		count++;
         	}
