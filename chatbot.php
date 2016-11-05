@@ -340,7 +340,7 @@
 			make_Graph(type);
 			//setTimeout(function()){
 				$('.inner-contain-graph').animate({ 
-			    	  scrollTop: $('.wrapper:last').height()
+			    	  scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 				});
 			//},600);
 
