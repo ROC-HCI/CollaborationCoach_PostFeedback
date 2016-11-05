@@ -8,7 +8,7 @@ function make_Graph(type){
       var ss = Snap('#svgout');
       var g = ss.g();
       var image = g.image('./graphs/public/svg/overlap.svg',5,5,100,100);
-      myNumber('#chart1',i1);
+    //  myNumber('#chart1',i1);
       break;
     case "participation":
       ChartJS('#chart3');
