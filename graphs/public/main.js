@@ -3,10 +3,10 @@ function make_Graph(type){
   {
     case "interruption":
       //animate numbers - interruption
-      myNumber('#chart1',i1);
-      myNumber('#chart2',i2);
-      var ss = Snap('#chart1');
-      Snap.load('./graphs/public/svg/Turn_taking_bllue.svg', function(f){
+      //myNumber('#chart1',i1);
+      //myNumber('#chart2',i2);
+      var ss = Snap('#svg');
+      Snap.load('./graphs/public/svg/overlap_by_you', function(f){
         f.select("polygon[fill='#09B39C']").attr({fill: "#bada55"});
         g = f.select("g");
         s.append(g);
