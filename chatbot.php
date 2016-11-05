@@ -335,7 +335,8 @@
 			}, function() {
 				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
 			});
-			make_Graph("participation");
+			console.log('type value==========',type);
+			make_Graph(type);
 
 
 		}
