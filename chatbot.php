@@ -104,7 +104,7 @@
 		});
 	
 		var countType = 0;
-		var graphType = ["interruption", "turntaking", "participation", "valence", "attitude", "smilesharing"];
+		var graphType = ["participation", "interruption", "turntaking", "valence", "attitude", "smilesharing"];
 	
         function gotoObject(object){
         	document.getElementById('message-option').innerHTML="";
