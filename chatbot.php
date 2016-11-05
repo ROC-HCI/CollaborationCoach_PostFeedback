@@ -143,6 +143,7 @@
         		console.log('whats my string ',str.length);
         		if(!/\S/.test(str)) continue;
         		(function(str){
+        			
         			if(thinkingflag == 1){
         				setTimeout(function(){
 	        				thinking.remove();        			
@@ -169,8 +170,8 @@
         	if(obj.buttons){
         		var waitvalue = (count - 1) * 2000 + 1000;
         		(function(str){
-        			if(graphappeared == 1)
-        				waitvalue = (count + 2) * 2000 + 1000; 
+        			if(graphappeared == 0)
+        				waitvalue = (count) * 2000 + 1000; 
         			setTimeout(function(){
 						for(var b of obj.buttons){
 							console.log(b);
