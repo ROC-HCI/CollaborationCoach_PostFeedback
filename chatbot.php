@@ -93,11 +93,9 @@
 	<script>
 		var participation = parse(json);
 		console.log(participation);
-
 		var thinking = $('#messages li:last');
 		var thinkingflag = 0;
 		var graphappeared = 1;
-
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 			gatherData();
@@ -134,8 +132,6 @@
         		}
         	}
         }
-
-
         function fixNewline(obj){
         	var count = 1;
         
@@ -156,7 +152,6 @@
         			else
         			{
 	        			setTimeout(function(){
-
 							thinking.remove();        			
 	        				$('#messages').append(new item("Roboto", str).create());	
 	        				$('.inner-contain-body').animate({ 
@@ -181,16 +176,13 @@
         		})(str);
         	}
         }
-
 		//button 
 		function option(o){
 			this.text = o.split("|")[0];
 			this.next = o.split("|")[1];
 			this.button = document.createElement('button');
 		}
-
 		var test = function(e){
-
 			$('#messages').append(new item("user", this.textContent).create());
 			thinkingflag = 1;
 			$('.inner-contain-body').animate({ 
@@ -212,21 +204,18 @@
 			// console.log(this);
 			return this.button;
 		}
-
 		//chat message
 		function item(user, text) {
 			this.user = user;
 			this.text = text;
 			this.li = document.createElement('li');
 		}
-
 		item.prototype.create = function() {
 			var div = document.createElement('div');
 			div.className = 'message-content';
 			var image = document.createElement('img');
 			image.className = 'profile';
 			// image.className = 'img-rounded';
-
 			
 			var right = document.createElement('div');
 			right.className = 'right';
@@ -236,7 +225,6 @@
 			var content = document.createElement('span');
 			content.className = 'content';
 			content.innerHTML = this.text;
-
 			if(this.user=='Roboto'){
 				// console.log(this.user);
 				image.src='https://files.slack.com/files-pri/T1FSQC4CB-F2VN90X19/chatbot.png';
@@ -252,24 +240,18 @@
 				// this.li.className = "text-xs-center";
 				// this.li.className += " text-xs-right";
 			}
-
-
 			// right.appendChild(name);
 			right.appendChild(content);
-
 		    if(left) div.appendChild(left);
 		    div.appendChild(right);
 		    this.li.appendChild(div);
-
 		    return this.li;
 			// $('.right').append(content);
 		}
-
 		function parse(json){
 			var result = [];
 			for (var element of json){
 				result[element.title.trim()] = element; //assuming titles are unique
-
 				//empty node
 				if(element.tags){
 					result[element.title.trim()].tags = element.tags;
@@ -293,13 +275,10 @@
 			}
 			return result;
 		}
-
 		function createGraph(type)
 		{
 			var graphDiv;
-
 			switch (type) {
-
 				case "participation":
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Participation</span></h5><div id='"+type+"' class='graph-container'><div style='height:230px;'><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div></div></div></div>");
 					break;
@@ -323,8 +302,6 @@
 					//graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Attitude</span></h5><div id='"+type+"' class='graph-container'><div align='center'><h6> your attitude towards </h6><p align='center'><button onclick='setupChart(0);'>Everyone</button><button onclick='setupChart(1);'>You</button><button onclick='setupChart(2);'>Ru</button><button onclick='setupChart(3);'>vivian</button></p><div style='max-width:455px; max-height:250px'><canvas id='barChart' width='250px' height='250px'></canvas></div></div></div></div>");
 					
 			}
-
-
 			$("#accordion").append(graphDiv);
 			console.log(graphDiv);	
 			//$('#accordion').accordion("refresh");        
@@ -335,42 +312,33 @@
 			}, function() {
 				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
 			});
-
 			make_Graph(type);
-			$('.inner-contain-graph').animate({ 
-			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
-			});
-
-
+			setTimeout(function()){
+				$('.inner-contain-graph').animate({ 
+			    	  scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+				});
+			},600);
 		}
-
-
 	    var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, count, colorpalette;
 		var smile_graph_data = [];
 		var session_data = [];		
 		var single_smile_data = [];
 		
 		function gatherData(){
-
 			// Gather participation data.
 			var xhttp = new XMLHttpRequest();
-
 			xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=participation&session_key=<?php echo $feedbackID ?>", false);
 			xhttp.send();
 			var jscontent = JSON.parse(xhttp.responseText);
 		    //document.getElementById("Audio_Data").innerHTML = xhttp.responseText;
-
-
 			//interruption
 			var interruption = jscontent.interruption;
 			var defaultuser = Object.keys(interruption)[0]; //Luis interruption['Luis']
 			console.log('interruption name { values }: ', Object.keys(interruption)[0], interruption[Object.keys(interruption)[0]]);
 			var interrupted = interruption[defaultuser].interrupted;
 			console.log('interrupted: ', interrupted);
-
 			var interrupting = interruption[defaultuser].interrupting;
 			console.log('interrupting: ', interrupting);
-
 			//participation
 			var totalp = jscontent.participation['total'];
 			var count = 0;
@@ -380,25 +348,19 @@
 					delete jscontent.participation[key]; 
 				count+=1;
 			}	
-
 			var data = {};
-
 			data.totalinterruption = interrupted+interrupting;
 			data.interruption = [interrupting,interrupted];
 			data.totalparticipation = totalp;
 			data.participation = jscontent.participation;
 			data.turntaking = jscontent.turntaking;
 			data.user = defaultuser;
-
 			console.log(data);
-
-
 			var interruption = data.interruption;
 			var totalinterruption = data.totalinterruption;
 			var participation = data.participation;
 			var totalparticipation = data.totalparticipation;
 			var turntaking = data.turntaking;
-
 			var total = total
 	        i1 = interruption[0];
 	        i2 = interruption[1];
@@ -412,10 +374,7 @@
 	        colorpalette = ['#90D0D5','#FBF172', '#B0D357', '#C88ABC', '#4B79BD'];
 	        guests = {};
 	        count = 0;
-
-
 	        console.log("i4 assignment", i4);
-
 	        for (var key in i3){
 	        	  //console.log("LALALA ", count, i3[key]);
 	            i3speaker.push(key);
@@ -425,19 +384,14 @@
 	            i3data.push(Math.round(i3[key]));
 	            count+=1;
 	        }
-
 			/*$.getScript('graphs/public/main.js',function(data,textStatus){
 	            console.log("load was performed. ");
 	        });*/
-
 			//maketheGraphs();
-
 			 $( "#accordion" ).accordion({ header: '> div.wrapper > h5' });
-
 			// SINGLE AND SHARED JOY DATA.
 			var xhttp = new XMLHttpRequest();
 			var userid = "<?php echo $userID; ?>";
-
 			xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexshared&session_key=<?php echo $feedbackID ?>", false);
 			xhttp.send();
 			var jscontent = JSON.parse(xhttp.responseText);
@@ -469,18 +423,14 @@
 				}
 			}
 			
-
-
 			//Affdex Data
 			var xhttp = new XMLHttpRequest();
 	     	xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=affdexaverages&session_key=<?php echo $feedbackID ?>&user=<?php echo $userID ?>", false);
 	      	xhttp.send();
 	     	session_data = JSON.parse(xhttp.responseText);
-
 	      	//setupChart("0");
 			 
 		}
-
 	</script>
 </body>
 </html> 
