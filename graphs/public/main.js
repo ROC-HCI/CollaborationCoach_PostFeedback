@@ -5,6 +5,8 @@ function make_Graph(type){
       //animate numbers - interruption
       myNumber('#chart1',i1);
       myNumber('#chart2',i2);
+      var s = Snap('#chart1');
+      Snap.load('./graphs/public/svg/Turn_taking_bllue.svg', function(fragment){}
       break;
     case "participation":
       ChartJS('#chart3');
