@@ -96,6 +96,7 @@
 
 		var thinking = $('#messages li:last');
 		var thinkingflag = 0;
+		var graphappeared = 1;
 
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
@@ -121,6 +122,7 @@
 	        	fixNewline(object);
 	        	if(participation[object.title].tags=='1') 
         		{
+        			graphappeared = 0;
        				$('#messages').append(new item("Roboto","Roboto is thinking...").create());
        				thinking= $('#messages li:last');			
     				
@@ -128,6 +130,7 @@
 						createGraph(graphType[countType]);
     					countType++;
     				},2000);
+    				graphappeared = 1;
         		}
         	}
         }
@@ -164,13 +167,16 @@
         	}
         	console.log('whats the count ', count);
         	if(obj.buttons){
+        		var waitvalue = (count - 1) * 2000 + 1000;
         		(function(str){
+        			if(graphappeared == 1)
+        				waitvalue = (count + 2) * 2000 + 1000; 
         			setTimeout(function(){
 						for(var b of obj.buttons){
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(count-1)*2000+1000);
+        			},waitvalue);
         		})(str);
         	}
         }
