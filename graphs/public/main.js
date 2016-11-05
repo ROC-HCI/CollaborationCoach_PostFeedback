@@ -5,12 +5,10 @@ function make_Graph(type){
       //animate numbers - interruption
       //myNumber('#chart1',i1);
       //myNumber('#chart2',i2);
-      var ss = Snap('#svg');
-      Snap.load('./graphs/public/svg/overlap_by_you', function(f){
-        f.select("polygon[fill='#09B39C']").attr({fill: "#bada55"});
-        g = f.select("g");
-        s.append(g);
-      }
+      var ss = Snap('#svgout');
+      var g = ss.g();
+      var image = g.image('./graphs/public/svg/overlap_by_user',5,5,100,100);
+      myNumber('#chart1',i1);
       break;
     case "participation":
       ChartJS('#chart3');
