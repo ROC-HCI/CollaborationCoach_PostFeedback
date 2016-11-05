@@ -171,7 +171,7 @@
         		var waitvalue = (count - 1) * 2000 + 1000;
         		(function(str){
         			if(graphappeared == 0)
-        				waitvalue = (count) * 2000 + 1000; 
+        				waitvalue = (count) * 1000; 
         			setTimeout(function(){
 						for(var b of obj.buttons){
 							console.log(b);
