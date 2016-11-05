@@ -154,6 +154,7 @@
            				thinkingflag = 0;
         			}
         			else
+        			{
 	        			setTimeout(function(){
 
 							thinking.remove();        			
@@ -162,9 +163,10 @@
 	        					scrollTop: $('#messages').height()
 	        				});
 	        			},count*2000);
-	        		})(str);
-	        		count++;
-	        	}
+	        		}
+	        	})(str);
+	        	count++;
+	        }
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		var waitvalue = (count - 1) * 2000 + 1000;
