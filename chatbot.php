@@ -313,7 +313,7 @@
     		$('.inner-contain-graph').animate({ 
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			}, function() {
-				$('#wrapper-' + type).show("slide", { direction: "up" }, 0);
+				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
 			});
 			make_Graph(type);
 
