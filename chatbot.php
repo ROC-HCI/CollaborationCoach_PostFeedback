@@ -336,11 +336,11 @@
 				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
 			});
 			make_Graph(type);
-			setTimeout(function()){
+			//setTimeout(function()){
 				$('.inner-contain-graph').animate({ 
 			    	  scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 				});
-			},600);
+			//},600);
 
 
 		}
