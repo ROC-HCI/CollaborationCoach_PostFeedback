@@ -334,9 +334,9 @@
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			     //scrollTop: $('#messages').height() + 230px////
 			}, function() {
-				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
+				$('#wrapper-' + type).show("slide", { direction: "left" }, 2000);
 			});
-			make_Graph(type);
+			make_Graph(graphType);
 
 
 		}
