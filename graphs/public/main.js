@@ -7,7 +7,7 @@ function make_Graph(type){
       //myNumber('#chart2',i2);
       var ss = Snap('#svgout');
       var g = ss.g();
-      var image = g.image('./graphs/public/svg/overlap_by_user',5,5,100,100);
+      var image = g.image('./graphs/public/svg/overlap_by_user.png',5,5,100,100);
       myNumber('#chart1',i1);
       break;
     case "participation":
