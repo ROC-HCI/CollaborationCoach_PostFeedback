@@ -150,6 +150,8 @@
         			setTimeout(function(){
 						for(var b of obj.buttons){
 							console.log(b);
+							$('#messages').append(new item("Roboto","Roboto is thinking...").create());
+							thinking= $('#messages li:last');
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
         			},(count-1)*2200+1000);
@@ -167,9 +169,7 @@
 		var test = function(e){
 
 			$('#messages').append(new item("user", this.textContent).create());
-			$('#messages').append(new item("Roboto","Roboto is thinking...").create());
-			thinking= $('#messages li:last');
-		//	thinking = $('#messages #thinking');
+			
 			$('.inner-contain-body').animate({ 
 			      scrollTop: $('#messages').height()
 			});
