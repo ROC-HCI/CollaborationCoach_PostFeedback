@@ -3,12 +3,11 @@ function make_Graph(type){
   {
     case "interruption":
       //animate numbers - interruption
-      //myNumber('#chart1',i1);
-      //myNumber('#chart2',i2);
-      var ss = Snap("#guest0");
-      var g = ss.g();
-      var image = g.image("./graphs/public/svg/overlap.svg",0,0,200,200);
-      
+      myNumber('#chart1',i1);
+      myNumber('#chart2',i2);
+   //   var ss = Snap("#guest0");
+  //  var g = ss.g();
+ //   var image = g.image("./graphs/public/svg/overlap.svg",0,0,200,200);
     //  myNumber('#chart1',i1);
       break;
     case "participation":

@@ -143,26 +143,18 @@
         		console.log('whats my string ',str.length);
         		if(!/\S/.test(str)) continue;
         		(function(str){
-        			
+        			var waitvalue2 = count * 2000;
         			if(thinkingflag == 1){
-        				setTimeout(function(){
-	        				thinking.remove();        			
-	        				$('#messages').append(new item("Roboto", str).create());	
-	        				$('.inner-contain-body').animate({ 
-	        					scrollTop: $('#messages').height()
-							});
-        				},count*1000);
-           				thinkingflag = 0;
+        				waitvalue2 = count * 1000;
         			}
-        			else
-	        			setTimeout(function(){
-
-							thinking.remove();        			
-	        				$('#messages').append(new item("Roboto", str).create());	
-	        				$('.inner-contain-body').animate({ 
-	        				scrollTop: $('#messages').height()
+        			setTimeout(function(){
+	        			thinking.remove();        			
+	       				$('#messages').append(new item("Roboto", str).create());	
+	       				$('.inner-contain-body').animate({ 
+	       					scrollTop: $('#messages').height()
 						});
-        			},count*2000);
+       				},waitvalue2);
+       				thinkingflag = 0;
         		})(str);
         		count++;
         	}
