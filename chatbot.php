@@ -172,9 +172,12 @@
     				},(countdelay)*3000);
     				countdelay++;	
 
+        			console.log('when empty1 ',countdelay);
         		}
         		else
         			thinkingflag = 0;
+
+
         		
 
         	}
@@ -186,6 +189,7 @@
         		countdelay++;
         		thinkingflag = 0;
         	}
+        	console.log('when empty2 ',countdelay);
 
         	for(var str of participation[obj.title].body.split(/\\n/)){
         		console.log('whats my string ',str.length);
@@ -202,6 +206,8 @@
         		countdelay++;
         	}
 
+        	console.log('when empty3 ',countdelay);
+
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		(function(str){
@@ -213,6 +219,9 @@
         			},(countdelay)*2000);
         		})(str);
         	}
+
+        	console.log('when empty4 ',countdelay);
+
         	countdelay = 1;
         }
 		//button 
