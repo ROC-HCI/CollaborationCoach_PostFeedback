@@ -95,6 +95,7 @@
 		console.log(participation);
 		var thinking = $('#messages li:last');
 		var thinkingflag = 0;
+		var countdelay = 1;
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 			gatherData();
@@ -156,7 +157,8 @@
 			   			   scrollTop: $('#messages').height()
 						});
 						
-    				},2000);
+    				},countdelay*2000);
+    				countdelay++;
     				setTimeout(function(){
     					createGraph(graphType[countType]);
     					thinking.remove(); 
@@ -165,13 +167,13 @@
     					$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-    				},2600);
+    				},countdelay*1000);
         		}
         	}
         }
         function fixNewline(obj){
         	var count = 1;
-        
+        	countdelay = 1;
         	for(var str of participation[obj.title].body.split(/\\n/)){
         		console.log('whats my string ',str.length);
         		if(!/\S/.test(str)) continue;
@@ -182,9 +184,9 @@
         				$('.inner-contain-body').animate({ 
         				scrollTop: $('#messages').height()
 				});
-        			},count*2000);
+        			},countdelay*2000);
         		})(str);
-        		count++;
+        		countdelay++;
         	}
         	console.log('whats the count ', count);
         	if(obj.buttons){
@@ -194,7 +196,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(count-1)*2200+1000);
+        			},(countdelay-1)*2200+1000);
         		})(str);
         	}
         }
