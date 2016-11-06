@@ -492,16 +492,16 @@
 			{
 				console.log("how about looping it here");
 
-				if(dynoTurn[i]["times"] > turnMostValue)
+				if(dynoTurn["to"][i]["times"] > turnMostValue)
 				{
-					turnMostValue = Math.round(dynoTurn[key]["times"]/turnTotal);
-					turnMost = dynoTurn[key]["guest"];
+					turnMostValue = Math.round(dynoTurn["to"][i]["times"]/turnTotal);
+					turnMost = dynoTurn["to"][i]["guest"];
 				}
 
-				if(dynoTurn[i]["times"] < turnLeastValue)
+				if(dynoTurn["to"][i]["times"] < turnLeastValue)
 				{
-					turnLeastValue = Math.round(dynoTurn[key]["times"]/turnTotal);
-					turnLeast = dynoTurn[key]["guest"];
+					turnLeastValue = Math.round(dynoTurn["to"][i]["times"]/turnTotal);
+					turnLeast = dynoTurn["to"][i]["guest"];
 				}
 
 			}
