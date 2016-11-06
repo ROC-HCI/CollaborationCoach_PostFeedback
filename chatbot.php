@@ -102,7 +102,13 @@
 	
 		var countType = 0;
 		var graphType = ["participation", "interruption", "turntaking", "valence", "attitude", "smilesharing"];
-	
+		var graphResponse = ["As you can see from the graph, you participated __% of the whole session.\\nExpressing your ideas contributes in group decision. Would you like to know more about it?", 
+		"From the analysis, you overlapped ___ times with other's speeches. On the other hand, your speech got overlapped ___ times by the group.",
+		"You spoke after ____ most of the time. With ___ and ___, your turn talkings were __% and __%, respectively.",
+		"Your overall emotion was ___ during the session. On average, the team was emotionally ___.",
+		"Here goes your overall attitude towards others throughout the whole conversation."
+		"You shared most smiles with ___, then with ___ and ___."];
+
         function gotoObject(object){
         	document.getElementById('message-option').innerHTML="";
         	// console.log(participation, object.title);
@@ -123,6 +129,7 @@
         				$('#messages').append(new item("Roboto","Roboto is thinking...").create());
 						thinking= $('#messages li:last');
 						createGraph(graphType[countType]);
+	    			    $('#messages').append(new item("Roboto", graphResponse[countType]).create());	
     					countType++;
     				},2200);
         		}
@@ -269,7 +276,7 @@
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Shared Smile</span></h5><div id='"+type+"' class='graph-container'><div style='height:230px;'><canvas class='chart' id='joychart' data-value='0' data-speaker=''></canvas></div></div></div></div>");
 					break;
 				case "valence":
-					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Emotion</span></h5><div id='"+type+"' class='graph-container'><div style='margin-left:.5em;' id='chart6' data-value='0' data-user=''></div></div></div>");
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Emotional Valence</span></h5><div id='"+type+"' class='graph-container'><div id='chart6' data-value='0' data-user=''></div></div></div>");
 					break;
 				//needs fixing
 				case "interruption": 
