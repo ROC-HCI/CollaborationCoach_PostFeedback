@@ -53,7 +53,19 @@ var json =
     {
         "title": "overlap_2",
         "tags": "",
+<<<<<<< Updated upstream
         "body": "Speech overlap happens when someone speaks before another person finishes.\\nSometimes it shows enthusiasm and encourage the conversation, but sometimes it can be unpleasant as well.\\nJust something to keep in mind.\n[[Good to know|overlap_3]]",
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+        "body": "Speech overlap happens when someone speaks before another person finishes.\\nSometimes it shows enthusiasm and encourage the conversation, but sometimes it can be unpleasant as well.\\nJust something to keep in mind.\n[[Good to know|overlap_3]]",
+=======
+        "body": "Speech overlap happens when someone speaks before another person finishes.\\nOverlapping can show enthusiasm and drive conversations forward. But sometimes they can be seen as unwanted interruptions.\\nJust something to keep in mind.\\n [[Good to know|overlap_3]]",
+>>>>>>> Stashed changes
+=======
+        "body": "Speech overlap happens when someone speaks before another person finishes.\\nSometimes it shows enthusiasm and encourages the conversation, but sometimes it can be unpleasant as well.\\nJust something to keep in mind.\n[[Good to know|overlap_3]]",
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         "position": {
             "x": 179,
             "y": 141
@@ -63,7 +75,7 @@ var json =
     {
         "title": "overlap_3",
         "tags": "1",
-        "body": "\\n[[|I see|turntaking_1]]",
+        "body": "\\n[[I see|turntaking_1]]",
         "position": {
             "x": -47,
             "y": 140
