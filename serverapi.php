@@ -226,7 +226,7 @@ if($_GET['mode'] == 'participation')
 if($_GET['mode'] == 'affdexupload')
 {
 	$json_string = file_get_contents('php://input');
-	$submitted_data = json_decode($json_string);
+	$submitted_data = json_decode($json_string,true);
 	
 	// Get the submitted seat to user relationship
 	$relation = array();
@@ -249,8 +249,9 @@ if($_GET['mode'] == 'affdexupload')
 	{
 		$new_element = array();
 		$new_element["timeValue"] = $element["timeValue"];
-		$new_element["focus"] = $relation[$element["focus"]];
-		$new_element["sentiment"] = $element["sentiment"];
+		$new_element["focus"] = (!empty($element["focus"]) ? $relation[$element["focus"]] : $element["focus"]);
+		$new_element["emotions"] = $element["emotions"];
+		$new_element["expressions"] = $element["expressions"];
 		
 		$final_data[] = $new_element;
 	}
