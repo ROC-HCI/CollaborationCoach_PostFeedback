@@ -91,7 +91,7 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
 		return val.toFixed ? Number(val.toFixed(0)) : val;
 	})
 	
-	console.log(affdex_emotions);
+	//console.log(affdex_emotions);
 
     /*log('#results', "Expressions: " + JSON.stringify(faces[0].expressions, function(key, val) {
       return val.toFixed ? Number(val.toFixed(0)) : val;
