@@ -1,6 +1,5 @@
 
 var focus_running = 0;
-
 var timeLine = [];
 var count = 0;
 var sentiment = 0; 
