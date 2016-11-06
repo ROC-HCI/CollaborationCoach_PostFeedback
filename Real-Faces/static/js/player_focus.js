@@ -11,7 +11,7 @@ function focus_sample()
 {
 	if(focus_running == 1)
 	{
-		var info = document.getElementById("bigFeed").getElementsByTagName("video").id;
+		var info = document.getElementById("bigFeed").getElementsByTagName("video")[0].id;
 
 		if(info == null)
 		{

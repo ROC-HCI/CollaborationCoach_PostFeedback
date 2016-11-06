@@ -24,6 +24,7 @@ var RealWebRTC =  function (clientID) {
     if (data.type === 'setClientID') {
       peer.socketID = data.payload;
 
+	  console.log("CHANNEL MESSAGE " + data.payload);
       //add clientID to DOM video node
       document.getElementById(peer.id+'_video_incoming').setAttribute("id", data.payload);
     } else if (data.type === 'chatMessage'){
