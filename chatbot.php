@@ -487,8 +487,7 @@
 			var dynoTurn = getKey(defaultuser);
 			var turnMostValue = 0;
 			var turnLeastValue = 0;
-			var turnTotal = dynoTurn["total"];
-			console.log("turnTotal", turnTotal);
+			console.log("dynoTurn", dynoTurn);
 			for(var key in dynoTurn["to"])
 			{
 				if(dynoTurn.hasOwnProperty(key))
