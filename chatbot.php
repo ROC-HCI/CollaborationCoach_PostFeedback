@@ -293,6 +293,10 @@
 				$('#wrapper-' + type).show("slide", { direction: "up" }, 2200);
 			});
 			make_Graph(type);
+			$('.inner-contain-graph').animate({ 
+			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+			
+			});
 		}
 	    var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, count, colorpalette;
 		var smile_graph_data = [];
