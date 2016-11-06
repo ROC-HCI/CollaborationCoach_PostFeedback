@@ -10,13 +10,12 @@ block content
       span(id='remotesVideos')
       //-span(id='remotesVideos', onclick='enlargeVideoFeed()')
 
+  div(id='roomURL')
+    | Your room URL: http://conference.eastus.cloudapp.azure.com:8081/UnionSquare
   div(id='Analytics')
     div(id = 'focusChatMember')
-      |(Put Some Call Buttons Here)
+      button(id='proposeStop', onClick="proposeStop()").End Call
       
-  div(id = 'Controls')
-    button(id='proposeStop', onClick="proposeStop()").
-      End Call	
 
   h3(id='instructions')
  
