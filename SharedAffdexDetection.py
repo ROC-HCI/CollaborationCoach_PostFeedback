@@ -10,8 +10,8 @@ from pymongo import MongoClient
 import pprint
 
 INTENSITY_THRESHOLD = 75 # We only care about data points larger than this value
-DURATION_THRESHOLD = 0 # Placeholder - can use this for filtering length of shared value
-COUNTER_VALUE = 1 # How much time does each 'tick' represent
+DURATION_THRESHOLD = 1 # Placeholder - can use this for filtering length of shared value
+COUNTER_VALUE = .25 # How much time does each 'tick' represent
 
 pp = pprint.PrettyPrinter(indent=2)
 client = MongoClient()
@@ -33,7 +33,7 @@ def get_user_list(session_key):
 #------------------------------------------------------------------------------------		
 # Runnning through the raw data and extracting the stuff
 # we actually want to analyze.
-def parse_raw_data(session_key, user, key):
+def parse_raw_data(session_key, user, key, type):
 	source_collection = database['affdexmerge']
 
 	document = source_collection.find_one({"session_key":session_key, "user":user})
@@ -42,7 +42,7 @@ def parse_raw_data(session_key, user, key):
 	parsed_data = []
 
 	for row in affdex_data:
-		sentiment_data = json.loads(row["sentiment"])
+		sentiment_data = json.loads(row[type])
 		parsed_data.append(float(sentiment_data[key]))
 		
 	return parsed_data
@@ -56,7 +56,7 @@ def compute_single(users, key):
 	final_data = {}
 	
 	for user in users:
-		raw_data[user] = parse_raw_data(session_key, user, key)
+		raw_data[user] = parse_raw_data(session_key, user, key, "expressions")
 		
 	for user in users:
 		analysis_data = raw_data[user]
@@ -141,7 +141,7 @@ def compute(users, key):
 	raw_data = {}	
 	
 	for user in users:
-		raw_data[user] = parse_raw_data(session_key, user, key)
+		raw_data[user] = parse_raw_data(session_key, user, key, "expressions")
 		
 	# Detect the minimum length of data we have
 	# so we don't overun the end on one.
@@ -176,11 +176,8 @@ if __name__ == "__main__":
 	
 	final_dict = {}
 	final_dict["session_key"] = session_key
-	final_dict["single_joy_data"] = compute_single(user_list,"joy")
-	final_dict["joy_data"] = compute(user_list, "joy")
-	final_dict["engagement_data"] = compute(user_list, "engagement")
-	final_dict["valence_data"] = compute(user_list, "valence")
-	final_dict["anger_data"] = compute(user_list, "anger")
+	final_dict["single_smile_data"] = compute_single(user_list,"smile")
+	final_dict["smile_data"] = compute(user_list, "smile")
 
 	#pp.pprint(final_dict)
 	collection = database['affdexshared']	

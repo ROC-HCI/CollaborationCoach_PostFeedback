@@ -31,7 +31,7 @@ def get_user_list(session_key):
 # Runnning through the raw data and extracting the stuff
 # we actually want to analyze.
 # NOTE: Faulty data is excluded from the records (generate NaN means no good)
-def parse_raw_data(session_key, user):
+def parse_raw_data(session_key, user, type):
 	source_collection = database['affdexmerge']
 
 	document = source_collection.find_one({"session_key":session_key, "user":user})
@@ -41,18 +41,24 @@ def parse_raw_data(session_key, user):
 
 	for row in affdex_data:
 		sample = []
-		sentiment_data = json.loads(row["sentiment"])
+		sentiment_data = json.loads(row[type])
 		try:
 			sample.append(int(row["focus"]))
-			sample.append(float(sentiment_data["joy"]))
-			sample.append(float(sentiment_data["sadness"]))
-			sample.append(float(sentiment_data["disgust"]))
-			sample.append(float(sentiment_data["contempt"]))
-			sample.append(float(sentiment_data["anger"]))
-			sample.append(float(sentiment_data["fear"]))
-			sample.append(float(sentiment_data["surprise"]))
-			sample.append(float(sentiment_data["valence"]))
-			sample.append(float(sentiment_data["engagement"]))
+			
+			if(type == "expressions"):
+				sample.append(float(sentiment_data["smile"]))
+				sample.append(float(sentiment_data["smirk"]))
+				sample.append(float(sentiment_data["attention"]))
+			elif(type == "emotions"):
+				sample.append(float(sentiment_data["joy"]))
+				sample.append(float(sentiment_data["sadness"]))
+				sample.append(float(sentiment_data["disgust"]))
+				sample.append(float(sentiment_data["contempt"]))
+				sample.append(float(sentiment_data["anger"]))
+				sample.append(float(sentiment_data["fear"]))
+				sample.append(float(sentiment_data["surprise"]))
+				sample.append(float(sentiment_data["valence"]))
+				sample.append(float(sentiment_data["engagement"]))
 		except KeyError:
 			print "Error in parsing affdex merge data"
 			
@@ -96,7 +102,8 @@ if __name__ == "__main__":
 	user_list = get_user_list(session_key)
 	
 	for user in user_list:
-		parsed_data = parse_raw_data(session_key, user)
+		parsed_data_emotions = parse_raw_data(session_key, user, "emotions")
+		parsed_data_expressions = parse_raw_data(session_key, user, "expressions")
 		
 		final_dict = {}
 		final_dict["session_key"] = session_key
@@ -110,18 +117,21 @@ if __name__ == "__main__":
 			else:
 				flag = user_flag
 				
-			average_data = compute_averages(parsed_data, flag)
-			
+			average_data_emotions = compute_averages(parsed_data_emotions, flag)
+			average_data_expressions = compute_averages(parsed_data_expressions, flag)
 			try:
-				data["joy"] = average_data[0]
-				data["sadness"] = average_data[1]
-				data["disgust"] = average_data[2]
-				data["contempt"] = average_data[3]
-				data["anger"] = average_data[4]
-				data["fear"] = average_data[5]
-				data["surprise"] = average_data[6]
-				data["valence"] = average_data[7]
-				data["engagement"] = average_data[8]
+				data["joy"] = average_data_emotions[0]
+				data["sadness"] = average_data_emotions[1]
+				data["disgust"] = average_data_emotions[2]
+				data["contempt"] = average_data_emotions[3]
+				data["anger"] = average_data_emotions[4]
+				data["fear"] = average_data_emotions[5]
+				data["surprise"] = average_data_emotions[6]
+				data["valence"] = average_data_emotions[7]
+				data["engagement"] = average_data_emotions[8]
+				data["smile"] = average_data_expressions[0]
+				data["smirk"] = average_data_expressions[1]
+				data["attention"] = average_data_expressions[2]
 				final_dict[flag] = data
 			except:
 				data["joy"] = 0
@@ -133,7 +143,11 @@ if __name__ == "__main__":
 				data["surprise"] = 0
 				data["valence"] = 0
 				data["engagement"] = 0
+				data["smile"] = 0
+				data["smirk"] = 0
+				data["attention"] = 0
 				final_dict[flag] = data
+				
 		collection = database['affdexaverages']	
 		pp.pprint(collection.insert_one(final_dict).inserted_id)
 
