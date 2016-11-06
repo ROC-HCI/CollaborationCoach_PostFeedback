@@ -145,7 +145,7 @@
 						$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-    				},countdelay*2000);
+    				},countdelay*1500);
     				countdelay++;
     				setTimeout(function(){
     					createGraph(graphType[countType]);
@@ -156,7 +156,7 @@
 			   			   scrollTop: $('#messages').height()
 						});
 
-    				},(countdelay)*3000);
+    				},(countdelay)*1200);
     				countdelay++;	
 
         			console.log('when empty1 ',countdelay);
@@ -170,7 +170,8 @@
         }
         function fixNewline(obj){
         	var count = 1;
-
+        	var dialoguecount=1;
+        	countdelay = 1;
         	
         	console.log('when empty2 ',countdelay);
 
@@ -184,18 +185,16 @@
         				$('.inner-contain-body').animate({ 
         					scrollTop: $('#messages').height()
 						});
-        			},countdelay*2000);
+        			},countdelay*1200);
         		})(str);
         		countdelay++;
+        		dialoguecount++;
         	}
         	//countdelay++;
         	console.log('when thinkingflag ',thinkingflag);
-        	if(thinkingflag == 1){
-        			countdelay+=2;
-        			thinkingflag == 0;
-        		}
-        	else
-        		countdelay++;
+        	countdelay = dialoguecount+1;
+
+
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		
@@ -205,7 +204,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(countdelay)*2000);
+        			},(countdelay)*1200);
         		})(str);
         	}
 
