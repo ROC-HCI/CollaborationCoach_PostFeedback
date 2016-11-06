@@ -189,9 +189,9 @@
         	countdelay++;
         	console.log('whats the count ', count);
         	if(obj.buttons){
-        		if(thinkingflag == 1){
+        		if(thinkingflag == 0){
         			countdelay++;
-        			thinkingflag == 0;
+        			thinkingflag == 1;
         		}
         		else
         			countdelay--;
