@@ -102,8 +102,8 @@
 	
 		var countType = 0;
 		var graphType = ["participation", "interruption", "turntaking", "valence", "attitude", "smilesharing"];
-		var graphResponse = ["As you can see from the graph, you participated __% of the whole session.\\nExpressing your ideas contributes in group decision. Would you like to know more about it?", 
-		"From the analysis, you overlapped ___ times with other's speeches. On the other hand, your speech got overlapped ___ times by the group.",
+		var graphResponse = ["As you can see from the graph, you participated __% of the whole session. Expressing your ideas contributes in group decision. Would you like to know more about it?", 
+		"From the analysis, you overlapped " + i1 + " times with other's speeches. On the other hand, your speech got overlapped " + i2 + " times by the group.",
 		"You spoke after ____ most of the time. With ___ and ___, your turn talkings were __% and __%, respectively.",
 		"Your overall emotion was ___ during the session. On average, the team was emotionally ___.",
 		"Here goes your overall attitude towards others throughout the whole conversation.",
