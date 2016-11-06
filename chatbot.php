@@ -490,6 +490,7 @@
 			console.log("dynoTurn", dynoTurn);
 			for(var key in dynoTurn["to"])
 			{
+				console.log("does it loop through this at all");
 				if(dynoTurn.hasOwnProperty(key))
 				{
 					if(dynoTurn[key]["times"] > turnMostValue)
