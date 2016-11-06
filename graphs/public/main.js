@@ -154,7 +154,7 @@ function make_Graph(type){
                 "pointer": [
                     {
                         //refer to overall average for now
-                        "value": (session_data["0"].valence+100)/2
+                        "value": (session_data["ALL"].valence+100)/2
                     }
                 ]
             }
