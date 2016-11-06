@@ -330,7 +330,7 @@
 					break;
 				//needs fixing
 				case "interruption": 
-					graphDiv = $("<div style='display:none;color:black;' class='wrapper' id='wrapper-"+type+"'><h5><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><object data='graphs/public/svg/overlap.svg' type='image/svg+xml'><img src='overlap.png' /></object><div class='outer'><span class='chart-label' id='chart1'></span></div><div class='outer'><span class='chart-label' id='chart2'></span></div></div></div>");
+					graphDiv = $("<div style='display:none;color:black;' class='wrapper' id='wrapper-"+type+"'><h5><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><object data='graphs/public/svg/overlaps.svg' type='image/svg+xml'><img src='overlap.png' /></object></div></div>");
 					break;
 				case "attitude":
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Attitude Towards</span></h5><div id='"+type+"' class='graph-container'><div align='center'><div style='max-width:455px; max-height:250px'><canvas style='width:455px;height:230px' id='barChart' width='455' height='250'></canvas></div></div></div></div>");
