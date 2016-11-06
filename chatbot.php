@@ -202,7 +202,8 @@
         		})(str);
         		countdelay++;
         	}
-
+        	countdelay++;
+        	
         	console.log('when empty3 ',countdelay);
 
         	console.log('whats the count ', count);
