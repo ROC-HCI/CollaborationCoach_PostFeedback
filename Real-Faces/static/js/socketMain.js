@@ -32,6 +32,19 @@ function sendUserIDRelationship(identifier)
 	}
 }
 
+function doSubmission(identifier)
+{
+	if(realFaces.userName == "")
+	{
+		console.log("User Name Not Set, waiting 1 second!");
+		setTimeout(doSubmission,1000);
+	}
+	else
+	{
+		sendUserIDRelationship(identifier);
+	}
+}
+
 var RealSocket = function (app) {
   console.log(location, location.pathname, location.search);
   this.socketInterval = 100;
@@ -75,7 +88,8 @@ var RealSocket = function (app) {
   
   this.socketio.on('seat_location', function(seatID){
 	  app.THREE.setSpawn(seatID);
-	  console.log(realFaces.userName);
+	  console.log("User Name: " + realFaces.userName);
+	  doSubmission(seatID);
 
   });
   
