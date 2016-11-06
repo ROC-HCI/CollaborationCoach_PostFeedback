@@ -4,7 +4,7 @@ function make_Graph(type){
     case "interruption":
       //animate numbers - interruption
 	  $('#svg_41').val(i1);
-	  $('#svg_42').val(i2);)
+	  $('#svg_42').val(i2);
       //myNumber('#chart1',i1);
       //myNumber('#chart2',i2);
    //   var ss = Snap("#guest0");
