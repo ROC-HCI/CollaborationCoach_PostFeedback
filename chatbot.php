@@ -185,10 +185,7 @@
         function fixNewline(obj){
         	var count = 1;
 
-        	if(thinkingflag == 1){
-        		countdelay++;
-        		thinkingflag = 0;
-        	}
+        	
         	console.log('when empty2 ',countdelay);
 
         	for(var str of participation[obj.title].body.split(/\\n/)){
