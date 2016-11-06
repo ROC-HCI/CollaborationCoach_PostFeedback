@@ -3,6 +3,8 @@ function make_Graph(type){
   {
     case "interruption":
       //animate numbers - interruption
+	  console.log("interrupt1" + i1);
+	  console.log("interrupt2" + i2);
 	  $('#svg_41').val(i1);
 	  $('#svg_42').val(i2);
       //myNumber('#chart1',i1);
