@@ -300,8 +300,7 @@ var chart = new Chart($(id),{
         labels: i3speakernew,
         datasets: [{
             data: i3data,
-            backgroundColor: colorpalette,
-            label: "test"
+            backgroundColor: colorpalette
         }]
     },
     options: {
