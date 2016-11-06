@@ -191,10 +191,10 @@
         	console.log('when thinkingflag ',thinkingflag);
         	if(thinkingflag == 1){
         			countdelay+=2;
-        			thinkingflag == 1;
+        			thinkingflag == 0;
         		}
         	else
-        		countdelay--;
+        		countdelay++;
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		
@@ -483,8 +483,8 @@
 
 
 			//dynamic valence
-			allEmo = (session_data["ALL"].valence+100)/2;
-			selfEMo = (session_data[defaultuser].valence+100)/2;
+			allEmo = (session_data["0"].valence+100)/2;
+			selfEMo = (session_data["1"].valence+100)/2;
 			
 			//dynamic sharesmile
 
