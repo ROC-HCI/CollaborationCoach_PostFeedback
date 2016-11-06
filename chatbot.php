@@ -281,7 +281,11 @@
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Shared Smile</span></h5><div id='"+type+"' class='graph-container'><div style='height:230px;'><canvas class='chart' id='joychart' data-value='0' data-speaker=''></canvas></div></div></div></div>");
 					break;
 				case "valence":
+<<<<<<< Updated upstream
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Valence</span></h5><div id='"+type+"' class='graph-container'><div id='chart6' data-value='0' data-user=''></div></div></div>");
+=======
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5><span>Emotional Valence</span></h5><div id='"+type+"' class='graph-container'><div id='chart6' data-value='0' data-user=''></div></div></div>");
+>>>>>>> Stashed changes
 					break;
 				//needs fixing
 				case "interruption": 
@@ -310,6 +314,13 @@
 			
 			});
 		}
+<<<<<<< Updated upstream
+=======
+	    var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, count, colorpalette;
+		var smile_graph_data = [];
+		var session_data = [];		
+		var single_smile_data = [];
+>>>>>>> Stashed changes
 		
 		function gatherData(){
 			// Gather participation data.

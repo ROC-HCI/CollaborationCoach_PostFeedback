@@ -1,21 +1,36 @@
 extends ArtGalleryLayout
 
 block content
+  header
+    //img(src='https://files.slack.com/files-pri/T1FSQC4CB-F2VMXLQ5D/rlogo.png', id='rlogo')
+    div(id='Text')
+      |Conference Room
   div(id='game')
   div(id='videoFeeds')
     div(id='bigFeed')
         //-video(id='localVideo', width='740', height='416', autoplay='autoplay')
     div(id='BackgroundFeeds')
+<<<<<<< Updated upstream
       video(id='localVideo', width='740', height='416', autoplay='autoplay')
+=======
+>>>>>>> Stashed changes
       span(id='remotesVideos')
       //-span(id='remotesVideos', onclick='enlargeVideoFeed()')
 
   div(id='roomURL')
     | Your room URL: http://conference.eastus.cloudapp.azure.com:8081/UnionSquare
   div(id='Analytics')
+<<<<<<< Updated upstream
     div(id = 'focusChatMember')
       button(id='proposeStop', onClick="proposeStop()").End Call
+=======
+    //div(id = 'focusChatMember')
+    button(id = 'endCallButton', onClick="proposeStop()")
+      |End Call
+>>>>>>> Stashed changes
       
 
   h3(id='instructions')
+
+  video(id='localVideo')
  
