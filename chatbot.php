@@ -193,7 +193,7 @@
         	//countdelay++;
         	console.log('when thinkingflag ',thinkingflag);
         	console.log('when dialoguecount ',dialoguecount);
-        	countdelay = dialoguecount+1;
+        	countdelay = dialoguecount+1.3;
 
 
 
@@ -353,10 +353,10 @@
 				$('#wrapper-' + type).show("slide", { direction: "down" }, 2200);
 			});
 			make_Graph(type);
-			$('.inner-contain-graph').animate({ 
-			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+			//$('.inner-contain-graph').animate({ 
+			  //    scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			
-			});
+			//});
 		}
 		
 		function gatherData(){
