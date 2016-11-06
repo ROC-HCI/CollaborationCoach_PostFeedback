@@ -192,6 +192,7 @@
         	}
         	//countdelay++;
         	console.log('when thinkingflag ',thinkingflag);
+        	console.log('when dialoguecount ',dialoguecount);
         	countdelay = dialoguecount+1;
 
 
