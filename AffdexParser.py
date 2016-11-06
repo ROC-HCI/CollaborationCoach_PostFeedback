@@ -43,7 +43,7 @@ def parse_raw_data(session_key, user, type):
 		sample = []
 		sentiment_data = json.loads(row[type])
 		try:
-			sample.append(int(row["focus"]))
+			sample.append(row["focus"])
 			
 			if(type == "expressions"):
 				sample.append(float(sentiment_data["smile"]))
