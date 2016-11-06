@@ -105,6 +105,22 @@
 		var session_data = [];		
 		var single_smile_data = [];
 
+		//participation percentage, turn most, emotional self, emotional all, share most, 
+		var  participatePercent, turnMost, turnLeast, selfEmo, allEmo,  shareMost, shareLeast;
+
+		function dynamicValues(){
+
+			var self = i3data[0];
+			var total = 0;
+			for(var i = 0; i < i3data.length; i++)
+			{
+				total+=i3data;
+			}
+			participatePercent = self/total;
+
+
+		}
+
 		var countType = 0;
 		var graphType = ["participation", "interruption", "turntaking", "valence", "attitude", "smilesharing"];
 
@@ -112,10 +128,10 @@
 
 	        var graphResponse = ["As you can see from the graph, you participated __% of the whole session. Expressing your ideas contributes in group decision. Would you like to know more about it?", 
 			"From the analysis, you overlapped " + i1 + " times with other's speeches. On the other hand, your speech got overlapped " + i2 + " times by the group.",
-			"You spoke after ____ most of the time. With ___ and ___, your turn talkings were __% and __%, respectively.",
-			"Your overall emotion was ___ during the session. On average, the team was emotionally ___.",
+			"You spoke after" + turnMost + "most of the time and " + turnLeast + " least of the time.",
+			"Your overall emotion was " + selfEmo + " during the session. On average, the team was emotionally" + allEmo + ".",
 			"Here goes your overall attitude towards others throughout the whole conversation.",
-			"You shared most smiles with ___, then with ___ and ___."];
+			"You shared most smiles with " + shareMost + ", and least with " + shareLeast + "."];
 
         	document.getElementById('message-option').innerHTML="";
         	// console.log(participation, object.title);
