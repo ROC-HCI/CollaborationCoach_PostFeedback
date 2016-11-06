@@ -156,7 +156,7 @@
 			   			   scrollTop: $('#messages').height()
 						});
 
-    				},(countdelay)*1200);
+    				},(countdelay)*1500);
     				countdelay++;	
 
         			console.log('when empty1 ',countdelay);
@@ -170,7 +170,7 @@
         }
         function fixNewline(obj){
         	var count = 1;
-        	var dialoguecount=1;
+        	var dialoguecount=0;
         	countdelay = 1;
         	
         	console.log('when empty2 ',countdelay);
@@ -195,9 +195,11 @@
         	countdelay = dialoguecount+1;
 
 
+
         	console.log('whats the count ', count);
         	if(obj.buttons){
-        		
+        		if(dialoguecount == 1 && thinkingflag == 0)
+        			countdelay+=2;
         		(function(str){
         			setTimeout(function(){
 						for(var b of obj.buttons){
