@@ -95,7 +95,6 @@
 		console.log(participation);
 		var thinking = $('#messages li:last');
 		var thinkingflag = 0;
-		var countdelay = 1;
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 			gatherData();
@@ -109,19 +108,6 @@
 
 		//participation percentage, turn most, emotional self, emotional all, share most, 
 		var  participatePercent, turnMost, turnLeast, selfEmo, allEmo,  shareMost, shareLeast;
-
-		function dynamicValues(){
-
-			var self = i3data[0];
-			var total = 0;
-			for(var i = 0; i < i3data.length; i++)
-			{
-				total+=i3data[i];
-			}
-			participatePercent = self/total;
-
-
-		}
 
 		var countType = 0;
 		var graphType = ["participation", "interruption", "turntaking", "valence", "attitude", "smilesharing"];
@@ -148,7 +134,6 @@
 	        	console.log('what', object.body.length); //already trimmed
 	        	console.log('buttons', object.buttons); //buttons
 	        	fixNewline(object);
-	        	
 	        	if(participation[object.title].tags=='1') 
         		{
         			thinkingflag = 1;
@@ -159,8 +144,7 @@
 			   			   scrollTop: $('#messages').height()
 						});
 						
-    				},countdelay*3000);
-    				countdelay++;
+    				},2000);
     				setTimeout(function(){
     					createGraph(graphType[countType]);
     					thinking.remove(); 
@@ -169,6 +153,10 @@
     					$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
+<<<<<<< HEAD
+    				},2600);
+        		}
+=======
     				},(countdelay)*3000);
     				countdelay++;	
 
@@ -180,14 +168,25 @@
 
         		
 
+>>>>>>> origin/master
         	}
         }
         function fixNewline(obj){
         	var count = 1;
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+        
+=======
+>>>>>>> Stashed changes
 
         	
         	console.log('when empty2 ',countdelay);
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         	for(var str of participation[obj.title].body.split(/\\n/)){
         		console.log('whats my string ',str.length);
         		if(!/\S/.test(str)) continue;
@@ -198,14 +197,23 @@
         				$('.inner-contain-body').animate({ 
         				scrollTop: $('#messages').height()
 				});
-        			},(countdelay)*2000);
+        			},count*2000);
         		})(str);
-        		countdelay++;
+        		count++;
         	}
+<<<<<<< HEAD
+=======
         	
+        	
+<<<<<<< Updated upstream
         	
         	console.log('when empty3 ',countdelay);
 
+=======
+        	console.log('when empty3 ',countdelay);
+
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		if(thinkingflag == 1){
@@ -218,13 +226,19 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(countdelay)*2000);
+        			},(count-1)*2200+1000);
         		})(str);
         	}
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 
         	console.log('when empty4 ',countdelay);
 
         	countdelay = 1;
+>>>>>>> origin/master
         }
 		//button 
 		function option(o){
@@ -369,6 +383,8 @@
 		}
 		
 		function gatherData(){
+			var defaultuser = "<?php echo $userID ?>";
+
 			// Gather participation data.
 			var xhttp = new XMLHttpRequest();
 			xhttp.open("GET", "https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=participation&session_key=<?php echo $feedbackID ?>", false);
@@ -377,8 +393,8 @@
 		    //document.getElementById("Audio_Data").innerHTML = xhttp.responseText;
 			//interruption
 			var interruption = jscontent.interruption;
-			var defaultuser = Object.keys(interruption)[0]; //Luis interruption['Luis']
-			console.log('interruption name { values }: ', Object.keys(interruption)[0], interruption[Object.keys(interruption)[0]]);
+			//var defaultuser = Object.keys(interruption)[]; //Luis interruption['Luis']
+			console.log('interruption name { values }: ', Object.keys(interruption)[defaultuser], interruption[Object.keys(interruption)[defaultuser]]);
 			var interrupted = interruption[defaultuser].interrupted;
 			console.log('interrupted: ', interrupted);
 			var interrupting = interruption[defaultuser].interrupting;
@@ -475,6 +491,27 @@
 	     	session_data = JSON.parse(xhttp.responseText);
 	      	//setupChart("0");
 			 
+
+			//dynamic participation
+			var self;
+			var total = 0;
+			for(var i = 0; i < i3data.length; i++)
+			{
+				total+=i3data[i];
+			}
+			participatePercent = Math.round(self/total*100);
+
+			//dynamic turntaking
+
+
+
+			//dynamic valence
+			allEmo = (session_data["0"].valence+100)/2;
+			selfEMo = (session_data["1"].valence+100)/2;
+			
+			//dynamic sharesmile
+
+
 		}
 	</script>
 </body>
