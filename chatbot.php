@@ -167,7 +167,7 @@
     					$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-    				},countdelay*2000);
+    				},countdelay*3000);
     				countdelay++;
         		}
         	}
@@ -197,7 +197,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(countdelay-1)*2200+1000);
+        			},(countdelay)*2200+1000);
         		})(str);
         	}
         	countdelay = 1;
