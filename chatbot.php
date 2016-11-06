@@ -483,8 +483,8 @@
 
 
 			//dynamic valence
-			allEmo = (session_data["0"].valence+100)/2;
-			selfEMo = (session_data["1"].valence+100)/2;
+			allEmo = (session_data["all"].valence+100)/2;
+			selfEMo = (session_data["defaultuser"].valence+100)/2;
 			
 			//dynamic sharesmile
 
