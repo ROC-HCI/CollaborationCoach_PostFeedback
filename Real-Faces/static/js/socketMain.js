@@ -36,8 +36,8 @@ function doSubmission(identifier)
 {
 	if(realFaces.userName == "")
 	{
-		console.log("User Name Not Set, waiting 1 second!");
-		setTimeout(doSubmission(identifier),1000);
+		console.log("User Name Not Set, waiting 10 seconds!");
+		setTimeout(doSubmission(identifier),10000);
 	}
 	else
 	{
