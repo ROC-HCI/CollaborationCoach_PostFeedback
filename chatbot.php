@@ -145,6 +145,7 @@
 			   			   scrollTop: $('#messages').height()
 						});
     				},countdelay*3000);
+    				countdelay++;
     				setTimeout(function(){
     					createGraph(graphType[countType]);
     					thinking.remove(); 
