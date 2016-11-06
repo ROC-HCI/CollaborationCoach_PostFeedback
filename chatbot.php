@@ -483,6 +483,14 @@
 			participatePercent = Math.round(self/total*100);
 
 			//dynamic turntaking
+			var dynoTurn = getKey(defaultuser);
+			for(var key in dynoTurn)
+			{
+				if(dynoTurn.hasOwnProperty(key))
+				{
+					total+=dynoTurn[key];
+				}
+			}
 
 			//dynamic valence
 			//allEmo = (session_data[""].valence+100)/2;
