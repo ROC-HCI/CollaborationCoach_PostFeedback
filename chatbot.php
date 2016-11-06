@@ -170,12 +170,7 @@
 			   			   scrollTop: $('#messages').height()
 						});
     				},(countdelay)*3000);
-    				countdelay++;
-
-    				setTimeout(function(){
-    				},countdelay*1000);
-
-    				countdelay++;
+    				countdelay++;	
 
         		}
         		else
@@ -186,6 +181,11 @@
         }
         function fixNewline(obj){
         	var count = 1;
+
+        	if(thinkingflag == 1){
+        		countdelay++;
+        		thinkingflag = 0;
+        	}
 
         	for(var str of participation[obj.title].body.split(/\\n/)){
         		console.log('whats my string ',str.length);
@@ -201,6 +201,7 @@
         		})(str);
         		countdelay++;
         	}
+
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		(function(str){
