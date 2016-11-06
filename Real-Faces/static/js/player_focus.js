@@ -13,6 +13,11 @@ function focus_sample()
 	{
 		var info = document.getElementById("bigFeed").getElementsByTagName("video").id;
 
+		if(info == null)
+		{
+			info = "";
+		}
+		
 		// If sentiment hasn't changed we haven't started affdex sampling yet.
 		if(affdex_emotions != 0)
 		{			
