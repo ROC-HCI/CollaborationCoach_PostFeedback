@@ -487,7 +487,8 @@
 			var dynoTurn = getKey(defaultuser);
 			var turnTotal = dynoTurn["total"];
 			var turnMostValue = 0;
-			var turnLeastValue = 0;
+			turnLeast = dynoTurn["to"][0]["guest"];
+			var turnLeastValue = dynoTurn["to"][0]["guest"]/turnTotal;
 			console.log("dynoTurn", dynoTurn);
 			for(var i = 0; i < dynoTurn["to"].length; i++)
 			{
