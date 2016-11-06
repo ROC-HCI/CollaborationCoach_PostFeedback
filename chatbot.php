@@ -189,7 +189,7 @@
         	}
         	//countdelay++;
         	console.log('when thinkingflag ',thinkingflag);
-        	if(thinkingflag == 0){
+        	if(thinkingflag == 1){
         			countdelay+=2;
         			thinkingflag == 1;
         		}
