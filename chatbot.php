@@ -482,11 +482,7 @@
 			//dynamic turntaking
 
 			//dynamic valence
-<<<<<<< Updated upstream
-			allEmo = (session_data["0"].valence+100)/2;
-			selfEMo = (session_data["1"].valence+100)/2;
-			
-=======
+
 			//allEmo = (session_data[""].valence+100)/2;
 			selfEMo = (session_data["ALL"].valence+100)/2;
 			if(selfEmo < 40)	
@@ -495,7 +491,7 @@
 				selfEmo = "positive";
 			else
 				selfEmo = "neutral";
->>>>>>> Stashed changes
+
 			//dynamic sharesmile
 
 
