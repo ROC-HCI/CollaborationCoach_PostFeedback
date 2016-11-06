@@ -3,6 +3,7 @@ var focus_running = 0;
 var timeLine = [];
 var count = 0;
 var sentiment = 0;
+var emotions = 0;
 
 document.getElementById("localVideo").style.display = "none"; 
 
@@ -17,7 +18,8 @@ function focus_sample()
 		{			
 			var sample_element = {"timeValue":count,
 			                      "focus":info,
-			                      "sentiment": sentiment};
+			                      "sentiment": sentiment
+								  "emotions": emotions};
 			console.log(sample_element);
 			timeLine.push(sample_element);
 			count++;
