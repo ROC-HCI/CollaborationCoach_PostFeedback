@@ -151,6 +151,9 @@
         			setTimeout(function(){
         				$('#messages').append(new item("Roboto","Roboto is thinking...").create());
 						thinking= $('#messages li:last');
+						$('.inner-contain-body').animate({ 
+			   			   scrollTop: $('#messages').height()
+						});
 						
     				},2000);
     				setTimeout(function(){
