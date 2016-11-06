@@ -28,6 +28,15 @@ header nav .navbar-brand img {
   width: 80%;
 }
 
+h5.graph-header
+{
+	background-color: #2ba2db;
+	color: #FFF;
+	border: 1px solid black;
+	font-weight: bold;
+	text-align: center;
+}
+
 .header-title {
   padding-left: 40%;
   /*margin: 0 auto;*/
