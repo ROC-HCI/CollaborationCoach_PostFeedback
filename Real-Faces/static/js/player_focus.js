@@ -2,7 +2,9 @@
 var focus_running = 0;
 var timeLine = [];
 var count = 0;
-var sentiment = 0; 
+var sentiment = 0;
+
+document.getElementById("localVideo").style.display = "none"; 
 
 function focus_sample()
 {

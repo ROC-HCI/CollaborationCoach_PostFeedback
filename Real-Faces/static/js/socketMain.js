@@ -3,8 +3,6 @@ function proposeStop()
 	realFaces.socket.socketio.emit("propose_stop","stop");
 }
 
-var relationshipSent = 0;
-
 function doUserNameSubmission(identifier)
 {
 	var request = new XMLHttpRequest();
@@ -110,8 +108,7 @@ var RealSocket = function (app) {
   });
 
   // ALL CLIENT FUNCTIONS THAT NEED TO START NEED TO START HERE - JW
-  this.socketio.on('session_start', function(data){
-	  
+  this.socketio.on('session_start', function(data){	  
     captureVideo(commonConfig);
 	setTimeout(startRecordingAfterActive,1000);
 
