@@ -158,7 +158,10 @@
     					thinking.remove(); 
 	    				$('#messages').append(new item("Roboto", graphResponse[countType]).create());	
     					countType++;
-    				},2400);
+    					$('.inner-contain-body').animate({ 
+			   			   scrollTop: $('#messages').height()
+						});
+    				},2600);
         		}
         	}
         }
