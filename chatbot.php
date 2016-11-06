@@ -199,7 +199,7 @@
 
         	console.log('whats the count ', count);
         	if(obj.buttons){
-        		if(dialoguecount == 1 && thinkingflag == 0)
+        		if((dialoguecount == 1 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 0))
         			countdelay+=7;
         		(function(str){
         			setTimeout(function(){
