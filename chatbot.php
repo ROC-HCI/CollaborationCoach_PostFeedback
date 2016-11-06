@@ -490,9 +490,10 @@
 			console.log("dynoTurn", dynoTurn);
 			for(var key in dynoTurn["to"])
 			{
-				console.log("does it loop through this at all");
 				if(dynoTurn.hasOwnProperty(key))
 				{
+					console.log("how about looping it here");
+
 					if(dynoTurn[key]["times"] > turnMostValue)
 					{
 						turnMostValue = Math.round(dynoTurn[key]["times"]/turnTotal);
