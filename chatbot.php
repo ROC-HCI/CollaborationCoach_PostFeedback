@@ -488,25 +488,22 @@
 			var turnMostValue = 0;
 			var turnLeastValue = 0;
 			console.log("dynoTurn", dynoTurn);
-			for(var key in dynoTurn["to"])
+			for(var i = 0; i < dynoTurn["to"].length; i++)
 			{
-				if(dynoTurn.hasOwnProperty(key))
+				console.log("how about looping it here");
+
+				if(dynoTurn[key]["times"] > turnMostValue)
 				{
-					console.log("how about looping it here");
-
-					if(dynoTurn[key]["times"] > turnMostValue)
-					{
-						turnMostValue = Math.round(dynoTurn[key]["times"]/turnTotal);
-						turnMost = dynoTurn[key]["guest"];
-					}
-
-					if(dynoTurn[key]["times"] < turnLeastValue)
-					{
-						turnLeastValue = Math.round(dynoTurn[key]["times"]/turnTotal);
-						turnLeast = dynoTurn[key]["guest"];
-					}
-
+					turnMostValue = Math.round(dynoTurn[key]["times"]/turnTotal);
+					turnMost = dynoTurn[key]["guest"];
 				}
+
+				if(dynoTurn[key]["times"] < turnLeastValue)
+				{
+					turnLeastValue = Math.round(dynoTurn[key]["times"]/turnTotal);
+					turnLeast = dynoTurn[key]["guest"];
+				}
+
 			}
 
 			//dynamic valence
