@@ -32,7 +32,6 @@ h5.graph-header
 {
 	background-color: #2ba2db;
 	color: #FFF;
-	border: 1px solid black;
 	font-weight: bold;
 	text-align: center;
 }
@@ -221,8 +220,7 @@ span.content {
 }
 
 .container-layer {
-  width: 80%;
-  margin-left: 10%;
+  width: 95%;
   height: 90%;
 }
 
