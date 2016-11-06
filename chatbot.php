@@ -95,6 +95,7 @@
 		console.log(participation);
 		var thinking = $('#messages li:last');
 		var thinkingflag = 0;
+		var countdelay  = 1;
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 			gatherData();
@@ -143,8 +144,7 @@
 						$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-						
-    				},2000);
+    				},countdelay*3000);
     				setTimeout(function(){
     					createGraph(graphType[countType]);
     					thinking.remove(); 
@@ -179,13 +179,13 @@
 						thinking.remove();        			
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
-        				scrollTop: $('#messages').height()
-				});
-        			},count*2000);
+        					scrollTop: $('#messages').height()
+						});
+        			},countdelay*2000);
         		})(str);
-        		count++;
+        		countdelay++;
         	}
-
+        	countdelay++;
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		if(thinkingflag == 1){
@@ -198,7 +198,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(count-1)*2200+1000);
+        			},(countdelay)*2000);
         		})(str);
         	}
 
