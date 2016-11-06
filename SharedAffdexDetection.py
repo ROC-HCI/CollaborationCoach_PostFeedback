@@ -50,13 +50,13 @@ def parse_raw_data(session_key, user, key, type):
 #------------------------------------------------------------------------------------
 # How many times did this user smile?
 #
-def compute_single(users, key):
+def compute_single(users, key, type):
 	# Get all the data for this set of users
 	raw_data = {}	
 	final_data = {}
 	
 	for user in users:
-		raw_data[user] = parse_raw_data(session_key, user, key, "expressions")
+		raw_data[user] = parse_raw_data(session_key, user, key, type)
 		
 	for user in users:
 		analysis_data = raw_data[user]
@@ -136,12 +136,12 @@ def compute_pair_shared(user, other, length):
 
 #------------------------------------------------------------------------------------	
 # Compute a sharing dictionary for a particular affdex key
-def compute(users, key):
+def compute(users, key, type):
 	# Get all the data for this set of users
 	raw_data = {}	
 	
 	for user in users:
-		raw_data[user] = parse_raw_data(session_key, user, key, "expressions")
+		raw_data[user] = parse_raw_data(session_key, user, key, type)
 		
 	# Detect the minimum length of data we have
 	# so we don't overun the end on one.
@@ -176,8 +176,10 @@ if __name__ == "__main__":
 	
 	final_dict = {}
 	final_dict["session_key"] = session_key
-	final_dict["single_smile_data"] = compute_single(user_list,"smile")
-	final_dict["smile_data"] = compute(user_list, "smile")
+	final_dict["single_smile_data"] = compute_single(user_list,"smile","expressions")
+	final_dict["smile_data"] = compute(user_list, "smile","expressions")
+	final_dict["single_joy_data"] = compute_single(user_list,"joy","emotions")
+	final_dict["joy_data"] = compute(user_list,"joy","emotions")
 
 	#pp.pprint(final_dict)
 	collection = database['affdexshared']	
