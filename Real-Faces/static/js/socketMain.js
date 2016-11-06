@@ -112,7 +112,7 @@ var RealSocket = function (app) {
   // ALL CLIENT FUNCTIONS THAT NEED TO START NEED TO START HERE - JW
   this.socketio.on('session_start', function(data){
 	  
-	$('localVideo').hide();
+	$('#localVideo').hide();
     captureVideo(commonConfig);
 	setTimeout(startRecordingAfterActive,1000);
 
