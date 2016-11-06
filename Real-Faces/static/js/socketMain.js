@@ -72,6 +72,7 @@ var RealSocket = function (app) {
   });
   
   this.socketio.on('session_key', function(session_key){
+	  console.log("Received Session Key " + session_key + " From the server");
 	  app.sessionKey = session_key;
   });
   
