@@ -171,15 +171,22 @@
 						});
     				},(countdelay)*3000);
     				countdelay++;
+
+    				setTimeout(function(){
+    				},countdelay*1000);
+
+    				countdelay++;
+
         		}
         		else
         			thinkingflag = 0;
+        		
 
         	}
         }
         function fixNewline(obj){
         	var count = 1;
-      
+
         	for(var str of participation[obj.title].body.split(/\\n/)){
         		console.log('whats my string ',str.length);
         		if(!/\S/.test(str)) continue;
@@ -194,10 +201,6 @@
         		})(str);
         		countdelay++;
         	}
-        	var incdelay = 2000;
-        	if(thinkingflag == 1)
-        		incdelay = 4000;
-
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		(function(str){
@@ -206,7 +209,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(countdelay)*incdelay);
+        			},(countdelay)*2000);
         		})(str);
         	}
         	countdelay = 1;
