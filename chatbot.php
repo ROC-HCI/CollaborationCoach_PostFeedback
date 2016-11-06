@@ -126,7 +126,7 @@
 
         function gotoObject(object){
 
-	        var graphResponse = ["As you can see from the graph, you participated __% of the whole session. Expressing your ideas contributes in group decision. Would you like to know more about it?", 
+	        var graphResponse = ["As you can see from the graph, you participated " + participatePercent + "% of the whole session. Expressing your ideas contributes in group decision. Would you like to know more about it?", 
 			"From the analysis, you overlapped " + i1 + " times with other's speeches. On the other hand, your speech got overlapped " + i2 + " times by the group.",
 			"You spoke after" + turnMost + "most of the time and " + turnLeast + " least of the time.",
 			"Your overall emotion was " + selfEmo + " during the session. On average, the team was emotionally" + allEmo + ".",
