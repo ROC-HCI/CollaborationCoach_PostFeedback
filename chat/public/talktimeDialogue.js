@@ -13,7 +13,7 @@ var json =
     {
         "title": "participation_1",
         "tags": "",
-        "body": "Starting with participation, which reflects how much time you spoke during the whole conversation.\n[[Got it|participation_2]]",
+        "body": "Starting with participation.\\nIt reflects how much time you spoke during the whole conversation.\n[[Got it|participation_2]]",
         "position": {
             "x": 301,
             "y": 96
@@ -43,7 +43,7 @@ var json =
     {
         "title": "overlap_1",
         "tags": "",
-        "body": "Moving onto speech overlap.\\n[[I get what you mean|overlap_3]] [[How does it work?|overlap_2]]",
+        "body": "Moving onto speech overlap.\\nI can describe the notion for you.\\n [[I get what you mean|overlap_3]] [[Please do|overlap_2]]",
         "position": {
             "x": -47,
             "y": 140
@@ -73,7 +73,7 @@ var json =
     {
         "title": "turntaking_1",
         "tags": "",
-        "body": "Speaking of overlap, it also plays a key role in deciding who speaks next. Let's find out who you usually talked after.\n [[That's interesting!|turntaking_2]]",
+        "body": "Speaking of overlap, it also plays a key role in deciding who speaks next.\\nLet's find out who you usually talked after.\n [[That's interesting!|turntaking_2]]",
         "position": {
             "x": -36,
             "y": 395
@@ -133,7 +133,7 @@ var json =
      {
         "title": "sharedsmile_0",
         "tags": "",
-        "body": "On this note, do you want to see how much you bonded with the group?\n[[Of course!|sharedsmile_1]]",
+        "body": "On this note,\\n do you want to see how much you bonded with the group?\n[[Of course!|sharedsmile_1]]",
         "position": {
             "x": 860,
             "y": 413
