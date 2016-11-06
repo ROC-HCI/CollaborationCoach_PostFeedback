@@ -144,7 +144,7 @@
 						$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-    				},countdelay*3000);
+    				},countdelay*2000);
     				countdelay++;
     				setTimeout(function(){
     					createGraph(graphType[countType]);
@@ -193,6 +193,8 @@
         			countdelay++;
         			thinkingflag == 0;
         		}
+        		else
+        			countdelay--;
         		(function(str){
         			setTimeout(function(){
 						for(var b of obj.buttons){
