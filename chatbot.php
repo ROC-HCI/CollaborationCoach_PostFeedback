@@ -485,6 +485,7 @@
 
 			//dynamic turntaking
 			var dynoTurn = getKey(defaultuser);
+			var turnTotal = dynoTurn["total"];
 			var turnMostValue = 0;
 			var turnLeastValue = 0;
 			console.log("dynoTurn", dynoTurn);
