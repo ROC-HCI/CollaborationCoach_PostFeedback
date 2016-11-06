@@ -62,12 +62,7 @@ def parse_raw_data(session_key, user, type):
 		except KeyError:
 			print "Error in parsing affdex merge data"
 			
-		nan_check = False
-		for element in sample:
-			if math.isnan(element):
-				nan_check = True
-		if not nan_check:
-			parsed_data.append(sample)
+		parsed_data.append(sample)
 	return parsed_data
 
 # Compute average statistics about a set of records
