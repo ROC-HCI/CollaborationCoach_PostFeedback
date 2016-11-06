@@ -135,10 +135,11 @@
         			setTimeout(function(){
         				$('#messages').append(new item("Roboto","Roboto is thinking...").create());
 						thinking= $('#messages li:last');
-						createGraph(graphType[countType]);
-	    			    $('#messages').append(new item("Roboto", graphResponse[countType]).create());	
-    					countType++;
-    				},2200);
+						
+    				},2000);
+    				createGraph(graphType[countType]);
+	    			$('#messages').append(new item("Roboto", graphResponse[countType]).create());	
+    				countType++;
         		}
         	}
         }
@@ -155,7 +156,7 @@
         				$('.inner-contain-body').animate({ 
         				scrollTop: $('#messages').height()
 				});
-        			},count*2200);
+        			},count*2000);
         		})(str);
         		count++;
         	}
