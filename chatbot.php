@@ -480,14 +480,30 @@
 				}
 			}
 			participatePercent = Math.round(self/total*100);
+			
+			//var  participatePercent, turnMost, turnLeast, selfEmo, allEmo,  shareMost, shareLeast;
 
 			//dynamic turntaking
 			var dynoTurn = getKey(defaultuser);
-			for(var key in dynoTurn)
+			var turnMostValue = 0;
+			var turnLeastValue = 0;
+			var turnTotal = dynoTurn["total"];
+			for(var key in dynoTurn["to"])
 			{
 				if(dynoTurn.hasOwnProperty(key))
 				{
-					total+=dynoTurn[key];
+					if(dynoTurn[key]["times"] > turnMostValue)
+					{
+						turnMostValue = Math.round(dynoTurn[key]["times"]/turnTotal);
+						turnMost = dynoTurn[key]["guest"];
+					}
+
+					if(dynoTurn[key]["times"] < turnLeastValue)
+					{
+						turnLeastValue = Math.round(dynoTurn[key]["times"]/turnTotal);
+						turnLeast = dynoTurn[key]["guest"];
+					}
+
 				}
 			}
 
