@@ -3,6 +3,35 @@ function proposeStop()
 	realFaces.socket.socketio.emit("propose_stop","stop");
 }
 
+var relationshipSent = 0;
+
+function doUserNameSubmission(identifier)
+{
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = function() 
+	{
+		if(request.readyState == 4 && request.status == 200) 
+		{
+			console.log('Stored my seat and user name to the Database.');
+			console.log(request.response);
+			relationshipSent = 1;
+		}
+	};
+	  
+	data_to_send = {'session_key':realFaces.sessionKey, 
+				    'user':realFaces.userName,
+				    'seat':identifier};
+							
+	string_data = JSON.stringify(data_to_send);		
+
+	if(relationshipSent == 0)
+	{
+		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');				
+		request.setRequestHeader("Content-type", "application/json");			
+		request.send(string_data);	
+	}
+}
+
 var RealSocket = function (app) {
   console.log(location, location.pathname, location.search);
   this.socketInterval = 100;
@@ -45,26 +74,7 @@ var RealSocket = function (app) {
   });  
   
   this.socketio.on('seat_location', function(seatID){
-	  app.THREE.setSpawn(seatID);
-	  var request = new XMLHttpRequest();
-	  request.onreadystatechange = function() 
-	  {
-		if(request.readyState == 4 && request.status == 200) 
-		{
-			console.log('Stored my seat and user name to the Database.');
-			console.log(request.response);
-		}
-	  };
-	  
-	  data_to_send = {'session_key':realFaces.sessionKey, 
-					  'user':realFaces.userName,
-					  'seat':seatID};
-							
-	  string_data = JSON.stringify(data_to_send);		
-
-	  request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');				
-	  request.setRequestHeader("Content-type", "application/json");			
-	  request.send(string_data);
+	  app.THREE.setSpawn(seatID); // Only realy used for the 3D seating arrangement.
   });
   
   this.socketio.on('debug', function(message){
@@ -72,6 +82,7 @@ var RealSocket = function (app) {
   });
   
   this.socketio.on('session_key', function(session_key){
+	  //console.log("Received Session Key " + session_key + " From the server");
 	  app.sessionKey = session_key;
   });
   
@@ -108,7 +119,7 @@ var RealSocket = function (app) {
 	
 	onStart();
 	focus_running = 1;
-	setInterval(focus_sample,100);
+	setInterval(focus_sample,250);
   });
   
   // ALL CLIENT FUNCTIONS THAT NEED TO STOP NEED TO STOP HERE - JW

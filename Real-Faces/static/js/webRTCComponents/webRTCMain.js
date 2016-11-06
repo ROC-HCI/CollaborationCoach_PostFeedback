@@ -23,16 +23,6 @@ var RealWebRTC =  function (clientID) {
   this.webrtc.on('channelMessage', function (peer, label, data) {
     if (data.type === 'setClientID') {
       peer.socketID = data.payload;
-      updateCubeWithVideo(peer.id+'_video_incoming', data.payload);
-      data_to_send = {'session_key':realFaces.sessionKey, 
-            'user':realFaces.userName,
-            'seat':data.payload};
-              
-    string_data = JSON.stringify(data_to_send);   
-
-    request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');       
-    request.setRequestHeader("Content-type", "application/json");     
-    request.send(string_data);
 
       //add clientID to DOM video node
       document.getElementById(peer.id+'_video_incoming').setAttribute("id", data.payload);
@@ -50,6 +40,9 @@ var RealWebRTC =  function (clientID) {
     this.username = prompt("Please enter your name", "Anonymous");
 	
 	realFaces.userName = this.username;
+	
+	// FOR 2D SUBMISSION
+	doUserNameSubmission(realFaces.socket.yourID);
 	
     //variable that allows pointer lock
     this.webcam = true;
