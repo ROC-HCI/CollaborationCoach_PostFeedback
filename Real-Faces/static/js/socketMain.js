@@ -22,12 +22,10 @@ function doUserNameSubmission(identifier)
 							
 	string_data = JSON.stringify(data_to_send);		
 
-	if(relationshipSent == 0)
-	{
-		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');				
-		request.setRequestHeader("Content-type", "application/json");			
-		request.send(string_data);	
-	}
+	request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');				
+	request.setRequestHeader("Content-type", "application/json");			
+	request.send(string_data);	
+
 }
 
 var RealSocket = function (app) {
