@@ -88,8 +88,12 @@ var RealSocket = function (app) {
   
   this.socketio.on('seat_location', function(seatID){
 	  app.THREE.setSpawn(seatID);
-	  console.log("User Name: " + realFaces.userName);
-	  doSubmission(seatID);
+
+	  // This is for the 3D version only!
+	  //doSubmission(seatID);
+	  
+	  // 2D version we're using the socketID as the video identifier
+	  doSubmission(realFaces.socket.yourID);
 
   });
   
