@@ -41,6 +41,9 @@ var RealWebRTC =  function (clientID) {
 	
 	realFaces.userName = this.username;
 	
+	// FOR 2D SUBMISSION
+	doUserNameSubmission(realFaces.socket.yourID);
+	
     //variable that allows pointer lock
     this.webcam = true;
     // you can name it anything

@@ -5,7 +5,7 @@ function proposeStop()
 
 var relationshipSent = 0;
 
-function sendUserIDRelationship(identifier)
+function doUserNameSubmission(identifier)
 {
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = function() 
@@ -29,19 +29,6 @@ function sendUserIDRelationship(identifier)
 		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');				
 		request.setRequestHeader("Content-type", "application/json");			
 		request.send(string_data);	
-	}
-}
-
-function doSubmission(identifier)
-{
-	if(realFaces.userName == "")
-	{
-		console.log("User Name Not Set, waiting 10 seconds!");
-		setTimeout(doSubmission(identifier),10000);
-	}
-	else
-	{
-		sendUserIDRelationship(identifier);
 	}
 }
 
@@ -87,14 +74,7 @@ var RealSocket = function (app) {
   });  
   
   this.socketio.on('seat_location', function(seatID){
-	  app.THREE.setSpawn(seatID);
-
-	  // This is for the 3D version only!
-	  //doSubmission(seatID);
-	  
-	  // 2D version we're using the socketID as the video identifier
-	  doSubmission(realFaces.socket.yourID);
-
+	  app.THREE.setSpawn(seatID); // Only realy used for the 3D seating arrangement.
   });
   
   this.socketio.on('debug', function(message){
@@ -102,7 +82,7 @@ var RealSocket = function (app) {
   });
   
   this.socketio.on('session_key', function(session_key){
-	  console.log("Received Session Key " + session_key + " From the server");
+	  //console.log("Received Session Key " + session_key + " From the server");
 	  app.sessionKey = session_key;
   });
   
