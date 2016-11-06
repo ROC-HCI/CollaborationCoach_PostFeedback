@@ -464,11 +464,14 @@
 			 
 
 			//dynamic participation
-			var self;
+			var self = i3[defaultuser];
 			var total = 0;
-			for(var i = 0; i < i3data.length; i++)
+			for(var key in i3)
 			{
-				total+=i3data[i];
+				if(i3.hasOwnProperty(key))
+				{
+					total+=i3data[key];
+				}
 			}
 			participatePercent = Math.round(self/total*100);
 
