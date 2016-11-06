@@ -83,11 +83,11 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
     /*log('#results', "Emotions: " + JSON.stringify(faces[0].emotions, function(key, val) {
       return val.toFixed ? Number(val.toFixed(0)) : val;
     }));*/
-    sentiment = JSON.stringify(faces[0].emotions, function(key, val) {
+    affdex_emotions = JSON.stringify(faces[0].emotions, function(key, val) {
       return val.toFixed ? Number(val.toFixed(0)) : val;
     })
 	
-	emotions = JSON.stringify(faces[0].expressions, function(key, val){
+	affdex_expressions = JSON.stringify(faces[0].expressions, function(key, val){
 		return val.toFixed ? Number(val.toFixed(0)) : val;
 	})
 

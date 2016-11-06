@@ -2,8 +2,8 @@
 var focus_running = 0;
 var timeLine = [];
 var count = 0;
-var sentiment = 0;
-var emotions = 0;
+var affdex_emotions = 0;
+var affdex_expressions = 0;
 
 document.getElementById("localVideo").style.display = "none"; 
 
@@ -14,12 +14,12 @@ function focus_sample()
 		var info = document.getElementById("bigFeed").getElementsByTagName("video").id;
 
 		// If sentiment hasn't changed we haven't started affdex sampling yet.
-		if(sentiment != 0)
+		if(affdex_emotions != 0)
 		{			
 			var sample_element = {"timeValue":count,
 			                      "focus":info,
-			                      "sentiment": sentiment
-								  "emotions": emotions};
+			                      "emotions": affdex_emotions,
+								  "expressions": affdex_expressions};
 			console.log(sample_element);
 			timeLine.push(sample_element);
 			count++;
