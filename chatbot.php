@@ -148,6 +148,7 @@
 	        	console.log('what', object.body.length); //already trimmed
 	        	console.log('buttons', object.buttons); //buttons
 	        	fixNewline(object);
+	        	countdelay = 1;
 	        	if(participation[object.title].tags=='1') 
         		{
         			setTimeout(function(){
@@ -157,7 +158,7 @@
 			   			   scrollTop: $('#messages').height()
 						});
 						
-    				},countdelay*2000);
+    				},countdelay*3000);
     				countdelay++;
     				setTimeout(function(){
     					createGraph(graphType[countType]);
@@ -167,9 +168,10 @@
     					$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-    				},countdelay*3000);
+    				},(countdelay)*3000);
     				countdelay++;
         		}
+
         	}
         }
         function fixNewline(obj){
@@ -187,8 +189,9 @@
 				});
         			},(countdelay)*2000);
         		})(str);
-        		countdelay++;
+        		
         	}
+        	countdelay++;
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		(function(str){
@@ -197,7 +200,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(countdelay)*2200+1000);
+        			},(countdelay)*2000);
         		})(str);
         	}
         	countdelay = 1;
