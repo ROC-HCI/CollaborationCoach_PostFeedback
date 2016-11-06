@@ -159,6 +159,7 @@
     				countdelay++;	
 
         			console.log('when empty1 ',countdelay);
+        			console.log('when thinkingflag ',thinkingflag);
         		}
         		else
         			thinkingflag = 0;
@@ -186,15 +187,17 @@
         		})(str);
         		countdelay++;
         	}
-        	countdelay++;
-        	console.log('whats the count ', count);
-        	if(obj.buttons){
-        		if(thinkingflag == 0){
-        			countdelay++;
+        	//countdelay++;
+        	console.log('when thinkingflag ',thinkingflag);
+        	if(thinkingflag == 0){
+        			countdelay+=2;
         			thinkingflag == 1;
         		}
-        		else
-        			countdelay--;
+        	else
+        		countdelay--;
+        	console.log('whats the count ', count);
+        	if(obj.buttons){
+        		
         		(function(str){
         			setTimeout(function(){
 						for(var b of obj.buttons){
