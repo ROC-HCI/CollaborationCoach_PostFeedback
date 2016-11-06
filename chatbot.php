@@ -115,7 +115,7 @@
 			var total = 0;
 			for(var i = 0; i < i3data.length; i++)
 			{
-				total+=i3data;
+				total+=i3data[i];
 			}
 			participatePercent = self/total;
 
