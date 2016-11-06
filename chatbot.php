@@ -167,13 +167,14 @@
     					$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-    				},countdelay*1000);
+    				},countdelay*2000);
+    				countdelay++;
         		}
         	}
         }
         function fixNewline(obj){
         	var count = 1;
-        	countdelay = 1;
+      
         	for(var str of participation[obj.title].body.split(/\\n/)){
         		console.log('whats my string ',str.length);
         		if(!/\S/.test(str)) continue;
@@ -184,7 +185,7 @@
         				$('.inner-contain-body').animate({ 
         				scrollTop: $('#messages').height()
 				});
-        			},countdelay*2000);
+        			},(countdelay-1)*2000);
         		})(str);
         		countdelay++;
         	}
@@ -196,9 +197,10 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(countdelay-1)*2200+1000);
+        			},(countdelay-2)*2200+1000);
         		})(str);
         	}
+        	countdelay = 1;
         }
 		//button 
 		function option(o){
