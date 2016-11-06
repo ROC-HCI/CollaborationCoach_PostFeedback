@@ -153,10 +153,7 @@
     					$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-<<<<<<< HEAD
-    				},2600);
-        		}
-=======
+
     				},(countdelay)*3000);
     				countdelay++;	
 
@@ -166,27 +163,14 @@
         			thinkingflag = 0;
 
 
-        		
-
->>>>>>> origin/master
         	}
         }
         function fixNewline(obj){
         	var count = 1;
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-        
-=======
->>>>>>> Stashed changes
 
         	
         	console.log('when empty2 ',countdelay);
 
-<<<<<<< Updated upstream
-=======
->>>>>>> origin/master
->>>>>>> Stashed changes
         	for(var str of participation[obj.title].body.split(/\\n/)){
         		console.log('whats my string ',str.length);
         		if(!/\S/.test(str)) continue;
@@ -201,19 +185,7 @@
         		})(str);
         		count++;
         	}
-<<<<<<< HEAD
-=======
-        	
-        	
-<<<<<<< Updated upstream
-        	
-        	console.log('when empty3 ',countdelay);
 
-=======
-        	console.log('when empty3 ',countdelay);
-
->>>>>>> origin/master
->>>>>>> Stashed changes
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		if(thinkingflag == 1){
@@ -229,16 +201,12 @@
         			},(count-1)*2200+1000);
         		})(str);
         	}
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
+
 
         	console.log('when empty4 ',countdelay);
 
         	countdelay = 1;
->>>>>>> origin/master
+
         }
 		//button 
 		function option(o){
