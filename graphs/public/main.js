@@ -3,10 +3,15 @@ function make_Graph(type){
   {
     case "interruption":
       //animate numbers - interruption
+	  document.getElementById('svg_41').innerHTML = i1 + " Times";
+	  document.getElementById('svg_42').innerHTML = i2 + " Times";
+	  
+	  /*
 	  console.log("interrupt1" + i1);
 	  console.log("interrupt2" + i2);
 	  $('#svg_41').val(i1);
 	  $('#svg_42').val(i2);
+	  */
       //myNumber('#chart1',i1);
       //myNumber('#chart2',i2);
    //   var ss = Snap("#guest0");
