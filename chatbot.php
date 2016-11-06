@@ -474,7 +474,7 @@
 			{
 				if(i3.hasOwnProperty(key))
 				{
-					total+=i3data[key];
+					total+=i3[key];
 				}
 			}
 			participatePercent = Math.round(self/total*100);
@@ -482,7 +482,6 @@
 			//dynamic turntaking
 
 			//dynamic valence
-
 			//allEmo = (session_data[""].valence+100)/2;
 			selfEMo = (session_data["ALL"].valence+100)/2;
 			if(selfEmo < 40)	
