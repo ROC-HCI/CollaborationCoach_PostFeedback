@@ -98,6 +98,7 @@
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 			gatherData();
+			dynamicValues();
 		});
 	
 		var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, colorpalette;
