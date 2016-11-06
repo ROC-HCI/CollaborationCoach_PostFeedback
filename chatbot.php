@@ -200,7 +200,7 @@
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		if((dialoguecount == 1 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 0))
-        			countdelay+=7;
+        			countdelay+=5;
         		(function(str){
         			setTimeout(function(){
 						for(var b of obj.buttons){
@@ -350,7 +350,7 @@
     		$('.inner-contain-graph').animate({ 
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			}, function() {
-				$('#wrapper-' + type).show("slide", { direction: "up" }, 2000);
+				$('#wrapper-' + type).show("slide", { direction: "down" }, 2000);
 			});
 			make_Graph(type);
 			$('.inner-contain-graph').animate({ 
