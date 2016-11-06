@@ -231,7 +231,7 @@ if($_GET['mode'] == 'affdexupload')
 	// Get the submitted seat to user relationship
 	$relation = array();
 	
-	$session_key = $json_string["session_key"];
+	$session_key = $submitted_data["session_key"];
 	$collection = $database->selectCollection('affdexuserseat');
 	$query = array('session_key' => $session_key);				   
 	$cursor = $collection->find($query);
