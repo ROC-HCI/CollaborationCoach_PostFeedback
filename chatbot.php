@@ -145,7 +145,7 @@
 						$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-    				},countdelay*1500);
+    				},countdelay*1200);
     				countdelay++;
     				setTimeout(function(){
     					createGraph(graphType[countType]);
@@ -156,7 +156,7 @@
 			   			   scrollTop: $('#messages').height()
 						});
 
-    				},(countdelay)*1500);
+    				},(countdelay)*1600);
     				countdelay++;	
 
         			console.log('when empty1 ',countdelay);
@@ -200,7 +200,7 @@
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		if((dialoguecount == 1 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 0))
-        			countdelay+=5;
+        			countdelay+=4;
         		(function(str){
         			setTimeout(function(){
 						for(var b of obj.buttons){
@@ -350,7 +350,7 @@
     		$('.inner-contain-graph').animate({ 
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			}, function() {
-				$('#wrapper-' + type).show("slide", { direction: "down" }, 2000);
+				$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
 			});
 			make_Graph(type);
 			$('.inner-contain-graph').animate({ 
