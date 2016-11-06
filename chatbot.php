@@ -145,8 +145,8 @@
 						$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-    				},countdelay*1200);
-    				countdelay++;
+    				},countdelay*1000);
+    				countdelay+=1.3;
     				setTimeout(function(){
     					createGraph(graphType[countType]);
     					thinking.remove(); 
@@ -157,7 +157,7 @@
 						});
 
     				},(countdelay)*1600);
-    				countdelay++;	
+    				countdelay+=1.3;	
 
         			console.log('when empty1 ',countdelay);
         			console.log('when thinkingflag ',thinkingflag);
@@ -187,7 +187,7 @@
 						});
         			},countdelay*1200);
         		})(str);
-        		countdelay++;
+        		countdelay+=1.3;
         		dialoguecount++;
         	}
         	//countdelay++;
@@ -200,7 +200,7 @@
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		if((dialoguecount == 1 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 0))
-        			countdelay+=4;
+        			countdelay+=5;
         		(function(str){
         			setTimeout(function(){
 						for(var b of obj.buttons){
@@ -350,7 +350,7 @@
     		$('.inner-contain-graph').animate({ 
 			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			}, function() {
-				$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
+				$('#wrapper-' + type).show("slide", { direction: "down" }, 2200);
 			});
 			make_Graph(type);
 			$('.inner-contain-graph').animate({ 
