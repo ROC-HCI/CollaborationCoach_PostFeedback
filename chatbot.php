@@ -139,6 +139,7 @@
     				},2000);
     				setTimeout(function(){
     					createGraph(graphType[countType]);
+    					thinking.remove(); 
 	    				$('#messages').append(new item("Roboto", graphResponse[countType]).create());	
     					countType++;
     				},2400);
