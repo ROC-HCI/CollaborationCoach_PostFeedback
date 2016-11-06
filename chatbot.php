@@ -148,7 +148,7 @@
 	        	console.log('what', object.body.length); //already trimmed
 	        	console.log('buttons', object.buttons); //buttons
 	        	fixNewline(object);
-	        	countdelay = 1;
+	        	
 	        	if(participation[object.title].tags=='1') 
         		{
         			setTimeout(function(){
@@ -189,9 +189,9 @@
 				});
         			},(countdelay)*2000);
         		})(str);
-        		
+        		countdelay++;
         	}
-        	countdelay++;
+        	
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		(function(str){
