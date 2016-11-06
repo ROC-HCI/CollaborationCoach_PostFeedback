@@ -14,6 +14,15 @@ span.chart-label{
   color: #a9bcd0;
 }
 
+h5.graph-header
+{
+	background-color: #2ba2db;
+	color: #FFF;
+	border: 1px solid black;
+	font-weight: bold;
+	text-align: center;
+}
+
 .outer {
    float:left;
    position: relative;
