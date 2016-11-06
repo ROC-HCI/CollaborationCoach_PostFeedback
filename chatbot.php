@@ -411,10 +411,11 @@
 			xhttp.send();
 			var jscontent = JSON.parse(xhttp.responseText);
 			
-			var single = jscontent["single_smile_data"];
+			//changed smile to joy
+			var single = jscontent["single_joy_data"];
 			single_joy_data = {user: userid, data: single[userid]};
 			
-			var smile_data = jscontent["smile_data"];
+			var smile_data = jscontent["joy_data"];
 			var smile_index = 0;
 			for(var key in smile_data)
 			{
