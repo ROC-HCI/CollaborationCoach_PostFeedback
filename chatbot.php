@@ -151,6 +151,7 @@
 	        	
 	        	if(participation[object.title].tags=='1') 
         		{
+        			thinkingflag = 1;
         			setTimeout(function(){
         				$('#messages').append(new item("Roboto","Roboto is thinking...").create());
 						thinking= $('#messages li:last');
@@ -171,6 +172,8 @@
     				},(countdelay)*3000);
     				countdelay++;
         		}
+        		else
+        			thinkingflag = 0;
 
         	}
         }
@@ -191,7 +194,10 @@
         		})(str);
         		countdelay++;
         	}
-        	
+        	var incdelay = 2000;
+        	if(thinkingflag == 1)
+        		incdelay = 4000;
+
         	console.log('whats the count ', count);
         	if(obj.buttons){
         		(function(str){
@@ -200,7 +206,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(countdelay)*2000);
+        			},(countdelay)*incdelay);
         		})(str);
         	}
         	countdelay = 1;
