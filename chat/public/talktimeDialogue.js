@@ -3,7 +3,7 @@ var json =
     {
         "title": "intro_1",
         "tags": "",
-        "body": "Hi, I'm Roboto, your personal feedback assistant!\\nI've analyzed your performance from the previous session. Let's walk through it, shall we?\n[[Sure, let's do this!|participation_1]]",
+        "body": "Hi, I'm Roboto, your personal feedback assistant!\\nI've analyzed your performance of the previous session. Let's walk through it, shall we?\n[[Sure, let's do this!|participation_1]]",
         "position": {
             "x": 27,
             "y": 96
@@ -13,7 +13,7 @@ var json =
     {
         "title": "participation_1",
         "tags": "",
-        "body": "Let's start with participation, which reflects how much you spoke during the whole conversation.\n[[Okay|participation_2]]",
+        "body": "Starting with participation, which reflects how much time you spoke during the whole conversation.\n[[Got it|participation_2]]",
         "position": {
             "x": 301,
             "y": 96
@@ -33,7 +33,7 @@ var json =
     {
         "title": "participation_4",
         "tags": "",
-        "body": "Team management experts have found that, equal participation is healthy for a group.\\nThis is because speaking your own opinion and listening to others can prevent confusions.\\nRemember, balance is the key!\n[[Got it!|overlap_1]]",
+        "body": "Team management experts have found that, equal participation is healthy for a group.\\nSpeaking about your own opinion can remove confusions, whereas listening to teammates' viewpoints is also valuable.\\nRemember, balance is the key!\n[[Seems useful|overlap_1]]",
         "position": {
             "x": 839,
             "y": 99
@@ -53,7 +53,7 @@ var json =
     {
         "title": "overlap_2",
         "tags": "",
-        "body": "Speech overlap happens when someone speaks before another person finishes.\\nOverlapping can show enthusiasm and drive conversations forward. But sometimes they can be seen as unwanted interruptions.\\nJust something to keep in mind.\\n [[Good to know|overlap_3]]",
+        "body": "Speech overlap happens when someone speaks before another person finishes.\\nSometimes it shows enthusiasm and encourage the conversation, but sometimes it can be unpleasant as well.\\nJust something to keep in mind.\n[[Good to know|overlap_3]]",
         "position": {
             "x": 179,
             "y": 141
@@ -63,9 +63,9 @@ var json =
     {
         "title": "overlap_3",
         "tags": "1",
-        "body": "\\n[[I see|turntaking_1]]",
+        "body": "\\n[[|I see|turntaking_1]]",
         "position": {
-            "x": 188,
+            "x": -47,
             "y": 140
         },
         "colorID": 0
@@ -73,7 +73,7 @@ var json =
     {
         "title": "turntaking_1",
         "tags": "",
-        "body": "Speaking of overlaps, they also plays a key role in deciding who speaks next. Let's find out who you usually talked after.\n [[Yeah, let's do this!|turntaking_2]]",
+        "body": "Speaking of overlap, it also plays a key role in deciding who speaks next. Let's find out who you usually talked after.\n [[That's interesting!|turntaking_2]]",
         "position": {
             "x": -36,
             "y": 395
@@ -123,7 +123,7 @@ var json =
     {
         "title": "emotion_4",
         "tags": "",
-        "body": "Positive sentiments can improve cooperation within the group, whereas negative ones can hurt it.\\nThese can even affect the bonds within the group members.\n[[Interesting|sharedsmile_0]]",
+        "body": "Positive sentiments can improve cooperation within the group, whereas negative ones can hurt it.\\nThese can even affect the bonds within the group members.\n[[Sounds powerful|sharedsmile_0]]",
         "position": {
             "x": 860,
             "y": 413
@@ -143,7 +143,7 @@ var json =
     {
         "title": "sharedsmile_1",
         "tags": "",
-        "body": "Great! Let me tell you what the graph represents.\\nShared smiles are when two people smile at the same time. It can express a lot about group dynamics.\n[[Show my score|sharedsmile_2]]",
+        "body": "Great! So first let me tell you what it represents.\\nShared smile is how much time two persons smile at the same time. It can express a lot about group dynamics.\n[[Show my score|sharedsmile_2]]",
         "position": {
             "x": 32,
             "y": 702
@@ -163,7 +163,7 @@ var json =
     {
         "title": "finish_1",
         "tags": "",
-        "body": "That's all for today.\\nI hope this feedback helps you in your future team meetings. :)\n[[Thanks, bye!|]]",
+        "body": "This's all for now.\\nI hope these feedback help you in your future group discussions!\n[[Thanks, bye!|]]",
         "position": {
             "x": 589,
             "y": 704
