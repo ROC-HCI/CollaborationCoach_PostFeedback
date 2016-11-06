@@ -106,7 +106,7 @@
 		"From the analysis, you overlapped ___ times with other's speeches. On the other hand, your speech got overlapped ___ times by the group.",
 		"You spoke after ____ most of the time. With ___ and ___, your turn talkings were __% and __%, respectively.",
 		"Your overall emotion was ___ during the session. On average, the team was emotionally ___.",
-		"Here goes your overall attitude towards others throughout the whole conversation."
+		"Here goes your overall attitude towards others throughout the whole conversation.",
 		"You shared most smiles with ___, then with ___ and ___."];
 
         function gotoObject(object){
