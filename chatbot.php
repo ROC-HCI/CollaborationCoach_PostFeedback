@@ -95,7 +95,6 @@
 		console.log(participation);
 		var thinking = $('#messages li:last');
 		var thinkingflag = 0;
-		var countdelay = 0;
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 			gatherData();
@@ -140,7 +139,6 @@
     				},2000);
     				setTimeout(function(){
     					createGraph(graphType[countType]);
-    					thinking.remove();   
 	    				$('#messages').append(new item("Roboto", graphResponse[countType]).create());	
     					countType++;
     				},2400);
@@ -148,14 +146,14 @@
         	}
         }
         function fixNewline(obj){
-        	countdelay = 1;
+        	var count = 1;
         
         	for(var str of participation[obj.title].body.split(/\\n/)){
         		console.log('whats my string ',str.length);
         		if(!/\S/.test(str)) continue;
         		(function(str){
         			setTimeout(function(){
-					      			
+						thinking.remove();        			
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
         				scrollTop: $('#messages').height()
