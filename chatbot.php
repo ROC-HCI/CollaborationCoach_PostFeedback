@@ -202,12 +202,16 @@
         		})(str);
         		countdelay++;
         	}
-        	countdelay++;
+        	
         	
         	console.log('when empty3 ',countdelay);
 
         	console.log('whats the count ', count);
         	if(obj.buttons){
+        		if(thinkingflag == 1){
+        			countdelay++;
+        			thinkingflag == 0;
+        		}
         		(function(str){
         			setTimeout(function(){
 						for(var b of obj.buttons){
