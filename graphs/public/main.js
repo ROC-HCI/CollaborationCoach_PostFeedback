@@ -225,14 +225,9 @@ function setupChart(user)
 
     var overall_stats = session_data["ALL"];    
     overall_data = [overall_stats.engagement, overall_stats.attention, overall_stats.surprise, overall_stats.anger];
-    
-    if(key == "ALL")
-      keylabel = "Everyone";
-    else
-      keylabel = key;
 
     dataSection = {
-      label: keylabel,
+      label: "Everyone",
       backgroundColor: colorpalette[palettecount],
       borderColor: colorpalette[palettecount],
       pointBackgroundColor : colorpalette[palettecount],
@@ -257,7 +252,7 @@ function setupChart(user)
           overall_data = [overall_stats.engagement, overall_stats.attention, overall_stats.surprise, overall_stats.anger];
 
           dataSection = {
-            label: keylabel,
+            label: key,
             backgroundColor: colorpalette[palettecount],
             borderColor: colorpalette[palettecount],
             pointBackgroundColor : colorpalette[palettecount],
