@@ -3,11 +3,12 @@ function make_Graph(type){
   {
     case "interruption":
       //animate numbers - interruption
-	  setTimeout(function{
+	  /*
+	  setTimeout(function(){
 		document.getElementById('svg_41').innerHTML = i1 + " Times";
 		document.getElementById('svg_42').innerHTML = i2 + " Times";
 	  },5000);
-
+	  */
 	  
 	  /*
 	  console.log("interrupt1" + i1);
