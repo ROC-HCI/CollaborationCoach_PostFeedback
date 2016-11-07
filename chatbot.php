@@ -330,18 +330,18 @@
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Participation</span></h5><div id='"+type+"' class='graph-container'><div style='height:230px;'><canvas class='chart' id='chart3' data-value='0' data-speaker=''></canvas></div></div></div></div>");
 					break;
 				case "turntaking":
-					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"' style='height:350px;'><h5 class='graph-header'><span>Turn Taking</span></h5><div id='"+type+"' class='graph-container' style='padding-top:25px;'><div class='inner-contain3' id='chart4' data-value='0' data-user=''></div></div></div>");
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"' style='height:450px;'><h5 class='graph-header'><span>Turn Taking</span></h5><div id='"+type+"' class='graph-container' style='padding-top:25px;'><div class='inner-contain3' id='chart4' data-value='0' data-user=''></div></div></div>");
 					break;
 				case "smilesharing":
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Shared Smile</span></h5><div id='"+type+"' class='graph-container'><div style='height:230px;'><canvas class='chart' id='joychart' data-value='0' data-speaker=''></canvas></div></div></div></div>");
 					break;
 				case "valence":
-					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Valence</span></h5><div id='"+type+"' class='graph-container'><div id='chart6' data-value='0' data-user=''></div></div></div>");
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Valence</span></h5><div id='"+type+"' class='graph-container'><div id='chart6' data-value='0' data-user='' style='padding-left:50px;padding-top:25px;'></div></div></div>");
 					break;
 				//needs fixing
 				case "interruption": 
 					//graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><div class='inner-contain3' id='chart5' data-value='0' data-user=''></div></div></div>");
-					graphDiv = $("<div style='display:none;color:black;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><object data='graphs/public/svg/overlaps.svg' type='image/svg+xml' style='margin-left:25%;'><img src='overlap.png' /></object></div></div>");
+					graphDiv = $("<div style='display:none;color:black;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><object data='graphs/public/svg/overlaps.svg' type='image/svg+xml' style='margin-left:30%;'><img src='overlap.png' /></object></div></div>");
 					break;
 				case "attitude":
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Attitude Towards</span></h5><div id='"+type+"' class='graph-container'><div align='center'><div style='max-width:455px; max-height:250px'><canvas style='width:455px;height:230px' id='barChart' width='455' height='250'></canvas></div></div></div></div>");
