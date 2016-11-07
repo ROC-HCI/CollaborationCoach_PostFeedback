@@ -356,11 +356,11 @@
 			//$('#accordion').accordion("refresh");        
 		
 			//$('#accordion').append(createGraph);	
-    		$('.inner-contain-graph').animate({ 
-			//      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
-			}, function() {
-				$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
-			});
+   //  		$('.inner-contain-graph').animate({ 
+			// //      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+			// }, function() {
+			// 	$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
+			// });
 			/*$('.inner-contain-graph').animate({ 
 				scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
 			}, function() {
@@ -369,8 +369,10 @@
 
 			make_Graph(type);
 			$('.inner-contain-graph').animate({ 
-			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+			      scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
 			
+			}, function(){
+				$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
 			});
 		}
 		
