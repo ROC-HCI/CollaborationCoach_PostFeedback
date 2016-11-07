@@ -146,7 +146,7 @@
 			   			   scrollTop: $('#messages').height()
 						});
     				},countdelay*1000);
-    				countdelay+=2;
+    				countdelay+=1.7;
     				setTimeout(function(){
     					createGraph(graphType[countType]);
     					thinking.remove(); 
@@ -157,7 +157,7 @@
 						});
 
     				},(countdelay)*1600);
-    				countdelay+=2;	
+    				countdelay+=1.7;	
 
         			console.log('when empty1 ',countdelay);
         			console.log('when thinkingflag ',thinkingflag);
@@ -187,13 +187,13 @@
 						});
         			},countdelay*1200);
         		})(str);
-        		countdelay+=2;
+        		countdelay+=1.7;
         		dialoguecount++;
         	}
         	//countdelay++;
         	console.log('when thinkingflag ',thinkingflag);
         	console.log('when dialoguecount ',dialoguecount);
-        	countdelay = dialoguecount+2;
+        	countdelay = dialoguecount+1.7;
 
 
 
