@@ -140,8 +140,13 @@
         		{
         			thinkingflag = 1;
         			setTimeout(function(){
-        				$('#messages').append(new item("Roboto","...").create());
-						thinking= $('#messages li:last');
+        			//	$('#messages').append(new item("Roboto","...").create());
+					//	thinking= $('#messages li:last');
+
+					$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif' />")
+					thinking= $('#messages li:last');
+
+
 						$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
