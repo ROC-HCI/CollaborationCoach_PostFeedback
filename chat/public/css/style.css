@@ -323,15 +323,18 @@ h5 {
   color: purple;
 }
 
-
 .wrapper{
   background: white;
-  max-width: 80%; /*readability*/
+  max-width: 85%; /*readability*/
   margin: 0 auto;
   margin-top: 7%;
   position: relative;
   border-bottom: 3px solid #eceeef; /*add shadow*/
   padding-bottom: 1em;
+}
+
+.wrapper:first-of-type {
+    margin-top: 3em;
 }
 
 /*stuff for RocConf main page*/
@@ -365,4 +368,19 @@ h5 {
 #chart2{
   position:fixed;
   margin-left: 100px;
+}
+
+#chart6 {
+  padding: 0!important;
+  margin: 0!important;
+}
+#chart6 svg {
+  background: none!important;
+}
+g.raphael-group-2-background {
+    display: none!important;
+}
+
+g.raphael-group-6-axistop {
+	display: none!important;
 }
