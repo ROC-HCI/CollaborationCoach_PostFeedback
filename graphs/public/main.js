@@ -221,25 +221,40 @@ function setupChart(user)
 
     var dataset = [];
     var palettecount = 0;
+    var overall_data = []; 
+
+    var overall_stats = session_data["ALL"];    
+    overall_data = [overall_stats.engagement, overall_stats.attention, overall_stats.surprise, overall_stats.anger];
+    
+    if(key == "ALL")
+      keylabel = "Everyone";
+    else
+      keylabel = key;
+
+    dataSection = {
+      label: keylabel,
+      backgroundColor: colorpalette[palettecount],
+      borderColor: colorpalette[palettecount],
+      pointBackgroundColor : colorpalette[palettecount],
+      data: overall_data
+    }
+    palettecount++;
+    console.log(dataSection);
+    dataset.push(dataSection);
+
     for(var key in session_data)
     {
       if(session_data.hasOwnProperty(key))
       {
-        if(key != "_id" && key != "session_key" && key != "user")
+        if(key != "_id" && key != "session_key" && key != "user" && key != "ALL")
         {
           var overall_data = []; 
-          palettecount++;
           var overall_stats = session_data[key];    
           /*(overall_data.engagement = overall_stats.engagement;
           overall_data.attention = overall_stats.attention;
           overall_data.surprise = overall_stats.surprise;
           overall_data.anger = overall_stats.anger;*/
           overall_data = [overall_stats.engagement, overall_stats.attention, overall_stats.surprise, overall_stats.anger];
-          
-          if(key == "ALL")
-            keylabel = "Everyone";
-          else
-            keylabel = key;
 
           dataSection = {
             label: keylabel,
@@ -251,6 +266,8 @@ function setupChart(user)
 
           console.log(dataSection);
           dataset.push(dataSection);
+          palettecount++;
+
         }
       }
     }
