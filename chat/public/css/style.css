@@ -396,3 +396,8 @@ g.raphael-group-2-background {
 g.raphael-group-6-axistop {
 	display: none!important;
 }
+
+.dynotext
+{
+  color:yellow;
+}
