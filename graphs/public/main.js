@@ -67,10 +67,22 @@ function make_Graph(type){
 	console.log(JSON.stringify(smile_graph_data));
     for(var i = 0; i < smile_graph_data.length; i++)
     {
-	  console.log("iterating" + i);
+      var smile_emote = "";
+	  var value = parseInt(e["value"],10);
+	  
+	  if(value >= 0 && value <=2)
+		  smile_emote = "smile_emote-00.svg";
+	  else if(value > 2 && value <= 4)
+		  smile_emote = "smile_emote-01.svg";
+	  else if(value > 4 && value <= 6)
+		  smile_emote = "smile_emote-02.svg";
+	  else
+		  smile_emote = "smile_emote-03.svg";
+	
+	  var image_source = "graphs/public/svg/" + smile_emote;
+	  
 	  var e = smile_graph_data[i];
-	  console.log(JSON.stringify(e));
-	  document.getElementById('smile_chart').innerHTML += "<p>" + e["user"] + " : " + e["value"] + "</p>";
+	  document.getElementById('smile_chart').innerHTML += "<p style='color:black'><img source='" + image_source + "'/>&nbsp;&nbsp;" + e["user"] + " : " + e["value"] + "</p>";
     }
     break;
 
