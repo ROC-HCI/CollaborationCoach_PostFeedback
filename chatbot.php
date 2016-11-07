@@ -514,6 +514,7 @@
 			var dynoTurn = getKey(defaultuser);
 			var turnTotal = dynoTurn["total"];
 			var turnMostValue = 0;
+			turnMost = dynoTurn["to"][0]["guest"];
 			turnLeast = dynoTurn["to"][0]["guest"];
 			var turnLeastValue = dynoTurn["to"][0]["guest"]/turnTotal;
 			console.log("dynoTurn", dynoTurn);
@@ -546,7 +547,29 @@
 				selfEmo = "neutral";
 
 			//dynamic sharesmile
+			var shareMostValue = smile_graph_data[0];
+			var shareLeastValue = smile_graph_data[0];
+			shareMost = smile_graph_data[0];
+			shareLeast = smile_graph_data[0];
 
+			for(var key in smile_graph_data)
+			{
+				if(smile_graph_data.hasOwnProperty(key))
+				{
+					if(smile_graph_data[key]["value"] > shareMostValue)
+					{
+						shareMostValue = smile_graph_data[key]["value"];
+						shareMost = smile_graph_data[key]["user"];
+					}
+
+					if(mile_graph_data[key]["value"] < shareLeastValue)
+					{
+						shareLeastValue = smile_graph_data[key]["value"];
+						shareLeast = smile_graph_data[key]["user"];
+					}
+
+				}
+			}
 
 		}
 	</script>
