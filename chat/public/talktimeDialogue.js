@@ -53,7 +53,7 @@ var json =
     {
         "title": "overlap_2",
         "tags": "",
-        "body": "Speech overlap happens when someone speaks before another person finishes.\\nSometimes it shows enthusiasm and encourage the conversation, but sometimes it can be unpleasant as well.\\nJust something to keep in mind.\n[[Good to know|overlap_3]]",
+        "body": "Speech overlap happens when someone speaks before another person finishes.\\nSometimes it shows enthusiasm and encourages the conversation, but sometimes it can be unpleasant as well.\\nJust something to keep in mind.\n[[Good to know|overlap_3]]",
         "position": {
             "x": 179,
             "y": 141
