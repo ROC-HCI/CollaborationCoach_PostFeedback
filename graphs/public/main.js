@@ -323,7 +323,7 @@ function setupChart(user)
 // chart1,2 stuff
 function myNumber(id, data) {
 $(id).animateNumber({
-  number: data + "times",
+  number: data,
   color: 'white',
   'font-size': '13px',
 
