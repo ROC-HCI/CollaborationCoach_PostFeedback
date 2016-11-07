@@ -144,7 +144,7 @@
 					//	thinking= $('#messages li:last');
 
 					$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif'>")
-					thinking= $('#messages img:last-child');
+					thinking= $('#messages img:last');
 
 
 						$('.inner-contain-body').animate({ 
@@ -186,7 +186,7 @@
         		if(!/\S/.test(str)) continue;
         		(function(str){
         			setTimeout(function(){
-						thinking.remove();   
+						//thinking.remove();   
 						//$("#messages img:last-child").remove();     			
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
