@@ -230,7 +230,7 @@ function setupChart(user)
     {
       if(session_data.hasOwnProperty(key))
       {
-        if(key != "_id" || key != "session_key" || key != "user")
+        if(key != "_id" && key != "session_key" && key != "user")
         {
           var overall_data = []; 
           palettecount++;
@@ -241,10 +241,12 @@ function setupChart(user)
           overall_data.anger = overall_stats.anger;
           
           if(key == "ALL")
-            key = "Everyone";
+            keylabel = "Everyone";
+          else
+            keylabel = key;
 
           dataSection = {
-            label: key,
+            label: keylabel,
             backgroundColor: colorpalette[palettecount],
             borderColor: colorpalette[palettecount],
             pointBackgroundColor : colorpalette[palettecount],
