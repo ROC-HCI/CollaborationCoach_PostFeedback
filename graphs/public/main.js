@@ -68,7 +68,7 @@ function make_Graph(type){
     for(var i = 0; i < smile_graph_data.length; i++)
     {
 	  var e = smile_graph_data[i];
-	  $("#smile_chart").append("<p>" + e["user"] + " : " + e["value"] + "</p>");
+	  document.getElementById('smile_chart').innerHTML += "<p>" + e["user"] + " : " + e["value"] + "</p>";
     }
     break;
 
