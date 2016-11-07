@@ -163,7 +163,7 @@
 						});
 
     				},(countdelay)*1000);
-    				countdelay+=2.7;	
+    				countdelay+=3.0;	
 
         			console.log('when empty1 ',countdelay);
         			console.log('when thinkingflag ',thinkingflag);
@@ -206,7 +206,7 @@
 
         	console.log('whats the count ', count);
         	if(obj.buttons){
-        		if((dialoguecount == 1 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 0))
+        		if((dialoguecount == 1 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 1))
         			countdelay+=5;
         		(function(str){
         			setTimeout(function(){
