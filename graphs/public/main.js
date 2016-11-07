@@ -16,11 +16,11 @@ function make_Graph(type){
 	  $('#svg_41').val(i1);
 	  $('#svg_42').val(i2);
 	  */
-      //myNumber('#chart1',i1);
-      //myNumber('#chart2',i2);
-   //   var ss = Snap("#guest0");
-  //  var g = ss.g();
- //   var image = g.image("./graphs/public/svg/overlap.svg",0,0,200,200);
+    myNumber('#chart1',i1);
+    myNumber('#chart2',i2);
+    //   var ss = Snap("#guest0");
+    //  var g = ss.g();
+    //   var image = g.image("./graphs/public/svg/overlap.svg",0,0,200,200);
     //  myNumber('#chart1',i1);
       break;
     case "participation":
@@ -314,7 +314,7 @@ function myNumber(id, data) {
 $(id).animateNumber({
   number: data,
   color: 'green',
-  'font-size': '30px',
+  'font-size': '10px',
 
   easing: 'easeInQuad'
 
