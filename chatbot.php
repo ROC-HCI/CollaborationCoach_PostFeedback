@@ -368,8 +368,15 @@
 			});*/
 
 			make_Graph(type);
-			$('.wrapper').addClass('animated slideInUp', function(){
-				$('.wrapper').css('display','block');
+			// $('.wrapper').show("slide", {direction: "up"},2500, function(){
+			// 	//slideInUp first then scroll testing
+			// 	$('.inner-contain-graph').animate({ 
+		 //    		// scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+		 //    		scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
+			// 	});
+			// });
+			$('.wrapper').show().css('opacity','0').addClass('animated slideInUp', function(){
+				$('.wrapper').css('opacity','1');
 				//slideInUp first then scroll testing
 				$('.inner-contain-graph').animate({ 
 		    		// scrollTop: $('.wrapper:last').height()+$('#accordion').height()
