@@ -143,7 +143,7 @@
         			//	$('#messages').append(new item("Roboto","...").create());
 					//	thinking= $('#messages li:last');
 
-					$('#messages').append("<img src='https://lh3.googleusercontent.com/_wngtirIo67u03DmAfAEy_2mBIFtd5yO4-Pmcc5jj4ht3vqUkc8JUc-O8GlTRTuPJhCNrGIr7ruXqDPPXjGB5hKAFIdcs9xCo4rz-nphIwN9-VlPd9w1kHH6D9ohV-W2SJAvupp_SRW8PErhTljgt-kdBJHnTk5HLK1dIX_6Mclk-u97h4zxOaG1UJ51Cw6BT3APBOGFuBJ0d_L0pBvp7_sCUpvzes-quejYYzglaJu0UyZPzVWGaXaw2FGzhDuOrZixFojXP71bp9c_ydJZGZWKA697K9POyZ1CwNQwfkzAXTcQlhr9RTZS6XcZodBpBqwiAgqDaxDKoSwzmRsKndYaL83XT6hF6ys9kxnSiJFQaoUHJT_F5KWdvqql-Wv4MyEUcNNDDwWi0udi77CK05JirKAz_CFAv39bj2-P0t2SHfif7Lzo2Kxc_lcxinCmIupnCGOAgjAcvo1-Z9Bw5Wo8LiMjGeTTiTiV_5R3LpZ6zwzbexKJVQsxKzxPJzRLtk3u8Jt1T8FVk0_T10LCO1LG19-tTb5RITfq6_uPLiiUwsnYPxv52qXfVg3KSMQmjuQOAU71eq8v8Ra4EGJcBh0geZhXbbjJowPbxLmT9KJSb6UJ=w85-h48-no'>")
+					$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif'; height="20"; width="20">")
 					thinking= $('#messages img:last');
 
 
@@ -336,7 +336,7 @@
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Shared Smile</span></h5><div id='"+type+"' class='graph-container'><div style='height:230px;'><canvas class='chart' id='joychart' data-value='0' data-speaker=''></canvas></div></div></div></div>");
 					break;
 				case "valence":
-					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Valence</span></h5><div id='"+type+"' class='graph-container'><div id='chart6' data-value='0' data-user='' style='padding-left: 40px;padding-top: 30px;'></div></div></div>");
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Valence</span></h5><div id='"+type+"' class='graph-container'><div id='chart6' data-value='0' data-user=''></div></div></div>");
 					break;
 				//needs fixing
 				case "interruption": 
