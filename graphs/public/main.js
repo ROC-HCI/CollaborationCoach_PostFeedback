@@ -191,13 +191,13 @@ function make_Graph(type){
 
 function setupChart(user)
 {
-  var overall_stats = session_data["ALL"];    
+  /*var overall_stats = session_data["ALL"];    
   var overall_data = [];    
   overall_data.engagement = overall_stats.engagement;
   overall_data.attention = overall_stats.attention;
   //overall_data.joy = overall_stats.joy;
   overall_data.surprise = overall_stats.surprise;
-  overall_data.anger = overall_stats.anger;
+  overall_data.anger = overall_stats.anger;*/
   
 
   var barData = {};
@@ -227,7 +227,7 @@ function setupChart(user)
     var palettecount = 0;
     for(var key in session_data)
     {
-      if(session_data.hasOwnProperty(key))
+      if(session_data.hasOwnProperty(key) && (key != ("_id" || "session_key" || "user") )
       {
         var overall_data = []; 
         palettecount++;
