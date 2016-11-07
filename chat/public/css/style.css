@@ -357,12 +357,12 @@ h5 {
   color: black;
 }
 
-.chart1{
+#chart1{
   position:fixed;
   margin-left: 100px;
 }
 
-.chart2{
+#chart2{
   position:fixed;
   margin-left: 100px;
 }
