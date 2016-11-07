@@ -69,6 +69,7 @@ function make_Graph(type){
     {
 	  console.log("iterating" + i);
 	  var e = smile_graph_data[i];
+	  console.log(JSON.stringify(e));
 	  document.getElementById('smile_chart').innerHTML += "<p>" + e["user"] + " : " + e["value"] + "</p>";
     }
     break;
