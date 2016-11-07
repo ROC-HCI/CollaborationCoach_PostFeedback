@@ -333,7 +333,7 @@
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"' style='height:450px;'><h5 class='graph-header'><span>Turn Taking</span></h5><div id='"+type+"' class='graph-container' style='padding-top:12px;'><div class='inner-contain3' id='chart4' data-value='0' data-user=''></div></div></div>");
 					break;
 				case "smilesharing":
-					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Shared Smile</span></h5><div id='"+type+"' class='graph-container'><div style='height:230px;'><canvas class='chart' id='joychart' data-value='0' data-speaker=''></canvas></div></div></div></div>");
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Shared Smile</span></h5><div id='"+type+"' class='graph-container'><div id='smile_chart'></div></div></div>");
 					break;
 				case "valence":
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Valence</span></h5><div id='"+type+"' class='graph-container'><div id='chart6' data-value='0' data-user='' style='padding-left:40px;padding-top:25px;'></div></div></div>");
