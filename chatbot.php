@@ -143,7 +143,8 @@
         			//	$('#messages').append(new item("Roboto","...").create());
 					//	thinking= $('#messages li:last');
 
-					$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif'>")
+					$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif' style="width:10px;height:10px;">")
+
 					thinking= $('#messages img:last');
 
 
