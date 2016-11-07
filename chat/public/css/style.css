@@ -379,6 +379,7 @@ h5 {
 #chart6 {
   padding: 0!important;
   margin: 0!important;
+  width:90%;
 }
 #chart6 svg {
   background: none!important;
