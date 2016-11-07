@@ -119,18 +119,10 @@ function make_Graph(type){
             "groups": [{
                 "id": "range",
                 "items": [{
-                    "id": "rangeBg",
-                    "type": "rectangle",
-                    "x": "$chartCenterX-200",
-                    "y": "$chartEndY-35",
-                    "tox": "$chartCenterX +200",
-                    "toy": "$chartEndY-15",
-                    "fillcolor": "#0075c2"
-                }, {
                     "id": "rangeText",
                     "type": "Text",
                     "fontSize": "11",
-                    "fillcolor": "#ffffff",
+                    "fillcolor": "#000000",
                     "text": "negative<------- neutral ------->positive",
                     "x": "$chartCenterX",
                     "y": "$chartEndY-25"
