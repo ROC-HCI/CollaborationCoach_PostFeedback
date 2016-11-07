@@ -12,9 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="chat/public/css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	
-	<!--link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"-->
-	<!--link rel="stylesheet" type="text/css" href="jquery/jquery-ui.theme.css"-->
+
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<script src="fusioncharts/fusioncharts.js"></script>
@@ -32,7 +30,9 @@
         		<a class="navbar-brand" href="#">
     				<img src="https://files.slack.com/files-pri/T1FSQC4CB-F2VMXLQ5D/rlogo.png" class="img-fluid" alt="">
         		</a> 
-        		<div class="header-title"><h1>Feedback Assistant</h1></div>
+        		<div class="header-title">
+        			<h1>Feedback Assistant</h1>
+        		</div>
      		</div>
   		</nav>
 	</header>
@@ -82,8 +82,6 @@
 			</div>
 	</div>
 
-	<!-- link href="graphs/public/css/style.css" rel = "stylesheet"/-->
-
 	<script src="graphs/public/js/jquery.animateNumber.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
     <script src="https://cdn.rawgit.com/adobe-webplatform/Snap.svg/master/dist/snap.svg-min.js"></script>
@@ -91,16 +89,21 @@
 	
 	<script src="chat/public/talktimeDialogue.js"></script>
 	<script>
+		//Where it all begins...
 		var participation = parse(json);
-		console.log(participation);
+		console.log('start ', participation);
+
+		//creating ellipsis
 		var thinking = $('#messages li:last');
 		var thinkingflag = 0;
 		var countdelay  = 1;
+
 		$(document).ready(function(){
 			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
 			gatherData();
 		});
 	
+		//graph data i stands for index
 		var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, colorpalette;
 		var smile_graph_data = [];
 		var session_data = [];		
@@ -124,44 +127,52 @@
         	document.getElementById('message-option').innerHTML="";
         	
         	// console.log(participation, object.title);
-        	//error occur
+
+        	//Dealing with undefined everything error occur
         	if(typeof object.body == undefined || typeof object.title == undefined){
         		(function(str){
         			setTimeout(function(){
         				$('#messages').append(new item("Server", str).create());	
         			},1500);
-        		})('server crashed, please email us at xxx@xxx.edu to let us know what is causing the crash so we can fix it');
+        		})('server crashed, please email us at xxx@xxx.edu to report your problem');
         	}else{
-	        	console.log('what', object.body.length); //already trimmed
-	        	console.log('buttons', object.buttons); //buttons
+	        	console.log('message content ', object.body.length); //already trimmed
+	        	console.log('the buttons ', object.buttons); //buttons
+
 	        	fixNewline(object);
-	        	if(participation[object.title].tags=='1') 
-        		{
+	        	if(participation[object.title].tags=='1'){
         			thinkingflag = 1;
         			setTimeout(function(){
         			//	$('#messages').append(new item("Roboto","...").create());
 					//	thinking= $('#messages li:last');
 
-					$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif' height=120 width=200>")
-					thinking= $('#messages img:last');
+						$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif' height=120 width=200>")
+						thinking= $('#messages img:last');
 
-
+						// scroll to last message bubble
 						$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-    				},countdelay*400);
+
+					},countdelay*400);
+
     				countdelay+=1.7;
+
     				setTimeout(function(){
     					createGraph(graphType[countType]);
     					thinking.remove(); 
-    					//$("#messages img:last-child").remove();
+    					
+    					// replace ellipsis with Roboto's reply
 	    				$('#messages').append(new item("Roboto", graphResponse[countType]).create());	
     					countType++;
+
+    					// scroll to last message bubble
     					$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
 
     				},(countdelay)*1000);
+
     				countdelay+=3.5;	
 
         			console.log('when empty1 ',countdelay);
@@ -169,10 +180,9 @@
         		}
         		else
         			thinkingflag = 0;
-
-
         	}
         }
+
         function fixNewline(obj){
         	var count = 1;
         	var dialoguecount=0;
@@ -181,29 +191,28 @@
         	console.log('when empty2 ',countdelay);
 
         	for(var str of participation[obj.title].body.split(/\\n/)){
-        		console.log('whats my string ',str.length);
-        		if(!/\S/.test(str)) continue;
+        		console.log('parsed message content',str.length);
+        		if(!/\S/.test(str)) continue; //if its empty skip it
         		(function(str){
-        			setTimeout(function(){
-						//thinking.remove();   
-						//$("#messages img:last-child").remove();     			
+        			setTimeout(function(){ 			
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
         					scrollTop: $('#messages').height()
 						});
         			},countdelay*1000);
-        		})(str);
+        		})(str);// IIFE call on set a Timeout
+
         		countdelay+=1.7;
+
         		dialoguecount++;
         	}
-        	//countdelay++;
+        	
         	console.log('when thinkingflag ',thinkingflag);
         	console.log('when dialoguecount ',dialoguecount);
         	countdelay = dialoguecount+1.7;
 
-
-
         	console.log('whats the count ', count);
+
         	if(obj.buttons){
         		if((dialoguecount == 1 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 0))
         			countdelay+=5;
@@ -216,31 +225,34 @@
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
         			},(countdelay)*1000);
-        		})(str);
+        		})(str);//IIFE call on creating buttons
         	}
-
 
         	console.log('when empty4 ',countdelay);
 
         	countdelay = 1;
 
         }
-		//button 
+
+		//button methods
+		
+		//initializer
 		function option(o){
 			this.text = o.split("|")[0];
 			this.next = o.split("|")[1];
 			this.button = document.createElement('button');
 		}
+
+		// button click event
 		var test = function(e){
 			$('#messages').append(new item("user", this.textContent).create());
 			$('.inner-contain-body').animate({ 
 			      scrollTop: $('#messages').height()
 			});
 			gotoObject(participation[this.getAttribute('data-next')]);
-			// e.stopPropagation();
-			//add a additional text
 		}
 		
+		//button create method using vanillaJS
 		option.prototype.create = function() {
 			this.button.textContent = this.text;
 			this.button.setAttribute('data-next', this.next);
@@ -252,69 +264,72 @@
 			// console.log(this);
 			return this.button;
 		}
-		//chat message
+
+		//message bubble methods
+		//initializer
 		function item(user, text) {
 			this.user = user;
 			this.text = text;
 			this.li = document.createElement('li');
 		}
+
+		//create method
 		item.prototype.create = function() {
 			var div = document.createElement('div');
 			div.className = 'message-content';
 			var image = document.createElement('img');
 			image.className = 'profile';
-			// image.className = 'img-rounded';
 			
 			var right = document.createElement('div');
 			right.className = 'right';
-			// var name = document.createElement('span');
-			// name.className = 'name';
-			// name.innerHTML = this.user;
+			
 			var content = document.createElement('span');
 			content.className = 'content';
 			content.innerHTML = this.text;
+
 			if(this.user=='Roboto'){
-				// console.log(this.user);
-				image.src='https://files.slack.com/files-pri/T1FSQC4CB-F2VN90X19/chatbot.png';
+				//it's Roboto
+				image.src='https://files.slack.com/files-pri/T1FSQC4CB-F2VN90X19/chatbot.png';//will be replaced with local img
 				var left = document.createElement('div');
 				left.className = 'left';
 				left.appendChild(image);
 			}else{
-				//its a user
-				// image.src='http://placehold.it/50x50';
-				//bug add additional class
+				//it's the user
+				//place the bubble on the right using bootstrap class
 				this.li.className="text-xs-right";
 				right.className+=" user-right";
-				// this.li.className = "text-xs-center";
-				// this.li.className += " text-xs-right";
 			}
-			// right.appendChild(name);
+			
 			right.appendChild(content);
 		    if(left) div.appendChild(left);
 		    div.appendChild(right);
 		    this.li.appendChild(div);
 		    return this.li;
-			// $('.right').append(content);
 		}
+
+		//parse a message to object
 		function parse(json){
 			var result = [];
 			for (var element of json){
 				result[element.title.trim()] = element; //assuming titles are unique
-				//empty node
+				
+				//for graphs
 				if(element.tags){
 					result[element.title.trim()].tags = element.tags;
-					// result[element.title.trim()].body = "empty node detected!";
 				} 
+
+				//empty node which should never occur for now
 				if(element.body.length==0){
 					console.log('element.body fixed');
 					result[element.title.trim()].body = "empty node detected!";
 				}else{
-				//nonempty node
-					var bracket = element.body.match(/\[\[(.*?)\]\]/g);
+					//nonempty node
+					var bracket = element.body.match(/\[\[(.*?)\]\]/g); //search for bracket [[]] which are coded for buttons
 					if(bracket==null){
 							result[element.title.trim()].body = element.body.trim();
 					}
 					else{
+						//there are always brackets in the message bubble
 						result[element.title.trim()].buttons = element.body.match(/\[\[(.*?)\]\]/g);
 						result[element.title.trim()].body = element.body.split(/\[\[/)[0];
 				
@@ -323,6 +338,7 @@
 			}
 			return result;
 		}
+		
 		function createGraph(type)
 		{
 			var graphDiv;
@@ -354,34 +370,15 @@
 			$("#accordion").append(graphDiv);
 			console.log(graphDiv);	
 			//$('#accordion').accordion("refresh");        
-		
 			//$('#accordion').append(createGraph);	
-   //  		$('.inner-contain-graph').animate({ 
-			//      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
-			// }, function() {
-			// 	$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
-			// });
-			/*$('.inner-contain-graph').animate({ 
-				scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
-			}, function() {
-				$('#wrapper-attitude').show("slide", { direction: "up" }, 2500);
-			});*/
 
 			make_Graph(type);
 			$('.wrapper').slideDown("slow", function(){
-				//slideInUp first then scroll testing
+				//slide first to obtain the height then scroll
 				$('.inner-contain-graph').animate({ 
 		    		scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
 				});
 			});
-
-			// $('#wrapper-' + type).show("slide", { direction: "down" }, 2500, function(){
-			// 	//complete
-			// 	$('.inner-contain-graph').animate({ 
-		 //    		// scrollTop: $('.wrapper:last').height()+$('#accordion').height()
-		 //    		scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
-			// 	});
-			// });
 		}
 		
 		function gatherData(){
