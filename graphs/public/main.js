@@ -71,9 +71,9 @@ function make_Graph(type){
 	  var e = smile_graph_data[i];
 	  var value = parseInt(e["value"],10);
 	  
-	  if(value >= 0 && value <=2)
+	  if(value == 0)
 		  smile_emote = "smile_emote-00.svg";
-	  else if(value > 2 && value <= 4)
+	  else if(value > 0 && value <= 4)
 		  smile_emote = "smile_emote-01.svg";
 	  else if(value > 4 && value <= 6)
 		  smile_emote = "smile_emote-02.svg";
