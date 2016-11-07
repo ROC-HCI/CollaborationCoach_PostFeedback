@@ -123,7 +123,7 @@ var json =
     {
         "title": "emotion_4",
         "tags": "",
-        "body": "Positive sentiments can improve cooperation within the group, whereas negative ones can hurt it.\\nThese can even affect the bonds within the group members.\n[[Sounds powerful|sharedsmile_0]]",
+        "body": "Positive sentiments can improve cooperation within the group, but negative ones can hurt it.\\nThese can even affect the bonds within the group members.\n[[Sounds powerful|sharedsmile_0]]",
         "position": {
             "x": 860,
             "y": 413
@@ -163,7 +163,7 @@ var json =
     {
         "title": "finish_1",
         "tags": "",
-        "body": "This's all for now.\\nI hope these feedback help you in your future group discussions!\n[[Thanks, bye!|]]",
+        "body": "That's all for now.\\nI hope these feedback help you in your future group discussions!\n[[Thanks, bye!|]]",
         "position": {
             "x": 589,
             "y": 704
