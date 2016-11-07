@@ -338,6 +338,7 @@
 					break;
 				//needs fixing
 				case "interruption": 
+					//graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><div class='inner-contain3' id='chart5' data-value='0' data-user=''></div></div></div>");
 					graphDiv = $("<div style='display:none;color:black;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><object data='graphs/public/svg/overlaps.svg' type='image/svg+xml'><img src='overlap.png' /></object></div></div>");
 					break;
 				case "attitude":
