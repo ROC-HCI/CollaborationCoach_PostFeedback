@@ -125,13 +125,13 @@ function make_Graph(type){
                     "y": "$chartEndY-35",
                     "tox": "$chartCenterX +200",
                     "toy": "$chartEndY-15",
-                    "fillcolor": "#0075c2"
+                    "fillcolor": "gray"
                 }, {
                     "id": "rangeText",
                     "type": "Text",
                     "fontSize": "11",
                     "fillcolor": "#ffffff",
-                    "text": "Recommended Utilization Range : negative<--- neutral ---->positive",
+                    "text": "negative<------- neutral ------->positive",
                     "x": "$chartCenterX",
                     "y": "$chartEndY-25"
                 }]
