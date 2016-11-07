@@ -333,10 +333,6 @@ h5 {
   padding-bottom: 1em;
 }
 
-.wrapper:first-of-type {
-    margin-top: 3em;
-}
-
 /*stuff for RocConf main page*/
 .btn-success {
   background: #2ba2db;
