@@ -361,7 +361,11 @@
 			}, function() {
 				$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
 			});
-
+			/*$('.inner-contain-graph').animate({ 
+				scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
+			}, function() {
+				$('#wrapper-attitude').show("slide", { direction: "up" }, 2500);
+			});*/
 
 			make_Graph(type);
 			$('.inner-contain-graph').animate({ 
