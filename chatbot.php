@@ -150,7 +150,7 @@
 						$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-    				},countdelay*1000);
+    				},countdelay*600);
     				countdelay+=1.7;
     				setTimeout(function(){
     					createGraph(graphType[countType]);
@@ -162,7 +162,7 @@
 			   			   scrollTop: $('#messages').height()
 						});
 
-    				},(countdelay)*1600);
+    				},(countdelay)*1200);
     				countdelay+=1.7;	
 
         			console.log('when empty1 ',countdelay);
