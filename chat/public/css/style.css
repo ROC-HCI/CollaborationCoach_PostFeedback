@@ -401,3 +401,9 @@ g.raphael-group-6-axistop {
 {
   color:yellow;
 }
+
+.individualSmiles {
+    color: black;
+    margin: auto;
+    width: 200px;
+}
