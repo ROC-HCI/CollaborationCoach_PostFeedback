@@ -143,7 +143,7 @@
         			//	$('#messages').append(new item("Roboto","...").create());
 					//	thinking= $('#messages li:last');
 
-					$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif' height="30" width="30"/>")
+					$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif' />")
 					thinking= $('#messages li:last');
 
 
@@ -155,7 +155,6 @@
     				setTimeout(function(){
     					createGraph(graphType[countType]);
     					thinking.remove(); 
-    					$("#messages img:last-child").remove();
 	    				$('#messages').append(new item("Roboto", graphResponse[countType]).create());	
     					countType++;
     					$('.inner-contain-body').animate({ 
@@ -186,8 +185,7 @@
         		if(!/\S/.test(str)) continue;
         		(function(str){
         			setTimeout(function(){
-						thinking.remove();   
-						$("#messages img:last-child").remove();     			
+						thinking.remove();        			
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
         					scrollTop: $('#messages').height()
