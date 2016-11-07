@@ -342,7 +342,8 @@
 				case "interruption": 
 					//graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><div class='inner-contain3' id='chart5' data-value='0' data-user=''></div></div></div>");
 					graphDiv = $("<div style='display:none;color:black;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'> <svg id='overlapsvg'></svg></div></div>");
-					Snap.load("overlapsvg.svg", onSVGLoaded ) ;
+					var s = Snap("#overlapsvg");
+					Snap.load("graphs/public/svg/overlaps.svg", onSVGLoaded ) ;
 					function onSVGLoaded( data ){ 
 					    s.append( data );
 					}
