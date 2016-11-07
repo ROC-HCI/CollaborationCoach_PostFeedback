@@ -361,13 +361,15 @@ h5 {
 }
 
 #chart1{
-  position:fixed;
-  margin-left: 100px;
+  position: absolute;
+  margin-left: 240px;
+  margin-top: 50px;
 }
 
 #chart2{
-  position:fixed;
-  margin-left: 100px;
+  position: absolute;
+  margin-left: 200px;
+  margin-top: 150px;
 }
 
 #chart6 {
