@@ -562,7 +562,7 @@
 						shareMost = smile_graph_data[key]["user"];
 					}
 
-					if(mile_graph_data[key]["value"] < shareLeastValue)
+					if(smile_graph_data[key]["value"] < shareLeastValue)
 					{
 						shareLeastValue = smile_graph_data[key]["value"];
 						shareLeast = smile_graph_data[key]["user"];
