@@ -117,7 +117,7 @@
 
 	        var graphResponse = ["As you can see from the graph, you participated " + participatePercent + "% of the whole session. Expressing your ideas contributes in group decision. Would you like to know more about it?", 
 			"From the analysis, you overlapped " + i1 + " times with other's speeches. On the other hand, your speech got overlapped " + i2 + " times by the group.",
-			"You spoke after" + turnMost + "most of the time and " + turnLeast + " least of the time.",
+			"You spoke after " + turnMost + " most of the time and " + turnLeast + " least of the time.",
 			"Your overall emotion was " + selfEmo + " during the session.",
 			"Here goes your overall attitude towards others throughout the whole conversation.",
 			"You shared most smiles with " + shareMost + ", and least with " + shareLeast + "."];

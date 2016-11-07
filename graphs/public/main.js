@@ -188,16 +188,18 @@ function make_Graph(type){
 
 function setupChart(user)
 {
-  var overall_stats = session_data["0"];    
+  var overall_stats = session_data["ALL"];    
   var overall_data = [];    
   overall_data.engagement = overall_stats.engagement;
+  overall_data.attention = overall_stats.attention;
+  //overall_data.joy = overall_stats.joy;
   overall_data.surprise = overall_stats.surprise;
-  overall_data.contempt = overall_stats.contempt;
-  overall_data.joy = overall_stats.joy;
   overall_data.anger = overall_stats.anger;
   
+
   var barData = {};
   
+  //barDataSet = [user_data];
   /*if(user == "0")
   {
     barData = 
@@ -217,7 +219,35 @@ function setupChart(user)
   }
   else
   {*/
-    user_stats = session_data["2"];
+
+    var dataset = [];
+    var palettecount = 0;
+    for(var key in session_data)
+    {
+      if(session_data.hasOwnProperty(key))
+      {
+        var overall_data = []; 
+        palettecount++;
+
+        overall_data.engagement = overall_stats.engagement;
+        overall_data.attention = overall_stats.attention;
+        overall_data.surprise = overall_stats.surprise;
+        overall_data.anger = overall_stats.anger;
+        
+        if(key = "ALL")
+          key = "Everyone";
+
+        dataSection = {
+          label: key,
+          backgroundColor: colorpalette[palettecount],
+          borderColor: colorpalette[palettecount],
+          pointBackgroundColor : colorpalette[palettecount],
+          data: overall_data
+        }   
+      }
+    }
+
+    /*user_stats = session_data["2"];
     
     var user_data = [];   
     user_data.engagement = user_stats.engagement;
@@ -233,14 +263,14 @@ function setupChart(user)
     user_data2.surprise = user_stats.surprise;
     user_data2.contempt = user_stats.contempt;
     user_data2.joy = user_stats.joy;
-    user_data2.anger = user_stats.anger;
+    user_data2.anger = user_stats.anger;*/
     
   
     barData = 
     {
-      labels : ["Engagement","Surprise","Contempt","Joy","Anger"],
-      datasets : 
-      [
+      labels : ["Engagement","Attention","Surprise","Anger"],
+      datasets : dataset
+      /*[
         {
           label: "Everyone",
           backgroundColor: "#90D0D5",
@@ -264,7 +294,7 @@ function setupChart(user)
           pointStrokeColor : "#fff",
           data : [user_data2.engagement,user_data2.surprise,user_data2.contempt,user_data2.joy,user_data2.anger]
         }
-      ]
+      ]*/
     }
   //}
   
