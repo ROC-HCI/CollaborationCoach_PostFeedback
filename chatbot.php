@@ -357,7 +357,7 @@
 		
 			//$('#accordion').append(createGraph);	
    //  		$('.inner-contain-graph').animate({ 
-			// //      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+			//      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			// }, function() {
 			// 	$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
 			// });
@@ -369,9 +369,8 @@
 
 			make_Graph(type);
 			$('.inner-contain-graph').animate({ 
-			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
-			
-			}, function(){
+			     scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+			}, function() {
 				$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
 			});
 		}
