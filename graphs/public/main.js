@@ -325,7 +325,7 @@ function myNumber(id, data) {
 $(id).animateNumber({
   number: data,
   color: 'green',
-  'font-size': '10px',
+  'font-size': '11px',
 
   easing: 'easeInQuad'
 

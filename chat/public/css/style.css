@@ -356,3 +356,13 @@ h5 {
 .marketing {
   color: black;
 }
+
+.chart1{
+  position:fixed;
+  margin-left: 100px;
+}
+
+.chart2{
+  position:fixed;
+  margin-left: 100px;
+}

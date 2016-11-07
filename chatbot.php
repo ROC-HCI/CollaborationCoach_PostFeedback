@@ -343,7 +343,7 @@
 				//needs fixing
 				case "interruption": 
 					//graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><div class='inner-contain3' id='chart5' data-value='0' data-user=''></div></div></div>");
-					graphDiv = $("<div style='display:none;color:black;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><div ><div id='chart1'></div><div id = 'chart2'></div></div><object data='graphs/public/svg/overlaps.svg' type='image/svg+xml' style='margin-left:30%;'><img src='graphs/public/svg/overlaps.svg' /></object></div></div>");					
+					graphDiv = $("<div style='display:none;color:black;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Speech Overlap</span></h5><div id='"+type+"' class='graph-container'><<div id='chart1'></div><div id = 'chart2'></div><object data='graphs/public/svg/overlaps.svg' type='image/svg+xml' style='margin-left:30%;'><img src='graphs/public/svg/overlaps.svg' /></object></div></div>");					
 					break;
 				case "attitude":
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Attitude Towards</span></h5><div id='"+type+"' class='graph-container'><div align='center'><div style='max-width:455px; max-height:250px'><canvas style='width:455px;height:230px' id='barChart' width='455' height='250'></canvas></div></div></div></div>");
