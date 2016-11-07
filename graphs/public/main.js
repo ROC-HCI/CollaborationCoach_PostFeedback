@@ -121,9 +121,9 @@ function make_Graph(type){
                 "items": [{
                     "id": "rangeBg",
                     "type": "rectangle",
-                    "x": "$chartCenterX-115",
+                    "x": "$chartCenterX-200",
                     "y": "$chartEndY-35",
-                    "tox": "$chartCenterX +115",
+                    "tox": "$chartCenterX +200",
                     "toy": "$chartEndY-15",
                     "fillcolor": "#0075c2"
                 }, {
