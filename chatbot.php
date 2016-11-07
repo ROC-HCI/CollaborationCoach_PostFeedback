@@ -163,7 +163,7 @@
 						});
 
     				},(countdelay)*1000);
-    				countdelay+=2.3;	
+    				countdelay+=2.7;	
 
         			console.log('when empty1 ',countdelay);
         			console.log('when thinkingflag ',thinkingflag);
