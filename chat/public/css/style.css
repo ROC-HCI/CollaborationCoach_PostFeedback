@@ -38,10 +38,10 @@ h5.graph-header
 
 .header-title {
   padding-left: 40%;
+  padding-top: 1%;
   /*margin: 0 auto;*/
 }
 .header-title h1 {
-  line-height: 2;
   font-size: 3rem;
 }
 
