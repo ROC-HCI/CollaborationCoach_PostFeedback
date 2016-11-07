@@ -369,7 +369,7 @@
 
 			make_Graph(type);
 			$('.inner-contain-graph').animate({ 
-			      scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
+			      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			
 			}, function(){
 				$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
