@@ -293,8 +293,12 @@ span.chart-label{
   left: 0%;
 }
 
+/*possibly only working for 4 people*/
 #guest1,#guest2,#guest3{
-  top:110%;
+    /*top: 110%;*/
+    padding-left: 10px;
+    padding-top: 15px;
+    width: 95%;
 }
 
 #guest-1 {
