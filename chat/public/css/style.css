@@ -364,12 +364,16 @@ h5 {
   position: absolute;
   margin-left: 240px;
   margin-top: 50px;
+  font-family:Helvetica, Arial, sans-serif; 
+  font-size:11;
 }
 
 #chart2{
   position: absolute;
   margin-left: 200px;
   margin-top: 150px;
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:11;
 }
 
 #chart6 {
