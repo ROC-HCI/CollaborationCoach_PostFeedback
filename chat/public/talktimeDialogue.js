@@ -43,7 +43,7 @@ var json =
     {
         "title": "overlap_1",
         "tags": "",
-        "body": "Moving onto speech overlap.\\nI can describe the notion for you.\\n [[I get what you mean|overlap_3]] [[Please do|overlap_2]]",
+        "body": "Moving onto speech overlap.\\nI can describe the notion for you.\\n [[I already know|overlap_3]] [[Please do|overlap_2]]",
         "position": {
             "x": -47,
             "y": 140
