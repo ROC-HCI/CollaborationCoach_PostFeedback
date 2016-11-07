@@ -326,9 +326,9 @@ h5 {
 
 .wrapper{
   background: white;
-  margin-top: 7%;
   max-width: 80%; /*readability*/
   margin: 0 auto;
+  margin-top: 7%;
   position: relative;
   border-bottom: 3px solid #eceeef; /*add shadow*/
   padding-bottom: 1em;
