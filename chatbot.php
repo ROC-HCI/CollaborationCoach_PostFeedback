@@ -117,12 +117,12 @@
 
         function gotoObject(object){
 
-	        var graphResponse = ["As you can see from the graph, you participated " + participatePercent + "% of the whole session. Expressing your ideas contributes in group decision. Would you like to know more about it?", 
-			"From the analysis, you overlapped " + i2 + " times with other's speeches. On the other hand, your speech got overlapped " + i1 + " times by the group.",
-			"You spoke after " + turnMost + " most of the time and " + turnLeast + " least of the time.",
-			"Your overall emotion was " + selfEmo + " during the session.",
+	        var graphResponse = ["As you can see from the graph, you participated <span class='dynotext'>" + participatePercent + "%</span> of the whole session. Expressing your ideas contributes in group decision. Would you like to know more about it?", 
+			"From the analysis, you overlapped <span class='dynotext'>" + i2 + "</span> times with other's speeches. On the other hand, your speech got overlapped <span class='dynotext'>" + i1 + "</span> times by the group.",
+			"You spoke after <span class='dynotext'>" + turnMost + "</span> most of the time and <span class='dynotext'>" + turnLeast + "</span> least of the time.",
+			"Your overall emotion was <span class='dynotext'>" + selfEmo + "</span> during the session.",
 			"Here goes your overall attitude towards others throughout the whole conversation.",
-			"You shared most smiles with " + shareMost + ", and least with " + shareLeast + "."];
+			"You shared most smiles with <span class='dynotext'>" + shareMost + "</span>, and least with <span class='dynotext'>" + shareLeast + "</span>."];
 			//On average, the team was emotionally" + allEmo + "."
         	document.getElementById('message-option').innerHTML="";
         	
@@ -353,7 +353,7 @@
 					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Shared Smile</span></h5><div id='"+type+"' class='graph-container'><div id='smile_chart'></div></div></div>");
 					break;
 				case "valence":
-					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Valence</span></h5><div id='"+type+"' class='graph-container'><div id='chart6' data-value='0' data-user='' style='padding-left:40px;padding-top:25px;'></div></div></div>");
+					graphDiv = $("<div style='display:none;' class='wrapper' id='wrapper-"+type+"'><h5 class='graph-header'><span>Valence</span></h5><div id='"+type+"' class='graph-container'><div id='chart6' data-value='0' data-user=''></div></div></div>");
 					break;
 				//needs fixing
 				case "interruption": 
@@ -511,6 +511,7 @@
 			var dynoTurn = getKey(defaultuser);
 			var turnTotal = dynoTurn["total"];
 			var turnMostValue = 0;
+			turnMost = dynoTurn["to"][0]["guest"];
 			turnLeast = dynoTurn["to"][0]["guest"];
 			var turnLeastValue = dynoTurn["to"][0]["guest"]/turnTotal;
 			console.log("dynoTurn", dynoTurn);
@@ -543,7 +544,29 @@
 				selfEmo = "neutral";
 
 			//dynamic sharesmile
+			var shareMostValue = smile_graph_data[0]["value"];
+			var shareLeastValue = smile_graph_data[0]["value"];
+			shareMost = smile_graph_data[0]["user"];
+			shareLeast = smile_graph_data[0]["user"];
 
+			for(var key in smile_graph_data)
+			{
+				if(smile_graph_data.hasOwnProperty(key))
+				{
+					if(smile_graph_data[key]["value"] > shareMostValue)
+					{
+						shareMostValue = smile_graph_data[key]["value"];
+						shareMost = smile_graph_data[key]["user"];
+					}
+
+					if(smile_graph_data[key]["value"] < shareLeastValue)
+					{
+						shareLeastValue = smile_graph_data[key]["value"];
+						shareLeast = smile_graph_data[key]["user"];
+					}
+
+				}
+			}
 
 		}
 	</script>
