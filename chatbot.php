@@ -150,7 +150,7 @@
 						$('.inner-contain-body').animate({ 
 			   			   scrollTop: $('#messages').height()
 						});
-    				},countdelay*600);
+    				},countdelay*400);
     				countdelay+=1.7;
     				setTimeout(function(){
     					createGraph(graphType[countType]);
@@ -162,7 +162,7 @@
 			   			   scrollTop: $('#messages').height()
 						});
 
-    				},(countdelay)*1200);
+    				},(countdelay)*900);
     				countdelay+=1.7;	
 
         			console.log('when empty1 ',countdelay);
@@ -192,7 +192,7 @@
         				$('.inner-contain-body').animate({ 
         					scrollTop: $('#messages').height()
 						});
-        			},countdelay*1200);
+        			},countdelay*1000);
         		})(str);
         		countdelay+=1.7;
         		dialoguecount++;
@@ -214,7 +214,7 @@
 							console.log(b);
 							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
 						}	
-        			},(countdelay)*1200);
+        			},(countdelay)*1000);
         		})(str);
         	}
 
