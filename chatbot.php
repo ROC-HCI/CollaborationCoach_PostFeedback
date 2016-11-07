@@ -163,7 +163,7 @@
 						});
 
     				},(countdelay)*1000);
-    				countdelay+=3.5;	
+    				countdelay+=1.7;	
 
         			console.log('when empty1 ',countdelay);
         			console.log('when thinkingflag ',thinkingflag);
@@ -206,8 +206,10 @@
 
         	console.log('whats the count ', count);
         	if(obj.buttons){
-        		if((dialoguecount == 1 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 1))
+        		if((dialoguecount == 1 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 0))
         			countdelay+=5;
+        		if(dialoguecount == 0 && thinkingflag == 1)
+        			countdelay+=1.7
         		(function(str){
         			setTimeout(function(){
 						for(var b of obj.buttons){
