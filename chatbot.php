@@ -144,7 +144,7 @@
 					//	thinking= $('#messages li:last');
 
 					$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif'>")
-					thinking= $('#messages li:last');
+					thinking= $('#messages img:last-child');
 
 
 						$('.inner-contain-body').animate({ 
@@ -155,7 +155,7 @@
     				setTimeout(function(){
     					createGraph(graphType[countType]);
     					thinking.remove(); 
-    					$("#messages img:last-child").remove();
+    					//$("#messages img:last-child").remove();
 	    				$('#messages').append(new item("Roboto", graphResponse[countType]).create());	
     					countType++;
     					$('.inner-contain-body').animate({ 
