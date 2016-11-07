@@ -235,10 +235,11 @@ function setupChart(user)
           var overall_data = []; 
           palettecount++;
           var overall_stats = session_data[key];    
-          overall_data.engagement = overall_stats.engagement;
+          /*(overall_data.engagement = overall_stats.engagement;
           overall_data.attention = overall_stats.attention;
           overall_data.surprise = overall_stats.surprise;
-          overall_data.anger = overall_stats.anger;
+          overall_data.anger = overall_stats.anger;*/
+          overall_data = [overall_stats.engagement, overall_stats.attention, overall_stats.surprise, overall_stats.anger];
           
           if(key == "ALL")
             keylabel = "Everyone";
