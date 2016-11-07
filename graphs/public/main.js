@@ -237,7 +237,7 @@ function setupChart(user)
         overall_data.surprise = overall_stats.surprise;
         overall_data.anger = overall_stats.anger;
         
-        if(key = "ALL")
+        if(key == "ALL")
           key = "Everyone";
 
         dataSection = {
