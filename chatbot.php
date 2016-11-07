@@ -368,7 +368,8 @@
 			});*/
 
 			make_Graph(type);
-			$('.wrapper').show().addClass('animated slideInUp', function(){
+			$('.wrapper').addClass('animated slideInUp', function(){
+				$('.wrapper').css('display','block');
 				//slideInUp first then scroll testing
 				$('.inner-contain-graph').animate({ 
 		    		// scrollTop: $('.wrapper:last').height()+$('#accordion').height()
