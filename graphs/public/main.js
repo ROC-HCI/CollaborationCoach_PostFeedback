@@ -243,7 +243,9 @@ function setupChart(user)
           borderColor: colorpalette[palettecount],
           pointBackgroundColor : colorpalette[palettecount],
           data: overall_data
-        }   
+        }
+        console.log(dataSection);
+        dataset.push(dataSection);
       }
     }
 
