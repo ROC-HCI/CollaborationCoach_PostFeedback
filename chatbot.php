@@ -187,7 +187,7 @@
         		(function(str){
         			setTimeout(function(){
 						thinking.remove();   
-						$("#messages img:last-child").remove();     			
+						//$("#messages img:last-child").remove();     			
         				$('#messages').append(new item("Roboto", str).create());	
         				$('.inner-contain-body').animate({ 
         					scrollTop: $('#messages').height()
