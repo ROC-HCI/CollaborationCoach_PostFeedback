@@ -162,7 +162,7 @@
 			   			   scrollTop: $('#messages').height()
 						});
 
-    				},(countdelay)*900);
+    				},(countdelay)*1000);
     				countdelay+=1.7;	
 
         			console.log('when empty1 ',countdelay);
