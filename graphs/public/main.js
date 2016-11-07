@@ -81,7 +81,7 @@ function make_Graph(type){
 		  smile_emote = "smile_emote-03.svg";
 	
 	  var image_source = "/graphs/public/svg/" + smile_emote;	  
-	  document.getElementById('smile_chart').innerHTML += "<p style='color:black'><img source='" + image_source + "'/>&nbsp;&nbsp;" + e["user"] + " : " + e["value"] + "</p>";
+	  document.getElementById('smile_chart').innerHTML += "<p style='color:black'><img src='" + image_source + "'/>&nbsp;&nbsp;" + e["user"] + " : " + e["value"] + "</p>";
     }
     break;
 
