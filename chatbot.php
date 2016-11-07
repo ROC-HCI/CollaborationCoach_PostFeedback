@@ -163,7 +163,7 @@
 						});
 
     				},(countdelay)*1000);
-    				countdelay+=3.3;	
+    				countdelay+=3.5;	
 
         			console.log('when empty1 ',countdelay);
         			console.log('when thinkingflag ',thinkingflag);
@@ -358,7 +358,7 @@
     		$('.inner-contain-graph').animate({ 
 			//      scrollTop: $('.wrapper:last').height()+$('#accordion').height()
 			}, function() {
-				$('#wrapper-' + type).show("slide", { direction: "down" }, 2300);
+				$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
 			});
 			make_Graph(type);
 			$('.inner-contain-graph').animate({ 
