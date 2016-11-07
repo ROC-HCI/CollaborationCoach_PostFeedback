@@ -125,7 +125,7 @@ function make_Graph(type){
                     "y": "$chartEndY-35",
                     "tox": "$chartCenterX +200",
                     "toy": "$chartEndY-15",
-                    "fillcolor": "gray"
+                    "fillcolor": "#0075c2"
                 }, {
                     "id": "rangeText",
                     "type": "Text",
