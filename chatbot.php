@@ -368,11 +368,20 @@
 			});*/
 
 			make_Graph(type);
-			$('.inner-contain-graph').animate({ 
-			     scrollTop: $('.wrapper:last').height()+$('#accordion').height()
-			}, function() {
-				$('#wrapper-' + type).show("slide", { direction: "down" }, 2500);
+			$('.wrapper').show().addClass('animated slideInUp', function(){
+				//slideInUp first then scroll testing
+				$('.inner-contain-graph').animate({ 
+		    		// scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+		    		scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
+				});
 			});
+			// $('#wrapper-' + type).show("slide", { direction: "down" }, 2500, function(){
+			// 	//complete
+			// 	$('.inner-contain-graph').animate({ 
+		 //    		// scrollTop: $('.wrapper:last').height()+$('#accordion').height()
+		 //    		scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
+			// 	});
+			// });
 		}
 		
 		function gatherData(){
