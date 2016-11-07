@@ -231,7 +231,7 @@ function setupChart(user)
       {
         var overall_data = []; 
         palettecount++;
-
+        var overall_stats = session_data[key];    
         overall_data.engagement = overall_stats.engagement;
         overall_data.attention = overall_stats.attention;
         overall_data.surprise = overall_stats.surprise;
