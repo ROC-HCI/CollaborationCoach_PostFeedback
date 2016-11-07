@@ -442,10 +442,10 @@
 			var jscontent = JSON.parse(xhttp.responseText);
 			
 			//changed smile to joy
-			var single = jscontent["single_joy_data"];
+			var single = jscontent["single_smile_data"];
 			single_joy_data = {user: userid, data: single[userid]};
 			
-			var smile_data = jscontent["joy_data"];
+			var smile_data = jscontent["smile_data"];
 			var smile_index = 0;
 			for(var key in smile_data)
 			{
@@ -468,6 +468,8 @@
 					}
 				}
 			}
+			
+			console.log(smile_graph_data);
 			
 			//Affdex Data
 			var xhttp = new XMLHttpRequest();
