@@ -322,14 +322,15 @@ function setupChart(user)
 
 // chart1,2 stuff
 function myNumber(id, data) {
-$(id).animateNumber({
+/*$(id).animateNumber({
   number: data,
   color: 'white',
   'font-size': '13px',
 
   easing: 'easeInQuad'
 
-},'normal');
+},'normal');*/
+  $(id).append(data+" times");
 }
 
 //chart3 stuff
