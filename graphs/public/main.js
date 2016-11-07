@@ -68,6 +68,7 @@ function make_Graph(type){
     for(var i = 0; i < smile_graph_data.length; i++)
     {
       var smile_emote = "";
+	  var e = smile_graph_data[i];
 	  var value = parseInt(e["value"],10);
 	  
 	  if(value >= 0 && value <=2)
@@ -79,9 +80,7 @@ function make_Graph(type){
 	  else
 		  smile_emote = "smile_emote-03.svg";
 	
-	  var image_source = "graphs/public/svg/" + smile_emote;
-	  
-	  var e = smile_graph_data[i];
+	  var image_source = "graphs/public/svg/" + smile_emote;	  
 	  document.getElementById('smile_chart').innerHTML += "<p style='color:black'><img source='" + image_source + "'/>&nbsp;&nbsp;" + e["user"] + " : " + e["value"] + "</p>";
     }
     break;
