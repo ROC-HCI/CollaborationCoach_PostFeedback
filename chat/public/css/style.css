@@ -383,6 +383,12 @@ h5 {
 #chart6 svg {
   background: none!important;
 }
+
+#barChart {
+  max-width: 430px;
+  max-height: 220px;
+}
+
 g.raphael-group-2-background {
     display: none!important;
 }
