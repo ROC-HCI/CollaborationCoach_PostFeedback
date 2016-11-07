@@ -64,6 +64,7 @@ function make_Graph(type){
       // loadArrow
       break;
   case "smilesharing":    
+	console.log(JSON.stringify(smile_graph_data));
     for(var i = 0; i < smile_graph_data.length; i++)
     {
 	  var e = smile_graph_data[i];
