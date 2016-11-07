@@ -227,7 +227,7 @@ function setupChart(user)
     var palettecount = 0;
     for(var key in session_data)
     {
-      if(session_data.hasOwnProperty(key) && (key != ("_id" && "session_key" && "user")) )
+      if(session_data.hasOwnProperty(key) && (key != "_id" || key != "session_key" || key!= "user"))
       {
         var overall_data = []; 
         palettecount++;
