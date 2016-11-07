@@ -385,8 +385,8 @@ h5 {
 }
 
 #barchart {
-  width: 420px;
-  height: 220px;
+  max-width: 420px;
+  max-height: 220px;
 }
 
 g.raphael-group-2-background {
