@@ -80,7 +80,7 @@ function make_Graph(type){
 	  else
 		  smile_emote = "smile_emote-03.svg";
 	
-	  var image_source = "/graphs/public/svg/" + smile_emote;	  
+	  var image_source = "/RocConf/graphs/public/svg/" + smile_emote;	  
 	  document.getElementById('smile_chart').innerHTML += "<p style='color:black'><img src='" + image_source + "'/>&nbsp;&nbsp;" + e["user"] + " : " + e["value"] + "</p>";
     }
     break;
