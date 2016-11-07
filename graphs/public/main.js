@@ -123,7 +123,7 @@ function make_Graph(type){
                     "type": "Text",
                     "fontSize": "11",
                     "fillcolor": "#000000",
-                    "text": "negative<--------- neutral --------->positive",
+                    "text": "negative<----------- neutral ----------->positive",
                     "x": "$chartCenterX",
                     "y": "$chartEndY-25"
                 }]
