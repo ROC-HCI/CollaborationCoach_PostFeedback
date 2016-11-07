@@ -383,6 +383,12 @@ h5 {
 #chart6 svg {
   background: none!important;
 }
+
+#barchart {
+  width: 420px;
+  height: 220px;
+}
+
 g.raphael-group-2-background {
     display: none!important;
 }
