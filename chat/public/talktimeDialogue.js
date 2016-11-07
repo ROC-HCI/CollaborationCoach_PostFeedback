@@ -33,7 +33,7 @@ var json =
     {
         "title": "participation_4",
         "tags": "",
-        "body": "Team management experts have found that, equal participation is healthy for a group.\\nSpeaking about your own opinion can remove confusions, whereas listening to teammates' viewpoints is also valuable.\\nRemember, balance is the key!\n[[Seems useful|overlap_1]]",
+        "body": "Team management experts have found that, equal participation is healthy for a group.\\nSpeaking about your own opinion can make the discussion stronger, whereas listening to teammates' viewpoints can remove your confusions.\\nRemember, balance is the key!\n[[Seems useful|overlap_1]]",
         "position": {
             "x": 839,
             "y": 99
@@ -143,7 +143,7 @@ var json =
     {
         "title": "sharedsmile_1",
         "tags": "",
-        "body": "Great! So first let me tell you what it represents.\\nShared smile is how much time two persons smile at the same time. It can express a lot about group dynamics.\n[[Show my score|sharedsmile_2]]",
+        "body": "Great! Before that, let me tell you what it represents.\\nShared smile is how many times people smile at the same moment. It can express a lot about group dynamics.\n[[Show my score|sharedsmile_2]]",
         "position": {
             "x": 32,
             "y": 702
