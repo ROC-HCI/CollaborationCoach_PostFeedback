@@ -300,8 +300,6 @@ if($_GET['mode'] == 'sessionprev')
 	$cursor = $collection->findOne($query);	
 	$cur_time = $cursor['submitted'];
 	$cur_timestamp = strtotime($cur_time);
-
-	echo $cur_timestamp;
 	
 	// Get all session timestamps for this user
 	$query = array('user' => $user);
@@ -321,9 +319,11 @@ if($_GET['mode'] == 'sessionprev')
 			$cur_previous_key = $document['session_key'];
 		}
 	}
+
+	$result = array();
+	$result["prev_session_key"] = $cur_previous_key;
 	
-	echo $cur_previous . "<br/>";
-	echo $cur_previous_key . "</br>";
+	echo json_encode($result);
 }
 
 // Access point for merged focus and affdex data for a session key and user.
