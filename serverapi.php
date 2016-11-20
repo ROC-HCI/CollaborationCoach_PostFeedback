@@ -296,9 +296,9 @@ if($_GET['mode'] == 'sessionprev')
 	$query = array('user' => $user,
 				   'session_key' => $cur_session_key);
 				   
-	$cursor = $collection->find($query);
+	$cursor = $collection->findOne($query);
 	
-	$cur_time = $cursor[0]['submitted'];
+	$cur_time = $cursor['submitted'];
 
 	echo $cur_time;
 }
