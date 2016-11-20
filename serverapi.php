@@ -302,6 +302,28 @@ if($_GET['mode'] == 'sessionprev')
 	$cur_timestamp = strtotime($cur_time);
 
 	echo $cur_timestamp;
+	
+	// Get all session timestamps for this user
+	$query = array('user' => $user);
+	$cursor = $collection->find($query);
+	
+	$cur_previous = 0;
+	$cur_previous_key = "";
+	
+	// Find the maxium timestamp below the current timestamp
+	foreach($cursor as $document)
+	{
+		$timestamp = strtotime($document['submitted']);
+		
+		if(($timestamp < $cur_timestamp) && ($timestamp > $cur_previous))
+		{
+			$cur_previous = $timestamp;
+			$cur_previous_key = $document['session_key'];
+		}
+	}
+	
+	echo $cur_previous . "<br/>";
+	echo $cur_previous_key . "</br>";
 }
 
 // Access point for merged focus and affdex data for a session key and user.
