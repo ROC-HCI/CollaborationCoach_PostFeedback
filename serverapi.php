@@ -286,6 +286,23 @@ if($_GET['mode'] == 'seatupload')
 	$connection->close();
 }
 
+// Access Point for Obtaining the previous sessionID
+if($_GET['mode'] == 'sessionprev')
+{
+	$cur_session_key = $_GET['session_key'];
+	$user = $_GET['user'];
+	
+	$collection = $database->selectCollection('affdexuserseat');
+	$query = array('user' => $user
+				   'session_key' => $cur_session_key);
+				   
+	$cursor = $collection->find($query);
+	
+	$cur_time = $cursor[0]['submitted'];
+
+	echo $cur_time;
+}
+
 // Access point for merged focus and affdex data for a session key and user.
 // This is for raw output from these scripts.
 if($_GET['mode'] == 'affdexmerge')
