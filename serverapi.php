@@ -295,12 +295,13 @@ if($_GET['mode'] == 'sessionprev')
 	$collection = $database->selectCollection('affdexuserseat');
 	$query = array('user' => $user,
 				   'session_key' => $cur_session_key);
-				   
-	$cursor = $collection->findOne($query);
 	
+	// Get the submission date/time for this session
+	$cursor = $collection->findOne($query);	
 	$cur_time = $cursor['submitted'];
+	$cur_timestamp = strtotime($cur_time);
 
-	echo $cur_time;
+	echo $cur_timestamp;
 }
 
 // Access point for merged focus and affdex data for a session key and user.
