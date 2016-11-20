@@ -293,7 +293,7 @@ if($_GET['mode'] == 'sessionprev')
 	$user = $_GET['user'];
 	
 	$collection = $database->selectCollection('affdexuserseat');
-	$query = array('user' => $user
+	$query = array('user' => $user,
 				   'session_key' => $cur_session_key);
 				   
 	$cursor = $collection->find($query);
