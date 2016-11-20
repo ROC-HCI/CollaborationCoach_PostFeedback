@@ -21,18 +21,27 @@ var RealWebRTC =  function (clientID) {
 
   //listen for other clients joining webRTC room, render their video
   this.webrtc.on('channelMessage', function (peer, label, data) {
-    if (data.type === 'setClientID') {
+    if (data.type === 'setClientID') 
+	{
       peer.socketID = data.payload;
 
-	  console.log("CHANNEL MESSAGE " + data.payload);
+	  console.log("****** ADD CLIENT ID TO VIDEO DOM NODE *********");
+	  console.log(JSON.strinfigy(data));
+	  console.log("*****************************");
+	  console.log("CHANNEL MESSAGE: " + data.payload);
+	  console.log("FROM: " + peer.id);
+	  
       //add clientID to DOM video node
-      document.getElementById(peer.id+'_video_incoming').setAttribute("id", data.payload);
-    } else if (data.type === 'chatMessage'){
+      document.getElementById(peer.id + '_video_incoming').setAttribute("id", data.payload);
+    } 
+	else if (data.type === 'chatMessage')
+	{
       playerEvents.emit('addChatMessage', peer.id, data.payload.message, data.payload.username);
     }
   });
 
   this.webrtc.on('videoAdded', function(video,peer){
+	console.log("***** STARTING CHANNEL TO PEER: " peer.id);
     videoAdd(video, peer, realFaces.webrtc.yourID);
   });
 
@@ -140,6 +149,7 @@ var videoAdd = function (video, peer, clientID) {
   // Now send my name to all the peers
   // Add a small timeout so dataChannel has time to be ready
   setTimeout(function(){
+	console.log("******* SENDING setClientID to ALL Connections");
     realFaces.webrtc.webrtc.webrtc.sendDirectlyToAll('realTalkClient','setClientID', realFaces.socket.yourID);
   }, 3000);
 };
