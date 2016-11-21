@@ -374,11 +374,10 @@
 			<?php
 				if(isset($_GET['session']))
 				{
-					echo "$(document).ready(function(){
+					echo "
+					$('.wrapper').append('<a href=\"#\" data-toggle=\"\" title=\"Popover Header\" data-content=\"Some content inside the popover\">Toggle popover</a>');
 					$('[data-toggle=\"popover\"]').popover(); 
-					});
-
-					$('.wrapper').append('<a href=\"#\" data-toggle=\"\" title=\"Popover Header\" data-content=\"Some content inside the popover\">Toggle popover</a>)";
+					";
 				};
 			?>
 
