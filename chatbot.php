@@ -372,7 +372,7 @@
 			//$('#accordion').accordion("refresh");        
 			//$('#accordion').append(createGraph);	
 			<?php
-				if($_GET['session'])
+				if(isset($_GET['session']))
 				{
 					echo "$(document).ready(function(){
 					$('[data-toggle='popover']').popover(); 
