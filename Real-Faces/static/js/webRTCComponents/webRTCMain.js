@@ -26,7 +26,7 @@ var RealWebRTC =  function (clientID) {
       peer.socketID = data.payload;
 
 	  console.log("****** ADD CLIENT ID TO VIDEO DOM NODE *********");
-	  console.log(JSON.strinfigy(data));
+	  console.log(data);
 	  console.log("*****************************");
 	  console.log("CHANNEL MESSAGE: " + data.payload);
 	  console.log("FROM: " + peer.id);
