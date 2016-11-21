@@ -41,7 +41,7 @@ var RealWebRTC =  function (clientID) {
   });
 
   this.webrtc.on('videoAdded', function(video,peer){
-	console.log("***** STARTING CHANNEL TO PEER: " peer.id);
+	console.log("***** STARTING CHANNEL TO PEER: " + peer.id);
     videoAdd(video, peer, realFaces.webrtc.yourID);
   });
 
