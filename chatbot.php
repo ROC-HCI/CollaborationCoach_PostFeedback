@@ -371,15 +371,16 @@
 			console.log(graphDiv);	
 			//$('#accordion').accordion("refresh");        
 			//$('#accordion').append(createGraph);	
+			<?php
+				if($_GET['session'])
+				{
+					echo "$(document).ready(function(){
+					$('[data-toggle='popover']').popover(); 
+					});
 
-			if($_GET['session'])
-			{
-				echo "$(document).ready(function(){
-				$('[data-toggle="popover"]').popover(); 
-				});
-
-				$('.wrapper.append('<a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>)";
-			};
+					$('.wrapper').append('<a href='#' data-toggle='popover' title='Popover Header' data-content='Some content inside the popover'>Toggle popover</a>)";
+				};
+			?>
 
 			make_Graph(type);
 			$('.wrapper').slideDown("slow", function(){
