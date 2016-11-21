@@ -372,6 +372,15 @@
 			//$('#accordion').accordion("refresh");        
 			//$('#accordion').append(createGraph);	
 
+			if($_GET['session'])
+			{
+				echo "$(document).ready(function(){
+				$('[data-toggle="popover"]').popover(); 
+				});
+
+				$('.wrapper.append('<a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>)";
+			};
+
 			make_Graph(type);
 			$('.wrapper').slideDown("slow", function(){
 				//slide first to obtain the height then scroll
