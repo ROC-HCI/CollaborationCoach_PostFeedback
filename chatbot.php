@@ -28,7 +28,7 @@
 		<nav class="navbar navbar-dark">
       		<div class="container-fluid">
         		<a class="navbar-brand" href="#">
-    				<img src="https://files.slack.com/files-pri/T1FSQC4CB-F2VMXLQ5D/rlogo.png" class="img-fluid" alt="">
+    				<img src="Real-Faces/static/images/coco.png" class="img-fluid" alt="">
         		</a> 
         		<div class="header-title">
         			<h1>Feedback Assistant</h1>
