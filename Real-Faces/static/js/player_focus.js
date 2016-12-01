@@ -25,7 +25,7 @@ function focus_sample()
 			                      "focus":info,
 			                      "emotions": affdex_emotions,
 								  "expressions": affdex_expressions};
-			console.log(sample_element);
+			//console.log(sample_element);
 			timeLine.push(sample_element);
 			count++;
 		}
