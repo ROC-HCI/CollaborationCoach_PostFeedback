@@ -260,7 +260,7 @@ function setup_local_media(callback, errorback)
 	/* Ask user for permission to use the computers microphone and/or camera, 
 	 * attach it to an <audio> or <video> tag if they give us access. */
 	console.log("Requesting access to local audio / video inputs");
-	getUserMedia({"audio":USE_AUDIO, "video":USE_VIDEO},
+	navigator.getUserMedia({"audio":USE_AUDIO, "video":USE_VIDEO},
 		function(stream) 
 		{ /* user accepted access to a/v */
 			console.log("Access granted to audio/video");
