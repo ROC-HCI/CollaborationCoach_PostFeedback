@@ -270,7 +270,9 @@ function setup_local_media(callback, errorback)
 			local_media.attr("muted", "true"); /* always mute ourselves by default */
 			local_media.attr("controls", "");
 			$('body').append(local_media);
-			attachMediaStream(local_media[0], stream);
+			local_media[0].srcObject = stream;
+			
+			//attachMediaStream(local_media[0], stream);
 
 			if (callback) callback();
 		},
