@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+	    <style>
+            html, body 
+			{ 
+                background-color: #333; 
+            }
+			
+            video 
+			{
+                width:  320px;
+                height:  240px;
+                border:  1px solid black;
+            }
+        </style>
+		
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		
+        <!-- This adapter.js file de-prefixes the webkit* and moz* prefixed RTC
+             methods. When RTC becomes a more solid standard, this adapter should no
+             longer be necessary. -->
+        <script src="https://webrtc.googlecode.com/svn/trunk/samples/js/base/adapter.js"></script>
+		
+		<!-- Coco Conference Application jscript includes -->
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="Client/startup.js"></script>
+    </head>
+	
+    <body onload='init()'>
+        <!-- 
+        the <video> and <audio> tags are all added and removed dynamically
+        in 'onAddStream', 'setup_local_media', and 'removePeer'/'disconnect'
+        -->
+    </body>
+</html>
