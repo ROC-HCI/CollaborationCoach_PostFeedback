@@ -133,7 +133,7 @@ module.exports = function(io){
       //credentials.push(generateCredentialObj());
 
       // tell client about stun and turn servers and generate nonces
-      client.emit('stunservers', servers.stunservers || []);
+      //client.emit('stunservers', servers.stunservers || []);
       client.emit('turnservers', credentials);
   });
 };
