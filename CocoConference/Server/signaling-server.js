@@ -35,11 +35,6 @@ server.listen(PORT, null, function()
 main.use(bodyParser.urlencoded({ extended: false }));
 main.use(bodyParser.json());
 
-main.get('/', function(req, res){ res.sendfile('newclient.html'); });
-main.get('/index.html', function(req, res){ res.sendfile('newclient.html'); });
-main.get('/client.html', function(req, res){ res.sendfile('newclient.html'); });
-
-
 
 /*************************/
 /*** INTERESTING STUFF ***/
