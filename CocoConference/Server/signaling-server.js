@@ -37,10 +37,18 @@ main.use(bodyParser.json());
 
 
 /*************************/
-/*** INTERESTING STUFF ***/
+/* Session Specific Data */
 /*************************/
 var channels = {};
 var sockets = {};
+
+var sessionKey = uuid.v1();
+
+var connectedUsers = 0;
+var requiredUsercount = 2;
+var sessionStarted = false;
+
+var uploads_finished = 0;
 
 /**
  * Users will connect to the signaling server, after which they'll issue a "join"
@@ -68,6 +76,8 @@ io.sockets.on('connection', function (socket)
 		
         console.log("["+ socket.id + "] disconnected");
         delete sockets[socket.id];
+		
+		connectedUsers = connectedUsers - 1;
     });
 
 
@@ -96,6 +106,27 @@ io.sockets.on('connection', function (socket)
 
         channels[channel][socket.id] = socket;
         socket.channels[channel] = channel;
+		
+		connectedUsers = connectedUsers + 1;
+		
+		// If we've filled up all the seats and haven't started
+		// the session, start the session.
+		/*
+		if(seatLocation == (requiredUsercount - 1) && !sessionStarted)
+		{
+			// Slight delay prior to running this.
+			setTimeout(function ()
+			{
+				for(id in channels[channel])
+				{
+				client.broadcast.to(client.roomName).emit('session_start','start');
+				client.emit('session_start','start');
+				sessionStarted = true;
+				}
+			},
+			3000);
+		}
+		*/
     });
 
     function part(channel) 
