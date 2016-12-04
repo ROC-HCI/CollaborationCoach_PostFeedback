@@ -10,11 +10,11 @@ var MUTE_AUDIO_BY_DEFAULT = false;
 var ICE_SERVERS = 
 [
 {
-	url: 'turn:numb.viagenie.ca',
+	/*url: 'turn:numb.viagenie.ca',
 		credential: 'stupidpassword1',
 		username: 'jwhite37@ur.rochester.edu'
-	},
-	//{url:"stun:stun.l.google.com:19302"},
+	},*/
+	{url:"stun:stun.l.google.com:19302"},
 ];
 
 
@@ -274,7 +274,7 @@ function setup_local_media(callback, errorback)
 			local_media.attr("autoplay", "autoplay");
 			local_media.attr("muted", "true"); /* always mute ourselves by default */
 			local_media.attr("controls", "");
-			$('body').append(local_media);
+			$('body').append(local_media);			
 			attachMediaStream(local_media[0], stream);
 
 			if (callback) callback();
