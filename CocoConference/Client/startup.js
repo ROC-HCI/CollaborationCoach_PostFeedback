@@ -14,7 +14,7 @@ var ICE_SERVERS =
 		credential: 'stupidpassword1',
 		username: 'jwhite37@ur.rochester.edu'
 	},
-	{url:"stun:stun.l.google.com:19302"},
+	//{url:"stun:stun.l.google.com:19302"},
 ];
 
 
