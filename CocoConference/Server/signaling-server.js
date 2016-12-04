@@ -8,7 +8,10 @@ var PORT = 8082;
 /*** SETUP ***/
 /*************/
 var express = require('express');
+var bodyParser = require('body-parser');
 var http = require('http');
+
+
 var main = express()
 var server = http.createServer(main)
 var io  = require('socket.io').listen(server);
@@ -19,7 +22,9 @@ server.listen(PORT, null, function()
     console.log("Listening on port " + PORT);
 });
 
-main.use(express.bodyParser());
+//main.use(express.bodyParser());
+main.use(bodyParser.urlencoded({ extended: false }));
+main.use(bodyParser.json());
 
 main.get('/', function(req, res){ res.sendfile('newclient.html'); });
 main.get('/index.html', function(req, res){ res.sendfile('newclient.html'); });
