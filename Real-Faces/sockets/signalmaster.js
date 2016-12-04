@@ -112,8 +112,8 @@ module.exports = function(io){
       console.log('=========================================')
       var servers = {
         "stunservers" : stunServers.servers,
-        "turnservers" :
-          [
+        "turnservers" : turnServers.servers
+          //[
             /*
             this is an example of how you can generate credentials. generally we dont need to.
             {
@@ -122,7 +122,7 @@ module.exports = function(io){
               "expiry": 86400
             }
             */
-          ]
+          //]
       };
 
       //load pre-generated credentials
