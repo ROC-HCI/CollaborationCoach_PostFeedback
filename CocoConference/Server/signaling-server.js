@@ -15,7 +15,6 @@ var http = require('http');
 var main = express()
 var server = http.createServer(main)
 var io  = require('socket.io').listen(server);
-io.set('log level', 1);
 
 server.listen(PORT, null, function() 
 {
