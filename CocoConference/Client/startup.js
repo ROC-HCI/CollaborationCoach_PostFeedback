@@ -9,12 +9,12 @@ var MUTE_AUDIO_BY_DEFAULT = false;
 /** Also see: https://gist.github.com/zziuni/3741933 **/
 var ICE_SERVERS = 
 [
-{
-	/*url: 'turn:numb.viagenie.ca',
-		credential: 'stupidpassword1',
-		username: 'jwhite37@ur.rochester.edu'
-	},*/
-	{url:"stun:stun.l.google.com:19302"},
+	{
+		url: 'turn:webrtcweb.com:7788',
+		credential: 'muazkh',
+		username: 'muazkh'
+	},
+	//{url:"stun:stun.l.google.com:19302"},
 ];
 
 
