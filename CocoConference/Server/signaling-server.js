@@ -1,7 +1,7 @@
 /**************/
 /*** CONFIG ***/
 /**************/
-var PORT = 8080;
+var PORT = 8082;
 
 
 /*************/
@@ -14,9 +14,11 @@ var server = http.createServer(main)
 var io  = require('socket.io').listen(server);
 io.set('log level', 1);
 
-server.listen(PORT, null, function() {
+server.listen(PORT, null, function() 
+{
     console.log("Listening on port " + PORT);
 });
+
 main.use(express.bodyParser());
 
 main.get('/', function(req, res){ res.sendfile('newclient.html'); });
@@ -41,35 +43,44 @@ var sockets = {};
  * information. After all of that happens, they'll finally be able to complete
  * the peer connection and will be streaming audio/video between eachother.
  */
-io.sockets.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) 
+{
     socket.channels = {};
     sockets[socket.id] = socket;
 
     console.log("["+ socket.id + "] connection accepted");
-    socket.on('disconnect', function () {
-        for (var channel in socket.channels) {
+	
+    socket.on('disconnect', function () 
+	{
+        for (var channel in socket.channels) 
+		{
             part(channel);
         }
+		
         console.log("["+ socket.id + "] disconnected");
         delete sockets[socket.id];
     });
 
 
-    socket.on('join', function (config) {
+    socket.on('join', function (config) 
+	{
         console.log("["+ socket.id + "] join ", config);
         var channel = config.channel;
         var userdata = config.userdata;
 
-        if (channel in socket.channels) {
+        if (channel in socket.channels) 
+		{
             console.log("["+ socket.id + "] ERROR: already joined ", channel);
             return;
         }
 
-        if (!(channel in channels)) {
+        if (!(channel in channels)) 
+		{
             channels[channel] = {};
         }
 
-        for (id in channels[channel]) {
+        for (id in channels[channel]) 
+		{
             channels[channel][id].emit('addPeer', {'peer_id': socket.id, 'should_create_offer': false});
             socket.emit('addPeer', {'peer_id': id, 'should_create_offer': true});
         }
@@ -78,10 +89,12 @@ io.sockets.on('connection', function (socket) {
         socket.channels[channel] = channel;
     });
 
-    function part(channel) {
+    function part(channel) 
+	{
         console.log("["+ socket.id + "] part ");
 
-        if (!(channel in socket.channels)) {
+        if (!(channel in socket.channels)) 
+		{
             console.log("["+ socket.id + "] ERROR: not in ", channel);
             return;
         }
@@ -89,14 +102,16 @@ io.sockets.on('connection', function (socket) {
         delete socket.channels[channel];
         delete channels[channel][socket.id];
 
-        for (id in channels[channel]) {
+        for (id in channels[channel]) 
+		{
             channels[channel][id].emit('removePeer', {'peer_id': socket.id});
             socket.emit('removePeer', {'peer_id': id});
         }
     }
     socket.on('part', part);
 
-    socket.on('relayICECandidate', function(config) {
+    socket.on('relayICECandidate', function(config) 
+	{
         var peer_id = config.peer_id;
         var ice_candidate = config.ice_candidate;
         console.log("["+ socket.id + "] relaying ICE candidate to [" + peer_id + "] ", ice_candidate);
@@ -106,7 +121,8 @@ io.sockets.on('connection', function (socket) {
         }
     });
 
-    socket.on('relaySessionDescription', function(config) {
+    socket.on('relaySessionDescription', function(config) 
+	{
         var peer_id = config.peer_id;
         var session_description = config.session_description;
         console.log("["+ socket.id + "] relaying session description to [" + peer_id + "] ", session_description);

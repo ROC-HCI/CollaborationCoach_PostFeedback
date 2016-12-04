@@ -1,8 +1,8 @@
 /** CONFIG **/
-var SIGNALING_SERVER = "";
+var SIGNALING_SERVER = "http://conference.eastus.cloudapp.azure.com:8082";
 var USE_AUDIO = true;
 var USE_VIDEO = true;
-var DEFAULT_CHANNEL = 'some-global-channel-name';
+var DEFAULT_CHANNEL = 'coco-conference';
 var MUTE_AUDIO_BY_DEFAULT = false;
 
 /** You should probably use a different stun server doing commercial stuff **/
@@ -11,7 +11,6 @@ var ICE_SERVERS =
 [
 	{url:"stun:stun.l.google.com:19302"}
 ];
-
 
 
 var signaling_socket = null;   /* our socket.io connection to our webserver */
@@ -27,7 +26,8 @@ function init()
 	signaling_socket.on('connect', function() 
 	{
 		console.log("Connected to signaling server");
-		setup_local_media(function() {
+		setup_local_media(function() 
+		{
 			/* once the user has given us access to their
 			 * microphone/camcorder, join the channel and start peering up */
 			join_chat_channel(DEFAULT_CHANNEL, {'whatever-you-want-here': 'stuff'});
