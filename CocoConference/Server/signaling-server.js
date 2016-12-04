@@ -7,13 +7,23 @@ var PORT = 9000;
 /*************/
 /*** SETUP ***/
 /*************/
+var fs = require('fs');
+var uuid = require('node-uuid');
+
 var express = require('express');
 var bodyParser = require('body-parser');
-var http = require('http');
+var https = require('https');
 
+var pkey = fs.readFileSync('/etc/apache2/ssl/apache.key');
+var pcert = fs.readFileSync('/etc/apache2/ssl/apache.crt');
+
+var options = {
+    key: pkey,
+    cert: pcert
+};
 
 var main = express()
-var server = http.createServer(main)
+var server = https.createServer(options, main)
 var io  = require('socket.io').listen(server);
 
 server.listen(PORT, null, function() 
