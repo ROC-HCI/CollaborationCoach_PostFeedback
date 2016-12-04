@@ -1,5 +1,5 @@
 /** CONFIG **/
-var SIGNALING_SERVER = "http://conference.eastus.cloudapp.azure.com:9000";
+var SIGNALING_SERVER = "https://conference.eastus.cloudapp.azure.com:9000";
 var USE_AUDIO = true;
 var USE_VIDEO = true;
 var DEFAULT_CHANNEL = 'coco-conference';
