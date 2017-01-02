@@ -1,0 +1,409 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Tahoma, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.1px;
+  font-size: 1.8rem;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  background: #2ba2db;
+}
+
+header nav .navbar-brand img {
+  width: 80%;
+}
+
+h5.graph-header
+{
+	background-color: #2ba2db;
+	color: #FFF;
+	font-weight: bold;
+	text-align: center;
+}
+
+.header-title {
+  padding-left: 40%;
+  padding-top: 1%;
+  /*margin: 0 auto;*/
+}
+.header-title h1 {
+  font-size: 3rem;
+}
+
+.main {
+  background: white;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  width: inherit;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.contain-body {
+  /*height: 85%; */
+  overflow: hidden;
+  padding-bottom: 50px;
+  width: 60%;
+  /*width: 100%; */
+}
+
+/*   background: tomato; */
+.inner-contain-body {
+  /*width: 120%; */
+  overflow: auto;
+  height: 65%;
+  padding-top: 10px;
+}
+
+.contain-graph {
+  background: #f2f2f2;
+  width: 40%;
+  /*margin-top: 65px;*/
+  overflow: auto;
+  border-left: #2ba2db;
+  border-style: inset;
+}
+
+.contain-filter {
+  width: 100%;
+  /*height: 10%;*/
+  /*background: tomato;*/
+  padding: 5px 25px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  /*justify-content: space-around;*/
+  /*flex-direction: row;*/
+}
+
+.contain-filter > * {
+  /*flex: 1;*/
+   /*width: 22%; */
+/*   overflow: hidden; */
+  margin-top: 10px;
+  margin-right: 15px;
+  /*background: aliceblue;*/
+/*   vertical-align: middle; */
+}
+
+.contain-filter > h4 {
+  line-height: 1.0;
+  font-weight: bold;
+  
+}
+
+.inner-contain-graph {
+  /*background: tomato; */
+  width: 100%;
+  overflow: auto;
+  overflow-y: scroll;
+  height: 90%;
+}
+
+.inner-contain-graph > * {
+  /*padding: 25px 0; */
+  background: #f2f2f2;
+  height: 100%;
+  width: 100%;
+}
+
+
+.clr{
+    clear:both;
+    font-size:0;
+}
+
+/* right side */
+#messages { 
+/*   display: relative; */
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+  /*margin-top: 5em;*/
+  /*padding: 15px;*/
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+/*   height: 50%; */
+}
+#messages li { 
+  text-decoration: none;
+  padding: 5px 10px;
+  display: inline-block; 
+}
+
+/*optional roboto's name*/
+/*span.name {
+  font-weight: 900;
+  color: #2c2d30!important;
+  line-height: 1.125rem;
+  clear: both;
+}*/
+
+.message-content {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.profile {
+  width: 80%;
+  padding-top: 6px;
+}
+
+.left {
+  padding-right: 2rem;
+}
+
+.right {
+  background: #2ba2db;
+  max-width: 50rem;
+  padding: 15px 15px 10px 15px;
+  border-radius: 10px;
+}
+
+.user-right {
+  background: #f1f0f0;
+  color: black;
+  padding-right: 2rem;
+  width: 100%;
+}
+
+span.content {
+  /*display: block;*/
+  line-height: 2rem;
+  word-wrap: break-word;
+}
+
+.active {
+  opacity: 1;
+}
+
+.message-option {
+  width: 90%;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  position: fixed; 
+  justify-content: space-between;
+  bottom: 1.375rem; 
+  width: inherit; 
+}
+
+.message-option > button {
+  flex: 1 0 auto;
+  margin: 0 5px;
+  color: white!important;
+  border: 4px solid #2ba2db;
+  border-radius: 6px 6px 6px 6px;
+  background: #2ba2db;
+  padding: 15px;
+}
+
+.container-layer {
+  width: 95%;
+  height: 90%;
+  margin: 0 auto;
+}
+
+.outer2 {
+  background: white;
+}
+
+/*migrated css from graph to chatbot*/
+/*@import url(https://fonts.googleapis.com/css?family=Oswald);
+
+body {
+  font-family: "Oswald", sans-serif;
+  color: #A7A9AC;
+}*/
+
+.container {
+  width: 100%;
+}
+
+span.chart-label{
+  color: #a9bcd0;
+}
+
+.outer {
+   float:left;
+   position: relative;
+   width: 25%;
+   left: 25%;
+}
+
+/*mobile config needed*/
+.outer2 {
+/*   float: left; */
+/*   position: relative; */
+/*   margin: 0 auto; */
+/*   width: 100%; */
+  max-height: 200px;
+  margin-bottom: 10%;
+  clear: both;
+}
+
+.outer2 canvas {
+  width: 100% !important;
+  /*height: auto !important;*/
+  min-width: 300px;
+  margin: 0 auto;
+}
+
+.inner-contain1{
+  display: inline-block;
+  /*background: aliceblue;*/
+  width: 50%;
+}
+
+/*chart3*/
+.inner-contain3 {
+  width: 60%;
+  padding-top: 10%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.inner-contain3 svg {
+  position: absolute;
+}
+
+#guest0 {
+  margin-top: -12%;
+  left: 0%;
+}
+
+/*possibly only working for 4 people*/
+#guest1,#guest2,#guest3{
+    /*top: 110%;*/
+    padding-left: 10px;
+    padding-top: 15px;
+    width: 95%;
+}
+
+#guest-1 {
+  top: 10%;
+  left: 20%;
+  width:80%;
+  /*z-index: -1;*/
+}
+
+.graph-container {
+  width:100%;
+  height: 250px;
+  background-color: white;
+  padding: 10px 0; /*spacing above and below the graph*/
+}
+
+.container-background {
+  background: #f2f2f2;
+  height:10%;
+}
+
+h5 {
+  background: white;
+  padding: 15px;
+  font-size: 15px;
+  color: purple;
+}
+
+.wrapper{
+  background: white;
+  max-width: 85%; /*readability*/
+  margin: 0 auto;
+  margin-top: 7%;
+  position: relative;
+  border-bottom: 3px solid #eceeef; /*add shadow*/
+  padding-bottom: 1em;
+}
+
+/*stuff for RocConf main page*/
+.btn-success {
+  background: #2ba2db;
+  border-color: #2ba2db;
+}
+
+.jumbotron {
+  background: #2ba2db;
+}
+
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.indexContainer {
+  width: 80%;
+}
+
+.marketing {
+  color: black;
+}
+
+#chart1{
+  position: absolute;
+  margin-left: 240px;
+  margin-top: 50px;
+  font-family:Helvetica, Arial, sans-serif; 
+  font-size:12px;
+}
+
+#chart2{
+  position: absolute;
+  margin-left: 200px;
+  margin-top: 150px;
+  font-family:Helvetica, Arial, sans-serif;
+  font-size:12px;
+}
+
+#chart6 {
+  width:90%;
+  margin: auto;
+}
+#chart6 svg {
+  background: none!important;
+}
+
+#barChart {
+  max-width: 430px;
+  max-height: 220px;
+}
+
+g.raphael-group-2-background {
+    display: none!important;
+}
+
+g.raphael-group-6-axistop {
+	display: none!important;
+}
+
+.dynotext
+{
+  color:yellow;
+}
+
+.individualSmiles {
+    color: black;
+    margin: auto;
+    width: 250px;
+}
