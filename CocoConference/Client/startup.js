@@ -57,6 +57,11 @@ function init()
 		peer_media_elements = {};
 	});
 	
+	signaling_socket.on('session_start', function()
+	{
+		
+	});
+	
 	function join_chat_channel(channel, userdata) 
 	{
 		signaling_socket.emit('join', {"channel": channel, "userdata": userdata});

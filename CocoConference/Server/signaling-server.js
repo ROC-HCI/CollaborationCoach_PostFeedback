@@ -109,24 +109,21 @@ io.sockets.on('connection', function (socket)
 		
 		connectedUsers = connectedUsers + 1;
 		
-		// If we've filled up all the seats and haven't started
-		// the session, start the session.
-		/*
-		if(seatLocation == (requiredUsercount - 1) && !sessionStarted)
+		// If we've got our users we're all set
+		if((connectedUsers == requiredUsercount) && !sessionStarted)
 		{
 			// Slight delay prior to running this.
 			setTimeout(function ()
 			{
 				for(id in channels[channel])
 				{
-				client.broadcast.to(client.roomName).emit('session_start','start');
-				client.emit('session_start','start');
-				sessionStarted = true;
+					channels[channel][id].emit('session_start','start');
+					socket.emit('session_start','start');
 				}
+				sessionStarted = true;
 			},
 			3000);
 		}
-		*/
     });
 
     function part(channel) 
