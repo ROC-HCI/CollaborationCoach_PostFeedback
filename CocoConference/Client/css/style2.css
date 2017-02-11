@@ -1,0 +1,276 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #ffffff;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+}
+
+header {
+  height: 12%;
+  background-color: #2ba2db;
+}
+
+#Text{
+  text-align: center;
+  padding-top: 1%;
+  font-size: 2.5rem;
+  color: #ffffff
+}
+
+#roomURL{
+  border: 2px solid;
+  border-color: white;
+  border-radius: 10px;
+  background: no-repeat scroll 0% 0% transparent;
+  background-color: #D3D3D3;
+  width: 40%;
+  overflow: auto;
+  height: 40px;
+  /*min-height: 10%;*/
+  position: float;
+  bottom: 5%;
+  opacity: 0.75;
+  float: left;
+}
+
+/*body > #realFacesCanvas{
+  z-index: -100 !important;
+}*/
+
+#videoFeeds {
+  /*z-index: 0;*/
+
+  position: relative;
+
+  width: 80%;
+  height: 100%;
+
+  background-color: #ffffff;
+  float: left;
+}
+
+#Analytics {
+
+  position: relative;
+
+  width: 20%;
+  height: 100%;
+
+  background-color: #f2f2f2;
+  float: right;
+}
+
+#controls {
+
+  white-space: pre;
+
+}
+
+#instructions {
+
+  width: 100%;
+  height: 100%;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  box-orient: horizontal;
+
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+
+  color: #ffffff;
+  text-align: center;
+
+  cursor: pointer;
+
+}
+
+#webcamWarning {
+  visibility: hidden;
+  font-size: 20px;
+  color: red;
+}
+
+#chatBox{
+  border: 2px solid;
+  border-color: white;
+  border-radius: 10px;
+  background: no-repeat scroll 0% 0% transparent;
+  background-color: #D3D3D3;
+  width: 40%;
+  overflow: auto;
+  min-height: 10%;
+  position: absolute;
+  bottom: 5%;
+  opacity: 0.75;
+}
+
+#chatBox:hover{
+  opacity: 1.0;
+}
+
+#chatMessage {
+  border: 2px solid;
+  border-color: white;
+  border-radius: 10px;
+  background: no-repeat scroll 0% 0% transparent;
+  background-color: #A9A9A9;
+  height: 2%;
+  text-align: left;
+  margin-top:2px;
+  padding: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  position: relative;
+}
+
+#chatInput {
+  border: 2px solid;
+  border-color: white;
+  border-radius: 2px;
+  background: no-repeat scroll 0% 0% transparent;
+  background-color: #A9A9A9;
+  width: 80%;
+  height: 20px;
+  position: relative;
+  margin-top: 5%;
+  margin-left: 2%;
+  float: left;
+}
+
+#chatInputButton {
+  border: 2px solid;
+  border-color: white;
+  border-radius: 5px;
+  background: no-repeat scroll 0% 0% transparent;
+  background-color: #A9A9A9;
+  width: 10%;
+  height: 25px;
+  position: relative;
+  margin-right: 2%;
+  margin-top: 5%;
+  float: right;
+}
+
+#playerFocusHUDNotifitcation {
+  border: 2px solid;
+  border-color: white;
+  border-radius: 5px;
+  background: no-repeat scroll 0% 0% transparent;
+  width: 28%;
+  height: 20px;
+  background-color: #A9A9A9;
+  position: relative;
+  margin-right: 2%;
+  margin-top: 5%;
+  float: right;
+}
+
+#peopleTalking {
+  border: 2px solid;
+  border-color: white;
+  border-radius: 5px;
+  background: no-repeat scroll 0% 0% transparent;
+  width: 60%;
+  height: 10px;
+  background-color: #A9A9A9;
+  position: relative;
+  margin-left: 20%;
+  margin-top: 5%;
+  float: center;
+  text-align: center;
+}
+
+#Controls {
+  border: 2px solid;
+  border-color: white;
+  border-radius: 5px;
+  background: no-repeat scroll 0% 0% transparent;
+  width: 6%;
+  height: 20px;
+  background-color: #A9A9A9;
+  position: relative;
+  margin-top: 5%;
+  margin-left: .5%;
+  float: left;
+}
+
+#Reset {
+    border: 2px solid;
+  border-color: white;
+  border-radius: 5px;
+  background: no-repeat scroll 0% 0% transparent;
+  width: 6%;
+  height: 20px;
+  background-color: #A9A9A9;
+  position: relative;
+  margin-top: 5%;
+  margin-left: .5%;
+  float: left;
+}
+
+#Output {
+    border: 2px solid;
+  border-color: white;
+  border-radius: 5px;
+  background: no-repeat scroll 0% 0% transparent;
+  width: 8%;
+  height: 20px;
+  background-color: #A9A9A9;
+  position: relative;
+  margin-top: 5%;
+  margin-left: 2%;
+  float: left;
+}
+
+#remotesVideos > video {
+  position: relative;
+  /*float: center;*/
+  margin-top: 3%;
+  margin-right: 20%;
+  width: 50%;
+}
+
+#BackgroundFeeds {
+  position: relative;
+  margin-top: 7.25%;
+  margin-left: 2%;
+  float: right;
+  width: 20%;
+}
+
+#bigFeed {
+  position: relative;
+  margin-top: 4%;
+  margin-left: 5%;
+  float: left;
+}
+
+#localVideo {
+  visibility: hidden;
+}
+
+#endCallButton{
+  margin-left: 18%;
+  margin-top: 195%;
+  width: 70%;
+  height: 8%;
+  background-color: #2ba2db;
+  color: #ffffff;
+  border-color: #A9A9A9;
+}
