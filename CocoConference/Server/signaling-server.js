@@ -109,17 +109,23 @@ io.sockets.on('connection', function (socket)
         channels[channel][socket.id] = socket;
         socket.channels[channel] = channel;
 		
+		//=================================================================================================
+		// CoCo Join Scripting
+		//=================================================================================================
+		
+		//tells this client the current session ID
+		socket.emit('session_key', sessionKey);		
+		
 		connectedUsers = connectedUsers + 1;
 		
 		// If we've got our users we're all set to start recording data
 		if((connectedUsers == requiredUserCount) && !sessionStarted)
 		{
-			// Slight delay prior to running this to allow the last user to properly handshake.
+			// Slight delay prior to running this to allow the last user to properly resolve the connection.
 			setTimeout(function ()
 			{
 				for(id in channels[channel])
 					channels[channel][id].emit('session_start','start');
-				//socket.emit('session_start','start');
 				sessionStarted = true;
 			},
 			3000);
@@ -173,7 +179,7 @@ io.sockets.on('connection', function (socket)
 	// CoCo Experiment Socket Handlers
 	//=====================================================================================================================
 	
-	// One client has hit the 'End Call' button, let everybody else know
+	// One client has hit the 'End Call' button, let everybody in this channel know
 	socket.on('propose_stop', function(data)
 	{
 		if(sessionStarted)
@@ -181,8 +187,20 @@ io.sockets.on('connection', function (socket)
 			for(id in channels[channel])
 				channels[channel][id].emit('session_end','end');				
 			
-			// socket.emit('session_end','end');
 			sessionStarted = false;
+		}
+	});
+	
+	// Each client will tell the server when it has finished uploading video
+	socket.on('upload_finished', function(data)
+	{
+		uploadsFinishedCount = uploadsFinishedCount + 1;
+		
+		if(uploadsFinishedCount == requiredUserCount)
+		{
+			// This client is the last to finish uploading,
+			// so we'll delegate them to make the shell API call.
+			client.emit('shell_delegate','tell the API to do the thing!');
 		}
 	});
 });
