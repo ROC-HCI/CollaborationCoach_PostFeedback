@@ -112,7 +112,7 @@ io.sockets.on('connection', function (socket)
 		connectedUsers = connectedUsers + 1;
 		
 		// If we've got our users we're all set to start recording data
-		if((connectedUsers == requiredUsercount) && !sessionStarted)
+		if((connectedUsers == requiredUserCount) && !sessionStarted)
 		{
 			// Slight delay prior to running this to allow the last user to properly handshake.
 			setTimeout(function ()
