@@ -59,7 +59,7 @@ function init()
 	
 	signaling_socket.on('session_start', function()
 	{
-		
+		console.log("Received Session Start!");
 	});
 	
 	function join_chat_channel(channel, userdata) 

@@ -1,12 +1,15 @@
-/**************/
-/*** CONFIG ***/
-/**************/
+/**********************************************************************************/
+/* Original Source: https://github.com/anoek/webrtc-group-chat-example            */
+/*                                                                                */
+/* Modifications - CoCo Team, University of Rochester                             */
+/*                                                                                */
+/**********************************************************************************/
+
+/************************************/
+/* Signaling Server Setup           */
+/************************************/
 var PORT = 9000;
 
-
-/*************/
-/*** SETUP ***/
-/*************/
 var fs = require('fs');
 var uuid = require('node-uuid');
 
@@ -31,7 +34,6 @@ server.listen(PORT, null, function()
     console.log("Listening on port " + PORT);
 });
 
-//main.use(express.bodyParser());
 main.use(bodyParser.urlencoded({ extended: false }));
 main.use(bodyParser.json());
 
@@ -45,10 +47,10 @@ var sockets = {};
 var sessionKey = uuid.v1();
 
 var connectedUsers = 0;
-var requiredUsercount = 2;
-var sessionStarted = false;
+var requiredUserCount = 2;
 
-var uploads_finished = 0;
+var sessionStarted = false;
+var uploadsFinishedCount = 0;
 
 /**
  * Users will connect to the signaling server, after which they'll issue a "join"
@@ -109,17 +111,15 @@ io.sockets.on('connection', function (socket)
 		
 		connectedUsers = connectedUsers + 1;
 		
-		// If we've got our users we're all set
+		// If we've got our users we're all set to start recording data
 		if((connectedUsers == requiredUsercount) && !sessionStarted)
 		{
-			// Slight delay prior to running this.
+			// Slight delay prior to running this to allow the last user to properly handshake.
 			setTimeout(function ()
 			{
 				for(id in channels[channel])
-				{
 					channels[channel][id].emit('session_start','start');
-					socket.emit('session_start','start');
-				}
+				//socket.emit('session_start','start');
 				sessionStarted = true;
 			},
 			3000);
@@ -168,4 +168,21 @@ io.sockets.on('connection', function (socket)
             sockets[peer_id].emit('sessionDescription', {'peer_id': socket.id, 'session_description': session_description});
         }
     });
+	
+	//=====================================================================================================================
+	// CoCo Experiment Socket Handlers
+	//=====================================================================================================================
+	
+	// One client has hit the 'End Call' button, let everybody else know
+	socket.on('propose_stop', function(data)
+	{
+		if(sessionStarted)
+		{
+			for(id in channels[channel])
+				channels[channel][id].emit('session_end','end');				
+			
+			// socket.emit('session_end','end');
+			sessionStarted = false;
+		}
+	});
 });
