@@ -77,6 +77,7 @@ function init()
 
 	signaling_socket.on('session_end', function()
 	{
+		console.log("RECEIVED SESSION END");
 	    stopRecordingOnHangup();
 		
 		/*recognizing = false;
