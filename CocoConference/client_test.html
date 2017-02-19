@@ -21,21 +21,16 @@
 
 <body onload='init()'>
 	<header>
-		<div id="Text">Conference Room</div>
+		<div id="text">Conference Room</div>
 	</header>
-
-	<div id="game"></div>
-	<div id="videoFeeds"></div>
-	<div id="bigFeed"></div>
-	<div id="BackgroundFeeds"></div>
-	<span id="remotesVideos"></span>
 	
-	<div id="Analytics">
-		<button id="endCallButton" onClick="proposeStop()">End Call</button>
+	<div id="focus_feed"></div>
+	<div id="background_feeds">
+		<span id="remote_videos"></span>
 	</div>
 	
-	<div id="Controls"><button id="proposeStop" onClick="proposeStop()">End Call</button></div>
-
-	<h3 id="instructions"></h3>
+	<div id="experiment_controls">
+		<button id="end_call_button" onClick="proposeStop()">End Call</button>
+	</div>
 </body>
 </html>

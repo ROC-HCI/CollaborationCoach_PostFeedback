@@ -280,7 +280,7 @@ function setup_local_media(callback, errorback)
 			local_media.attr("autoplay", "autoplay");
 			local_media.attr("muted", "true"); /* always mute ourselves by default */
 			local_media.attr("controls", "");
-			local_media.attr("id", "localVideo");
+			local_media.attr("id", "local_video");
 			$('body').append(local_media);			
 			attachMediaStream(local_media[0], stream);
 
