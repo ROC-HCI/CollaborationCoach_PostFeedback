@@ -72,13 +72,13 @@ function init()
 
 	signaling_socket.on('session_end', function()
 	{
-	    /*stopRecordingOnHangup();
+	    stopRecordingOnHangup();
 		
-		recognizing = false;
+		/*recognizing = false;
 		recognition.stop();
 		
 		onStop();
-		focus_end();
+		focus_end();*/
 		
 		function recording_check()
 		{
@@ -92,7 +92,7 @@ function init()
 			realFaces.socket.socketio.emit('upload_finished','done');
 		}
 		
-		recording_check();*/
+		recording_check();
 	});
 	
 	function join_chat_channel(channel, userdata) 
