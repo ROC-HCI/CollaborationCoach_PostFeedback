@@ -26,18 +26,6 @@ header
   color: #ffffff
 }
 
-#experiment_controls 
-{
-
-  position: relative;
-
-  width: 20%;
-  height: 100%;
-
-  background-color: #f2f2f2;
-  float: right;
-}
-
 #remote_videos > video 
 {
   position: relative;
