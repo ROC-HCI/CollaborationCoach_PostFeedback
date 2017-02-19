@@ -58,6 +58,15 @@ function init()
 	signaling_socket.on('session_start', function()
 	{
 		console.log("Received Session Start!");
+
+		captureVideo(commonConfig);
+		setTimeout(startRecordingAfterActive,1000);
+
+		//recognition.start();
+		
+		//onStart();
+		//focus_running = 1;
+		//setInterval(focus_sample,250);
 	});
 	
 	function join_chat_channel(channel, userdata) 
