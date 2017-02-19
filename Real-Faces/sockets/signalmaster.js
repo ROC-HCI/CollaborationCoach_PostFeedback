@@ -108,10 +108,10 @@ module.exports = function(io){
       });
 
 
-      console.log(JSON.stringify(stunServers.servers));
+      //console.log(JSON.stringify(stunServers.servers));
       console.log('=========================================')
       var servers = {
-        "stunservers" : stunServers.servers,
+        //"stunservers" : stunServers.servers,
         "turnservers" : turnServers.servers
           //[
             /*
