@@ -29,7 +29,8 @@ header
 #remote_videos > video 
 {
   position: relative;
-  margin-top: 3%;
+  margin-top: 2%;
+  margin-right:2%;
   width: 100%;
 }
 
@@ -39,14 +40,14 @@ header
   margin-top: 2%;
   margin-left: 2%;
   float: right;
-  width: 20%;
+  width: 30%;
 }
 
 #focus_feed 
 {
   position: relative;
-  margin-top: 4%;
-  margin-left: 5%;
+  margin-top: 2%;
+  margin-left: 2%;
   float: left;
 }
 
@@ -59,7 +60,7 @@ header
 {
   margin-left: 18%;
   width: 70%;
-  height: 200px;
+  height: 100px;
   background-color: #2ba2db;
   color: #ffffff;
   border-color: #A9A9A9;
