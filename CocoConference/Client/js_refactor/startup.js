@@ -128,7 +128,7 @@ function init()
 			remote_media.attr("controls", "");
 			peer_media_elements[peer_id] = remote_media;
 			
-			$('#remotesVideos').append(remote_media);
+			$('body').append(remote_media);
 			attachMediaStream(remote_media[0], event.stream);
 		}
 
