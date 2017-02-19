@@ -184,8 +184,8 @@ io.sockets.on('connection', function (socket)
 	{
 		if(sessionStarted)
 		{
-			for(id in channels[channel])
-				channels[channel][id].emit('session_end','end');				
+			for(id in channels[data])
+				channels[data][id].emit('session_end','end');				
 			
 			sessionStarted = false;
 		}

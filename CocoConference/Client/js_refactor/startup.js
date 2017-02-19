@@ -23,7 +23,7 @@ var peer_media_elements = {};  /* keep track of our <video>/<audio> tags, indexe
 
 function proposeStop()
 {
-	signaling_socket.emit("propose_stop","stop");
+	signaling_socket.emit("propose_stop",DEFAULT_CHANNEL);
 }
 
 function init() 
