@@ -55,9 +55,44 @@ function init()
 		peer_media_elements = {};
 	});
 	
+		// ALL CLIENT FUNCTIONS THAT NEED TO STOP NEED TO STOP HERE - JW
 	signaling_socket.on('session_start', function()
 	{
 		console.log("Received Session Start!");
+
+		captureVideo(commonConfig);
+		setTimeout(startRecordingAfterActive,1000);
+
+		//recognition.start();
+		
+		//onStart();
+		//focus_running = 1;
+		//setInterval(focus_sample,250);
+	});
+
+	signaling_socket.on('session_end', function()
+	{
+	    /*stopRecordingOnHangup();
+		
+		recognizing = false;
+		recognition.stop();
+		
+		onStop();
+		focus_end();
+		
+		function recording_check()
+		{
+			if(!recording_upload_status)
+			{
+				console.log("Upload not done, waiting...");
+				setTimeout(recording_check,100);
+				return;
+			}
+			console.log("Upload done! Told the server...");
+			realFaces.socket.socketio.emit('upload_finished','done');
+		}
+		
+		recording_check();*/
 	});
 	
 	function join_chat_channel(channel, userdata) 
