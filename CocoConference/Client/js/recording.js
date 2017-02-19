@@ -97,7 +97,7 @@ function captureVideo(config) {
     captureUserMedia({video: { 
                 width: {min: 320, ideal: captureresolution.width, max: 1920},
                 height: {min: 240, ideal: captureresolution.height, max: 1080}}, audio: true}, function(videoStream) {
-        recordingPlayer = document.getElementById('localVideo');
+        recordingPlayer = document.getElementById('local_video');
 
         recordingPlayer.srcObject = videoStream;
         recordingPlayer.play();
