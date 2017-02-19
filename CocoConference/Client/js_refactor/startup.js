@@ -113,10 +113,12 @@ function init()
 		
 		peer_connection.onaddstream = function(event) 
 		{
+			// UTILIZE THE peer_id from this function in order to setup the individual divs we need ******
 			console.log("onAddStream", event);
 			
 			var remote_media = USE_VIDEO ? $("<video>") : $("<audio>");
 			remote_media.attr("autoplay", "autoplay");
+			remote_media.attr("id", peer_id);
 			
 			if (MUTE_AUDIO_BY_DEFAULT) 
 			{
@@ -125,7 +127,8 @@ function init()
 			
 			remote_media.attr("controls", "");
 			peer_media_elements[peer_id] = remote_media;
-			$('body').append(remote_media);
+			
+			$('#remotesVideos').append(remote_media);
 			attachMediaStream(remote_media[0], event.stream);
 		}
 
@@ -277,6 +280,7 @@ function setup_local_media(callback, errorback)
 			local_media.attr("autoplay", "autoplay");
 			local_media.attr("muted", "true"); /* always mute ourselves by default */
 			local_media.attr("controls", "");
+			local_media.attr("id", "localVideo");
 			$('body').append(local_media);			
 			attachMediaStream(local_media[0], stream);
 
