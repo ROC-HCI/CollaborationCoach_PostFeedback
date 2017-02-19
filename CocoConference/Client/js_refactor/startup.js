@@ -160,7 +160,6 @@ function init()
 				remote_media.attr("muted", "true");
 			}
 			
-			remote_media.attr("controls", "");
 			peer_media_elements[peer_id] = remote_media;
 			
 			$('#remote_videos').append(remote_media);
@@ -314,7 +313,6 @@ function setup_local_media(callback, errorback)
 			var local_media = USE_VIDEO ? $("<video>") : $("<audio>");
 			local_media.attr("autoplay", "autoplay");
 			local_media.attr("muted", "true"); /* always mute ourselves by default */
-			local_media.attr("controls", "");
 			local_media.attr("id", "local_video");
 			$('body').append(local_media);			
 			attachMediaStream(local_media[0], stream);
