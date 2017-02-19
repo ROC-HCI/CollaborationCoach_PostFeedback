@@ -21,6 +21,11 @@ var local_media_stream = null; /* our own microphone / webcam */
 var peers = {};                /* keep track of our peer connections, indexed by peer_id (aka socket.io id) */
 var peer_media_elements = {};  /* keep track of our <video>/<audio> tags, indexed by peer_id */
 
+function proposeStop()
+{
+	signaling_socket.emit("propose_stop","stop");
+}
+
 function init() 
 {
 	console.log("Connecting to signaling server");
