@@ -4,8 +4,8 @@ $("#remote_videos").on("hover", function(event)
 {
 	if (event.target != this)
 	{
-		$("focus_video").src = event.target.src;
-		$("focus_video").play();
+		$("#focus_video").src = event.target.src;
+		$("#focus_video").play();
 		/*
 		switch_video = true;
 		
