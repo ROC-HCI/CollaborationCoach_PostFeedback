@@ -4,6 +4,9 @@ $("#remote_videos").on("hover", function(event)
 {
 	if (event.target != this)
 	{
+		$("focus_video").src = event.target.src;
+		$("focus_video").play();
+		/*
 		switch_video = true;
 		
 		var video = event.target;
@@ -12,6 +15,7 @@ $("#remote_videos").on("hover", function(event)
 		
 		switch_video = false;
 		draw(video, context, 200, 200);
+		*/
 		
 		//bigVid.innerHTML = "";
 		//$(event.target).clone().appendTo(bigVid);
