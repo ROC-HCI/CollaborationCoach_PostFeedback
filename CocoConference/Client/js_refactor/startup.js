@@ -67,8 +67,6 @@ function init()
 
 		captureVideo(commonConfig);
 		setTimeout(startRecordingAfterActive,1000);
-
-		//recognition.start();
 		
 		//onStart();
 		//focus_running = 1;
@@ -77,7 +75,6 @@ function init()
 
 	signaling_socket.on('session_end', function()
 	{
-		console.log("RECEIVED SESSION END");
 	    stopRecordingOnHangup();
 		
 		/*recognizing = false;
@@ -95,7 +92,7 @@ function init()
 				return;
 			}
 			console.log("Upload done! Told the server...");
-			realFaces.socket.socketio.emit('upload_finished','done');
+			signaling_socket.emit('upload_finished','done');
 		}
 		
 		recording_check();
