@@ -4,6 +4,7 @@ $("#remote_videos").on("hover", function(event)
 {
 	if (event.target != this)
 	{
+		/*
 		$("#focus_target").val(event.target.id);
 		
 		var video = $("#focus_video");		
@@ -21,8 +22,12 @@ $("#remote_videos").on("hover", function(event)
 		switch_video = false;
 		draw(video, context, 200, 200);
 		*/
-		//bigVid.innerHTML = "";
-		//$(event.target).clone().appendTo(bigVid);
+		
+		var bigVid = document.getElementById("focus_feed");
+		bigVid.innerHTML = "";
+		
+		
+		$(event.target).clone(true, true).appendTo(bigVid);
 	}
 });
 
