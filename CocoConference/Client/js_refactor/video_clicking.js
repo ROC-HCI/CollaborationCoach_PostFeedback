@@ -4,6 +4,12 @@ $("#remote_videos").on("hover", function(event)
 {
 	if (event.target != this)
 	{
+		var target = $("#focus_target");
+		
+		$("#" + target.val() + "_big").hide();
+		$("#" + event.target.id + "_big").show();
+		
+		target.val(event.target.id);
 		/*
 		$("#focus_target").val(event.target.id);
 		
@@ -23,11 +29,13 @@ $("#remote_videos").on("hover", function(event)
 		draw(video, context, 200, 200);
 		*/
 		
+		/*
 		var bigVid = document.getElementById("focus_feed");
 		bigVid.innerHTML = "";
 		
 		
 		$(event.target).clone(true, true).appendTo(bigVid);
+		*/
 	}
 });
 

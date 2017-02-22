@@ -151,7 +151,6 @@ function init()
 		
 		peer_connection.onaddstream = function(event) 
 		{
-			// UTILIZE THE peer_id from this function in order to setup the individual divs we need ******
 			console.log("onAddStream", event);
 			
 			var remote_media = USE_VIDEO ? $("<video>") : $("<audio>");
@@ -167,6 +166,17 @@ function init()
 			
 			$('#remote_videos').append(remote_media);
 			attachMediaStream(remote_media[0], event.stream);
+			
+			var remote_media_big = USE_VIDEO ? $("<video>") : $("<audio>");
+			remote_media_big.attr("autoplay", "autoplay");
+			remote_media_big.attr("id", peer_id + "_big");
+			remote_media_big.attr("muted", "true");
+			remote_media_big.hide();
+			
+			peer_media_elements[peer_id + "_big"] = remote_media_big;
+			
+			$('#focus_feed').append(remote_media_big);
+			attachMediaStream(remote_media_big[0], event.stream);
 		}
 
 		/* Add our local stream */
