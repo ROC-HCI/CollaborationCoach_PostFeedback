@@ -4,10 +4,14 @@ $("#remote_videos").on("hover", function(event)
 {
 	if (event.target != this)
 	{
-		//$("#focus_video").src = event.target.src;
 		$("#focus_target").val(event.target.id);
-		//$("#focus_video").play();
 		
+		var video = $("#focus_video");		
+		video.src = event.target.src;
+		video.load();
+		//video.play();
+
+		/*		
 		switch_video = true;
 		
 		var video = event.target;
@@ -16,7 +20,7 @@ $("#remote_videos").on("hover", function(event)
 		
 		switch_video = false;
 		draw(video, context, 200, 200);
-		
+		*/
 		//bigVid.innerHTML = "";
 		//$(event.target).clone().appendTo(bigVid);
 	}
