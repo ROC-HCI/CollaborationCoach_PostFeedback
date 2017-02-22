@@ -9,7 +9,7 @@ $("#remote_videos").on("hover", function(event)
 		var video = $("#focus_video");		
 		video.src = event.target.src;
 		video.load();
-		//video.play();
+		video.play();
 
 		/*		
 		switch_video = true;
