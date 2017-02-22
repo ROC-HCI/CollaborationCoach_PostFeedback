@@ -64,3 +64,9 @@ header
   color: #ffffff;
   border-color: #A9A9A9;
 }
+
+#focus_video
+{
+	width: 200px;
+	height: 200px;
+}
