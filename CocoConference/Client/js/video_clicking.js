@@ -1,5 +1,6 @@
 $("#remote_videos").on("hover", function(event)
 {
+	// Handler for the mouse entering this div
 	if (event.target != this)
 	{
 		$('#focus_feed').empty();
@@ -14,4 +15,4 @@ $("#remote_videos").on("hover", function(event)
 		$('#focus_feed').append(remote_media_big);
 		attachMediaStream(remote_media_big[0], peer_media_streams[target]);
 	}
-});
+}, function(event){ /* Do Nothing when the mouse leaves this div */});
