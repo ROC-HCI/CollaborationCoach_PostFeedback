@@ -192,7 +192,7 @@ io.sockets.on('connection', function (socket)
 	});
 	
 	// Each client will tell the server when it has finished uploading video
-	socket.on('upload_finished', function(data)
+	socket.on('upload_finished', function(peer_id)
 	{
 		uploadsFinishedCount = uploadsFinishedCount + 1;
 		
@@ -200,7 +200,7 @@ io.sockets.on('connection', function (socket)
 		{
 			// This client is the last to finish uploading,
 			// so we'll delegate them to make the shell API call.
-			client.emit('shell_delegate','tell the API to do the thing!');
+			sockets[peer_id].emit('shell_delegate','tell the API to do the thing!');
 		}
 	});
 });

@@ -134,7 +134,7 @@ function init()
 				return;
 			}
 			console.log("Upload done! Told the server...");
-			signaling_socket.emit('upload_finished','done');
+			signaling_socket.emit('upload_finished', signaling_socket.id);
 		}
 		
 		recording_check();
