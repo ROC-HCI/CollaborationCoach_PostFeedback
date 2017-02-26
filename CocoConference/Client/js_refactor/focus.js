@@ -10,8 +10,8 @@ function focus_sample()
 {
 	if(focus_running == 1)
 	{
-		var info = document.getElementById("focus_feed").getElementsByTagName("video")[0].id;
-
+		var info = $("#focus_target").val();
+		
 		if(info == null)
 		{
 			info = "";
@@ -43,8 +43,8 @@ function focus_end()
 		}
 	};
 	
-	data_to_send = {'session_key':realFaces.sessionKey, 
-					'user':realFaces.userName,
+	data_to_send = {'session_key':session_key, 
+					'user':user_name,
 					'data':timeLine};
 							
 	string_data = JSON.stringify(data_to_send);				

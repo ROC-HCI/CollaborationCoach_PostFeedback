@@ -106,9 +106,9 @@ function init()
 		setTimeout(startRecordingAfterActive,1000);
 		
 		// Start Affdex and begin sampling statistics
-		//onStart();
-		//focus_running = 1;
-		//setInterval(focus_sample,250);
+		onStart();
+		focus_running = 1;
+		setInterval(focus_sample,250);
 	});
 
 	// Experiment Teardown
@@ -120,8 +120,8 @@ function init()
 	    stopRecordingOnHangup();
 		
 		// Stop Affdex and submit statistics to the database
-		//onStop();
-		//focus_end();
+		onStop();
+		focus_end();
 		
 		// Upload the video recording to the server, let the signaling-server know
 		// when completed.

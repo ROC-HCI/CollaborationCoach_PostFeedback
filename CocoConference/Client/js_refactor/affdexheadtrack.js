@@ -1,6 +1,6 @@
 // SDK Needs to create video and canvas nodes in the DOM in order to function
 // Here we are adding those nodes a predefined div.
-var divRoot = $("#roomURL")[0];
+var divRoot = $("#affdex_data")[0];
 var width = 640;
 var height = 480;
 var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
@@ -113,10 +113,6 @@ function drawFeaturePoints(img, featurePoints) {
     firstpoint = featurePoints[12].x;
     flag = false;
   }
-
-  console.log(featurePoints[12].x - firstpoint);
-
-  realFaces.THREE.controls.move(featurePoints[12].x - firstpoint);
 
   var hRatio = contxt.canvas.width / img.width;
   var vRatio = contxt.canvas.height / img.height;
