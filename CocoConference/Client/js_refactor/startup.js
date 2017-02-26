@@ -58,6 +58,7 @@ function init()
 		for (peer_id in peer_media_elements) 
 		{
 			peer_media_elements[peer_id].remove();
+			peer_media_elements[peer_id + "_big"]
 		}
 		for (peer_id in peers) 
 		{
@@ -80,14 +81,14 @@ function init()
 		{
 			if(request.readyState == 4 && request.status == 200) 
 			{
-				console.log('Stored my user name to the Database. ' + signaling_socket.id);
+				console.log('Stored my user name to the Database. ' + signaling_socket.io.engine.id);
 				console.log(request.response);
 			}
 		};
 	  
 		data_to_send = {'session_key':session_key, 
 						'user':user_name,
-						'seat':signaling_socket.id};
+						'seat':signaling_socket.io.engine.id};
 								
 		string_data = JSON.stringify(data_to_send);		
 
@@ -134,7 +135,7 @@ function init()
 				return;
 			}
 			console.log("Upload done! Told the server...");
-			signaling_socket.emit('upload_finished', signaling_socket.id);
+			signaling_socket.emit('upload_finished', signaling_socket.io.engine.id);
 		}
 		
 		recording_check();
