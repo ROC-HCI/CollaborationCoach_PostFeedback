@@ -9,7 +9,6 @@ $("#remote_videos").on("hover", function(event)
 		remote_media_big.attr("autoplay", "autoplay");
 		remote_media_big.attr("id", target + "_big");
 		remote_media_big.attr("muted", "true");
-		remote_media_big.hide();
 		
 		$('#focus_target').val(target);
 		$('#focus_feed').append(remote_media_big);
