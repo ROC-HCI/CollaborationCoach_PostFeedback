@@ -18,8 +18,14 @@ var ICE_SERVERS =
 
 var signaling_socket = null;   /* our socket.io connection to our webserver */
 var local_media_stream = null; /* our own microphone / webcam */
+
 var peers = {};                /* keep track of our peer connections, indexed by peer_id (aka socket.io id) */
 var peer_media_elements = {};  /* keep track of our <video>/<audio> tags, indexed by peer_id */
+var peer_media_streams = {};   /* keep track of media streams indexed by peer_id, utilized in the 'big' display */
+
+// Coco experiment identifiers
+var session_key = null;
+var user_name = null;
 
 function proposeStop()
 {
@@ -28,6 +34,8 @@ function proposeStop()
 
 function init() 
 {
+	user_name = prompt("Please enter your User Name:", "Coco-User");	
+	
 	console.log("Connecting to signaling server");
 	signaling_socket = io.connect(SIGNALING_SERVER);
 
@@ -60,29 +68,63 @@ function init()
 		peer_media_elements = {};
 	});
 	
-		// ALL CLIENT FUNCTIONS THAT NEED TO STOP NEED TO STOP HERE - JW
+	// Getting the session key from the signaling-server
+	// and then submit the user-name/session-key pair to the
+	// database for later use.
+	signaling_socket.on('session_key', function(data)
+	{
+		session_key = data;
+		
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = function() 
+		{
+			if(request.readyState == 4 && request.status == 200) 
+			{
+				console.log('Stored my user name to the Database.');
+				console.log(request.response);
+			}
+		};
+	  
+		data_to_send = {'session_key':session_key, 
+						'user':user_name,
+						'seat':signaling_socket.id};
+								
+		string_data = JSON.stringify(data_to_send);		
+
+		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');				
+		request.setRequestHeader("Content-type", "application/json");			
+		request.send(string_data);	
+	});
+	
+	// Experiment Startup
 	signaling_socket.on('session_start', function()
 	{
 		console.log("Received Session Start!");
 
+		// Video Recording Startup
 		captureVideo(commonConfig);
 		setTimeout(startRecordingAfterActive,1000);
 		
+		// Start Affdex and begin sampling statistics
 		//onStart();
 		//focus_running = 1;
 		//setInterval(focus_sample,250);
 	});
 
+	// Experiment Teardown
 	signaling_socket.on('session_end', function()
 	{
+		console.log("Received Session End!");
+		
+		// Stop Video Recording
 	    stopRecordingOnHangup();
 		
-		/*recognizing = false;
-		recognition.stop();
+		// Stop Affdex and submit statistics to the database
+		//onStop();
+		//focus_end();
 		
-		onStop();
-		focus_end();*/
-		
+		// Upload the video recording to the server, let the signaling-server know
+		// when completed.
 		function recording_check()
 		{
 			if(!recording_upload_status)
@@ -163,6 +205,7 @@ function init()
 			}
 			
 			peer_media_elements[peer_id] = remote_media;
+			peer_media_streams[peer_id] = event.stream;
 			
 			$('#remote_videos').append(remote_media);
 			attachMediaStream(remote_media[0], event.stream);
