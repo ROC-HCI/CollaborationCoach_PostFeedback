@@ -100,6 +100,8 @@ function init()
 	// signaling-server has delegated us to trigger the analysis script, so do so.
 	signaling_socket.on('shell_delegate', function(message)
 	{
+		console.log("I've been delgated");
+		
 		var request = new XMLHttpRequest();
 		request.onreadystatechange = function() 
 		{
@@ -116,7 +118,7 @@ function init()
 			}
 		};
 
-		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + app.sessionKey,true);						
+		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + session_key,true);						
 		request.setRequestHeader("Content-type", "application/json");
 		request.send();
 	});
