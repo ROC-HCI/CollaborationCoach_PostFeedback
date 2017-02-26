@@ -79,7 +79,7 @@ function startRecordingAfterActive(){
 }
 
 function stopRecordingOnHangup(){
-    baseDataKey = realFaces.sessionKey + "_" + realFaces.userName;
+    baseDataKey = session_key + "_" + user_name;
     stopRecording();    
 }
 
