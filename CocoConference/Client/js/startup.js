@@ -18,11 +18,24 @@ var ICE_SERVERS =
 
 var signaling_socket = null;   /* our socket.io connection to our webserver */
 var local_media_stream = null; /* our own microphone / webcam */
+
 var peers = {};                /* keep track of our peer connections, indexed by peer_id (aka socket.io id) */
 var peer_media_elements = {};  /* keep track of our <video>/<audio> tags, indexed by peer_id */
+var peer_media_streams = {};   /* keep track of media streams indexed by peer_id, utilized in the 'big' display */
+
+// Coco experiment identifiers
+var session_key = null;
+var user_name = null;
+
+function proposeStop()
+{
+	signaling_socket.emit("propose_stop",DEFAULT_CHANNEL);
+}
 
 function init() 
 {
+	user_name = prompt("Please enter your User Name:", "Coco-User");	
+	
 	console.log("Connecting to signaling server");
 	signaling_socket = io.connect(SIGNALING_SERVER);
 
@@ -53,11 +66,116 @@ function init()
 
 		peers = {};
 		peer_media_elements = {};
+		peer_media_streams = {};
 	});
 	
+	// Getting the session key from the signaling-server
+	// and then submit the user-name/session-key pair to the
+	// database for later use.
+	signaling_socket.on('session_key', function(data)
+	{
+		session_key = data;
+		
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = function() 
+		{
+			if(request.readyState == 4 && request.status == 200) 
+			{
+				console.log('Stored my user name to the Database. ' + signaling_socket.io.engine.id);
+				console.log(request.response);
+			}
+		};
+	  
+		data_to_send = {'session_key':session_key, 
+						'user':user_name,
+						'seat':signaling_socket.io.engine.id};
+								
+		string_data = JSON.stringify(data_to_send);		
+
+		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');				
+		request.setRequestHeader("Content-type", "application/json");			
+		request.send(string_data);	
+	});
+	
+	// signaling-server has delegated us to trigger the analysis script, so do so.
+	signaling_socket.on('shell_delegate', function(message)
+	{		
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = function() 
+		{
+			if(request.readyState == 4 && request.status == 200) 
+			{
+				console.log('processing finished, output below.');
+				console.log(request.response);
+				signaling_socket.emit('analysis_complete', DEFAULT_CHANNEL);
+			}
+			else
+			{
+				console.log('Shell API Call Has state: ' + request.readyState + ' and status: ' + request.status);
+				console.log('debug', request.response);
+			}
+		};
+
+		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + session_key,true);						
+		request.setRequestHeader("Content-type", "application/json");
+		request.send();
+	});
+	
+	signaling_socket.on('data_available', function()
+	{
+		var win = window.open('https://conference.eastus.cloudapp.azure.com/RocConf/chatbot.php?key=' + session_key + '&user=' + user_name, '_blank');
+		if (win) 
+		{
+			win.focus();
+		} 
+		else 
+		{
+			alert('Please allow popups for this website');
+		}
+	});
+	
+	// Experiment Startup
 	signaling_socket.on('session_start', function()
 	{
 		console.log("Received Session Start!");
+
+		// Video Recording Startup
+		captureVideo(commonConfig);
+		setTimeout(startRecordingAfterActive,1000);
+		
+		// Start Affdex and begin sampling statistics
+		onStart();
+		focus_running = 1;
+		setInterval(focus_sample,250);
+	});
+
+	// Experiment Teardown
+	signaling_socket.on('session_end', function()
+	{
+		console.log("Received Session End!");
+		
+		// Stop Video Recording
+	    stopRecordingOnHangup();
+		
+		// Stop Affdex and submit statistics to the database
+		onStop();
+		focus_end();
+		
+		// Upload the video recording to the server, let the signaling-server know
+		// when completed.
+		function recording_check()
+		{
+			if(!recording_upload_status)
+			{
+				console.log("Upload not done, waiting...");
+				setTimeout(recording_check,100);
+				return;
+			}
+			console.log("Upload done! Told the server...");
+			signaling_socket.emit('upload_finished', signaling_socket.io.engine.id);
+		}
+		
+		recording_check();
 	});
 	
 	function join_chat_channel(channel, userdata) 
@@ -117,16 +235,15 @@ function init()
 			
 			var remote_media = USE_VIDEO ? $("<video>") : $("<audio>");
 			remote_media.attr("autoplay", "autoplay");
+			remote_media.attr("id", peer_id);
 			
 			if (MUTE_AUDIO_BY_DEFAULT) 
 			{
 				remote_media.attr("muted", "true");
 			}
 			
-			remote_media.attr("controls", "");
 			peer_media_elements[peer_id] = remote_media;
-			$('body').append(remote_media);
-			attachMediaStream(remote_media[0], event.stream);
+			peer_media_streams[peer_id] = event.stream;
 		}
 
 		/* Add our local stream */
@@ -276,7 +393,7 @@ function setup_local_media(callback, errorback)
 			var local_media = USE_VIDEO ? $("<video>") : $("<audio>");
 			local_media.attr("autoplay", "autoplay");
 			local_media.attr("muted", "true"); /* always mute ourselves by default */
-			local_media.attr("controls", "");
+			local_media.attr("id", "local_video");
 			$('body').append(local_media);			
 			attachMediaStream(local_media[0], stream);
 

@@ -79,7 +79,7 @@ function startRecordingAfterActive(){
 }
 
 function stopRecordingOnHangup(){
-    baseDataKey = realFaces.sessionKey + "_" + realFaces.userName;
+    baseDataKey = session_key + "_" + user_name;
     stopRecording();    
 }
 
@@ -97,7 +97,7 @@ function captureVideo(config) {
     captureUserMedia({video: { 
                 width: {min: 320, ideal: captureresolution.width, max: 1920},
                 height: {min: 240, ideal: captureresolution.height, max: 1080}}, audio: true}, function(videoStream) {
-        recordingPlayer = document.getElementById('localVideo');
+        recordingPlayer = document.getElementById('local_video');
 
         recordingPlayer.srcObject = videoStream;
         recordingPlayer.play();
