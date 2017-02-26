@@ -99,9 +99,7 @@ function init()
 	
 	// signaling-server has delegated us to trigger the analysis script, so do so.
 	signaling_socket.on('shell_delegate', function(message)
-	{
-		console.log("I've been delgated");
-		
+	{		
 		var request = new XMLHttpRequest();
 		request.onreadystatechange = function() 
 		{
@@ -109,7 +107,7 @@ function init()
 			{
 				console.log('processing finished, output below.');
 				console.log(request.response);
-				signaling_socket.emit('analysis_complete', "done!");
+				signaling_socket.emit('analysis_complete', DEFAULT_CHANNEL);
 			}
 			else
 			{
