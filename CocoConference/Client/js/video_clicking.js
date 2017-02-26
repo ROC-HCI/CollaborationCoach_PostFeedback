@@ -7,7 +7,7 @@ $("#remote_videos").on("hover", function(event)
 			
 		var remote_media_big = USE_VIDEO ? $("<video>") : $("<audio>");
 		remote_media_big.attr("autoplay", "autoplay");
-		remote_media_big.attr("id", peer_id + "_big");
+		remote_media_big.attr("id", target + "_big");
 		remote_media_big.attr("muted", "true");
 		remote_media_big.hide();
 		
