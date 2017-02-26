@@ -64,3 +64,8 @@ header
   color: #ffffff;
   border-color: #A9A9A9;
 }
+
+#affdex_data
+{
+  display: none;
+}
