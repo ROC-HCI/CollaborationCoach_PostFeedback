@@ -244,6 +244,9 @@ function init()
 			
 			peer_media_elements[peer_id] = remote_media;
 			peer_media_streams[peer_id] = event.stream;
+			
+			$('#remote_videos').append(remote_media);
+			attachMediaStream(remote_media[0], event.stream);
 		}
 
 		/* Add our local stream */
