@@ -80,7 +80,7 @@ function init()
 		{
 			if(request.readyState == 4 && request.status == 200) 
 			{
-				console.log('Stored my user name to the Database.');
+				console.log('Stored my user name to the Database. ' + signaling_socket.id);
 				console.log(request.response);
 			}
 		};
