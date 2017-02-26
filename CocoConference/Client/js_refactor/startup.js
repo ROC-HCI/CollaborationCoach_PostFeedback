@@ -97,6 +97,43 @@ function init()
 		request.send(string_data);	
 	});
 	
+	// signaling-server has delegated us to trigger the analysis script, so do so.
+	signaling_socket.on('shell_delegate', function(message)
+	{
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = function() 
+		{
+			if(request.readyState == 4 && request.status == 200) 
+			{
+				console.log('processing finished, output below.');
+				console.log(request.response);
+				signaling_socket.emit('analysis_complete', "done!");
+			}
+			else
+			{
+				console.log('Shell API Call Has state: ' + request.readyState + ' and status: ' + request.status);
+				console.log('debug', request.response);
+			}
+		};
+
+		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=process&session_key=' + app.sessionKey,true);						
+		request.setRequestHeader("Content-type", "application/json");
+		request.send();
+	});
+	
+	signaling_socket.on('data_available', function()
+	{
+		var win = window.open('https://conference.eastus.cloudapp.azure.com/RocConf/chatbot.php?key=' + session_key + '&user=' + user_name, '_blank');
+		if (win) 
+		{
+			win.focus();
+		} 
+		else 
+		{
+			alert('Please allow popups for this website');
+		}
+	});
+	
 	// Experiment Startup
 	signaling_socket.on('session_start', function()
 	{

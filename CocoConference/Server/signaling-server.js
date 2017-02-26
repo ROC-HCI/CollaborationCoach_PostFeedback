@@ -203,4 +203,13 @@ io.sockets.on('connection', function (socket)
 			sockets[peer_id].emit('shell_delegate','tell the API to do the thing!');
 		}
 	});
+	
+	// Delegated client has finished with analysis, let everybody else know the 
+	// data page should be available.
+	socket.on('analysis_complete', function(data)
+	{
+		for(id in channels[data])
+			channels[data][id].emit('data_available','done!');	
+	});
+	
 });
