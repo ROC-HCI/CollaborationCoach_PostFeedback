@@ -111,6 +111,7 @@ io.sockets.on('connection', function (socket)
 			//----------------------------------------
 			sessions[channel] = uuid.v1();
 			sessionStarted[channel] = false;
+			connectedUsers[channel] = 0;
 			uploadsFinishedCount[channel] = 0;
         }
 
