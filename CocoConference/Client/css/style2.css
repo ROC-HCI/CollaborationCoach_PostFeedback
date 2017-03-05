@@ -18,12 +18,18 @@ header
   background-color: #2ba2db;
 }
 
-#text
+#header_text
 {
   text-align: center;
   padding-top: 1%;
   font-size: 2.5rem;
   color: #ffffff
+}
+
+#header_image
+{
+  float:left;
+  padding-top: 0.5%;
 }
 
 #remote_videos > video 
