@@ -20,7 +20,8 @@ var https = require('https');
 var pkey = fs.readFileSync('/etc/apache2/ssl/apache.key');
 var pcert = fs.readFileSync('/etc/apache2/ssl/apache.crt');
 
-var options = {
+var options = 
+{
     key: pkey,
     cert: pcert
 };
@@ -44,10 +45,17 @@ main.use(bodyParser.json());
 var channels = {};
 var sockets = {};
 
-var sessionKey = uuid.v1();
-
-var connectedUsers = 0;
+// Coco Conference Session Data
 var requiredUserCount = 4;
+
+var sessions = {};
+var connectedUsers = {};
+var sessionStarted = {};
+var uploadsFinishedCount = {};
+
+//var sessionKey = uuid.v1();
+//var connectedUsers = 0;
+//var requiredUserCount = 4;
 
 var sessionStarted = false;
 var uploadsFinishedCount = 0;
@@ -98,6 +106,10 @@ io.sockets.on('connection', function (socket)
         if (!(channel in channels)) 
 		{
             channels[channel] = {};
+			
+			// Setup this channel for CoCo
+			sessions[channel] = uuid.v1();
+			sessionStarted[channel] = false;
         }
 
         for (id in channels[channel]) 
@@ -114,7 +126,7 @@ io.sockets.on('connection', function (socket)
 		//=================================================================================================
 		
 		//tells this client the current session ID
-		socket.emit('session_key', sessionKey);		
+		socket.emit('session_key', sessions[channel]);		
 		
 		connectedUsers = connectedUsers + 1;
 		
