@@ -242,7 +242,7 @@ function init()
 				remote_media.attr("muted", "true");
 			}
 			
-			// Mouseover hanlder for the 'big' display
+			// Mouseover handler for the 'big' display
 			remote_media.mouseenter(function(){
 				$('#focus_feed').empty();
 				
