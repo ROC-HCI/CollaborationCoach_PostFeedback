@@ -26,15 +26,17 @@ var peer_media_streams = {};   /* keep track of media streams indexed by peer_id
 // Coco experiment identifiers
 var session_key = null;
 var user_name = null;
+var channel_name = null;
 
 function proposeStop()
 {
-	signaling_socket.emit("propose_stop",DEFAULT_CHANNEL);
+	signaling_socket.emit("propose_stop", { "channel":channel_name });
 }
 
 function init() 
 {
 	user_name = prompt("Please enter your User Name:", "Coco-User");	
+	channel_name = prompt("Please enter your channel name:", DEFAULT_CHANNEL);
 	
 	console.log("Connecting to signaling server");
 	signaling_socket = io.connect(SIGNALING_SERVER);
@@ -46,7 +48,7 @@ function init()
 		{
 			/* once the user has given us access to their
 			 * microphone/camcorder, join the channel and start peering up */
-			join_chat_channel(DEFAULT_CHANNEL, {'whatever-you-want-here': 'stuff'});
+			join_chat_channel(channel_name, {'whatever-you-want-here': 'stuff'});
 		});
 	});
 	
@@ -107,7 +109,7 @@ function init()
 			{
 				console.log('processing finished, output below.');
 				console.log(request.response);
-				signaling_socket.emit('analysis_complete', DEFAULT_CHANNEL);
+				signaling_socket.emit('analysis_complete', { "channel":channel_name });
 			}
 			else
 			{
@@ -124,13 +126,14 @@ function init()
 	signaling_socket.on('data_available', function()
 	{
 		var win = window.open('https://conference.eastus.cloudapp.azure.com/RocConf/chatbot.php?key=' + session_key + '&user=' + user_name, '_blank');
+		
 		if (win) 
 		{
 			win.focus();
 		} 
 		else 
 		{
-			alert('Please allow popups for this website');
+			alert('Please allow popups for this website. You can visit https://conference.eastus.cloudapp.azure.com/RocConf/chatbot.php?key=' + session_key + '&user=' + user_name + ' to view your session results!');
 		}
 	});
 	
@@ -172,7 +175,7 @@ function init()
 				return;
 			}
 			console.log("Upload done! Told the server...");
-			signaling_socket.emit('upload_finished', signaling_socket.io.engine.id);
+			signaling_socket.emit('upload_finished', { "channel":channel_name, "peer_id":signaling_socket.io.engine.id });
 		}
 		
 		recording_check();
@@ -180,7 +183,7 @@ function init()
 	
 	function join_chat_channel(channel, userdata) 
 	{
-		signaling_socket.emit('join', {"channel": channel, "userdata": userdata});
+		signaling_socket.emit('join', { "channel": channel, "userdata": userdata });
 	}
 	
 	function part_chat_channel(channel) 

@@ -46,7 +46,7 @@ var channels = {};
 var sockets = {};
 
 // Coco Conference Session Data
-var requiredUserCount = 4;
+var requiredUserCount = 2;
 
 var sessions = {};
 var connectedUsers = {};
@@ -56,9 +56,8 @@ var uploadsFinishedCount = {};
 //var sessionKey = uuid.v1();
 //var connectedUsers = 0;
 //var requiredUserCount = 4;
-
-var sessionStarted = false;
-var uploadsFinishedCount = 0;
+//var sessionStarted = false;
+//var uploadsFinishedCount = 0;
 
 /**
  * Users will connect to the signaling server, after which they'll issue a "join"
@@ -107,9 +106,12 @@ io.sockets.on('connection', function (socket)
 		{
             channels[channel] = {};
 			
+			//----------------------------------------
 			// Setup this channel for CoCo
+			//----------------------------------------
 			sessions[channel] = uuid.v1();
 			sessionStarted[channel] = false;
+			uploadsFinishedCount[channel] = 0;
         }
 
         for (id in channels[channel]) 
@@ -125,20 +127,20 @@ io.sockets.on('connection', function (socket)
 		// CoCo Join Scripting
 		//=================================================================================================
 		
-		//tells this client the current session ID
+		//tells this client the current session ID for this channel
 		socket.emit('session_key', sessions[channel]);		
 		
-		connectedUsers = connectedUsers + 1;
+		connectedUsers[channel] = connectedUsers[channel] + 1;
 		
 		// If we've got our users we're all set to start recording data
-		if((connectedUsers == requiredUserCount) && !sessionStarted)
+		if((connectedUsers[channel] == requiredUserCount) && !sessionStarted[channel])
 		{
 			// Slight delay prior to running this to allow the last user to properly resolve the connection.
 			setTimeout(function ()
 			{
 				for(id in channels[channel])
 					channels[channel][id].emit('session_start','start');
-				sessionStarted = true;
+				sessionStarted[channel] = true;
 			},
 			3000);
 		}
@@ -192,36 +194,43 @@ io.sockets.on('connection', function (socket)
 	//=====================================================================================================================
 	
 	// One client has hit the 'End Call' button, let everybody in this channel know
-	socket.on('propose_stop', function(data)
+	socket.on('propose_stop', function(config)
 	{
-		if(sessionStarted)
+		var channel = config.channel;
+		
+		if(sessionStarted[channel])
 		{
-			for(id in channels[data])
-				channels[data][id].emit('session_end','end');				
+			sessionStarted[channel] = false;
 			
-			sessionStarted = false;
+			for(id in channels[channel])
+				channels[channel][id].emit('session_end','end');				
 		}
 	});
 	
 	// Each client will tell the server when it has finished uploading video
-	socket.on('upload_finished', function(peer_id)
+	socket.on('upload_finished', function(config)
 	{
-		uploadsFinishedCount = uploadsFinishedCount + 1;
+		var peer_id = config.peer_id;
+		var channel = config.channel;
 		
-		if(uploadsFinishedCount == requiredUserCount)
+		uploadsFinishedCount[channel] = uploadsFinishedCount[channel] + 1;
+		
+		if(uploadsFinishedCount[channel] == requiredUserCount)
 		{
 			// This client is the last to finish uploading,
 			// so we'll delegate them to make the shell API call.
-			sockets[peer_id].emit('shell_delegate','tell the API to do the thing!');
+			sockets[peer_id].emit('shell_delegate','start analysis');
 		}
 	});
 	
 	// Delegated client has finished with analysis, let everybody else know the 
 	// data page should be available.
-	socket.on('analysis_complete', function(data)
+	socket.on('analysis_complete', function(config)
 	{
-		for(id in channels[data])
-			channels[data][id].emit('data_available','done!');	
+		var channel = config.channel;
+		
+		for(id in channels[channel])
+			channels[channel][id].emit('data_available','analysis completed');	
 	});
 	
 });
