@@ -441,16 +441,23 @@
 	        i3speaker = [];
 	        colorpalette = ['#90D0D5','#FBF172', '#B0D357', '#C88ABC', '#4B79BD'];
 	        guests = {};
-	        count = 0;
+	        count = 1;
 	        console.log("i4 assignment", i4);
 	        for (var key in i3){
-	        	  //console.log("LALALA ", count, i3[key]);
-	            i3speaker.push(key);
-	            //keymod = key.replace(/Data\/test-key-test_/g, "");
-	            guests[key] = colorpalette[count];
-	            //console.log("logging guests", guests);
-	            i3data.push(Math.round(i3[key]));
-	            count+=1;
+				if(key == iuser){
+					i3speaker.unshift(key);
+					guests[key] = colorpalette[0];
+					i3data.unshift(Math.round(i3[key]));
+				}
+				else{
+			       	//console.log("LALALA ", count, i3[key]);
+		            i3speaker.push(key);
+		            //keymod = key.replace(/Data\/test-key-test_/g, "");
+		            guests[key] = colorpalette[count];
+		            //console.log("logging guests", guests);
+		            i3data.push(Math.round(i3[key]));
+		           	count+=1;
+	        	}
 	        }
 			/*$.getScript('graphs/public/main.js',function(data,textStatus){
 	            console.log("load was performed. ");
