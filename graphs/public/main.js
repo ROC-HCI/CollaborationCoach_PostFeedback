@@ -245,9 +245,9 @@ function setupChart(user)
 
     dataSection = {
       label: "Everyone",
-      backgroundColor: colorpalette[palettecount],
-      borderColor: colorpalette[palettecount],
-      pointBackgroundColor : colorpalette[palettecount],
+      backgroundColor: guests[iuser],
+      borderColor: guests[iuser],
+      pointBackgroundColor : guests[iuser],
       data: overall_data
     }
     palettecount++;
@@ -270,9 +270,9 @@ function setupChart(user)
 
           dataSection = {
             label: key,
-            backgroundColor: colorpalette[palettecount],
-            borderColor: colorpalette[palettecount],
-            pointBackgroundColor : colorpalette[palettecount],
+            backgroundColor: guests[key],
+            borderColor: guests[key],
+            pointBackgroundColor : guests[key],
             data: overall_data
           }
 
