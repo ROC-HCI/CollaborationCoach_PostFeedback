@@ -270,7 +270,7 @@ if($_GET['mode'] == 'affdexupload')
 	$connection->close();
 }
 
-// Access Point for submitting User -> Seat number relationship
+// Access Point for submitting User -> SocketID relationship for a session
 if($_GET['mode'] == 'seatupload')
 {
 	$json_string = file_get_contents('php://input');
