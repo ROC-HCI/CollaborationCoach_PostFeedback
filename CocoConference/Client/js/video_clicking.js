@@ -1,3 +1,5 @@
+
+/*
 $("#remote_videos").mouseenter(function(event)
 {
 	// Handler for the mouse entering this div
@@ -16,3 +18,4 @@ $("#remote_videos").mouseenter(function(event)
 		attachMediaStream(remote_media_big[0], peer_media_streams[target]);
 	}
 });
+*/

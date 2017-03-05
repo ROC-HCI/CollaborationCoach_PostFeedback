@@ -242,6 +242,23 @@ function init()
 				remote_media.attr("muted", "true");
 			}
 			
+			// Mouseover hanlder for the 'big' display
+			remote_media.mouseenter(function(){
+				$('#focus_feed').empty();
+				
+				var target = peer_id;
+			
+				var remote_media_big = USE_VIDEO ? $("<video>") : $("<audio>");
+				remote_media_big.attr("autoplay", "autoplay");
+				remote_media_big.attr("id", target + "_big");
+				remote_media_big.attr("muted", "true");
+		
+				$('#focus_target').val(target);
+				$('#focus_feed').append(remote_media_big);
+				attachMediaStream(remote_media_big[0], peer_media_streams[target]);
+				
+			});
+			
 			peer_media_elements[peer_id] = remote_media;
 			peer_media_streams[peer_id] = event.stream;
 			
