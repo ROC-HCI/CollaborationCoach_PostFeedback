@@ -92,7 +92,9 @@ function init()
 						'user':user_name,
 						'seat':signaling_socket.io.engine.id};
 								
-		string_data = JSON.stringify(data_to_send);		
+		string_data = JSON.stringify(data_to_send);
+
+		console.log(string_data);
 
 		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');				
 		request.setRequestHeader("Content-type", "application/json");			

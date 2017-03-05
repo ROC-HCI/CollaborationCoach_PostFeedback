@@ -132,6 +132,8 @@ io.sockets.on('connection', function (socket)
 		
 		connectedUsers[channel] = connectedUsers[channel] + 1;
 		
+		console.log(channel + " currently has " + connectedUsers[channel] + " connected to it!");
+		
 		// If we've got our users we're all set to start recording data
 		if((connectedUsers[channel] == requiredUserCount) && !sessionStarted[channel])
 		{
