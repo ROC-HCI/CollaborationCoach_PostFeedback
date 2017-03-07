@@ -48,12 +48,13 @@ header
   width: 30%;
 }
 
-#focus_feed 
+#focus_feed > video
 {
   position: relative;
   margin-top: 2%;
   margin-left: 2%;
   float: left;
+  width:90%;
 }
 
 #local_video 
