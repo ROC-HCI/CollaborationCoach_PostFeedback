@@ -26,3 +26,4 @@ var participation_data = jscontent.participation;
 var snp = Snap('#main_svg');
 
 var main_disc = snp.circle(150, 150, 100);
+main_disc.attr('fill': '#90D0D5')
