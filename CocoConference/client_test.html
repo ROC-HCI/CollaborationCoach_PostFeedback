@@ -8,19 +8,19 @@
 	<meta name="description" content="description">
 	<meta name="author" content="author">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="Client/css/style2.css">
-	
+
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="https://conference.eastus.cloudapp.azure.com/RocConf/lib/bower_components/webrtc-adapter/adapter.js"></script>
 	<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
-	
-	<script src="https://download.affectiva.com/js/3.1/affdex.js"></script>	
+
+	<script src="https://download.affectiva.com/js/3.1/affdex.js"></script>
 	<script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
 	<script src="Client/js_test/recording.js"></script>
 	<script src="Client/js_test/startup.js"></script>
-	
+
 </head>
 
 <body onload='init()'>
@@ -28,7 +28,16 @@
 		<img src="Client/images/coco.png" id="header_image" alt="">
 		<div id="header_text">Conference Room</div>
 	</header>
-	
+
+	<!--Modal-->
+	<div id="uploadingModal" class="modal">
+		<!--Modal Content-->
+		<div class="modal-content">
+			<p>Uploading Session Data...</p>
+		</div>
+		<div class="loader"></div>
+	</div>
+
 	<input type="hidden" id="focus_target"/>
 	<div id="focus_feed"></div>
 	<div id="background_feeds">
