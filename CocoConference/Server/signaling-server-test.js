@@ -20,7 +20,7 @@ var https = require('https');
 var pkey = fs.readFileSync('/etc/apache2/ssl/apache.key');
 var pcert = fs.readFileSync('/etc/apache2/ssl/apache.crt');
 
-var options = 
+var options =
 {
     key: pkey,
     cert: pcert
@@ -29,8 +29,9 @@ var options =
 var main = express()
 var server = https.createServer(options, main)
 var io  = require('socket.io').listen(server);
+var modal = document.getElementById('uploadingModal')
 
-server.listen(PORT, null, function() 
+server.listen(PORT, null, function()
 {
     console.log("Listening on port " + PORT);
 });
@@ -69,43 +70,43 @@ var uploadsFinishedCount = {};
  * information. After all of that happens, they'll finally be able to complete
  * the peer connection and will be streaming audio/video between eachother.
  */
-io.sockets.on('connection', function (socket) 
+io.sockets.on('connection', function (socket)
 {
     socket.channels = {};
     sockets[socket.id] = socket;
 
     console.log("["+ socket.id + "] connection accepted");
-	
-    socket.on('disconnect', function () 
+
+    socket.on('disconnect', function ()
 	{
-        for (var channel in socket.channels) 
+        for (var channel in socket.channels)
 		{
             part(channel);
         }
-		
+
         console.log("["+ socket.id + "] disconnected");
         delete sockets[socket.id];
-		
+
 		connectedUsers = connectedUsers - 1;
     });
 
 
-    socket.on('join', function (config) 
+    socket.on('join', function (config)
 	{
         console.log("["+ socket.id + "] join ", config);
         var channel = config.channel;
         var userdata = config.userdata;
 
-        if (channel in socket.channels) 
+        if (channel in socket.channels)
 		{
             console.log("["+ socket.id + "] ERROR: already joined ", channel);
             return;
         }
 
-        if (!(channel in channels)) 
+        if (!(channel in channels))
 		{
             channels[channel] = {};
-			
+
 			//----------------------------------------
 			// Setup this channel for CoCo
 			//----------------------------------------
@@ -115,7 +116,7 @@ io.sockets.on('connection', function (socket)
 			uploadsFinishedCount[channel] = 0;
         }
 
-        for (id in channels[channel]) 
+        for (id in channels[channel])
 		{
             channels[channel][id].emit('addPeer', {'peer_id': socket.id, 'should_create_offer': false});
             socket.emit('addPeer', {'peer_id': id, 'should_create_offer': true});
@@ -123,18 +124,18 @@ io.sockets.on('connection', function (socket)
 
         channels[channel][socket.id] = socket;
         socket.channels[channel] = channel;
-		
+
 		//=================================================================================================
 		// CoCo Join Scripting
 		//=================================================================================================
-		
+
 		//tells this client the current session ID for this channel
-		socket.emit('session_key', sessions[channel]);		
-		
+		socket.emit('session_key', sessions[channel]);
+
 		connectedUsers[channel] = connectedUsers[channel] + 1;
-		
+
 		console.log(channel + " currently has " + connectedUsers[channel] + " connected to it!");
-		
+
 		// If we've got our users we're all set to start recording data
 		if((connectedUsers[channel] == requiredUserCount) && !sessionStarted[channel])
 		{
@@ -149,11 +150,11 @@ io.sockets.on('connection', function (socket)
 		}
     });
 
-    function part(channel) 
+    function part(channel)
 	{
         console.log("["+ socket.id + "] part ");
 
-        if (!(channel in socket.channels)) 
+        if (!(channel in socket.channels))
 		{
             console.log("["+ socket.id + "] ERROR: not in ", channel);
             return;
@@ -162,7 +163,7 @@ io.sockets.on('connection', function (socket)
         delete socket.channels[channel];
         delete channels[channel][socket.id];
 
-        for (id in channels[channel]) 
+        for (id in channels[channel])
 		{
             channels[channel][id].emit('removePeer', {'peer_id': socket.id});
             socket.emit('removePeer', {'peer_id': id});
@@ -170,7 +171,7 @@ io.sockets.on('connection', function (socket)
     }
     socket.on('part', part);
 
-    socket.on('relayICECandidate', function(config) 
+    socket.on('relayICECandidate', function(config)
 	{
         var peer_id = config.peer_id;
         var ice_candidate = config.ice_candidate;
@@ -181,7 +182,7 @@ io.sockets.on('connection', function (socket)
         }
     });
 
-    socket.on('relaySessionDescription', function(config) 
+    socket.on('relaySessionDescription', function(config)
 	{
         var peer_id = config.peer_id;
         var session_description = config.session_description;
@@ -191,49 +192,53 @@ io.sockets.on('connection', function (socket)
             sockets[peer_id].emit('sessionDescription', {'peer_id': socket.id, 'session_description': session_description});
         }
     });
-	
+
 	//=====================================================================================================================
 	// CoCo Experiment Socket Handlers
 	//=====================================================================================================================
-	
+
 	// One client has hit the 'End Call' button, let everybody in this channel know
 	socket.on('propose_stop', function(config)
 	{
 		var channel = config.channel;
-		
+
 		if(sessionStarted[channel])
 		{
 			sessionStarted[channel] = false;
-			
+      modal.style.display = "block";
+
 			for(id in channels[channel])
-				channels[channel][id].emit('session_end','end');				
+				channels[channel][id].emit('session_end','end');
 		}
 	});
-	
+
 	// Each client will tell the server when it has finished uploading video
 	socket.on('upload_finished', function(config)
 	{
 		var peer_id = config.peer_id;
 		var channel = config.channel;
-		
+
 		uploadsFinishedCount[channel] = uploadsFinishedCount[channel] + 1;
-		
+
 		if(uploadsFinishedCount[channel] == requiredUserCount)
 		{
+      // Our loading modal will exit once uploading is done.
+      modal.style.display = "none";
+
 			// This client is the last to finish uploading,
 			// so we'll delegate them to make the shell API call.
 			sockets[peer_id].emit('shell_delegate','start analysis');
 		}
 	});
-	
-	// Delegated client has finished with analysis, let everybody else know the 
+
+	// Delegated client has finished with analysis, let everybody else know the
 	// data page should be available.
 	socket.on('analysis_complete', function(config)
 	{
 		var channel = config.channel;
-		
+
 		for(id in channels[channel])
-			channels[channel][id].emit('data_available','analysis completed');	
+			channels[channel][id].emit('data_available','analysis completed');
 	});
-	
+
 });
