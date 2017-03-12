@@ -23,5 +23,6 @@ for (var key in jscontent.participation)
 
 var participation_data = jscontent.participation;
 
-console.log("Total User Count:" + user_count);
-console.log(participation_data);
+var snp = Snap('#main_svg');
+
+var main_disc = snp.circle(150, 150, 100);
