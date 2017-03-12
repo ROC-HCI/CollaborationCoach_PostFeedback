@@ -29,7 +29,6 @@ var options =
 var main = express()
 var server = https.createServer(options, main)
 var io  = require('socket.io').listen(server);
-var modal = document.getElementById('uploadingModal')
 
 server.listen(PORT, null, function()
 {
@@ -205,7 +204,6 @@ io.sockets.on('connection', function (socket)
 		if(sessionStarted[channel])
 		{
 			sessionStarted[channel] = false;
-      modal.style.display = "block";
 
 			for(id in channels[channel])
 				channels[channel][id].emit('session_end','end');
@@ -222,9 +220,6 @@ io.sockets.on('connection', function (socket)
 
 		if(uploadsFinishedCount[channel] == requiredUserCount)
 		{
-      // Our loading modal will exit once uploading is done.
-      modal.style.display = "none";
-
 			// This client is the last to finish uploading,
 			// so we'll delegate them to make the shell API call.
 			sockets[peer_id].emit('shell_delegate','start analysis');
