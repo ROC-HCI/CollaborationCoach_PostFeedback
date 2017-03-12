@@ -18,9 +18,10 @@ for (var key in jscontent.participation)
 	if(key == 'total')
 		delete jscontent.participation[key]; 
 	else
-		count += 1;
+		user_count += 1;
 }	
 
 var participation_data = jscontent.participation;
 
+console.log("Total User Count:" + user_count);
 console.log(participation_data);
