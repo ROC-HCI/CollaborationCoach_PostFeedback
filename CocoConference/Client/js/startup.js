@@ -27,7 +27,7 @@ var peer_media_streams = {};   /* keep track of media streams indexed by peer_id
 var session_key = null;
 var user_name = null;
 
-var modal = document.getElementById('uploadingModal');
+var modal = null;
 
 function proposeStop()
 {
@@ -38,6 +38,8 @@ function init()
 {
 	user_name = prompt("Please enter your User Name:", "Coco-User");
 
+	modal = document.getElementById('uploadingModal');
+	
 	console.log("Connecting to signaling server");
 	signaling_socket = io.connect(SIGNALING_SERVER);
 
