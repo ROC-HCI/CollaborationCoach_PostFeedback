@@ -27,13 +27,11 @@ var peer_media_streams = {};   /* keep track of media streams indexed by peer_id
 var session_key = null;
 var user_name = null;
 
-// Loading the MUTE_AUDIO_BY_DEFAULT
 var modal = document.getElementById('uploadingModal');
 
 function proposeStop()
 {
-	signaling_socket.emit("propose_stop",DEFAULT_CHANNEL);
-	modal.style.display = "block";
+	signaling_socket.emit("propose_stop",DEFAULT_CHANNEL);	
 }
 
 function init()
@@ -109,7 +107,6 @@ function init()
 		{
 			if(request.readyState == 4 && request.status == 200)
 			{
-				modal.style.display = "none";
 				console.log('processing finished, output below.');
 				console.log(request.response);
 				signaling_socket.emit('analysis_complete', DEFAULT_CHANNEL);
@@ -128,6 +125,8 @@ function init()
 
 	signaling_socket.on('data_available', function()
 	{
+		modal.style.display = "none";
+		
 		var win = window.open('https://conference.eastus.cloudapp.azure.com/RocConf/chatbot.php?key=' + session_key + '&user=' + user_name, '_blank');
 		if (win)
 		{
@@ -157,6 +156,7 @@ function init()
 	// Experiment Teardown
 	signaling_socket.on('session_end', function()
 	{
+		modal.style.display = "block";
 		console.log("Received Session End!");
 
 		// Stop Video Recording
