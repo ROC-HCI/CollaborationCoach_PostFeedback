@@ -29,7 +29,6 @@ header
 #header_image
 {
   float:left;
-  padding-top: 0.5%;
 }
 
 #uploadingModal
@@ -74,7 +73,7 @@ header
   display: inline;
   margin-top: 1%;
   margin-left: 5%;
-  width: 10%;
+  width: 15%;
   float: none;
 }
 
@@ -97,8 +96,8 @@ header
 {
   position: relative;
   margin-top: 1%;
-  margin-left: 25%;
-  width:50%;
+  margin-left: 20%;
+  width:40%;
 }
 
 #local_video
@@ -109,7 +108,7 @@ header
 #end_call_button
 {
   margin-top: 1%;
-  margin-left: 5%;
+  margin-left: 2%;
   width: 15%;
   height: 50px;
   background-color: #2ba2db;
