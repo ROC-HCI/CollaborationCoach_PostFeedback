@@ -96,7 +96,7 @@ header
 {
   position: relative;
   margin-top: 1%;
-  margin-left: 20%;
+  margin-left: 30%;
   width:40%;
 }
 
@@ -107,7 +107,6 @@ header
 
 #end_call_button
 {
-  margin-top: 1%;
   margin-left: 2%;
   width: 15%;
   height: 50px;
