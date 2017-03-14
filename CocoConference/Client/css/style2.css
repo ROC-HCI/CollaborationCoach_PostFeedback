@@ -32,7 +32,8 @@ header
   padding-top: 0.5%;
 }
 
-#uploadingModal{
+#uploadingModal
+{
   display: none;
   position: fixed;
   width: 40%;
@@ -44,12 +45,14 @@ header
   background-color: #BDBDBD;
 }
 
-.modal-content{
+.modal-content
+{
   text-align: center;
   font-size: 200%;
 }
 
-.loader{
+.loader
+{
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
   border-radius: 50%;
@@ -60,7 +63,8 @@ header
   animation: spin 1.5s linear infinite;
 }
 
-@keyframes spin {
+@keyframes spin 
+{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
@@ -68,25 +72,30 @@ header
 #remote_videos > video
 {
   position: relative;
-  margin-top: 2%;
-  margin-left: 25%;
-  width: 50%;
+  margin-top: 1%;
+  margin-left: 5%;
+  width: 25%;
 }
 
 #background_feeds
 {
-  position: relative;
-  margin-left: 1%;
-  float: right;
-  width: 30%;
+  display: inline-block;
+  width: 100%;
 }
 
-#focus_feed
+#main_div
+{
+	display: inline-block;
+	width:100%;
+	background-color: #e0e0d1;
+}
+
+#focus_feed > video
 {
   position: relative;
   margin-top: 2%;
-  margin-left: 2%;
-  float: left;
+  margin-left: 25%;
+  width:50%;
 }
 
 #local_video
@@ -96,12 +105,13 @@ header
 
 #end_call_button
 {
-  margin-left: 20%;
-  width: 60%;
+  margin-left: 5%;
+  width: 15%;
   height: 50px;
   background-color: #2ba2db;
   color: #ffffff;
   border-color: #A9A9A9;
+  float: right;
 }
 
 #affdex_data
