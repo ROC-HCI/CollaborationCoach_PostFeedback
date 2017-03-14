@@ -73,7 +73,7 @@ header
   display: inline;
   margin-top: 1%;
   margin-left: 5%;
-  width: 15%;
+  width: 10%;
   float: none;
 }
 
@@ -81,14 +81,14 @@ header
 {
   margin:auto;
   width: 100%;
-  height:30%;
+  height:20%;
 }
 
 #main_div
 {
   display: inline-block;
   width:100%;
-  height:60%;
+  height:70%;
   background-color: #e0e0d1;
 }
 
