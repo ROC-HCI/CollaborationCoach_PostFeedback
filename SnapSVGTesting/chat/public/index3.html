@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/daneden/animate.css/master/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-dark">
+      		<div class="container-fluid">
+        		<a class="navbar-brand" href="#">
+    				<img src="https://files.slack.com/files-pri/T1FSQC4CB-F2VMXLQ5D/rlogo.png" class="img-fluid" alt="">
+        		</a> 
+        		<div class="header-title"><h1>Feedback Assistant</h1></div>
+     		</div>
+  		</nav>
+	</header>
+	<div class="main">
+			<div class="contain-body">
+		  		<div class="inner-contain-body">
+		     		<ul id="messages">
+		  			</ul>
+		    		<div class="clr"></div>
+		  		</div>
+		  		<div id="message-option" class="message-option">
+		  		</div>
+			</div>
+			<div class="contain-graph">
+				
+				<!-- actual feedback diagram -->
+				<div id="graphContainer" class="inner-contain-graph">
+					<!-- some kind of navigation instruction -->
+				</div>
+			</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="./talktimeDialogue.js"></script>
+	<script>
+		var participation = parse(json);
+		console.log(participation);
+
+		var thinking = $('#messages li:last');
+
+		$(document).ready(function(){
+			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
+		});
+		
+		function addGraph(obj){
+        	//if participation, add participation graph
+        	//check tag
+        	//if 1 participation
+        	//2 hatever
+        	//3 ..
+        	if(participation[obj.title].tags=='1') 
+        		createGraph('participation')
+        }
+
+        function gotoObject(object){
+        	document.getElementById('message-option').innerHTML="";
+        	// console.log(participation, object.title);
+        	//error occur
+        	if(typeof object.body == undefined || typeof object.title == undefined){
+        		(function(str){
+        			setTimeout(function(){
+        				$('#messages').append(new item("Server", str).create());	
+        			},600);
+        		})('server crashed, please email us at xxx@xxx.edu to let us know what is causing the crash so we can fix it');
+        	}else{
+	        	console.log('what', object.body.length); //already trimmed
+	        	console.log('buttons', object.buttons); //buttons
+	        	fixNewline(object);
+        	}
+        }
+
+        function fixNewline(obj){
+        	var count = 1;
+        
+        	for(var str of participation[obj.title].body.split(/\\n/)){
+        		console.log('whats my string ',str.length);
+        		if(!/\S/.test(str)) continue;
+        		(function(str){
+        			setTimeout(function(){
+        				thinking.remove();
+        				$('#messages').append(new item("Roboto", str).create());	
+        				$('.inner-contain-body').animate({ 
+			      scrollTop: $('#messages').height()
+					});
+        			},count*600);
+        		})(str);
+        		count++;
+        	}
+        	console.log('whats the count ', count);
+        	if(obj.buttons){
+        		(function(str){
+        			setTimeout(function(){
+						for(var b of obj.buttons){
+							console.log(b);
+							$('#message-option').append(new option(/\[\[(.*?)\]\]/g.exec(b.trim())[1]).create());
+						}	
+        			},count*600);
+        		})(str);
+        	}
+        }
+
+		//button 
+		function option(o){
+			this.text = o.split("|")[0];
+			this.next = o.split("|")[1];
+			this.button = document.createElement('button');
+		}
+
+		var test = function(e){
+			$('#messages').append(new item("user", this.textContent).create());
+			$('#messages').append(new item("Roboto", "Roboto is thinking..").create());
+			thinking = $('#messages li:last');
+			$('.inner-contain-body').animate({ 
+			      scrollTop: $('#messages').height()
+});
+			gotoObject(participation[this.getAttribute('data-next')]);
+			// e.stopPropagation();
+			//add a additional text
+		}
+		
+		option.prototype.create = function() {
+			this.button.textContent = this.text;
+			this.button.setAttribute('data-next', this.next);
+			// console.log(this.next);
+			if (this.button.addEventListener) 
+			    this.button.addEventListener('click',test,false); //everything else    
+			else if (this.button.attachEvent)
+			    this.button.attachEvent('onclick',test);  //IE only
+			// console.log(this);
+			return this.button;
+		}
+
+		//chat message
+		function item(user, text) {
+			this.user = user;
+			this.text = text;
+			this.li = document.createElement('li');
+		}
+
+		item.prototype.create = function() {
+			var div = document.createElement('div');
+			div.className = 'message-content';
+			var image = document.createElement('img');
+			image.className = 'profile';
+			// image.className = 'img-rounded';
+
+			
+			var right = document.createElement('div');
+			right.className = 'right';
+			// var name = document.createElement('span');
+			// name.className = 'name';
+			// name.innerHTML = this.user;
+			var content = document.createElement('span');
+			content.className = 'content';
+			content.innerHTML = this.text;
+
+			if(this.user=='Roboto'){
+				// console.log(this.user);
+				image.src='https://files.slack.com/files-pri/T1FSQC4CB-F2VN90X19/chatbot.png';
+				var left = document.createElement('div');
+				left.className = 'left';
+				left.appendChild(image);
+			}else{
+				//its a user
+				// image.src='http://placehold.it/50x50';
+				//bug add additional class
+				this.li.className="text-xs-right";
+				right.className+=" user-right";
+				// this.li.className = "text-xs-center";
+				// this.li.className += " text-xs-right";
+			}
+
+
+			// right.appendChild(name);
+			right.appendChild(content);
+
+		    if(left) div.appendChild(left);
+		    div.appendChild(right);
+		    this.li.appendChild(div);
+
+		    return this.li;
+			// $('.right').append(content);
+		}
+
+		function parse(json){
+			var result = [];
+			for (var element of json){
+				result[element.title.trim()] = element; //assuming titles are unique
+
+				//empty node
+				if(element.tags){
+					result[element.title.trim()].tags = element.tags;
+					// result[element.title.trim()].body = "empty node detected!";
+				} 
+				if(element.body.length==0){
+					console.log('element.body fixed');
+					result[element.title.trim()].body = "empty node detected!";
+				}else{
+				//nonempty node
+					var bracket = element.body.match(/\[\[(.*?)\]\]/g);
+					if(bracket==null){
+							result[element.title.trim()].body = element.body.trim();
+					}
+					else{
+						result[element.title.trim()].buttons = element.body.match(/\[\[(.*?)\]\]/g);
+						result[element.title.trim()].body = element.body.split(/\[\[/)[0];
+				
+					}
+				}
+			}
+			return result;
+		}
+
+	</script>
+</body>
+</html> 

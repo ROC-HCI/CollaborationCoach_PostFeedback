@@ -1,0 +1,57 @@
+{
+  "name": "fusioncharts",
+  "version": "3.11.2",
+  "description": "FusionCharts JavaScript charting framework for distribution",
+  "homepage": "http://www.fusioncharts.com",
+  "main": "fusioncharts.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fusioncharts/fusioncharts-dist"
+  },
+  "keywords": [
+    "javascript-charts",
+    "interactive-charts",
+    "charts",
+    "graphs",
+    "visualization",
+    "data-visualization",
+    "dataviz",
+    "browserify",
+    "webpack"
+  ],
+  "author": {
+    "name": "FusionCharts Technologies",
+    "email": "support@fusioncharts.com"
+  },
+  "license": "http://www.fusioncharts.com/buy/",
+  "bugs": {
+    "url": "http://www.fusioncharts.com/contact-support/"
+  },
+  "gitHead": "c5f9f1e4569df8ba0aa14e686d249ec13cc33ecf",
+  "_id": "fusioncharts@3.11.2",
+  "scripts": {},
+  "_shasum": "2bf2d597a7944e1933c1eef12776e2f357dc798f",
+  "_from": "fusioncharts@latest",
+  "_npmVersion": "2.15.9",
+  "_nodeVersion": "4.5.0",
+  "_npmUser": {
+    "name": "fusioncharts",
+    "email": "mail@labs.fusioncharts.com"
+  },
+  "dist": {
+    "shasum": "2bf2d597a7944e1933c1eef12776e2f357dc798f",
+    "tarball": "https://registry.npmjs.org/fusioncharts/-/fusioncharts-3.11.2.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "fusioncharts",
+      "email": "mail@labs.fusioncharts.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/fusioncharts-3.11.2.tgz_1474029577639_0.8969428546261042"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/fusioncharts/-/fusioncharts-3.11.2.tgz"
+}

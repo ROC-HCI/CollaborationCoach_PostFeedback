@@ -1,0 +1,31 @@
+{
+    "interruption":{
+        "Luis":{
+            "interrupted":37,
+            "interrupting":74
+        },
+        "Ru":{
+            "interrupted":15,
+            "interrupting":96
+        },
+        "Viv":{
+            "interrupted":0,
+            "interrupting":111
+        }
+    },
+    "participation":{
+        "Luis":83.99406250000006,
+        "Ru":47.36799999999991,
+        "Viv":85.87199999999991,
+        "total":217.23406249999988
+    },
+    "turntaking":{
+        "Luis-Ru":27,
+        "Luis-Viv":37,
+        "Ru-Luis":32,
+        "Ru-Viv":26,
+        "Viv-Luis":33,
+        "Viv-Ru":31
+    },
+    "user":"Luis"
+}

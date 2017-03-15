@@ -1,0 +1,337 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Tahoma, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.1px;
+  font-size: 1.8rem;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.navbar {
+  font-family: "Helvetica Neue",Helvetica,"Segoe UI",Tahoma,Arial,sans-serif!important;
+}
+.navbar-brand {
+  line-height: 25px;
+  font-size: 2.25rem;
+}
+
+.btn-link {
+  color: white!important;
+}
+
+.btn-link:hover {
+  text-decoration: none;
+  background: rgba(255,255,255,0.5);
+}
+
+.active {
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.main {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  width: inherit;
+  /*height: 480px;*/
+  height: 100vh;  
+  overflow-y: hidden;
+/*   background: black; */
+/*   height: 350px; */
+}
+
+.contain-body {
+  /*height: 85%; */
+  overflow: hidden;
+  padding-bottom: 50px;
+  width: 60%;
+  /*width: 100%;*/
+/*   background: tomato; */
+}
+
+.inner-contain-body {
+  /*width: 120%;*/
+  overflow: auto;
+  height: 65%;
+}
+
+.contain-graph {
+  background: #f2f2f2;
+  width: 40%;
+  /*margin-top: 65px;*/
+  overflow: auto;
+}
+
+.contain-filter {
+  width: 100%;
+  /*height: 10%;*/
+  /*background: tomato;*/
+  padding: 5px 25px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  /*justify-content: space-around;*/
+  /*flex-direction: row;*/
+}
+
+.contain-filter > * {
+  /*flex: 1;*/
+   /*width: 22%; */
+/*   overflow: hidden; */
+  margin-top: 10px;
+  margin-right: 15px;
+  /*background: aliceblue;*/
+/*   vertical-align: middle; */
+}
+
+.contain-filter > h4 {
+  line-height: 1.0;
+  font-weight: bold;
+  
+}
+
+/*a.nav-btn {
+  display: block;
+  background: white;
+  color: #333;
+  border-radius: 10%;
+  text-align: center;
+  padding: 10px 15px;
+  line-height: 0;
+}
+
+a.nav-btn:hover {
+  text-decoration: none;
+  color: black;
+}*/
+
+.inner-contain-graph {
+  /*background: tomato;*/
+  width: 100%;
+  overflow: auto;
+  overflow-y: scroll;
+  height: 90%;
+}
+
+.inner-contain-graph > * {
+  /*padding: 25px 0;*/
+  background: #f2f2f2;
+;
+  height: 100%;
+  width: 100%;
+}
+
+.clr{
+    clear:both;
+    font-size:0;
+}
+
+/* right side */
+#messages { 
+/*   display: relative; */
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+  /*margin-top: 5em;*/
+  /*padding: 15px;*/
+  overflow: auto;
+/*   height: 50%; */
+}
+#messages li { 
+  text-decoration: none;
+  padding: 5px 10px; 
+}
+/* #messages li:nth-child(odd) {           background: #eee; 
+} */
+span.name {
+  font-weight: 900;
+  color: #2c2d30!important;
+  line-height: 1.125rem;
+  clear: both;
+}
+.message-content {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+}
+.right {
+  padding-left: 0.625rem;
+}
+span.content {
+  display: block;
+  line-height: 1.5rem;
+  word-wrap: break-word;
+}
+/* right side form */
+/*form { 
+  position: fixed; 
+  bottom: 1.375rem; 
+  width: inherit; 
+  padding: 15px;
+}*/
+/*form input { 
+  width: 90%;
+  padding: 15px;
+  box-shadow: none;
+  border: 3px solid #e0e0e0;
+  border-radius: 6px 0 0 6px;
+}
+form button { 
+  color: white;
+  border: 4px solid CornflowerBlue;
+  border-radius: 0px 6px 6px 0px;
+  background: CornflowerBlue;
+  padding: 15px;
+  margin-left: -7px;
+}*/
+
+.active {
+  opacity: 1;
+}
+
+.message-option {
+  width: 90%;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  position: fixed; 
+  justify-content: space-between;
+  bottom: 1.375rem; 
+  width: inherit; 
+}
+
+.message-option > button {
+  flex: 1 0 auto;
+  margin: 0 5px;
+  color: white!important;
+  border: 4px solid CornflowerBlue;
+  border-radius: 6px 6px 6px 6px;
+  background: CornflowerBlue;
+  padding: 15px;
+}
+
+.container-layer {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.outer2 {
+  background: white;
+}
+
+/*migrated css from graph to chatbot*/
+/*@import url(https://fonts.googleapis.com/css?family=Oswald);
+
+body {
+  font-family: "Oswald", sans-serif;
+  color: #A7A9AC;
+}*/
+
+.container {
+  width: 100%;
+}
+
+span.chart-label{
+  color: #a9bcd0;
+}
+
+.outer {
+   float:left;
+   position: relative;
+   width: 25%;
+   left: 25%;
+}
+
+/*mobile config needed*/
+.outer2 {
+/*   float: left; */
+/*   position: relative; */
+/*   margin: 0 auto; */
+/*   width: 100%; */
+  max-height: 200px;
+  margin-bottom: 10%;
+  clear: both;
+}
+
+.outer2 canvas {
+  width: 100% !important;
+  /*height: auto !important;*/
+  min-width: 300px;
+  margin: 0 auto;
+}
+
+.inner-contain1{
+  display: inline-block;
+  /*background: aliceblue;*/
+  width: 50%;
+}
+
+/*chart3*/
+.inner-contain3 {
+  width: 50%;
+  padding-top: 10%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.inner-contain3 svg {
+  position: absolute;
+}
+
+#guest0 {
+  margin-top: -12%;
+  left: 0%;
+}
+
+#guest1,#guest2,#guest3{
+  top:110%;
+}
+
+#guest-1 {
+  top: 80%;
+  left: 20%;
+  width:80%;
+  z-index: -1;
+}
+
+.graph-container {
+  width:100%;
+  height: 250px;
+  background-color: white;
+  /*margin-bottom:8%;*/
+
+}
+
+.container-background {
+  background: #f2f2f2;
+  height:10%;
+}
+
+h5 {
+  background: white;
+  padding: 10px;
+}
+
+
+.wrapper{
+  background: white;
+  padding-top:6%;
+}
