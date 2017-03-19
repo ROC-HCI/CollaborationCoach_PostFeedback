@@ -9,6 +9,8 @@ var selection_options = ["Box of matches","Food concentrate","Fifty feet of nylo
 
 function submit_answers()
 {
+	experiment_modal.style.display = "block";
+	
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = function() 
 	{

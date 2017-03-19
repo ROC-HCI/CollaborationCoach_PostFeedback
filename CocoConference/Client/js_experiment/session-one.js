@@ -2,6 +2,8 @@
 
 function submit_answers()
 {
+	experiment_modal.style.display = "block";
+	
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = function() 
 	{

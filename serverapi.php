@@ -288,7 +288,7 @@ if($_GET['mode'] == 'seatupload')
 }
 
 // Access Point for submitting Experiment ranking answers
-if($_GET['mode'] == 'experiment')
+if($_GET['mode'] == 'experimentSubmit')
 {
 	$json_string = file_get_contents('php://input');
 	
