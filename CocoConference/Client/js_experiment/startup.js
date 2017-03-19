@@ -184,12 +184,12 @@ function init()
 				
 				var remote_media_big = USE_VIDEO ? $("<video>") : $("<audio>");
 				remote_media_big.attr("autoplay", "autoplay");
-				remote_media_big.attr("id", peer_id + "_big");
+				remote_media_big.attr("id", this.id + "_big");
 				remote_media_big.attr("muted", "true");
 
-				$('#focus_target').val(peer_id);
+				$('#focus_target').val(this.id);
 				$('#focus_feed').append(remote_media_big);
-				attachMediaStream(remote_media_big[0], peer_media_streams[peer_id]);
+				attachMediaStream(remote_media_big[0], peer_media_streams[this.id]);
 
 			});
 
