@@ -29,7 +29,7 @@ var user_name = null;
 
 // Coco experiment display modals
 var experiment_modal = null;
-var uploading_model = null;
+var uploading_modal = null;
 var ranking_modal = null;
 
 function proposeStop()
@@ -57,6 +57,10 @@ function init()
 			 * microphone/camcorder, join the channel and start peering up */
 			join_chat_channel(DEFAULT_CHANNEL, {'whatever-you-want-here': 'stuff'});
 		});
+		
+		// Show the ranking screen after connecting
+		ranking_modal.style.display = "block";
+		
 	});
 
 	signaling_socket.on('disconnect', function()
@@ -132,7 +136,7 @@ function init()
 
 	signaling_socket.on('data_available', function()
 	{
-		modal.style.display = "none";
+		uploading_modal.style.display = "none";
 		
 		var win = window.open('https://conference.eastus.cloudapp.azure.com/RocConf/chatbot.php?key=' + session_key + '&user=' + user_name, '_blank');
 		
@@ -150,6 +154,7 @@ function init()
 	signaling_socket.on('session_start', function()
 	{
 		console.log("Received Session Start!");
+		experiment_modal.style.display ="none";
 		
 		// Experiment starting, setup our remote feeds on the page.
 		for(peer_id in peer_media_streams)
@@ -200,7 +205,7 @@ function init()
 	// Experiment Teardown
 	signaling_socket.on('session_end', function()
 	{
-		modal.style.display = "block";
+		uploading_modal.style.display = "block";
 		console.log("Received Session End!");
 
 		// Stop Video Recording
@@ -216,7 +221,6 @@ function init()
 		{
 			if(!recording_upload_status)
 			{
-				modal.style.display = "block";
 				console.log("Upload not done, waiting...");
 				setTimeout(recording_check,100);
 				return;
