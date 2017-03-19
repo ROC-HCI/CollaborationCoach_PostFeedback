@@ -22,7 +22,7 @@ function submit_answers()
 	
 	data_to_send = {'session_key':session_key, 
 					'user':user_name,
-					'experiment':"two"
+					'experiment':"two",
 					'selections': "TO DO HERE"};
 							
 	string_data = JSON.stringify(data_to_send);				
