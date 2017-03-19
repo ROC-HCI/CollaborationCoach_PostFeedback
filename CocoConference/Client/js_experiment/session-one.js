@@ -1,11 +1,5 @@
 // Script for handling the 'Lost at Sea' Game
 
-var selection_options = ["A Mosquito Net","A can of Petrol","A water container",
-                         "A shaving mirror","A sextant (measures angle between objects)",
-						 "Emergency rations","A sea chart","A floating seat or cushion",
-						 "A rope","Some chocolate bars","A waterproof sheet","A fishing rod",
-						 "Shark repellent","A bottle of rum","A VHF radio"];
-
 function submit_answers()
 {
 	var request = new XMLHttpRequest();
