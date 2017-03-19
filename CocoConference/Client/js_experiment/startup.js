@@ -158,7 +158,13 @@ function init()
 		console.log("Received Session Start!");
 		experiment_modal.style.display = "none";
 		ranking_modal.style.display = "none";
-		
+
+		var users_priority_list = $( "#users_priority_list" )
+		for(var i = 0; i < current_ranking.length; i++)
+		{
+			users_priority_list.append( "<li class='ui-state-default'>"+current_ranking[i]+"</li>");
+		}		
+
 		// Experiment starting, setup our remote feeds on the page.
 		for(peer_id in peer_media_streams)
 		{
