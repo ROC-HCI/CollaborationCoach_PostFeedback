@@ -162,7 +162,7 @@ function init()
 		var users_priority_list = $( "#users_priority_list" )
 		for(var i = 0; i < current_ranking.length; i++)
 		{
-			users_priority_list.append( "<li class='ui-state-default'>"+current_ranking[i].rank+"<br/>"+current_ranking[i].item+"</li>");
+			users_priority_list.append( "<li class='ui-state-default'>"+current_ranking[i].item+"</li>");
 		}		
 
 		// Experiment starting, setup our remote feeds on the page.
