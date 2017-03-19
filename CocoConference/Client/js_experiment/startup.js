@@ -157,7 +157,7 @@ function init()
 	{
 		console.log("Received Session Start!");
 		experiment_modal.style.display = "none";
-		selection_modal.style.display = "none";
+		ranking_modal.style.display = "none";
 		
 		// Experiment starting, setup our remote feeds on the page.
 		for(peer_id in peer_media_streams)
