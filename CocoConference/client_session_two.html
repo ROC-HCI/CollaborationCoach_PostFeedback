@@ -13,6 +13,9 @@
 	<link rel="stylesheet" href="Client/css/style2.css">
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	
 	<script src="https://conference.eastus.cloudapp.azure.com/RocConf/lib/bower_components/webrtc-adapter/adapter.js"></script>
 	<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
 
@@ -45,6 +48,14 @@
 		</div>
 		<div class="loader"></div>
 	</div>
+	<div id="selectionModal" class="modal">
+		<div class="modal-content">
+			<ul id="sortable">
+
+			</ul>
+		</div>
+		<button id="getResults" onclick="getResults()">Submit Results</button>
+	</div>
 
 	<div id="session_wrapper">
 		<div id="main_div">
@@ -71,14 +82,27 @@
 							 "First-aid kit injection needles","Solar-powered FM receiver-transmitter"];
 
 	var selectionDiv = $( "#sortable" )
-	selectionDiv.empty();
 	for(var i = 0; i < selection_options.length; i++)
 	{
-		selectionDiv.append( "<li class='ui-state-default'><span class='ui-icon ui-icon-arrowthick-2-n-s'></span>"+selection_options[i]+"</li>");
+		selectionDiv.append( "<li class='ui-state-default' id='"+i+"'><span class='ui-icon ui-icon-arrowthick-2-n-s'></span>"+selection_options[i]+"</li>");
 	}
 
 	$( "#sortable" ).sortable();
     $( "#sortable" ).disableSelection();
+
+    function getResults()
+    {
+	   	var rawSelection = $( "#sortable" ).sortable( "toArray" );
+	   	var cleanSelection = [];
+	   	for(var i = 0; i < rawSelection.length; i++)
+	   	{
+	   		cleanSelection.push({"item":selection_options[rawSelection[i]],"rank":i});
+
+	   	}
+
+	   	console.log(cleanSelection);
+	   	submit_answers(cleanSelection);
+	}
 
 </script>
 
