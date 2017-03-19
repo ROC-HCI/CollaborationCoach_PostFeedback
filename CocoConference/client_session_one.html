@@ -8,10 +8,10 @@
 	<meta name="description" content="description">
 	<meta name="author" content="author">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="Client/css/style2.css">
-	
+
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -19,21 +19,22 @@
 
 	<script src="https://conference.eastus.cloudapp.azure.com/RocConf/lib/bower_components/webrtc-adapter/adapter.js"></script>
 	<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
-	
-	<script src="https://download.affectiva.com/js/3.1/affdex.js"></script>	
+
+	<script src="https://download.affectiva.com/js/3.1/affdex.js"></script>
 	<script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
 	<script src="Client/js_experiment/recording.js"></script>
 	<script src="Client/js_experiment/startup.js"></script>
 	<script src="Client/js_experiment/session-one.js"></script>
-	
+
 </head>
 
-<body onload='init()'>
+<!--<body onload='init()'>-->
+<body>
 	<header>
 		<img src="Client/images/coco.png" id="header_image" alt="">
-		<div id="header_text">Conference Room <button id="end_call_button" onClick="proposeStop()">End Call</button></div>		
+		<div id="header_text">Conference Room <button id="end_call_button" onClick="proposeStop()">End Call</button></div>
 	</header>
-	
+
 	<!--Modal-->
 	<div id="uploadingModal" class="modal">
 		<!--Modal Content-->
@@ -49,7 +50,7 @@
 		</div>
 		<div class="loader"></div>
 	</div>
-	
+
 	<div id="selectionModal" class="modal">
 		<div class="modal-content">
 			<ul id="sortable">
@@ -59,13 +60,18 @@
 		<button id="getResults" onclick="getResults()">Submit Results</button>
 	</div>
 
-	<div id="main_div">
-		<input type="hidden" id="focus_target"/>
-		<div id="focus_feed"></div>		
+	<div id="session_wrapper">
+		<div id="main_div">
+			<input type="hidden" id="focus_target"/>
+			<div id="focus_feed"></div>
+		</div>
+		<div id="background_feeds">
+			<span id="remote_videos"></span>
+		</div>
 	</div>
-	<div id="background_feeds">
-		<span id="remote_videos"></span>		
-	</div>
+
+	<div id="users_priority_list"></div>
+
 	<div id="affdex_data"></div>
 </body>
 

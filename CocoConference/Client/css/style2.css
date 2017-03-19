@@ -67,21 +67,21 @@ header
   background-color: #BDBDBD;
 }
 
-#sortable 
+#sortable
 {
-  list-style-type: none; 
-  margin: 0; 
-  padding: 0; 
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-#sortable li 
-{ 
-  margin: 0 3px 3px 3px; 
-  padding-left: .5em; 
+#sortable li
+{
+  margin: 0 3px 3px 3px;
+  padding-left: .5em;
 }
 
-#sortable li span { 
-  /*position: absolute; 
+#sortable li span {
+  /*position: absolute;
   margin-left: -1.3em; */
 }
 
@@ -103,7 +103,7 @@ header
   animation: spin 1.5s linear infinite;
 }
 
-@keyframes spin 
+@keyframes spin
 {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -116,6 +116,22 @@ header
   margin-left: 5%;
   width: 10%;
   float: none;
+}
+
+#session_wrapper
+{
+  float: left;
+  width: 70%;
+  height: 100%;
+}
+
+#users_priority_list
+{
+  z-index: -1;
+  margin-left: 76.4%;
+  width: 30%;
+  height: 100%;
+  background-color: #f3f3f3;
 }
 
 #background_feeds
