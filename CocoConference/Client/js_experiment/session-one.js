@@ -12,6 +12,7 @@ function submit_answers(selections)
 		if(request.readyState == 4 && request.status == 200) 
 		{
 			console.log(request.response);
+			signaling_socket.emit("selections_submitted",DEFAULT_CHANNEL);
 		}
 	};
 	
