@@ -56,6 +56,7 @@
 
 			</ul>
 		</div>
+		<button id="end_call_button" onclick="getResults()">Submit Results</button>
 	</div>
 
 	<div id="main_div">
@@ -86,16 +87,19 @@
 	$( "#sortable" ).sortable();
     $( "#sortable" ).disableSelection();
 
+    function getResults()
+    {
+	   	var rawSelection = $( "#sortable" ).sortable( "toArray" );
+	   	var cleanSelection = [];
+	   	for(var i = 0; i < rawSelection.length; i++)
+	   	{
+	   		cleanSelection.push({"item":selection_options[rawSelection[i]],"rank":i});
 
-   	var rawSelection = $( "#sortable" ).sortable( "toArray" );
-   	var cleanSelection = [];
-   	for(var i = 0; i < rawSelection.length; i++)
-   	{
-   		cleanSelection.push({"item":selection_options[rawSelection[i]],"rank":i});
+	   	}
 
-   	}
-
-   	console.log(cleanSelection);
+	   	console.log(cleanSelection);
+	   	submit_answers(cleanSelection);
+	}
 
 
 </script>
