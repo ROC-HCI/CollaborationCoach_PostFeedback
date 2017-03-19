@@ -287,6 +287,22 @@ if($_GET['mode'] == 'seatupload')
 	$connection->close();
 }
 
+// Access Point for submitting Experiment ranking answers
+if($_GET['mode'] == 'experiment')
+{
+	$json_string = file_get_contents('php://input');
+	
+	$document = json_decode($json_string,true);
+	$document["submitted"] = date("Y-m-d h:i:sa",time());
+	
+	$collection = $database->selectCollection('experimentselections');
+	$collection->insert($document);
+	
+	echo "selections submitted";
+	
+	$connection->close();
+}
+
 // Access Point for Obtaining the previous sessionID
 if($_GET['mode'] == 'sessionprev')
 {

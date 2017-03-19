@@ -27,7 +27,10 @@ var peer_media_streams = {};   /* keep track of media streams indexed by peer_id
 var session_key = null;
 var user_name = null;
 
-var modal = null;
+// Coco experiment display modals
+var experiment_modal = null;
+var uploading_model = null;
+var ranking_modal = null;
 
 function proposeStop()
 {
@@ -38,7 +41,9 @@ function init()
 {
 	user_name = prompt("Please enter your User Name:", "Coco-User");
 
-	modal = document.getElementById('uploadingModal');
+	experiment_modal = document.getElementById('experimentModal');
+	uploading_modal = document.getElementById('uploadingModal');
+	ranking_modal = document.getElementById('selectionModal');
 	
 	console.log("Connecting to signaling server");
 	signaling_socket = io.connect(SIGNALING_SERVER);
@@ -130,13 +135,14 @@ function init()
 		modal.style.display = "none";
 		
 		var win = window.open('https://conference.eastus.cloudapp.azure.com/RocConf/chatbot.php?key=' + session_key + '&user=' + user_name, '_blank');
+		
 		if (win)
 		{
 			win.focus();
 		}
 		else
 		{
-			alert('Please allow popups for this website');
+			alert('Please allow popups for this website!');
 		}
 	});
 
@@ -144,6 +150,42 @@ function init()
 	signaling_socket.on('session_start', function()
 	{
 		console.log("Received Session Start!");
+		
+		// Experiment starting, setup our remote feeds on the page.
+		for(peer_id in peer_media_streams)
+		{
+			var remote_media = USE_VIDEO ? $("<video>") : $("<audio>");
+			remote_media.attr("autoplay", "autoplay");
+			remote_media.attr("id", peer_id);
+
+			if (MUTE_AUDIO_BY_DEFAULT)
+			{
+				remote_media.attr("muted", "true");
+			}
+
+			// Mouseover handler for the 'big' display
+			remote_media.mouseenter(function(){
+				$('#focus_feed').empty();
+
+				var target = peer_id;
+
+				var remote_media_big = USE_VIDEO ? $("<video>") : $("<audio>");
+				remote_media_big.attr("autoplay", "autoplay");
+				remote_media_big.attr("id", target + "_big");
+				remote_media_big.attr("muted", "true");
+
+				$('#focus_target').val(target);
+				$('#focus_feed').append(remote_media_big);
+				attachMediaStream(remote_media_big[0], peer_media_streams[target]);
+
+			});
+
+			peer_media_elements[peer_id] = remote_media;
+
+			$('#remote_videos').append(remote_media);
+			attachMediaStream(remote_media[0], peer_media_streams[peer_id]);
+		}
+		
 
 		// Video Recording Startup
 		captureVideo(commonConfig);
@@ -242,37 +284,8 @@ function init()
 		{
 			console.log("onAddStream", event);
 
-			var remote_media = USE_VIDEO ? $("<video>") : $("<audio>");
-			remote_media.attr("autoplay", "autoplay");
-			remote_media.attr("id", peer_id);
-
-			if (MUTE_AUDIO_BY_DEFAULT)
-			{
-				remote_media.attr("muted", "true");
-			}
-
-			// Mouseover handler for the 'big' display
-			remote_media.mouseenter(function(){
-				$('#focus_feed').empty();
-
-				var target = peer_id;
-
-				var remote_media_big = USE_VIDEO ? $("<video>") : $("<audio>");
-				remote_media_big.attr("autoplay", "autoplay");
-				remote_media_big.attr("id", target + "_big");
-				remote_media_big.attr("muted", "true");
-
-				$('#focus_target').val(target);
-				$('#focus_feed').append(remote_media_big);
-				attachMediaStream(remote_media_big[0], peer_media_streams[target]);
-
-			});
-
-			peer_media_elements[peer_id] = remote_media;
+			// Store the stream for later use.
 			peer_media_streams[peer_id] = event.stream;
-
-			$('#remote_videos').append(remote_media);
-			attachMediaStream(remote_media[0], event.stream);
 		}
 
 		/* Add our local stream */

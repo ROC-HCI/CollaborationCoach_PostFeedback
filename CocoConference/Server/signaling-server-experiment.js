@@ -51,6 +51,7 @@ var requiredUserCount = 2;
 
 var sessionStarted = false;
 var uploadsFinishedCount = 0;
+var submittedAnswersCount = 0;
 
 /**
  * Users will connect to the signaling server, after which they'll issue a "join"
@@ -114,22 +115,9 @@ io.sockets.on('connection', function (socket)
 		//=================================================================================================
 		
 		//tells this client the current session ID
-		socket.emit('session_key', sessionKey);		
-		
+		socket.emit('session_key', sessionKey);			
 		connectedUsers = connectedUsers + 1;
-		
-		// If we've got our users we're all set to start recording data
-		if((connectedUsers == requiredUserCount) && !sessionStarted)
-		{
-			// Slight delay prior to running this to allow the last user to properly resolve the connection.
-			setTimeout(function ()
-			{
-				for(id in channels[channel])
-					channels[channel][id].emit('session_start','start');
-				sessionStarted = true;
-			},
-			3000);
-		}
+
     });
 
     function part(channel) 
@@ -180,14 +168,33 @@ io.sockets.on('connection', function (socket)
 	//=====================================================================================================================
 	
 	// One client has hit the 'End Call' button, let everybody in this channel know
-	socket.on('propose_stop', function(data)
+	socket.on('propose_stop', function(channel)
 	{
 		if(sessionStarted)
 		{
-			for(id in channels[data])
-				channels[data][id].emit('session_end','end');				
+			for(id in channels[channel])
+				channels[channel][id].emit('session_end','end');				
 			
 			sessionStarted = false;
+		}
+	});
+	
+	// Each client will tell the server when it has uploaded it's experimental selections
+	socket.on('selections_submitted', function(channel)
+	{
+		submittedAnswersCount = submittedAnswersCount + 1;
+		
+		// If we've got our users we're all set to start recording data
+		if((submittedAnswersCount == requiredUserCount) && !sessionStarted)
+		{
+			// Slight delay prior to running this.
+			setTimeout(function ()
+			{
+				for(id in channels[channel])
+					channels[channel][id].emit('session_start','start');
+				sessionStarted = true;
+			},
+			3000);
 		}
 	});
 	
