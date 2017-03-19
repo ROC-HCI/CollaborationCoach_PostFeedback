@@ -61,8 +61,6 @@ header
 {
   /*display: none;*/
   position: fixed;
-  width: 40%;
-  height: 40%;
   z-index: 1;
   overflow: auto;
   margin-left: 30%;
