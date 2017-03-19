@@ -80,8 +80,17 @@
 	var selectionDiv = $( "#sortable" )
 	for(var i = 0; i < selection_options.length; i++)
 	{
-		selectionDiv.append( "<li class='ui-state-default'><span class='ui-icon ui-icon-arrowthick-2-n-s'></span>"+selection_options[i]+"</li>");
+		selectionDiv.append( "<li class='ui-state-default' id='"+i+"'><span class='ui-icon ui-icon-arrowthick-2-n-s'></span>"+selection_options[i]+"</li>");
 	}
+
+	$( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+
+   
+
+
+
+
 </script>
 
 </html>
