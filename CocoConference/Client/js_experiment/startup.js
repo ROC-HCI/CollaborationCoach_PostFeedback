@@ -39,7 +39,7 @@ function proposeStop()
 
 function init()
 {
-	user_name = prompt("Please enter your User Name:", "Coco-User");
+	user_name = prompt("Please enter your User Name:", "Coco-User");	
 
 	experiment_modal = document.getElementById('experimentModal');
 	uploading_modal = document.getElementById('uploadingModal');
@@ -57,6 +57,8 @@ function init()
 			 * microphone/camcorder, join the channel and start peering up */
 			join_chat_channel(DEFAULT_CHANNEL, {'whatever-you-want-here': 'stuff'});
 		});
+		
+		alert(experiment_instructions);
 		
 		// Show the ranking screen after connecting
 		ranking_modal.style.display = "block";
