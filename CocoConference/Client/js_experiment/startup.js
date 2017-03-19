@@ -183,6 +183,8 @@ function init()
 
 				var target = peer_id;
 
+				console.log(target);
+				
 				var remote_media_big = USE_VIDEO ? $("<video>") : $("<audio>");
 				remote_media_big.attr("autoplay", "autoplay");
 				remote_media_big.attr("id", target + "_big");
