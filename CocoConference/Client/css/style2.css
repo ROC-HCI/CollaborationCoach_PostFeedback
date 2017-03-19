@@ -175,12 +175,12 @@ header
 
 #getResults
 {
-  width: 15%;
-  height: 50px;
+  width: 20%;
+  height: 35px;
   background-color: #2ba2db;
   color: #ffffff;
   border-color: #A9A9A9;
-  margin: auto;
+  margin-left:40%;
 }
 
 #affdex_data
