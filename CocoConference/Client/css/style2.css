@@ -76,9 +76,7 @@ header
 #sortable li 
 { 
   margin: 0 3px 3px 3px; 
-  padding: 0.4em; 
   padding-left: .5em; 
-  height: 18px; 
 }
 
 #sortable li span { 
