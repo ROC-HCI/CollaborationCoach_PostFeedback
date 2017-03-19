@@ -6,7 +6,6 @@ var selection_options = ["A Mosquito Net","A can of Petrol","A water container",
 						 "A rope","Some chocolate bars","A waterproof sheet","A fishing rod",
 						 "Shark repellent","A bottle of rum","A VHF radio"];
 
-
 function submit_answers()
 {
 	var request = new XMLHttpRequest();

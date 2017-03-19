@@ -46,6 +46,14 @@
 		<div class="loader"></div>
 	</div>
 	
+	<div id="selectionModal" class="modal">
+		<div class="modal-content">
+			<ul id="sortable">
+
+			</ul>
+		</div>
+	</div>
+
 	<div id="main_div">
 		<input type="hidden" id="focus_target"/>
 		<div id="focus_feed"></div>		
@@ -58,5 +66,12 @@
 
 <script src="Client/js_experiment/affdexheadtrack.js"></script>
 <script src="Client/js_experiment/focus.js"></script>
+<script>
+	var selectionDiv = $( "#sortable" )
+	for(var i = 0; i < selection_options.length; i++)
+	{
+		selectionDiv.append( "<li class='ui-state-default'><span class='ui-icon ui-icon-arrowthick-2-n-s'></span>"+selection_options[i]+"</li>");
+	}
+</script>
 
 </html>
