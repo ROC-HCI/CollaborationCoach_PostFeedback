@@ -60,8 +60,9 @@ header
 #selectionModal
 {
   /*display: none;*/
-  position: fixed;
+  /*position: fixed;*/
   z-index: 1;
+  overflow: auto;
   background-color: #BDBDBD;
 }
 
