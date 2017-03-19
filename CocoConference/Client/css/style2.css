@@ -80,8 +80,8 @@ header
 }
 
 #sortable li span { 
-  position: absolute; 
-  margin-left: -1.3em; 
+  /*position: absolute; 
+  margin-left: -1.3em; */
 }
 
 .modal-content
