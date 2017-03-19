@@ -159,7 +159,8 @@ function init()
 		experiment_modal.style.display = "none";
 		ranking_modal.style.display = "none";
 
-		var users_priority_list = $( "#users_priority_list" )
+		var users_priority_list = $("#users_priority_list");
+		
 		for(var i = 0; i < current_ranking.length; i++)
 		{
 			users_priority_list.append( "<li class='ui-state-default'>"+current_ranking[i].item+"</li>");
