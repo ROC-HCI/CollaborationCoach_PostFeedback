@@ -142,11 +142,18 @@ def compute(users, key, type):
 	
 	for user in users:
 		raw_data[user] = parse_raw_data(session_key, user, key, type)
-		
+	
+	# Remove any user that has empty raw data
+	# when affdex fails so we get the rest.
+	users_final = []
+	for user in users:
+		if raw_data[user]:
+			users_final.append(user)
+	
 	# Detect the minimum length of data we have
 	# so we don't overun the end on one.
 	length = 0	
-	for user in users:
+	for user in users_final:
 		temp_length = len(raw_data[user])
 		if(length == 0):
 			length = temp_length
@@ -156,8 +163,8 @@ def compute(users, key, type):
 	
 	# Compute paired detections between users
 	paired_detections = {}
-	for user in users:
-		for user2 in users:	
+	for user in users_final:
+		for user2 in users_final:	
 			key1 = user + " - " + user2
 			key2 = user2 + " - " + user
 			if (user != user2) and (key1 not in paired_detections) and (key2 not in paired_detections):
