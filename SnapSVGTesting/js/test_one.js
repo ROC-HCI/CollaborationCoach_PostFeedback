@@ -37,11 +37,11 @@ for (var key in participation_data)
 var graph_data = {size: 400, sectors: segments}
 
 var sectors = calculateSectors(graph_data);
-var svg_element = document.getElementById("chart_svg");
-
-svg_element.setAttributeNS(null, 'style', "width: " + graph_data.size + "px; height: " + graph_data.size + "px");
 
 // Filled in test
+var svg_element = document.getElementById("chart_svg");
+svg_element.setAttributeNS(null, 'style', "width: " + graph_data.size + "px; height: " + graph_data.size + "px");
+
 sectors.map( function(sector) {
 
     var newSector = document.createElementNS( "http://www.w3.org/2000/svg","path" );
