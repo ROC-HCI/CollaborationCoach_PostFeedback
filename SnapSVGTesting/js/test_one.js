@@ -45,7 +45,7 @@ svg_element.setAttributeNS(null, 'style', "width: " + graph_data.size + "px; hei
 sectors.map( function(sector) {
 
     var newSector = document.createElementNS( "http://www.w3.org/2000/svg","path" );
-    newSector.setAttributeNS(null, 'fill', sector.color);
+    //newSector.setAttributeNS(null, 'fill', sector.color);
     newSector.setAttributeNS(null, 'd', 'M' + sector.L + ',' + sector.L + ' L' + sector.L + ',0 A' + sector.L + ',' + sector.L + ' 1 0,1 ' + sector.X + ', ' + sector.Y + ' z');
     newSector.setAttributeNS(null, 'transform', 'rotate(' + sector.R + ', '+ sector.L+', '+ sector.L+')');
 
