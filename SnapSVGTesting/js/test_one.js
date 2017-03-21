@@ -39,7 +39,7 @@ var graph_data = {size: 400, sectors: segments}
 var sectors = calculateSectors(graph_data);
 
 // Filled in test
-var svg_element = document.getElementById("chart_svg");
+var svg_element = document.getElementById("chart_svg1");
 svg_element.setAttributeNS(null, 'style', "width: " + graph_data.size + "px; height: " + graph_data.size + "px");
 
 sectors.map( function(sector) {
@@ -50,7 +50,9 @@ sectors.map( function(sector) {
     newSector.setAttributeNS(null, 'transform', 'rotate(' + sector.R + ', '+ sector.L+', '+ sector.L+')');
 
     svg_element.appendChild(newSector);
-})
+});
+
+new Vivus('chart_svg1', {duration: 200});
 
 //==========================================================
 // https://danielpataki.com/svg-pie-chart-javascript/
