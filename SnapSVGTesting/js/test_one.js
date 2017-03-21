@@ -1,5 +1,5 @@
-var session_key = '5049a2a0-a518-11e6-af2c-5b246b9c300d'; // TEST SESSION KEY - this sould end up dynamic at some point.
-var iuser = 'Ru';
+var session_key = '07894240-0dbf-11e7-9ae9-6d413ab416f0'; // TEST SESSION KEY - this sould end up dynamic at some point.
+var iuser = 'Yiyun';
 
 var colorpalette = ['#90D0D5','#FBF172', '#B0D357', '#C88ABC', '#4B79BD'];
 
