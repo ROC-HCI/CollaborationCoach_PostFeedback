@@ -53,6 +53,7 @@ sectors.map( function(sector) {
 });
 
 var obj_vivus = new Vivus('chart_svg1', {duration: 200});
+obj_vivus.reset();
 obj_vivus.play(1);
 
 //==========================================================
