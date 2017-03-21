@@ -16,11 +16,11 @@ var total_participation = jscontent.participation['total'];
 var user_count = 0;			
 for (var key in jscontent.participation)
 {
-	if(key == 'total')
-		delete jscontent.participation[key]; 
-	else
+	if(key != "total")
 		user_count += 1;
 }	
+
+console.log(user_count);
 
 var participation_data = jscontent.participation;
 
