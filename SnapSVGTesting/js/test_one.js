@@ -44,7 +44,8 @@ svg_element.setAttributeNS(null, 'style', "width: " + graph_data.size + "px; hei
 sectors.map( function(sector) {
 
     var newSector = document.createElementNS( "http://www.w3.org/2000/svg","path" );
-    newSector.setAttributeNS(null, 'stroke', sector.color);
+    newSector.setAttributeNS(null, 'fill', 'white');
+	newSector.setAttributeNS(null, 'stroke', sector.color);
 	newSector.setAttributeNS(null, 'stroke-width', 5);
     newSector.setAttributeNS(null, 'd', 'M' + sector.L + ',' + sector.L + ' L' + sector.L + ',0 A' + sector.L + ',' + sector.L + ' 1 0,1 ' + sector.X + ', ' + sector.Y + ' z');
     newSector.setAttributeNS(null, 'transform', 'rotate(' + sector.R + ', '+ sector.L+', '+ sector.L+')');
@@ -54,7 +55,7 @@ sectors.map( function(sector) {
 
 var obj_vivus = new Vivus('chart_svg1', {type: 'oneByOne', duration: 200, animTimingFunction: Vivus.EASE});
 obj_vivus.reset();
-obj_vivus.play(.25);
+obj_vivus.play(1);
 
 //==========================================================
 // https://danielpataki.com/svg-pie-chart-javascript/
