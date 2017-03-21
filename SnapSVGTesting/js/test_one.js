@@ -52,9 +52,9 @@ sectors.map( function(sector) {
     svg_element.appendChild(newSector);
 });
 
-var obj_vivus = new Vivus('chart_svg1', {duration: 200});
+var obj_vivus = new Vivus('chart_svg1', {type: 'oneByOne', duration: 200, animTimingFunction: Vivus.EASE});
 obj_vivus.reset();
-obj_vivus.play(1);
+obj_vivus.play(.25);
 
 //==========================================================
 // https://danielpataki.com/svg-pie-chart-javascript/
