@@ -41,6 +41,7 @@ var sectors = calculateSectors(graph_data);
 var svg_element = document.getElementById("participation_svg");
 svg_element.setAttributeNS(null, 'style', "width: " + graph_data.size + "px; height: " + graph_data.size + "px");
 
+// Drawing Sector Paths
 sectors.map( function(sector) {
 
     var newSector = document.createElementNS( "http://www.w3.org/2000/svg","path" );
@@ -51,6 +52,29 @@ sectors.map( function(sector) {
     newSector.setAttributeNS(null, 'transform', 'rotate(' + sector.R + ', '+ sector.L+', '+ sector.L+')');
 
     svg_element.appendChild(newSector);
+});
+
+// Drawing Sector Text
+sectors.map( function(sector){
+	var labelElement = document.createElementNS( "http://www.w3.org/2000/svg","text" );
+	labelElement.setAttributeNS(null, "x", sector.X);
+	labelElement.setAttributeNS(null, "y", sector.Y);
+	labelElement.setAttributeNS(null, "font-size", 12);
+	labelElement.setAttributeNS(null, "font-color", sector.color);	
+	
+	var labelTextNode = document.createTextNode(sector.label);
+	labelElement.appendChild(labelTextNode);	
+	svg_element.appendChild(labelElement);
+	
+	var percentElement = document.createElementNS( "http://www.w3.org/2000/svg","text" );
+	percentElement.setAttributeNS(null, "x", sector.X + 40);
+	percentElement.setAttributeNS(null, "y", sector.Y + 14);
+	percentElement.setAttributeNS(null, "font-size", 12);
+	percentElement.setAttributeNS(null, "font-color", sector.color);
+	
+	var percentTextNode = document.createTextNode(sector.percentage + "%");
+	percentElement.appendChild(percentTextNode);
+	svg_element.appendChild(labelElement);
 });
 
 // Animated Drawing of the Sectors
