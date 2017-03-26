@@ -46,27 +46,29 @@ sectors.map( function(sector) {
     var newSector = document.createElementNS( "http://www.w3.org/2000/svg","path" );
 	newSector.setAttributeNS(null, 'fill-opacity', 0.0);
 	newSector.setAttributeNS(null, 'stroke', sector.color);
-	newSector.setAttributeNS(null, 'stroke-width', 2);
+	newSector.setAttributeNS(null, 'stroke-width', 5);
     newSector.setAttributeNS(null, 'd', 'M' + sector.L + ',' + sector.L + ' L' + sector.L + ',0 A' + sector.L + ',' + sector.L + ' 1 0,1 ' + sector.X + ', ' + sector.Y + ' z');
     newSector.setAttributeNS(null, 'transform', 'rotate(' + sector.R + ', '+ sector.L+', '+ sector.L+')');
 
     svg_element.appendChild(newSector);
 });
 
+// Animated Drawing of the Sectors
 var obj_vivus = new Vivus('participation_svg', {type: 'oneByOne', duration: 200, animTimingFunction: Vivus.EASE});
 obj_vivus.reset();
-obj_vivus.play(0.5);
+obj_vivus.play(0.75);
 
 //==========================================================
 // https://danielpataki.com/svg-pie-chart-javascript/
 //==========================================================
-function calculateSectors( data ) {
+function calculateSectors( data ) 
+{
     var sectors = [];
     var colors = [
         '#90D0D5','#FBF172', '#B0D357', '#C88ABC'
     ];
 
-    var l = data.size / 2
+    var l = (data.size / 2) - 10
     var a = 0 // Angle
     var aRad = 0 // Angle in Rad
     var z = 0 // Size z
