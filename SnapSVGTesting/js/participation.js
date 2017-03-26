@@ -59,8 +59,8 @@ sectors.map( function(sector){
 	var labelElement = document.createElementNS( "http://www.w3.org/2000/svg","text" );
 	labelElement.setAttributeNS(null, "x", sector.X);
 	labelElement.setAttributeNS(null, "y", sector.Y);
-	labelElement.setAttributeNS(null, "font-size", 12);
-	labelElement.setAttributeNS(null, "font-color", sector.color);	
+	labelElement.setAttributeNS(null, "font-size", 24);
+	labelElement.setAttributeNS(null, "color", sector.color);	
 	
 	var labelTextNode = document.createTextNode(sector.label);
 	labelElement.appendChild(labelTextNode);	
@@ -68,13 +68,13 @@ sectors.map( function(sector){
 	
 	var percentElement = document.createElementNS( "http://www.w3.org/2000/svg","text" );
 	percentElement.setAttributeNS(null, "x", sector.X + 40);
-	percentElement.setAttributeNS(null, "y", sector.Y + 14);
-	percentElement.setAttributeNS(null, "font-size", 12);
-	percentElement.setAttributeNS(null, "font-color", sector.color);
+	percentElement.setAttributeNS(null, "y", sector.Y + 25);
+	percentElement.setAttributeNS(null, "font-size", 24);
+	percentElement.setAttributeNS(null, "color", sector.color);
 	
 	var percentTextNode = document.createTextNode(sector.percentage + "%");
 	percentElement.appendChild(percentTextNode);
-	svg_element.appendChild(labelElement);
+	svg_element.appendChild(percentElement);
 });
 
 // Animated Drawing of the Sectors
