@@ -447,7 +447,7 @@
 				if(key == iuser){
 					i3speaker.unshift(key);
 					guests[key] = colorpalette[0];
-					i3data.unshift(Math.round(i3[key]));
+					i3data.unshift(Math.round((i3[key] / totalparticipation) * 100));
 				}
 				else{
 			       	//console.log("LALALA ", count, i3[key]);
@@ -455,7 +455,7 @@
 		            //keymod = key.replace(/Data\/test-key-test_/g, "");
 		            guests[key] = colorpalette[count];
 		            //console.log("logging guests", guests);
-		            i3data.push(Math.round(i3[key]));
+		            i3data.push(Math.round((i3[key] / totalparticipation) * 100));
 		           	count+=1;
 	        	}
 	        }
