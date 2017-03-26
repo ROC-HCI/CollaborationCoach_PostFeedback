@@ -1,4 +1,11 @@
-#chart_div
+#participation_chart
+{
+	width:500px;
+	height:500px;
+	background:url('images/background_bg.png');
+}
+
+#participation_svg
 {
 	width: 500px;
 	height: 500px;

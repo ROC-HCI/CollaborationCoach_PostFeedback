@@ -34,17 +34,17 @@ for (var key in participation_data)
 	segments.push({percentage: participation_data[key] / total_participation, label: key})
 }
 
-var graph_data = {size: 400, sectors: segments}
+var graph_data = {size: 475, sectors: segments}
 
 var sectors = calculateSectors(graph_data);
 
-var svg_element = document.getElementById("chart_svg1");
+var svg_element = document.getElementById("participation_svg");
 svg_element.setAttributeNS(null, 'style', "width: " + graph_data.size + "px; height: " + graph_data.size + "px");
 
 sectors.map( function(sector) {
 
     var newSector = document.createElementNS( "http://www.w3.org/2000/svg","path" );
-    newSector.setAttributeNS(null, 'fill', 'white');
+	newSector.setAttributeNS(null, 'fill-opacity', 0.0);
 	newSector.setAttributeNS(null, 'stroke', sector.color);
 	newSector.setAttributeNS(null, 'stroke-width', 5);
     newSector.setAttributeNS(null, 'd', 'M' + sector.L + ',' + sector.L + ' L' + sector.L + ',0 A' + sector.L + ',' + sector.L + ' 1 0,1 ' + sector.X + ', ' + sector.Y + ' z');
@@ -53,7 +53,7 @@ sectors.map( function(sector) {
     svg_element.appendChild(newSector);
 });
 
-var obj_vivus = new Vivus('chart_svg1', {type: 'oneByOne', duration: 200, animTimingFunction: Vivus.EASE});
+var obj_vivus = new Vivus('participation_svg', {type: 'oneByOne', duration: 200, animTimingFunction: Vivus.EASE});
 obj_vivus.reset();
 obj_vivus.play(1);
 
