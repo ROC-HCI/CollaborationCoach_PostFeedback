@@ -118,6 +118,7 @@ function calculateSectors( data )
             X: X,
             Y: Y,
             R: R
+			stroke: stroke;
         });
 
         R = R + a;
