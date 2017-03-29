@@ -388,6 +388,9 @@
 		    		scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
 				});
 			});
+			
+			// Resize event after 1 second to handle chrome on mac issue
+			setTimeout(function() {window.dispatchEvent(new Event('resize'));}, 1500);
 		}
 		
 		function gatherData(){
