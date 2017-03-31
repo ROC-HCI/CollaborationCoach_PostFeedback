@@ -381,13 +381,15 @@
 				};
 			?>
 
-			make_Graph(type);
+			
 			$('.wrapper').slideDown("slow", function(){
 				//slide first to obtain the height then scroll
 				$('.inner-contain-graph').animate({ 
 		    		scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
 				});
 			});
+			
+			make_Graph(type);
 			
 			// Resize event after 1 second to handle chrome on mac issue
 			setTimeout(function() {window.dispatchEvent(new Event('resize')); console.log("RESIZE FIRED");}, 1500);
