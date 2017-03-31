@@ -56,6 +56,9 @@ sectors.map( function(sector) {
 
 // Drawing Sector Text
 sectors.map( function(sector){
+	var percentage = 
+	
+	
 	var labelElement = document.createElementNS( "http://www.w3.org/2000/svg","text" );
 	labelElement.setAttributeNS(null, "x", sector.X);
 	labelElement.setAttributeNS(null, "y", sector.Y);
