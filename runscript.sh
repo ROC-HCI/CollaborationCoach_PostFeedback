@@ -45,11 +45,11 @@ echo "Start - shared affdex features"
 python SharedAffdexDetection.py $session_id
 echo "Finish - shared affdex features"
 
-echo "Start - Bluemix Tone Analysis - Google Results"
-for file in Data/fixed_$session_id*.flac;
-	do python ToneAnalyzer.py $file "google"
-done
-echo "Finish - Bluemix Tone Analysis - Google Results"
+#echo "Start - Bluemix Tone Analysis - Google Results"
+#for file in Data/fixed_$session_id*.flac;
+#	do python ToneAnalyzer.py $file "google"
+#done
+#echo "Finish - Bluemix Tone Analysis - Google Results"
 
 #echo "Start - Bluemix Speech Recognition"
 #for file in Data/fixed_$session_id*.flac;
