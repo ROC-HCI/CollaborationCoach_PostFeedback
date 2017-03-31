@@ -47,7 +47,7 @@ var sockets = {};
 var sessionKey = uuid.v1();
 
 var connectedUsers = 0;
-var requiredUserCount = 4;
+var requiredUserCount = 3;
 
 var sessionStarted = false;
 var uploadsFinishedCount = 0;
