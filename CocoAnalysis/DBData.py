@@ -147,7 +147,8 @@ if __name__ == "__main__":
 	
 	#generate_interuption_data(session_key_list)
 	#generate_participation_data(session_key_list)
-	generate_turntaking_data(session_key_list)
+	#generate_turntaking_data(session_key_list)
+	generate_attitude_data(session_key_list)
 	
 	
 		
