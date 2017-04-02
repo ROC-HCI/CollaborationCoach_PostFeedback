@@ -17,7 +17,7 @@ client = MongoClient()
 database = client['rocconf']
 
 # CHANGE THIS FOR A UNIQUE LABEL!
-data_set_label = "TEST_FINAL"
+data_set_label = "2017_04_02"
 
 #============================================================================
 # Dump to CSV file
@@ -215,7 +215,7 @@ def generate_interuption_data(session_key_list):
 #=======================================================
 if __name__ == "__main__":
 	# List of session keys you want to get data sets for
-	session_key_list = ["12345678","07894240-0dbf-11e7-9ae9-6d413ab416f0"]
+	session_key_list = ["12345678","07894240-0dbf-11e7-9ae9-6d413ab416f0","ebad4e90-17e6-11e7-9b9c-bf00dfff9daf"]
 	
 	generate_interuption_data(session_key_list)
 	generate_participation_data(session_key_list)
