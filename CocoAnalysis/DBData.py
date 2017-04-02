@@ -30,7 +30,7 @@ def generate_csv_file(file_name, data_set):
 			if(not flag):
 				writer.writerow(e.keys())
 				writer.writerow(e.values())
-				Flag = True
+				flag = True
 			else:
 				writer.writerow(e.values())
 		
@@ -43,11 +43,11 @@ def generate_interuption_data(session_key_list):
 	write_data = []
 
 	for key in session_key_list:
-		document = source_collection.find_one({"session_key" : key})
-		dict = {}
+		document = source_collection.find_one({"session_key" : key})		
 		
 		interruptions = document["interruption"]
 		for user in interruptions:
+			dict = {}
 			data = interruptions[user]
 			dict["session"] = key
 			dict["user"] = user
