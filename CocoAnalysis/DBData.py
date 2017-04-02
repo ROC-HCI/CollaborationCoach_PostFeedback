@@ -35,6 +35,34 @@ def generate_csv_file(file_name, data_set):
 				writer.writerow(e.values())
 		
 	return
+	
+#============================================================================
+# Generate Participation Data
+def generate_participation_data(session_key_list):
+	source_collection = database['participation']
+	write_data = []
+
+	for key in session_key_list:
+		document = source_collection.find_one({"session_key" : key})
+	
+		participation = document["participation"]
+		total_count = 0
+		
+		for key in participation:
+			if(key == "total"):
+				total_count = participation[key]
+		
+		for user,value in participation:
+			if(user not "total"):
+				dict = {}
+				data = participation[user]
+				dict["session"] = key
+				dict["user"] = user
+				dict["rate"] = (value / total_count) * 100
+				write_data.append(dict.copy())
+				
+	generate_csv_file(data_set_label + "_participation.csv", write_data)
+	return
 
 #============================================================================
 # Create dataset of interruption information
@@ -65,7 +93,8 @@ if __name__ == "__main__":
 	# List of session keys you want to get data sets for
 	session_key_list = ["12345678","07894240-0dbf-11e7-9ae9-6d413ab416f0"]
 	
-	generate_interuption_data(session_key_list)
+	#generate_interuption_data(session_key_list)
+	generate_participation_data(session_key_list)
 	
 	
 		
