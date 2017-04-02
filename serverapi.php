@@ -200,7 +200,7 @@ if($_GET['mode'] == 'stupid_thing')
 		$document_clean["data"] = $data_clean;
 		
 		$collection = $database->selectCollection('affdexmerge');
-		$collection->insert($document);
+		$collection->insert($document_clean);
 		
 		echo "submitted: " . $document_clean["user"] . " with key " . $document_clean["session_key"];
 	}
