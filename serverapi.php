@@ -158,6 +158,25 @@ if($_GET['mode'] == 'debug')
 }
 
 //=============================================================
+// MIGRATE AFFDEX DATA TO NEW KEY
+//=============================================================
+if($_GET['mode'] == 'stupid_thing')
+{
+	$key_old = 'c4d74700-16f9-11e7-96e6-f369022ab6af';
+	$key_new = '123456';
+	
+	$collection = $database->selectCollection('affdexmerge');
+	$query = array('session_key' => $key_old);
+				   
+	$document = $collection->find($query);
+	
+	foreach($document as $doc)
+	{
+		echo var_dump($doc);
+	}
+}
+
+//=============================================================
 // Transcript Comparison
 // - Looking at the different transcripts
 //=============================================================
