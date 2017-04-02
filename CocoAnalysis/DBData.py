@@ -62,7 +62,7 @@ def generate_attitude_data(session_key_list):
 						
 					write_data.append(dict.copy())
 				
-	generate_csv_file(data_set_label + "_turntaking.csv", write_data)
+	generate_csv_file(data_set_label + "_attitude.csv", write_data)
 	return	
 	
 #============================================================================
