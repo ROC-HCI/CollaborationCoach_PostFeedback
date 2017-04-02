@@ -52,13 +52,13 @@ def generate_participation_data(session_key_list):
 			if(key == "total"):
 				total_count = participation[key]
 		
-		for user,value in participation:
+		for user in participation:
 			if(user != "total"):
 				dict = {}
 				data = participation[user]
 				dict["session"] = key
 				dict["user"] = user
-				dict["rate"] = (value / total_count) * 100
+				dict["rate"] = (data / total_count) * 100
 				write_data.append(dict.copy())
 				
 	generate_csv_file(data_set_label + "_participation.csv", write_data)
