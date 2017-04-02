@@ -199,7 +199,10 @@ if($_GET['mode'] == 'stupid_thing')
 		$document_clean["session_key"] = $key_new;
 		$document_clean["data"] = $data_clean;
 		
-		echo var_dump($document_clean) . "<hr/>";
+		$collection = $database->selectCollection('affdexmerge');
+		$collection->insert($document);
+		
+		echo "submitted: " . $document_clean["user"] . " with key " . $document_clean["session_key"];
 	}
 }
 
