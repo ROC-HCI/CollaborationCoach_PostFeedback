@@ -37,6 +37,39 @@ def generate_csv_file(file_name, data_set):
 	return
 
 #============================================================================
+# Generate Shared Features Data
+def generate_shared_data(session_key_list):
+	source_collection = database['affdexshared']
+	write_data = []
+	
+	for key in session_key_list:
+		document = source_collection.find_one({"session_key" : key})
+		
+		shared_smile = document["smile_data"]
+		shared_joy = document["joy_data"]
+		
+		for record in shared_smile:
+			dict = {}
+			data = shared_smile[record]
+			dict["session"] = key
+			dict["interaction"] = record
+			dict["count"] = data["Count"]
+			dict["avg duration"] = data["Avg"]
+			write_data.append(dict.copy())
+			
+		for record in shared_joy:
+			dict = {}
+			data = shared_joy[record]
+			dict["session"] = key
+			dict["interaction"] = record
+			dict["count"] = data["Count"]
+			dict["avg duration"] = data["Avg"]
+			write_data.append(dict.copy())
+			
+	generate_csv_file(data_set_label + "_shared_features.csv", write_data)
+	return	
+	
+#============================================================================
 # Generate Attitude Data
 def generate_attitude_data(session_key_list):
 	source_collection = database['affdexaverages']
@@ -149,7 +182,8 @@ if __name__ == "__main__":
 	#generate_interuption_data(session_key_list)
 	#generate_participation_data(session_key_list)
 	#generate_turntaking_data(session_key_list)
-	generate_attitude_data(session_key_list)
+	#generate_attitude_data(session_key_list)
+	generate_shared_data(session_key_list)
 	
 	
 		
