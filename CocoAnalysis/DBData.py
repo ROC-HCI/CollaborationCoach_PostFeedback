@@ -48,11 +48,12 @@ def generate_interuption_data(session_key_list):
 		
 		interruptions = document["interruption"]
 		for data in interruptions:
-			for k,v in data:
-				dict["session"] = key
-				dict["user"] = k
-				dict["interrupting"] = v["interrupting"]
-				dict["interrupted"] = v["interrupted"]
+			pp.pprint(data)
+			#for k,v in data:
+				#dict["session"] = key
+				#dict["user"] = k
+				#dict["interrupting"] = v["interrupting"]
+				#dict["interrupted"] = v["interrupted"]
 			
 		write_data.append(dict.copy())	
 		
