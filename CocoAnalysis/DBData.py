@@ -53,7 +53,7 @@ def generate_participation_data(session_key_list):
 				total_count = participation[key]
 		
 		for user,value in participation:
-			if(user not "total"):
+			if(user != "total"):
 				dict = {}
 				data = participation[user]
 				dict["session"] = key
