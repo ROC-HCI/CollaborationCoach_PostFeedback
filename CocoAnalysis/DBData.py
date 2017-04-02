@@ -47,11 +47,12 @@ def generate_interuption_data(session_key_list):
 		dict = {}
 		
 		interruptions = document["interruption"]
-		for k,v in interruptions:
-			dict["session"] = key
-			dict["user"] = k
-			dict["interrupting"] = v["interrupting"]
-			dict["interrupted"] = v["interrupted"]
+		for data in interruptions:
+			for k,v in data:
+				dict["session"] = key
+				dict["user"] = k
+				dict["interrupting"] = v["interrupting"]
+				dict["interrupted"] = v["interrupted"]
 			
 		write_data.append(dict.copy())	
 		
