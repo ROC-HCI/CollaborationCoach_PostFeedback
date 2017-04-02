@@ -49,7 +49,7 @@ def generate_attitude_data(session_key_list):
 			user = doc["user"]
 			
 			for data in doc:
-				if(data != "session_key" && data != "user"):
+				if(data != "session_key" and data != "user"):
 					values = doc[data]
 					
 					dict = {}
