@@ -57,8 +57,8 @@ def generate_attitude_data(session_key_list):
 					dict["user"] = user
 					dict["attitude towards"] = data
 					
-					for k,v in values:
-						dict[k] = v
+					for k in values:
+						dict[k] = values[k]
 						
 					write_data.append(dict.copy())
 				
