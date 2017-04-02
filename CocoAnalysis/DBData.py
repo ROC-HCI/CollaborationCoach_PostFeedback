@@ -48,9 +48,9 @@ def generate_participation_data(session_key_list):
 		participation = document["participation"]
 		total_count = 0
 		
-		for key in participation:
-			if(key == "total"):
-				total_count = participation[key]
+		for test in participation:
+			if(test == "total"):
+				total_count = participation[test]
 		
 		for user in participation:
 			if(user != "total"):
