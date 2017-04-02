@@ -31,7 +31,7 @@ def generate_csv_file(file_name, data_set):
 				writer.writerow(e.keys())
 				writer.writerow(e.values())
 				Flag = True
-			else
+			else:
 				writer.writerow(e.values())
 		
 	return
