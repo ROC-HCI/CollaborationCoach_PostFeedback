@@ -53,8 +53,7 @@ def generate_interuption_data(session_key_list):
 			dict["user"] = user
 			dict["interrupting"] = data["interrupting"]
 			dict["interrupted"] = data["interrupted"]
-			
-		write_data.append(dict.copy())	
+			write_data.append(dict.copy())	
 		
 	generate_csv_file(data_set_label + "_interruptions.csv", write_data)
 	return
