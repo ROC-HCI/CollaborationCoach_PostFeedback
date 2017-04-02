@@ -50,7 +50,7 @@ def generate_single_feature_counts(session_key_list):
 		
 		for user in smile:
 			dict = {}
-			data = smile[record]
+			data = smile[user]
 			dict["session"] = key
 			dict["user"] = user
 			dict["count"] = data["Count"]
