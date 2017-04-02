@@ -17,7 +17,7 @@ client = MongoClient()
 database = client['rocconf']
 
 # CHANGE THIS FOR A UNIQUE LABEL!
-data_set_label = "TESTING"
+data_set_label = "TEST_FINAL"
 
 #============================================================================
 # Dump to CSV file
@@ -53,6 +53,7 @@ def generate_single_feature_counts(session_key_list):
 			data = smile[user]
 			dict["session"] = key
 			dict["user"] = user
+			dict["interaction_type"] = "Smile"
 			dict["count"] = data["Count"]
 			dict["avg duration"] = data["Avg"]
 			write_data.append(dict.copy())
@@ -62,6 +63,7 @@ def generate_single_feature_counts(session_key_list):
 			data = joy[user]
 			dict["session"] = key
 			dict["user"] = user
+			dict["interaction_type"] = "Joy"
 			dict["count"] = data["Count"]
 			dict["avg duration"] = data["Avg"]
 			write_data.append(dict.copy())
@@ -86,6 +88,7 @@ def generate_shared_data(session_key_list):
 			dict = {}
 			data = shared_smile[record]
 			dict["session"] = key
+			dict["interaction_type"] = "Shared Smile"
 			dict["interaction"] = record
 			dict["count"] = data["Count"]
 			dict["avg duration"] = data["Avg"]
@@ -95,6 +98,7 @@ def generate_shared_data(session_key_list):
 			dict = {}
 			data = shared_joy[record]
 			dict["session"] = key
+			dict["interaction_type"] = "Shared Joy"
 			dict["interaction"] = record
 			dict["count"] = data["Count"]
 			dict["avg duration"] = data["Avg"]
@@ -213,11 +217,11 @@ if __name__ == "__main__":
 	# List of session keys you want to get data sets for
 	session_key_list = ["12345678","07894240-0dbf-11e7-9ae9-6d413ab416f0"]
 	
-	#generate_interuption_data(session_key_list)
-	#generate_participation_data(session_key_list)
-	#generate_turntaking_data(session_key_list)
-	#generate_attitude_data(session_key_list)
-	#generate_shared_data(session_key_list)
+	generate_interuption_data(session_key_list)
+	generate_participation_data(session_key_list)
+	generate_turntaking_data(session_key_list)
+	generate_attitude_data(session_key_list)
+	generate_shared_data(session_key_list)
 	generate_single_feature_counts(session_key_list)
 	
 	
