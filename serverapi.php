@@ -158,21 +158,48 @@ if($_GET['mode'] == 'debug')
 }
 
 //=============================================================
-// MIGRATE AFFDEX DATA TO NEW KEY
+// MIGRATE AFFDEX RAW DATA TO NEW KEY
 //=============================================================
 if($_GET['mode'] == 'stupid_thing')
 {
 	$key_old = 'c4d74700-16f9-11e7-96e6-f369022ab6af';
-	$key_new = '123456';
+	$key_new = '12345678';
 	
 	$collection = $database->selectCollection('affdexmerge');
 	$query = array('session_key' => $key_old);
 				   
-	$document = $collection->find($query);
+	$documents = $collection->find($query);
 	
-	foreach($document as $doc)
+	foreach($documents as $doc)
 	{
-		echo var_dump($doc);
+		$document_clean = array();
+		$data_clean = array();
+		$data = $doc["data"];
+		
+		foreach($data as $d)
+		{
+			$new_d = $d;
+			if($new_d["focus"] == "Darth Plagueis The Wise")
+			{
+				$new_d["focus"] = "Darth";
+			}
+
+			$data_clean[] = $new_d;
+		}
+		
+		if($doc["user"] == "Darth Plagueis The Wise")
+		{
+			$document_clean["user"] = "Darth";
+		}
+		else
+		{
+			$document_clean["user"] = $doc["user"];
+		}
+		
+		$document_clean["session_key"] = $key_new;
+		$document_clean["data"] = $data_clean;
+		
+		echo var_dump($document_clean) . "<hr/>";
 	}
 }
 
