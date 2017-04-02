@@ -49,6 +49,7 @@ def generate_attitude_data(session_key_list):
 			user = doc["user"]
 			
 			for data in doc:
+				pp.pprint(data)
 				if(data != "session_key" and data != "user"):
 					values = doc[data]
 					
