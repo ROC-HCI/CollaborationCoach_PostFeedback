@@ -1,7 +1,7 @@
 #===============================================================================
 # Python Script for outputting data from the MongoDB to CSV format.
 #
-# Jeffery A. White - August 2016
+# Jeffery A. White - April 2017
 #===============================================================================
 import random
 import json
@@ -35,6 +35,40 @@ def generate_csv_file(file_name, data_set):
 				writer.writerow(e.values())
 		
 	return
+
+#============================================================================
+# Generate Shared Features Data	
+def generate_single_feature_counts(session_key_list):
+	source_collection = database['affdexshared']
+	write_data = []
+	
+	for key in session_key_list:
+		document = source_collection.find_one({"session_key" : key})
+		
+		smile = document["single_smile_data"]
+		joy = document["single_joy_data"]
+		
+		for user in smile:
+			dict = {}
+			data = smile[record]
+			dict["session"] = key
+			dict["user"] = user
+			dict["count"] = data["Count"]
+			dict["avg duration"] = data["Avg"]
+			write_data.append(dict.copy())
+			
+		for user in joy:
+			dict = {}
+			data = joy[user]
+			dict["session"] = key
+			dict["user"] = user
+			dict["count"] = data["Count"]
+			dict["avg duration"] = data["Avg"]
+			write_data.append(dict.copy())
+			
+	generate_csv_file(data_set_label + "_single_features.csv", write_data)
+	return	
+
 
 #============================================================================
 # Generate Shared Features Data
@@ -183,7 +217,8 @@ if __name__ == "__main__":
 	#generate_participation_data(session_key_list)
 	#generate_turntaking_data(session_key_list)
 	#generate_attitude_data(session_key_list)
-	generate_shared_data(session_key_list)
+	#generate_shared_data(session_key_list)
+	generate_single_feature_counts(session_key_list)
 	
 	
 		
