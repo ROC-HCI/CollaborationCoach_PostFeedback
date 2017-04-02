@@ -35,6 +35,29 @@ def generate_csv_file(file_name, data_set):
 				writer.writerow(e.values())
 		
 	return
+
+#============================================================================
+# Generate Turntaking Data
+def generate_turntaking_data(session_key_list):
+	source_collection = database['participation']
+	write_data = []
+
+	for key in session_key_list:
+		document = source_collection.find_one({"session_key" : key})
+	
+		turntaking = document["turntaking"]
+		
+		for user in turntaking:
+			dict = {}
+			data = turntaking[user]
+			dict["session"] = key
+			dict["interaction"] = user
+			dict["count"] = data
+			write_data.append(dict.copy())
+				
+	generate_csv_file(data_set_label + "_turntaking.csv", write_data)
+	return	
+	
 	
 #============================================================================
 # Generate Participation Data
@@ -94,7 +117,8 @@ if __name__ == "__main__":
 	session_key_list = ["12345678","07894240-0dbf-11e7-9ae9-6d413ab416f0"]
 	
 	#generate_interuption_data(session_key_list)
-	generate_participation_data(session_key_list)
+	#generate_participation_data(session_key_list)
+	generate_turntaking_data(session_key_list)
 	
 	
 		
