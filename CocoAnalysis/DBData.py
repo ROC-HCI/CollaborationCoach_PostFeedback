@@ -37,6 +37,35 @@ def generate_csv_file(file_name, data_set):
 	return
 
 #============================================================================
+# Generate Attitude Data
+def generate_attitude_data(session_key_list):
+	source_collection = database['affdexaverages']
+	write_data = []
+
+	for key in session_key_list:
+		documents = source_collection.find({"session_key" : key})
+	
+		for doc in documents:
+			user = doc["user"]
+			
+			for data in doc:
+				if(data != "session_key" && data != "user"):
+					values = doc[data]
+					
+					dict = {}
+					dict["session"] = key
+					dict["user"] = user
+					dict["attitude towards"] = data
+					
+					for k,v in values:
+						dict[k] = v
+						
+					write_data.append(dict.copy())
+				
+	generate_csv_file(data_set_label + "_turntaking.csv", write_data)
+	return	
+	
+#============================================================================
 # Generate Turntaking Data
 def generate_turntaking_data(session_key_list):
 	source_collection = database['participation']
