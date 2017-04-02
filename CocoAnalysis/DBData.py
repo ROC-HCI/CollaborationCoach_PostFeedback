@@ -27,7 +27,7 @@ def generate_csv_file(file_name, data_set):
 		writer = csv.writer(output_file)
 		
 		for e in data_set:
-			if(not Flag):
+			if(not flag):
 				writer.writerow(e.keys())
 				writer.writerow(e.values())
 				Flag = True
@@ -47,13 +47,12 @@ def generate_interuption_data(session_key_list):
 		dict = {}
 		
 		interruptions = document["interruption"]
-		for data in interruptions:
-			pp.pprint(data)
-			#for k,v in data:
-				#dict["session"] = key
-				#dict["user"] = k
-				#dict["interrupting"] = v["interrupting"]
-				#dict["interrupted"] = v["interrupted"]
+		for user in interruptions:
+			data = interruptions[user]
+			dict["session"] = key
+			dict["user"] = user
+			dict["interrupting"] = data["interrupting"]
+			dict["interrupted"] = data["interrupted"]
 			
 		write_data.append(dict.copy())	
 		
