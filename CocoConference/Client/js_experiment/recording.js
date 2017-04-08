@@ -143,7 +143,6 @@ function uploadToServer(recordRTC, callback) {
     formData.append(fileType + '-filename', fileName);
     formData.append(fileType + '-blob', blob);
 
-    //realFaces.socket.socketio.emit("uploader", formData);
 
     callback('Uploading ' + fileType + ' recording to server.');
     makeXMLHttpRequest('https://conference.eastus.cloudapp.azure.com/RocConf/response.php?action=upload', formData, function(progress) {
