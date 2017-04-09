@@ -11,20 +11,20 @@ done
 echo "Finish - .webm Header Correction"
 
 echo "Start - .wav Conversion"
-for file in Data/fixed_$session_id*.webm;
+for file in Data/$session_id*.webm;
 	do ffmpeg -i "$file" Data/$(basename "${file/.webm}").wav
 done
 echo "Finish - .wav Conversion"
 
 echo "Start - Praat"
-for file in Data/fixed_$session_id*.wav;
+for file in Data/$session_id*.wav;
 	do ./praat --run auto.praat $file
 done
 echo "Finish - Praat"
 
 echo "Start - Participation Analysis"
 argpath=""
-for i in Data/fixed_$session_id*.wav.TextGrid;
+for i in Data/$session_id*.wav.TextGrid;
 	do argpath="$argpath $i"
 done
 
