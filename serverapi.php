@@ -160,6 +160,7 @@ if($_GET['mode'] == 'debug')
 //=============================================================
 // MIGRATE AFFDEX RAW DATA TO NEW KEY
 //=============================================================
+/*
 if($_GET['mode'] == 'stupid_thing')
 {
 	$key_old = 'c4d74700-16f9-11e7-96e6-f369022ab6af';
@@ -205,11 +206,13 @@ if($_GET['mode'] == 'stupid_thing')
 		echo "submitted: " . $document_clean["user"] . " with key " . $document_clean["session_key"];
 	}
 }
+*/
 
 //=============================================================
 // Transcript Comparison
 // - Looking at the different transcripts
 //=============================================================
+/*
 if($_GET['mode'] == 'transcript_checker')
 {
 	$key = 'bd3f7530-89b4-11e6-9414-799760e2546b';
@@ -239,6 +242,7 @@ if($_GET['mode'] == 'transcript_checker')
 
 	echo $document['transcript'];
 }
+*/
 
 //=============================================================
 // ACCESS POINTS FOR API GO BELOW THIS POINT
@@ -282,7 +286,7 @@ if($_GET['mode'] == 'affdexupload')
 	$relation = array();
 	
 	$session_key = $submitted_data["session_key"];
-	$collection = $database->selectCollection('affdexuserseat');
+	$collection = $database->selectCollection('affdexusersocket');
 	$query = array('session_key' => $session_key);				   
 	$cursor = $collection->find($query);
 	
@@ -321,17 +325,17 @@ if($_GET['mode'] == 'affdexupload')
 }
 
 // Access Point for submitting User -> SocketID relationship for a session
-if($_GET['mode'] == 'seatupload')
+if($_GET['mode'] == 'socketupload')
 {
 	$json_string = file_get_contents('php://input');
 	
 	$document = json_decode($json_string,true);
 	$document["submitted"] = date("Y-m-d h:i:sa",time());
 	
-	$collection = $database->selectCollection('affdexuserseat');
+	$collection = $database->selectCollection('affdexusersocket');
 	$collection->insert($document);
 	
-	echo "affdexuserseat submitted";
+	echo "affdexusersocket submitted";
 	
 	$connection->close();
 }

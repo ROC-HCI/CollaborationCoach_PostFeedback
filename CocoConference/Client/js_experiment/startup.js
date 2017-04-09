@@ -107,7 +107,7 @@ function init()
 
 		string_data = JSON.stringify(data_to_send);
 
-		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=seatupload');
+		request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=socketupload');
 		request.setRequestHeader("Content-type", "application/json");
 		request.send(string_data);
 	});
