@@ -232,7 +232,7 @@ with open('result.json','w') as outfile:
 final_dict = {}
 final_dict['session_key'] = dict['session_key']
 
-p = re.compile("Data/" + dict['session_key'] + "_")
+p = re.compile("Data/fixed_" + dict['session_key'] + "_")
 
 interrupt_raw = dict['interruption']
 interrupt_fixed = {}
