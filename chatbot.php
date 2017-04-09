@@ -247,7 +247,7 @@
 		var test = function(e)
 		{
 			console.log("BUTTON FIRED");
-			console.log(e);
+			console.log(participation[this.getAttribute('data-next')]);
 			
 			$('#messages').append(new item("user", this.textContent).create());
 			
