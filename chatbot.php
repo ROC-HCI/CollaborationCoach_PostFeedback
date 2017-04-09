@@ -246,8 +246,23 @@
 		// button click event
 		var test = function(e)
 		{
-			console.log("BUTTON FIRED");
-			console.log(participation[this.getAttribute('data-next')]);
+			// Did we hit the end? If so popup the after feedback survey!
+			if(typeof participation[this.getAttribute('data-next')] == undefined )
+			{
+				var win = window.open('https://docs.google.com/forms/d/e/1FAIpQLSfbWW1cfSUQ1Mo3KKXpLQV0liezNeVmjPEq08_e9CxzesX0Og/viewform');
+		
+				if (win)
+				{
+					win.focus();
+				}
+				else
+				{
+					alert('Please allow popups for this website!');
+				}
+				
+				return;
+			}
+
 			
 			$('#messages').append(new item("user", this.textContent).create());
 			
