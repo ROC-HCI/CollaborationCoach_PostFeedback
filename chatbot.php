@@ -246,6 +246,7 @@
 		// button click event
 		var test = function(e)
 		{
+			console.log("BUTTON FIRED");
 			console.log(e);
 			
 			$('#messages').append(new item("user", this.textContent).create());
