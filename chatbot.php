@@ -308,27 +308,35 @@
 		}
 
 		//parse a message to object
-		function parse(json){
+		function parse(json)
+		{
 			var result = [];
-			for (var element of json){
+			for (var element of json)
+			{
 				result[element.title.trim()] = element; //assuming titles are unique
 				
 				//for graphs
-				if(element.tags){
+				if(element.tags)
+				{
 					result[element.title.trim()].tags = element.tags;
 				} 
 
 				//empty node which should never occur for now
-				if(element.body.length==0){
+				if(element.body.length==0)
+				{
 					console.log('element.body fixed');
 					result[element.title.trim()].body = "empty node detected!";
-				}else{
+				}else
+				{
 					//nonempty node
 					var bracket = element.body.match(/\[\[(.*?)\]\]/g); //search for bracket [[]] which are coded for buttons
-					if(bracket==null){
+					if(bracket==null)
+					{
 							result[element.title.trim()].body = element.body.trim();
+							alert("LAST BUTTON FIRED!");
 					}
-					else{
+					else
+					{
 						//there are always brackets in the message bubble
 						result[element.title.trim()].buttons = element.body.match(/\[\[(.*?)\]\]/g);
 						result[element.title.trim()].body = element.body.split(/\[\[/)[0];
