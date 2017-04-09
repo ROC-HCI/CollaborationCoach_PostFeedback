@@ -244,11 +244,16 @@
 		}
 
 		// button click event
-		var test = function(e){
+		var test = function(e)
+		{
+			console.log(e);
+			
 			$('#messages').append(new item("user", this.textContent).create());
+			
 			$('.inner-contain-body').animate({ 
 			      scrollTop: $('#messages').height()
 			});
+			
 			gotoObject(participation[this.getAttribute('data-next')]);
 		}
 		
@@ -333,7 +338,6 @@
 					if(bracket==null)
 					{
 							result[element.title.trim()].body = element.body.trim();
-							alert("LAST BUTTON FIRED!");
 					}
 					else
 					{
