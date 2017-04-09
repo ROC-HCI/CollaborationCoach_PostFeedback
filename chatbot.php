@@ -247,7 +247,7 @@
 		var test = function(e)
 		{
 			// Did we hit the end? If so popup the after feedback survey!
-			if(typeof participation[this.getAttribute('data-next')] == undefined )
+			if(participation[this.getAttribute('data-next')] == null)
 			{
 				var win = window.open('https://docs.google.com/forms/d/e/1FAIpQLSfbWW1cfSUQ1Mo3KKXpLQV0liezNeVmjPEq08_e9CxzesX0Og/viewform');
 		
