@@ -6,13 +6,13 @@ echo "Session Script Starting for: $session_id"
 
 echo "Start - .webm Header Correction"
 for file in Data/$session_id*.webm;
-	do ffmpeg -i "$file" Data/testFixed1_$(basename "${file/.webm}").webm
+	do ffmpeg -i "$file" -c:v libvpx-vp9 -crf 10 Data/testFixed1_$(basename "${file/.webm}").webm
 done
 echo "Finish - .webm Header Correction"
 
 echo "Start - .wav Conversion"
 for file in Data/testFixed1_$session_id*.webm;
-	do ffmpeg -i "$file" Data/$(basename "${file/.webm}").wav
+	do ffmpeg -i "$file" -ar 11025 Data/$(basename "${file/.webm}").wav
 done
 echo "Finish - .wav Conversion"
 
