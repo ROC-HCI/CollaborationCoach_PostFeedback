@@ -6,7 +6,7 @@ echo "Session Script Starting for: $session_id"
 
 echo "Start - .webm Header Correction"
 for file in Data/$session_id*.webm;
-	do ffmpeg -i "$file" -c copy Data/testFixed1_$(basename "${file/.webm}").webm
+	do ffmpeg -i "$file" Data/testFixed1_$(basename "${file/.webm}").webm
 done
 echo "Finish - .webm Header Correction"
 
