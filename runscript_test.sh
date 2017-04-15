@@ -4,15 +4,15 @@ session_id=$1
 
 echo "Session Script Starting for: $session_id"
 
-echo "Start - .webm Header Correction"
-for file in Data/$session_id*.webm;
-	do ffmpeg -i "$file" -c copy -fflags +genpts -codec:v libvpx Data/fixedTST7_$(basename "${file/.webm}").webm
-done
-echo "Finish - .webm Header Correction"
+#echo "Start - .webm Header Correction"
+#for file in Data/$session_id*.webm;
+#	do ffmpeg -i "$file" -v:c copy -a:c copy Data/fixedTST8_$(basename "${file/.webm}").webm
+#done
+#echo "Finish - .webm Header Correction"
 
 echo "Start - .wav Conversion"
 for file in Data/fixedTST7_$session_id*.webm;
-	do ffmpeg -i "$file" Data/fixedTST7_$(basename "${file/.webm}").wav
+	do ffmpeg -i "$file" Data/$(basename "${file/.webm}").wav
 done
 echo "Finish - .wav Conversion"
 
