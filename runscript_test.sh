@@ -12,19 +12,19 @@ echo "Session Script Starting for: $session_id"
 
 echo "Start - .wav Conversion"
 for file in Data/$session_id*.webm;
-	do ffmpeg -i "$file" -r 11000 Data/fixedTST3_$(basename "${file/.webm}").wav
+	do ffmpeg -i "$file" -acodec pcm_u8 -ar 11025 Data/fixedTST5_$(basename "${file/.webm}").wav
 done
 echo "Finish - .wav Conversion"
 
 echo "Start - Praat"
-for file in Data/fixedTST3_$session_id*.wav;
+for file in Data/fixedTST5_$session_id*.wav;
 	do ./praat --run auto.praat $file
 done
 echo "Finish - Praat"
 
 echo "Start - Participation Analysis"
 argpath=""
-for i in Data/fixedTST3_$session_id*.wav.TextGrid;
+for i in Data/fixedTST5_$session_id*.wav.TextGrid;
 	do argpath="$argpath $i"
 done
 
