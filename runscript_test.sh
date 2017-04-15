@@ -24,7 +24,7 @@ echo "Finish - Praat"
 
 echo "Start - Participation Analysis"
 argpath=""
-for i in Data/fixed_$session_id*.wav.TextGrid;
+for i in Data/fixedTST2_$session_id*.wav.TextGrid;
 	do argpath="$argpath $i"
 done
 
