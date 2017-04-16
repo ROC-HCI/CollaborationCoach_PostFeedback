@@ -9,25 +9,25 @@ echo "Start - .webm Header Correction"
 #	do ffmpeg -i "$file" -codec:v libvpx -quality good -cpu-used 0 -b:v 500k -qmin 10 -qmax 42 -maxrate 500k -bufsize 1000k -threads 4 -vf scale=-1:480 -codec:a libvorbis -b:a 128k Data/testFixed2_$(basename "${file/.webm}").webm
 #done
 for file in Data/$session_id*.webm;
-	do ffmpeg -i "$file" -codec:v copy -codec:a copy Data/testFixed3_$(basename "${file/.webm}").webm
+	do ffmpeg -i "$file" -codec:v copy -codec:a copy Data/testFixed4_$(basename "${file/.webm}").mp4
 done
 echo "Finish - .webm Header Correction"
 
 echo "Start - .wav Conversion"
-for file in Data/testFixed3_$session_id*.webm;
+for file in Data/testFixed4_$session_id*.mp4;
 	do ffmpeg -i "$file" -ar 11025 Data/$(basename "${file/.webm}").wav
 done
 echo "Finish - .wav Conversion"
 
 echo "Start - Praat"
-for file in Data/testFixed3_$session_id*.wav;
+for file in Data/testFixed4_$session_id*.wav;
 	do ./praat --run auto.praat $file
 done
 echo "Finish - Praat"
 
 echo "Start - Participation Analysis"
 argpath=""
-for i in Data/testFixed3_$session_id*.wav.TextGrid;
+for i in Data/testFixed4_$session_id*.wav.TextGrid;
 	do argpath="$argpath $i"
 done
 
