@@ -12,19 +12,19 @@ echo "Finish - Header Correction"
 
 echo "Start - .wav Conversion"
 for file in Data/$session_id*.mp4;
-	do ffmpeg -i "$file" -ar 11025 Data/$(basename "${file/.mp4}").wav
+	do ffmpeg -i "$file" -ar 11025 Data/fixed_$(basename "${file/.mp4}").wav
 done
 echo "Finish - .wav Conversion"
 
 echo "Start - Praat"
-for file in Data/$session_id*.wav;
+for file in Data/fixed_$session_id*.wav;
 	do ./praat --run auto.praat $file
 done
 echo "Finish - Praat"
 
 echo "Start - Participation Analysis"
 argpath=""
-for i in Data/$session_id*.wav.TextGrid;
+for i in Data/fixed_$session_id*.wav.TextGrid;
 	do argpath="$argpath $i"
 done
 
