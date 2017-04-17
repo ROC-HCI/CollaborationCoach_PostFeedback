@@ -1,0 +1,176 @@
+<script>
+	var thinkingflag = 0; // reset with every dialogue object
+	var dialogue = parse(json);
+
+	/**
+		creates the bot response, takes in one json object
+	*/
+	function gottoObject(object){
+		document.getElementById('message-option').innerHTML = "";
+
+	     if(typeof object.body == undefined || typeof object.title == undefined){
+    		(function(str){
+    			setTimeout(function(){
+    				$('#messages').append(new item("Server", str).create());	
+    			},1500);
+    		})('server crashed, please email us at xxx@xxx.edu to report your problem');
+    	}
+    	else{
+
+    	}
+	}
+	/**   
+		creates the bot's text
+	*/    
+	function createText(obj){
+		var dialogueCount = 0;	//how many dialogues have been generated
+		var countDelay = 1;
+
+		var responseLines = dialogue[obj.title].body.split(/\\n/); // get each bubble 
+		for(var str in responseLines){
+			console.log("reading this line "+line);
+
+			if(!/\S/.test(str)) // if it's empty skip it
+				continue;
+			(function(str){
+    			setTimeout(function(){ 			
+    				$('#messages').append(new item("Roboto", str).create());	
+    				$('.inner-contain-body').animate({ 
+    					scrollTop: $('#messages').height()
+					});
+    			},countdelay*1000);
+    			})(str);// IIFE call on set a Timeout
+
+    			countdelay+=1.7;
+
+    			dialoguecount++;
+			}
+		}
+	}
+	/**
+		creates the bot's buttons
+	*/
+	function createButtons(obj){
+		if(obj.buttons){
+			for(var b of obj.buttons){
+				console.log(b);
+				var buttonOption = new buttonOption(/\[\[(.*?)\]\]/g.exec(b.trim())[1]);
+				$('#message-option').append(buttonOption.create());
+			}
+		}
+	}
+
+	//user click button option, takes in one button
+	function buttonOption(obj){
+		var buttonParts = obj.split("|");
+
+		this.text = buttonParts[0];
+		this.next = [];
+		var i; 
+		// add all the next data options to the button
+		for(i = 1; i<buttonParts.length; i++){
+			var nexts = buttonParts[i].split(" "); 
+			this.next.push.apply(this.next, nexts);
+		}
+		this.button = document.createElement('button');
+	}
+
+	buttonOption.prototype.create = function(){
+		this.button.textContent = this.text;
+		//CHANGE THIS SET ATTRIBUTE 
+		this.button.setAttribute('data-next', this.next);
+		if (this.button.addEventListener) 
+		    this.button.addEventListener('click',test,false);    
+		else if (this.button.attachEvent)
+		    this.button.attachEvent('onclick',test);  //IE only
+		return this.button;
+	}
+
+	// tests the item, goes to the next item in the json based on date-next
+	var test = function(e){
+		$('#messages').append(new item("user", this.textContent).create());
+		$('.inner-contain-body').animate({ 
+		      scrollTop: $('#messages').height()
+		});
+		//CHANGE HERE BASED ON VARIABLE VALUES
+		gotoObject(participation[this.getAttribute('data-next')]);
+	}
+
+	/*
+		parses a message from json into an object
+		object key = title
+		object attribues = body, buttons, tags
+	*/
+	function parse(json){
+		var result = [];
+		for (var element of json){
+			result[element.title.trim()] = element; //assuming titles are unique
+			
+			//for graphs
+			if(element.tags){
+				result[element.title.trim()].tags = element.tags;
+			} 
+
+			//empty node which should never occur for now
+			if(element.body.length==0){
+				console.log('element.body fixed');
+				result[element.title.trim()].body = "empty node detected!";
+			}else{
+				//nonempty node
+				var bracket = element.body.match(/\[\[(.*?)\]\]/g); //search for bracket [[]] which are coded for buttons
+				if(bracket==null){
+						result[element.title.trim()].body = element.body.trim();
+				}
+				else{
+					//there are always brackets in the message bubble
+					result[element.title.trim()].buttons = element.body.match(/\[\[(.*?)\]\]/g);
+					result[element.title.trim()].body = element.body.split(/\[\[/)[0];
+			
+				}
+			}
+		}
+		return result;
+	}
+
+	/************** Create Messages for interface*******************/
+	//Messages item for user and bot
+	function item(user, text) {
+		this.user = user;
+		this.text = text;
+		this.li = document.createElement('li');
+	}
+
+	//create message and append to html
+	item.prototype.create = function() {
+		var div = document.createElement('div');
+		div.className = 'message-content';
+		var image = document.createElement('img');
+		image.className = 'profile';
+		
+		var right = document.createElement('div');
+		right.className = 'right';
+		
+		var content = document.createElement('span');
+		content.className = 'content';
+		content.innerHTML = this.text;
+
+		if(this.user=='Roboto'){
+			//it's Roboto
+			image.src='https://files.slack.com/files-pri/T1FSQC4CB-F2VN90X19/chatbot.png';//will be replaced with local img
+			var left = document.createElement('div');
+			left.className = 'left';
+			left.appendChild(image);
+		}else{
+			//it's the user
+			//place the bubble on the right using bootstrap class
+			this.li.className="text-xs-right";
+			right.className+=" user-right";
+		}
+		
+		right.appendChild(content);
+	    if(left) div.appendChild(left);
+	    div.appendChild(right);
+	    this.li.appendChild(div);
+	    return this.li;
+	}
+</script>
