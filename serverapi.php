@@ -261,6 +261,98 @@ if($_GET['mode'] == 'process')
 		echo $value . "<br/>";
 }
 
+// Access point for getting session 2 data elements
+if($GET['mode'] == 'chat_data_load')
+{
+	$data_to_return = array();
+	
+	$key = $_GET['session_key'];
+	$user = $_GET['user'];
+	
+	//---------------------------------------------------
+	// Get the previous session key for this user
+	//---------------------------------------------------
+	$previous_key = null;
+	
+	$collection = $database->selectCollection('affdexusersocket');
+	$query = array('user' => $user,
+				   'session_key' => $key);
+	
+	// Get the submission date/time for this session
+	$cursor = $collection->findOne($query);	
+	$cur_time = $cursor['submitted'];
+	$cur_timestamp = strtotime($cur_time);
+	
+	// Get all session timestamps for this user
+	$query = array('user' => $user);
+	$cursor = $collection->find($query);
+	
+	$cur_previous = 0;
+	$cur_previous_key = "";
+	
+	// Find the maxium timestamp below the current timestamp
+	foreach($cursor as $document)
+	{
+		$timestamp = strtotime($document['submitted']);
+		
+		if(($timestamp < $cur_timestamp) && ($timestamp > $cur_previous))
+		{
+			$cur_previous = $timestamp;
+			$cur_previous_key = $document['session_key'];
+		}
+	}
+
+	$previous_key = $cur_previous_key;
+	if($previous_key == null)
+	{
+		echo "NO_PREVIOUS_KEY";
+		exit();
+	}
+	else
+	{	
+		//---------------------------------------------------
+		// Participation Analysis
+		//---------------------------------------------------
+		$current_participation_data = null;
+		$previous_participation_data = null;
+		
+		$collection = $database->selectCollection('participation');
+		$query = array('session_key' => $key);
+		$current_participation_data = $collection->findOne($query);
+		
+		$collection = $database->selectCollection('participation');
+		$query = array('session_key' => $previous_key);
+		$previous_participation_data = $collection->findOne($query);
+		
+		echo var_dump($current_participation_data) . "<hr/>";
+		echo var_dump($previous_participation_data). "<hr/>";
+		
+		//---------------------------------------------------
+		// Affdex Data Analysis
+		//---------------------------------------------------
+		$collection = $database->selectCollection('affdexaverages');
+		$query = array('session_key' => $key);
+					   
+		$documents = $collection->find($query);
+		
+		foreach($documents as $document)
+		{
+			echo var_dump($document) . "<hr/>";
+		}
+		
+		//---------------------------------------------------
+		// Shared Features Analysis
+		//---------------------------------------------------
+		$collection = $database->selectCollection('affdexshared');
+		$query = array('session_key' => $key);
+				   
+		$document = $collection->findOne($query);
+		
+		echo var_dump($document) . "<hr/>";
+	}
+
+}
+
 // Access point for participation data for a session key.
 if($_GET['mode'] == 'participation')
 {
