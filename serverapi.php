@@ -293,6 +293,8 @@ if($_GET['mode'] == 'chat_data_load')
 	// Find the maxium timestamp below the current timestamp
 	foreach($cursor as $document)
 	{
+		echo var_dump($document) . "<hr/>";
+		
 		$timestamp = strtotime($document['submitted']);
 		
 		if(($timestamp < $cur_timestamp) && ($timestamp > $cur_previous))
