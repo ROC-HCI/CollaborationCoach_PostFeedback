@@ -1,0 +1,242 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "Good to see you again! \\nLet's take a look at how you did in the second session \\n Let's start by looking at participation [[Ok|participation_1]]",
+		"position": {
+			"x": -376,
+			"y": -195
+		},
+		"colorID": 0
+	},
+	{
+		"title": "participation",
+		"tags": "",
+		"body": "You participated more this time",
+		"position": {
+			"x": 92,
+			"y": -199
+		},
+		"colorID": 0
+	},
+	{
+		"title": "participation_1",
+		"tags": "",
+		"body": "What do you think changed? Did you participate more or less? [[more|participation_2]] [[less|participation_2]][[about the same|participation_2]]",
+		"position": {
+			"x": -149,
+			"y": -191
+		},
+		"colorID": 0
+	},
+	{
+		"title": "overlap_1",
+		"tags": "",
+		"body": "Great! Now let's move on to overlaps. [[Okay|overlap_2]]",
+		"position": {
+			"x": -402,
+			"y": 23
+		},
+		"colorID": 0
+	},
+	{
+		"title": "overlap_2",
+		"tags": "1",
+		"body": "In the recent +session_time+ minute session you overlapped others +overlap_me+ times. Others overlapped you +overlap_others+ times[[Interesting|overlap_3]][[Sounds about right|overlap_3]][[I don't believe it..|overlap_4]]",
+		"position": {
+			"x": -160,
+			"y": 30
+		},
+		"colorID": 0
+	},
+	{
+		"title": "overlap_3",
+		"tags": "",
+		"body": "Looks like there was less overlap this time.\\\\nNice job listening to others![[Thanks!|turntaking_1]]",
+		"position": {
+			"x": 80,
+			"y": 5
+		},
+		"colorID": 0
+	},
+	{
+		"title": "overlap_5",
+		"tags": "",
+		"body": "My information isn't always correction. Which part did you think was off?[[My overlaps|overlap_6]][[Others overlapping me|overlaps6]]",
+		"position": {
+			"x": 90,
+			"y": 152
+		},
+		"colorID": 6
+	},
+	{
+		"title": "overlap_6",
+		"tags": "",
+		"body": "Were the numbers too low or too high? [[too low|overlap_7]][[too_high|overlap_7]]",
+		"position": {
+			"x": 302,
+			"y": 144
+		},
+		"colorID": 0
+	},
+	{
+		"title": "overlap_7",
+		"tags": "",
+		"body": "Thanks for the feedback!\\\\nWe'll check that for next time.\\\\nMeanwhile, let's talk about turn taking.[[Let's do it!|turntaking_1]]",
+		"position": {
+			"x": 457,
+			"y": 140
+		},
+		"colorID": 0
+	},
+	{
+		"title": "turntaking_1",
+		"tags": "1",
+		"body": "This turn taking graph shows how often you spoke directly after someone in the group.\\\\nFeel free to click the graph to see each person![[",
+		"position": {
+			"x": -394,
+			"y": 335
+		},
+		"colorID": 0
+	},
+	{
+		"title": "overlap_4",
+		"tags": "",
+		"body": "Looks like there was more overlap this time.\\\\nResearch shows that overlaps might indicate greater rapport between a team[[Cool|turntaking_1]]",
+		"position": {
+			"x": 77,
+			"y": 74
+		},
+		"colorID": 0
+	},
+	{
+		"title": "turntaking_",
+		"tags": "turntaking_most_prev === turntaking_most",
+		"body": "Looks like you and +turntaking_most+ really struck a conversation!\\\\nYou spoke after each other the most in both sessions. [[Cool, didn't know that| ]]",
+		"position": {
+			"x": -157,
+			"y": 337
+		},
+		"colorID": 0
+	},
+	{
+		"title": "turntaking_",
+		"tags": "",
+		"body": "Nice job discussing with everyone in the group!\\\\n[[Thanks!|valence_1]]",
+		"position": {
+			"x": -162,
+			"y": 434
+		},
+		"colorID": 0
+	},
+	{
+		"title": "turntaking_",
+		"tags": "turntaking_least < 15%",
+		"body": "Looks like you didn't get as much of a chance to talk to +turntaking_least_name+",
+		"position": {
+			"x": -151,
+			"y": 380
+		},
+		"colorID": 0
+	},
+	{
+		"title": "valence_1",
+		"tags": "1",
+		"body": "Cool, now onto valence which shows how positive or negative your facial expressions were.[[Let's see it!|valence_2 valence_3]]",
+		"position": {
+			"x": -387,
+			"y": 674
+		},
+		"colorID": 0
+	},
+	{
+		"title": "valence_2",
+		"tags": "valence_group > 60%",
+		"body": "Looks like the group was bursting with positivity!\\\\nThat's awesome, keep it up.[[heck yeah|sharedsmile_1]]",
+		"position": {
+			"x": -168,
+			"y": 628
+		},
+		"colorID": 0
+	},
+	{
+		"title": "valence_3",
+		"tags": "valence < 40%",
+		"body": "Looks like thing might not have been going too well.\\\\nWas anything up? [[No|valence_5]][[tough topic| ]][[disagreements| ]][[something else| ]]",
+		"position": {
+			"x": -161,
+			"y": 721
+		},
+		"colorID": 0
+	},
+	{
+		"title": "valence_4",
+		"tags": "",
+		"body": "Riding the neutral vibes. Good place to be. [[yup!|sharedsmile_1]][[I wouldn't say it was neutral...|]]",
+		"position": {
+			"x": -164,
+			"y": 881
+		},
+		"colorID": 0
+	},
+	{
+		"title": "sharedsmile_1",
+		"tags": "",
+		"body": "How smiley were you feeling during the call? [[:)|sharedsmile_3]][[:/|sharedsmile_4]]",
+		"position": {
+			"x": 330,
+			"y": 481
+		},
+		"colorID": 0
+	},
+	{
+		"title": "valence_5",
+		"tags": "",
+		"body": "Ok\\\\nLet's talked about shared smiles then[[sure|sharedsmile_1]]",
+		"position": {
+			"x": 52,
+			"y": 680
+		},
+		"colorID": 0
+	},
+	{
+		"title": "valence_6",
+		"tags": "",
+		"body": "Sorry to hear... Disagreements are tough to handle[[yeah...|sharedsmile_1]]",
+		"position": {
+			"x": 59,
+			"y": 741
+		},
+		"colorID": 0
+	},
+	{
+		"title": "sharedsmile_3",
+		"tags": "sharedsmile_most > 5",
+		"body": "You smiled a lot!\\\\nAnd +sharedsmile_most_name+ had the good fortune of sharing these smiles with you. Nice job building rapport![[Woo!|finish_1]]",
+		"position": {
+			"x": 571,
+			"y": 479
+		},
+		"colorID": 0
+	},
+	{
+		"title": "finish_1",
+		"tags": "",
+		"body": "That's all I have! Hope you have a good rest of the day. :)",
+		"position": {
+			"x": 750,
+			"y": 266
+		},
+		"colorID": 0
+	},
+	{
+		"title": "sharedsmile_4",
+		"tags": "",
+		"body": "You smiled more than you think!",
+		"position": {
+			"x": 575,
+			"y": 640
+		},
+		"colorID": 0
+	}
+]
