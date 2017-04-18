@@ -262,7 +262,7 @@ if($_GET['mode'] == 'process')
 }
 
 // Access point for getting session 2 data elements
-if($GET['mode'] == 'chat_data_load')
+if($_GET['mode'] == 'chat_data_load')
 {
 	$data_to_return = array();
 	
