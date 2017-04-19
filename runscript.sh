@@ -12,7 +12,7 @@ echo "Finish - Header Correction"
 
 echo "Start - .wav Conversion"
 for file in Data/$session_id*.mp4;
-	if [[ file == *"LENOVO"* ]]
+	if [[ $file == *"LENOVO"* ]]
 	then
     	echo "it's vp8"
     	do ffmpeg -i "$file" -ar 11025 Data/fixed_$(basename "${file/.webm}").wav
