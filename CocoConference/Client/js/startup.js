@@ -42,7 +42,7 @@ function onUserIDModalClick(){
   var radioBoxesChoice = document.querySelector('input[name="Session"]:checked').value;
     var lenovoRadioBoxesChoice = document.querySelector('input[name="Lenovo"]:checked').value;
 
-  var user_name = userIDSelectionValue + radioBoxesChoice + lenovoRadioBoxesChoice;
+  user_name = userIDSelectionValue + radioBoxesChoice + lenovoRadioBoxesChoice;
 
   console.log(user_name);
 }
