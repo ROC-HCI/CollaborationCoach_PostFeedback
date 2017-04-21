@@ -67,6 +67,23 @@ header
   background-color: #BDBDBD;
 }
 
+#UserIDInfoModal{
+  position: fixed;
+  display: none;
+  width: 40%;
+  height: 35%;
+  z-index: 1;
+  padding-top: 2%;
+  text-align: center;
+  align-items: center;
+  vertical-align: middle;
+  overflow: auto;
+  margin-left: 30%;
+  margin-top: 10%;
+  background-color: #BDBDBD;
+  font-family: 'Lato', sans-serif;
+}
+
 #sortable
 {
   list-style-type: none;

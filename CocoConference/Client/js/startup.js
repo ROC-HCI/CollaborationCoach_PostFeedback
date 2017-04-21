@@ -31,15 +31,31 @@ var modal = null;
 
 function proposeStop()
 {
-	signaling_socket.emit("propose_stop",DEFAULT_CHANNEL);	
+	signaling_socket.emit("propose_stop",DEFAULT_CHANNEL);
+}
+
+function onUserIDModalClick(){
+  var UserIDInfoModal = document.getElementById('UserIDInfoModal');
+  UserIDInfoModal.style.display = "none";
+  var userIDSelectionDropDown = document.getElementById('DropDownChoice');
+  var userIDSelectionValue = userIDSelectionDropDown.options[userIDSelectionDropDown.selectedIndex].value;
+  var radioBoxesChoice = document.querySelector('input[name="Session"]:checked').value;
+    var lenovoRadioBoxesChoice = document.querySelector('input[name="Lenovo"]:checked').value;
+
+  var user_name = userIDSelectionValue + radioBoxesChoice + lenovoRadioBoxesChoice;
+
+  console.log(user_name);
 }
 
 function init()
 {
-	user_name = prompt("Please enter your User Name:", "Coco-User");
+	//user_name = prompt("Please enter your User Name:", "Coco-User");
+
+	var UserIDInfoModal = document.getElementById('UserIDInfoModal');
+  UserIDInfoModal.style.display = "block";
 
 	modal = document.getElementById('uploadingModal');
-	
+
 	console.log("Connecting to signaling server");
 	signaling_socket = io.connect(SIGNALING_SERVER);
 
@@ -128,7 +144,7 @@ function init()
 	signaling_socket.on('data_available', function()
 	{
 		modal.style.display = "none";
-		
+
 		var win = window.open('https://conference.eastus.cloudapp.azure.com/RocConf/chatbot.php?key=' + session_key + '&user=' + user_name, '_blank');
 		if (win)
 		{
