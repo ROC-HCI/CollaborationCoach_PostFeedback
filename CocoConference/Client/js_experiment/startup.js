@@ -34,17 +34,30 @@ var ranking_modal = null;
 
 function proposeStop()
 {
-	signaling_socket.emit("propose_stop",DEFAULT_CHANNEL);	
+	signaling_socket.emit("propose_stop",DEFAULT_CHANNEL);
+}
+
+function onUserIDModalClick(){
+  var UserIDInfoModal = document.getElementById('UserIDInfoModal');
+  UserIDInfoModal.style.display = "none";
+  var userIDSelectionDropDown = document.getElementById('DropDownChoice');
+  var userIDSelectionValue = userIDSelectionDropDown.options[userIDSelectionDropDown.selectedIndex].value;
+  var radioBoxesChoice = document.querySelector('input[name="Session"]:checked').value;
+    var lenovoRadioBoxesChoice = document.querySelector('input[name="Lenovo"]:checked').value;
+
+  var user_name = userIDSelectionValue + radioBoxesChoice + lenovoRadioBoxesChoice;
+
+  console.log(user_name);
 }
 
 function init()
 {
-	user_name = prompt("Please enter your User Name:", "Coco-User");	
+	//user_name = prompt("Please enter your User Name:", "Coco-User");	
 
 	experiment_modal = document.getElementById('experimentModal');
 	uploading_modal = document.getElementById('uploadingModal');
 	ranking_modal = document.getElementById('selectionModal');
-	
+
 	console.log("Connecting to signaling server");
 	signaling_socket = io.connect(SIGNALING_SERVER);
 
@@ -57,12 +70,12 @@ function init()
 			 * microphone/camcorder, join the channel and start peering up */
 			join_chat_channel(DEFAULT_CHANNEL, {'whatever-you-want-here': 'stuff'});
 		});
-		
+
 		alert(experiment_instructions);
-		
+
 		// Show the ranking screen after connecting
 		ranking_modal.style.display = "block";
-		
+
 	});
 
 	signaling_socket.on('disconnect', function()
@@ -139,9 +152,9 @@ function init()
 	signaling_socket.on('data_available', function()
 	{
 		uploading_modal.style.display = "none";
-		
+
 		var win = window.open('https://conference.eastus.cloudapp.azure.com/RocConf/chatbot.php?key=' + session_key + '&user=' + user_name, '_blank');
-		
+
 		if (win)
 		{
 			win.focus();
@@ -160,13 +173,13 @@ function init()
 		ranking_modal.style.display = "none";
 
 		var users_priority_list = $("#users_priority_list");
-		
+
 		users_priority_list.append("<p align='center'><b>My Ranking</b></p>");
-		
+
 		for(var i = 0; i < current_ranking.length; i++)
 		{
 			users_priority_list.append( "<li class='ui-state-default'>"+current_ranking[i].item+"</li>");
-		}		
+		}
 
 		// Experiment starting, setup our remote feeds on the page.
 		for(peer_id in peer_media_streams)
@@ -183,7 +196,7 @@ function init()
 			// Mouseover handler for the 'big' display
 			remote_media.mouseenter(function(){
 				$('#focus_feed').empty();
-				
+
 				var remote_media_big = USE_VIDEO ? $("<video>") : $("<audio>");
 				remote_media_big.attr("autoplay", "autoplay");
 				remote_media_big.attr("id", this.id + "_big");
@@ -200,7 +213,7 @@ function init()
 			$('#remote_videos').append(remote_media);
 			attachMediaStream(remote_media[0], peer_media_streams[peer_id]);
 		}
-		
+
 
 		// Video Recording Startup
 		captureVideo(commonConfig);
