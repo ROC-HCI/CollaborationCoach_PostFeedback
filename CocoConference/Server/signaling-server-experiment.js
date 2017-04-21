@@ -29,7 +29,7 @@ var main = express()
 var server = https.createServer(options, main)
 var io  = require('socket.io').listen(server);
 
-server.listen(PORT, null, function() 
+server.listen(PORT, null, function()
 {
     console.log("Listening on port " + PORT);
 });
@@ -47,7 +47,7 @@ var sockets = {};
 var sessionKey = uuid.v1();
 
 var connectedUsers = 0;
-var requiredUserCount = 4;
+var requiredUserCount = 2;
 
 var sessionStarted = false;
 var uploadsFinishedCount = 0;
@@ -63,45 +63,45 @@ var submittedAnswersCount = 0;
  * information. After all of that happens, they'll finally be able to complete
  * the peer connection and will be streaming audio/video between eachother.
  */
-io.sockets.on('connection', function (socket) 
+io.sockets.on('connection', function (socket)
 {
     socket.channels = {};
     sockets[socket.id] = socket;
 
     console.log("["+ socket.id + "] connection accepted");
-	
-    socket.on('disconnect', function () 
+
+    socket.on('disconnect', function ()
 	{
-        for (var channel in socket.channels) 
+        for (var channel in socket.channels)
 		{
             part(channel);
         }
-		
+
         console.log("["+ socket.id + "] disconnected");
         delete sockets[socket.id];
-		
+
 		connectedUsers = connectedUsers - 1;
     });
 
 
-    socket.on('join', function (config) 
+    socket.on('join', function (config)
 	{
         console.log("["+ socket.id + "] join ", config);
         var channel = config.channel;
         var userdata = config.userdata;
 
-        if (channel in socket.channels) 
+        if (channel in socket.channels)
 		{
             console.log("["+ socket.id + "] ERROR: already joined ", channel);
             return;
         }
 
-        if (!(channel in channels)) 
+        if (!(channel in channels))
 		{
             channels[channel] = {};
         }
 
-        for (id in channels[channel]) 
+        for (id in channels[channel])
 		{
             channels[channel][id].emit('addPeer', {'peer_id': socket.id, 'should_create_offer': false});
             socket.emit('addPeer', {'peer_id': id, 'should_create_offer': true});
@@ -109,22 +109,22 @@ io.sockets.on('connection', function (socket)
 
         channels[channel][socket.id] = socket;
         socket.channels[channel] = channel;
-		
+
 		//=================================================================================================
 		// CoCo Join Scripting
 		//=================================================================================================
-		
+
 		//tells this client the current session ID
-		socket.emit('session_key', sessionKey);			
+		socket.emit('session_key', sessionKey);
 		connectedUsers = connectedUsers + 1;
 
     });
 
-    function part(channel) 
+    function part(channel)
 	{
         console.log("["+ socket.id + "] part ");
 
-        if (!(channel in socket.channels)) 
+        if (!(channel in socket.channels))
 		{
             console.log("["+ socket.id + "] ERROR: not in ", channel);
             return;
@@ -133,7 +133,7 @@ io.sockets.on('connection', function (socket)
         delete socket.channels[channel];
         delete channels[channel][socket.id];
 
-        for (id in channels[channel]) 
+        for (id in channels[channel])
 		{
             channels[channel][id].emit('removePeer', {'peer_id': socket.id});
             socket.emit('removePeer', {'peer_id': id});
@@ -141,7 +141,7 @@ io.sockets.on('connection', function (socket)
     }
     socket.on('part', part);
 
-    socket.on('relayICECandidate', function(config) 
+    socket.on('relayICECandidate', function(config)
 	{
         var peer_id = config.peer_id;
         var ice_candidate = config.ice_candidate;
@@ -152,7 +152,7 @@ io.sockets.on('connection', function (socket)
         }
     });
 
-    socket.on('relaySessionDescription', function(config) 
+    socket.on('relaySessionDescription', function(config)
 	{
         var peer_id = config.peer_id;
         var session_description = config.session_description;
@@ -162,28 +162,28 @@ io.sockets.on('connection', function (socket)
             sockets[peer_id].emit('sessionDescription', {'peer_id': socket.id, 'session_description': session_description});
         }
     });
-	
+
 	//=====================================================================================================================
 	// CoCo Experiment Socket Handlers
 	//=====================================================================================================================
-	
+
 	// One client has hit the 'End Call' button, let everybody in this channel know
 	socket.on('propose_stop', function(channel)
 	{
 		if(sessionStarted)
 		{
 			for(id in channels[channel])
-				channels[channel][id].emit('session_end','end');				
-			
+				channels[channel][id].emit('session_end','end');
+
 			sessionStarted = false;
 		}
 	});
-	
+
 	// Each client will tell the server when it has uploaded it's experimental selections
 	socket.on('selections_submitted', function(channel)
 	{
 		submittedAnswersCount = submittedAnswersCount + 1;
-		
+
 		// If we've got our users we're all set to start recording data
 		if((submittedAnswersCount == requiredUserCount) && !sessionStarted)
 		{
@@ -197,12 +197,12 @@ io.sockets.on('connection', function (socket)
 			3000);
 		}
 	});
-	
+
 	// Each client will tell the server when it has finished uploading video
 	socket.on('upload_finished', function(peer_id)
 	{
 		uploadsFinishedCount = uploadsFinishedCount + 1;
-		
+
 		if(uploadsFinishedCount == requiredUserCount)
 		{
 			// This client is the last to finish uploading,
@@ -210,13 +210,13 @@ io.sockets.on('connection', function (socket)
 			sockets[peer_id].emit('shell_delegate','tell the API to do the thing!');
 		}
 	});
-	
-	// Delegated client has finished with analysis, let everybody else know the 
+
+	// Delegated client has finished with analysis, let everybody else know the
 	// data page should be available.
 	socket.on('analysis_complete', function(data)
 	{
 		for(id in channels[data])
-			channels[data][id].emit('data_available','done!');	
+			channels[data][id].emit('data_available','done!');
 	});
-	
+
 });
