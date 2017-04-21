@@ -52,7 +52,10 @@ function onUserIDModalClick(){
 
 function init()
 {
-	//user_name = prompt("Please enter your User Name:", "Coco-User");	
+	//user_name = prompt("Please enter your User Name:", "Coco-User");
+
+	var UserIDInfoModal = document.getElementById('UserIDInfoModal');
+  UserIDInfoModal.style.display = "block";
 
 	experiment_modal = document.getElementById('experimentModal');
 	uploading_modal = document.getElementById('uploadingModal');
