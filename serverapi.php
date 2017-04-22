@@ -275,15 +275,6 @@ if($_GET['mode'] == 'chat_data_load')
 	$key = $_GET['session_key'];
 	$user = $_GET['user'];
 	
-	overlap_me = data['overlap_me'];
-	overlap_me_prev = data['overlap_me_prev'];
-	overlap_other = data['overlap_other'];
-	overlap_other_prev = data['overlap_other_prev'];
-	turntaking_least = data['turntaking_least'];
-	turntaking_least_name = data['turntaking_least_name'];
-	turntaking_most_name = data['turntaking_most_name'];
-	turntaking_most_name_prev = data['turntaking_most_name_prev'];
-	
 	//---------------------------------------------------
 	// Get the previous session key for this user
 	//---------------------------------------------------
