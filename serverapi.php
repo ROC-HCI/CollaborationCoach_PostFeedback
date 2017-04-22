@@ -261,13 +261,28 @@ if($_GET['mode'] == 'process')
 		echo $value . "<br/>";
 }
 
-// Access point for getting session 2 data elements
+// Access point for getting chart data from the database
+if($_GET['mode'] == 'graph_data_load')
+{
+	
+}
+
+// Access point for getting chatbot variable text for a session
 if($_GET['mode'] == 'chat_data_load')
 {
 	$data_to_return = array();
 	
 	$key = $_GET['session_key'];
 	$user = $_GET['user'];
+	
+	overlap_me = data['overlap_me'];
+	overlap_me_prev = data['overlap_me_prev'];
+	overlap_other = data['overlap_other'];
+	overlap_other_prev = data['overlap_other_prev'];
+	turntaking_least = data['turntaking_least'];
+	turntaking_least_name = data['turntaking_least_name'];
+	turntaking_most_name = data['turntaking_most_name'];
+	turntaking_most_name_prev = data['turntaking_most_name_prev'];
 	
 	//---------------------------------------------------
 	// Get the previous session key for this user
@@ -292,9 +307,7 @@ if($_GET['mode'] == 'chat_data_load')
 	
 	// Find the maxium timestamp below the current timestamp
 	foreach($cursor as $document)
-	{
-		echo var_dump($document) . "<hr/>";
-		
+	{		
 		$timestamp = strtotime($document['submitted']);
 		
 		if(($timestamp < $cur_timestamp) && ($timestamp > $cur_previous))
@@ -307,6 +320,9 @@ if($_GET['mode'] == 'chat_data_load')
 	$previous_key = $cur_previous_key;
 	if($previous_key == null)
 	{
+		//------------------------------------------------------------
+		// Ideally here setup the 'first' session dialog variable text
+		//------------------------------------------------------------
 		echo "NO_PREVIOUS_KEY";
 		exit();
 	}
@@ -326,8 +342,38 @@ if($_GET['mode'] == 'chat_data_load')
 		$query = array('session_key' => $previous_key);
 		$previous_participation_data = $collection->findOne($query);
 		
-		echo var_dump($current_participation_data) . "<hr/>";
-		echo var_dump($previous_participation_data). "<hr/>";
+		$data_to_return['session_time'] = $current_participation_data['participation']['total'];
+		$previous_total = $previous_participation_data['participation']['total'];
+		
+		$data_to_return['participation_me'] = round(($current_participation_data['participation'][$user] / $data_to_return['session_time']) * 100, 2);
+		$data_to_return['participation_me_prev'] = round(($previous_participation_data['participation'][$user] / $previous_total) * 100, 2);
+		$data_to_return['overlap_me'] = $current_participation_data['interruption'][$user]['interrupting'];
+		$data_to_return['overlap_me_prev'] = $previous_participation_data['interruption'][$user]['interrupting'];
+		$data_to_return['overlap_other'] = $current_participation_data['interruption'][$user]['interrupted'];
+		$data_to_return['overlap_other_prev'] = $previous_participation_data['interruption'][$user]['interrupted'];
+		
+		$turn_taking = $current_participation_data['turntaking'];
+		
+		$cur_min = 99999;
+		$cur_min_name = "";		
+		foreach($turn_taking as $key => $value)
+		{
+			$speaking_order = explode('-', $key);
+			if($speaking_order[1] == $user)
+			{
+				if($value < $cur_min)
+				{
+					$cur_min = $value;
+					$cur_min_name = $key;
+				}
+			}
+		}
+		
+		$data_to_return['turntaking_least'] = $cur_min;
+		$data_to_return['turntaking_least'] = $cur_min;
+		
+		$data_to_return['turntaking_most_name'] = 'TEST';
+		$data_to_return['turntaking_most_name_prev'] = 'TEST';
 		
 		//---------------------------------------------------
 		// Affdex Data Analysis
@@ -337,10 +383,16 @@ if($_GET['mode'] == 'chat_data_load')
 					   
 		$documents = $collection->find($query);
 		
+		$user_count = 0;
+		$valence_total = 0;
 		foreach($documents as $document)
 		{
-			echo var_dump($document) . "<hr/>";
+			$user_count = $user_count + 1;
+			$valence_total = $valence_total + $document['ALL']['valence'];
 		}
+		
+		$data_to_return['valence_group'] = $valence_total / $user_count;
+				
 		
 		//---------------------------------------------------
 		// Shared Features Analysis
@@ -350,9 +402,26 @@ if($_GET['mode'] == 'chat_data_load')
 				   
 		$document = $collection->findOne($query);
 		
-		echo var_dump($document) . "<hr/>";
+		$cur_max = 0;
+		$cur_max_name = "";
+		
+		$smile_data = $document['smile_data'];
+		foreach($smile_data as $key => $value)
+		{
+			if($key != $user)
+			{
+				if($value['Count'] > $cur_max)
+				{
+					$cur_max = $value['Count'];
+					$cur_max_name = $key;
+				}
+			}
+		}
+		
+		$data_to_return['sharedsmile_most_name'] = $cur_max_name;
 	}
 
+	echo json_encode($data_to_return);	
 }
 
 // Access point for participation data for a session key.

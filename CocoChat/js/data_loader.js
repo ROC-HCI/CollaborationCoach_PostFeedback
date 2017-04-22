@@ -9,6 +9,8 @@ var turntaking_least = null;
 var turntaking_least_name = null;
 var turntaking_most_name = null;
 var turntaking_most_name_prev = null;
+var valence_group = null;
+var sharedsmile_most_name = null;
 
 var chat_json = null;
 
@@ -36,6 +38,9 @@ function setup_chat_data(session_key, user)
 				turntaking_least_name = data['turntaking_least_name'];
 				turntaking_most_name = data['turntaking_most_name'];
 				turntaking_most_name_prev = data['turntaking_most_name_prev'];
+				valence_group = data['valence_group'];
+				sharedsmile_most_name = data['sharedsmile_most_name'];
+				
 				
 				setup_chat_json();
 			}
