@@ -455,7 +455,7 @@ if($_GET['mode'] == 'affdexupload')
 	
 	foreach($cursor as $location)
 	{
-		$relation[$location["seat"]] = $location["user"];
+		$relation[$location["socket"]] = $location["user"];
 	}
 	
 	// Parse the submitted data to put in the actual user
