@@ -1,0 +1,58 @@
+Sessions That Have Information
+=================================================
+
+2016-12-01
+Key: 2a3cd350-b807-11e6-b074-894d5799765b
+Users (2): Erik, Clune
+Duration: 8 minutes
+
+-------------------------------------------------
+
+2017-03-20
+Key: 07894240-0dbf-11e7-9ae9-6d413ab416f0
+Users (4): gayeon, Bethany, Yiyun, kdharsee
+Duration: 9 minutes
+
+-------------------------------------------------
+
+2017-04-01
+Key: 12345678
+Users (3): Angela, Darth, Leaf
+Duration: 6 minutes
+
+-------------------------------------------------
+
+2017-04-02
+Key: ebad4e90-17e6-11e7-9b9c-bf00dfff9daf
+Users(2): NicholasPierce, Will
+Duration: 5 minutes
+
+-------------------------------------------------
+**** INVALID TEXT GRID NEEDS MIGRATION ****
+**** VIDEO FILE LABEL BROKEN ****
+
+2017-04-19
+Key: e39a2d00-2546-11e7-abd1-2d1926002e99
+Users(4): A1, B1, C1, D1
+Duration: 8 minutes
+
+-------------------------------------------------
+
+2017-04-19
+Key: 3d574080-254c-11e7-a812-cd691f041850
+Users(4): A1, B1, C1, D1
+Duration: 8 minutes
+
+-------------------------------------------------
+
+2017-04-21
+Key: 906a2060-26c0-11e7-b40a-058fd8ca01a0
+Users(4): A21, B21, C21, D21
+Duration: 11 minutes
+
+-------------------------------------------------
+
+2017-04-21
+Key: a79bd530-26c5-11e7-8408-6731f9ef0888
+Users(4): A22, B22, C22, D22
+Duration: 3 minutes
