@@ -28,7 +28,7 @@
 		<nav class="navbar navbar-dark">
       		<div class="container-fluid">
         		<a class="navbar-brand" href="#">
-    				<img src="Real-Faces/static/images/coco.png" class="img-fluid" alt="">
+    				<img src="https://files.slack.com/files-pri/T1FSQC4CB-F2VMXLQ5D/rlogo.png" class="img-fluid" alt="">
         		</a> 
         		<div class="header-title">
         			<h1>Feedback Assistant</h1>
@@ -37,49 +37,24 @@
   		</nav>
 	</header>
 	<div class="main">
-			<div class="contain-body">
-		  		<div class="inner-contain-body">
-		     		<ul id="messages">
-		  			</ul>
-		    		<div class="clr"></div>
-		  		</div>
-		  		<div id="message-option" class="message-option">
-		  		</div>
-			</div>
-			<div class="contain-graph">
-				<div class="container-layer">
-					<!-- actual feedback diagram -->
-					<div id="graphContainer" class="inner-contain-graph">
-						<!-- some kind of navigation instruction -->
- 
-			 		<div id="accordion">
-						<!--h3>Interruption</h3>
-				 		<div class="graph-container">
-				        <div class="outer">
-				          <p><span class="chart-label" id="chart1"></span>
-				          </p>
-				          <p>By You</p>
-				        </div>
-				        <div class="outer">
-				          <p><span class="chart-label" id="chart2"></span>
-				          </p>
-				          <p>By Others</p>
-				        </div>
-				        </div>
-						<h3>Participation</h3>
-						<div class="graph-container">
-						<div class="outer2">
-							<canvas class="chart" id="chart3" data-value="0" data-speaker=""></canvas>
-						</div>
-						</div>
-						<h3>Turn Taking</h3>
-						<div class="graph-container">
-							<div class="inner-contain3" id="chart4" data-value="0" data-user=""></div>
-						</div-->
-			      	</div>
-					</div>
+		<div class="contain-body">
+	  		<div class="inner-contain-body">
+	     		<ul id="messages">
+	  			</ul>
+	    		<div class="clr"></div>
+	  		</div>
+	  		<div id="message-option" class="message-option">
+	  		</div>
+		</div>
+		<div class="contain-graph">
+			<div class="container-layer">
+				<!-- actual feedback diagram -->
+				<div id="graphContainer" class="inner-contain-graph">
+					<!-- some kind of navigation instruction -->
+		 			<div id="accordion"></div>
 				</div>
 			</div>
+		</div>
 	</div>
 
 	<script src="graphs/public/js/jquery.animateNumber.min.js"></script>
@@ -89,63 +64,62 @@
 	
 	<script src="chat/public/talktimeDialogue.js"></script>
 	<script>
-		//Where it all begins...
-		var participation = parse(json);
-		console.log('start ', participation);
-
 		//creating ellipsis
 		var thinking = $('#messages li:last');
 		var thinkingflag = 0;
 		var countdelay  = 1;
 
-		$(document).ready(function(){
-			gotoObject(participation[Object.keys(participation)[0]]); //start from the initial item on the list
-			gatherData();
-		});
-	
-		//graph data i stands for index
+		//graph data, i stands for index
 		var i1, i2, i3, i4, i3speaker, i3data, iuser, guests, colorpalette;
 		var smile_graph_data = [];
 		var session_data = [];		
 		var single_smile_data = [];
 
-		//participation percentage, turn most, emotional self, emotional all, share most, 
+		// Graph information
 		var  participatePercent, turnMost, turnLeast, selfEmo, allEmo,  shareMost, shareLeast;
-
-		var countType = 0;
+		var countType = 0; // graph by count
 		var graphType = ["participation", "interruption", "turntaking", "valence", "attitude", "smilesharing"];
 
-        function gotoObject(object){
+		/************* START OF CHATBOT *************/
+		var dialogue = parse(json);
+		console.log("starting dialogue", dialogue);
 
-	        var graphResponse = ["As you can see from the graph, you participated <span class='dynotext'>" + participatePercent + "%</span> of the whole session. Expressing your ideas contributes in group decision. Would you like to know more about it?", 
+		$(document).ready(function(){
+			// start at beginning of dialogue list
+			gotoObject(dialogue[Object.keys(dialogue)[0]]);
+			gatherData();
+		})
+
+		/*
+			creates bot response
+		*/
+		function gottoObject(object){
+			var graphResponse = ["As you can see from the graph, you participated <span class='dynotext'>" + participatePercent + "%</span> of the whole session. Expressing your ideas contributes in group decision. Would you like to know more about it?", 
 			"From the analysis, you overlapped <span class='dynotext'>" + i2 + "</span> times with other's speeches. On the other hand, your speech got overlapped <span class='dynotext'>" + i1 + "</span> times by the group.",
-			"You spoke after <span class='dynotext'>" + turnMost + "</span> least of the time and <span class='dynotext'>" + turnLeast + "</span> most of the time.",
+			"You spoke after <span class='dynotext'>" + turnMost + "</span> most of the time and <span class='dynotext'>" + turnLeast + "</span> least of the time.",
 			"Your overall emotion was <span class='dynotext'>" + selfEmo + "</span> during the session.",
 			"Here goes your overall attitude towards others throughout the whole conversation.",
 			"You shared most smiles with <span class='dynotext'>" + shareMost + "</span>, and least with <span class='dynotext'>" + shareLeast + "</span>."];
-			//On average, the team was emotionally" + allEmo + "."
-        	document.getElementById('message-option').innerHTML="";
         	
-        	// console.log(participation, object.title);
-
-        	//Dealing with undefined everything error occur
-        	if(typeof object.body == undefined || typeof object.title == undefined){
+        	document.getElementById('message-option').innerHTML="";
+			// handle errors
+			if(typeof object.body == undefined || typeof object.title == undefined){
         		(function(str){
         			setTimeout(function(){
         				$('#messages').append(new item("Server", str).create());	
         			},1500);
         		})('server crashed, please email us at xxx@xxx.edu to report your problem');
-        	}else{
-	        	console.log('message content ', object.body.length); //already trimmed
+        	}
+        	else{
+        		console.log('message content ', object.body.length); //already trimmed
 	        	console.log('the buttons ', object.buttons); //buttons
 
 	        	fixNewline(object);
-	        	if(participation[object.title].tags=='1'){
+	        	// Should show graph
+	        	if(dialogue[object.title].tags=='1'){
         			thinkingflag = 1;
+        			// Ellipsis thinking delay
         			setTimeout(function(){
-        			//	$('#messages').append(new item("Roboto","...").create());
-					//	thinking= $('#messages li:last');
-
 						$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif' height=120 width=200>")
 						thinking= $('#messages img:last');
 
@@ -158,6 +132,11 @@
 
     				countdelay+=1.7;
 
+    				// Create graphs
+    				/*Issue- current implementation depends on there only being one response to the graph, 
+    					consider adding additional tags to indicate a continued dialogue
+    					alternatively, build if else statement
+    				*/
     				setTimeout(function(){
     					createGraph(graphType[countType]);
     					thinking.remove(); 
@@ -181,7 +160,8 @@
         		else
         			thinkingflag = 0;
         	}
-        }
+        	var graphResponse = []; //MODIFY LATER
+    	}
 
         function fixNewline(obj){
         	var count = 1;
@@ -190,7 +170,7 @@
         	
         	console.log('when empty2 ',countdelay);
 
-        	for(var str of participation[obj.title].body.split(/\\n/)){
+        	for(var str of dialogue[obj.title].body.split(/\\n/)){
         		console.log('parsed message content',str.length);
         		if(!/\S/.test(str)) continue; //if its empty skip it
         		(function(str){
@@ -213,6 +193,7 @@
 
         	console.log('whats the count ', count);
 
+        	// Handles user response button options
         	if(obj.buttons){
         		if((dialoguecount == 1 && thinkingflag == 0) || (dialoguecount == 0 && thinkingflag == 0))
         			countdelay+=5;
@@ -233,46 +214,19 @@
         	countdelay = 1;
 
         }
-
-		//button methods
-		
-		//initializer
+        /***************User Response Buttons*****************/
+		/** User click button options
+			text = button message
+			next = what node to go to next
+			called in fixNewLine
+		**/
+		//User click button options		
 		function option(o){
 			this.text = o.split("|")[0];
 			this.next = o.split("|")[1];
 			this.button = document.createElement('button');
 		}
 
-		// button click event
-		var test = function(e)
-		{
-			// Did we hit the end? If so popup the after feedback survey!
-			if(participation[this.getAttribute('data-next')] == null)
-			{
-				var win = window.open('https://docs.google.com/forms/d/e/1FAIpQLSfbWW1cfSUQ1Mo3KKXpLQV0liezNeVmjPEq08_e9CxzesX0Og/viewform');
-		
-				if (win)
-				{
-					win.focus();
-				}
-				else
-				{
-					alert('Please allow popups for this website!');
-				}
-				
-				return;
-			}
-
-			
-			$('#messages').append(new item("user", this.textContent).create());
-			
-			$('.inner-contain-body').animate({ 
-			      scrollTop: $('#messages').height()
-			});
-			
-			gotoObject(participation[this.getAttribute('data-next')]);
-		}
-		
 		//button create method using vanillaJS
 		option.prototype.create = function() {
 			this.button.textContent = this.text;
@@ -286,15 +240,25 @@
 			return this.button;
 		}
 
-		//message bubble methods
-		//initializer
+		// User choose option button click event
+		// called in option.create
+		var test = function(e){
+			$('#messages').append(new item("user", this.textContent).create());
+			$('.inner-contain-body').animate({ 
+			      scrollTop: $('#messages').height()
+			});
+			gotoObject(dialogue[this.getAttribute('data-next')]);
+		}
+
+		/************** Create Messages for interface*******************/
+		//Messages item for user and bot
 		function item(user, text) {
 			this.user = user;
 			this.text = text;
 			this.li = document.createElement('li');
 		}
 
-		//create method
+		//create message and append
 		item.prototype.create = function() {
 			var div = document.createElement('div');
 			div.className = 'message-content';
@@ -327,36 +291,32 @@
 		    this.li.appendChild(div);
 		    return this.li;
 		}
+		/**************************Roboto Messages***********************/
+		// parse json dialogue, create graphs --> called in goToObject
+		// get graph data --> called in document.ready
 
 		//parse a message to object
-		function parse(json)
-		{
+		function parse(json){
 			var result = [];
-			for (var element of json)
-			{
+			for (var element of json){
 				result[element.title.trim()] = element; //assuming titles are unique
 				
 				//for graphs
-				if(element.tags)
-				{
+				if(element.tags){
 					result[element.title.trim()].tags = element.tags;
 				} 
 
 				//empty node which should never occur for now
-				if(element.body.length==0)
-				{
+				if(element.body.length==0){
 					console.log('element.body fixed');
 					result[element.title.trim()].body = "empty node detected!";
-				}else
-				{
+				}else{
 					//nonempty node
 					var bracket = element.body.match(/\[\[(.*?)\]\]/g); //search for bracket [[]] which are coded for buttons
-					if(bracket==null)
-					{
+					if(bracket==null){
 							result[element.title.trim()].body = element.body.trim();
 					}
-					else
-					{
+					else{
 						//there are always brackets in the message bubble
 						result[element.title.trim()].buttons = element.body.match(/\[\[(.*?)\]\]/g);
 						result[element.title.trim()].body = element.body.split(/\[\[/)[0];
@@ -366,7 +326,7 @@
 			}
 			return result;
 		}
-		
+		// called in goToObject
 		function createGraph(type)
 		{
 			var graphDiv;
@@ -409,20 +369,17 @@
 				};
 			?>
 
-			
+			make_Graph(type);
 			$('.wrapper').slideDown("slow", function(){
 				//slide first to obtain the height then scroll
 				$('.inner-contain-graph').animate({ 
 		    		scrollTop: $('.inner-contain-graph').prop('scrollHeight')-$('.wrapper:last').prop('scrollHeight')
 				});
 			});
-			
-			make_Graph(type);
-			
-			// Resize event after 1 second to handle chrome on mac issue
-			setTimeout(function() {window.dispatchEvent(new Event('resize')); console.log("RESIZE FIRED");}, 1500);
 		}
-		
+		/*
+			Gets data from server
+		*/
 		function gatherData(){
 			var defaultuser = "<?php echo $userID ?>";
 
@@ -474,23 +431,16 @@
 	        i3speaker = [];
 	        colorpalette = ['#90D0D5','#FBF172', '#B0D357', '#C88ABC', '#4B79BD'];
 	        guests = {};
-	        count = 1;
+	        count = 0;
 	        console.log("i4 assignment", i4);
 	        for (var key in i3){
-				if(key == iuser){
-					i3speaker.unshift(key);
-					guests[key] = colorpalette[0];
-					i3data.unshift(Math.round((i3[key] / totalparticipation) * 100));
-				}
-				else{
-			       	//console.log("LALALA ", count, i3[key]);
-		            i3speaker.push(key);
-		            //keymod = key.replace(/Data\/test-key-test_/g, "");
-		            guests[key] = colorpalette[count];
-		            //console.log("logging guests", guests);
-		            i3data.push(Math.round((i3[key] / totalparticipation) * 100));
-		           	count+=1;
-	        	}
+	        	  //console.log("LALALA ", count, i3[key]);
+	            i3speaker.push(key);
+	            //keymod = key.replace(/Data\/test-key-test_/g, "");
+	            guests[key] = colorpalette[count];
+	            //console.log("logging guests", guests);
+	            i3data.push(Math.round(i3[key]));
+	            count+=1;
 	        }
 			/*$.getScript('graphs/public/main.js',function(data,textStatus){
 	            console.log("load was performed. ");
@@ -545,8 +495,7 @@
 			//dynamic participation
 			var self = i3[defaultuser];
 			var total = 0;
-			for(var key in i3)
-			{
+			for(var key in i3){
 				if(i3.hasOwnProperty(key))
 				{
 					total+=i3[key];
@@ -564,8 +513,7 @@
 			turnLeast = dynoTurn["to"][0]["guest"];
 			var turnLeastValue = dynoTurn["to"][0]["guest"]/turnTotal;
 			console.log("dynoTurn", dynoTurn);
-			for(var i = 0; i < dynoTurn["to"].length; i++)
-			{
+			for(var i = 0; i < dynoTurn["to"].length; i++){
 				console.log("how about looping it here");
 
 				if(dynoTurn["to"][i]["times"] > turnMostValue)
@@ -598,25 +546,19 @@
 			shareMost = smile_graph_data[0]["user"];
 			shareLeast = smile_graph_data[0]["user"];
 
-			for(var key in smile_graph_data)
-			{
-				if(smile_graph_data.hasOwnProperty(key))
-				{
-					if(smile_graph_data[key]["value"] > shareMostValue)
-					{
+			for(var key in smile_graph_data){
+				if(smile_graph_data.hasOwnProperty(key)){
+					if(smile_graph_data[key]["value"] > shareMostValue){
 						shareMostValue = smile_graph_data[key]["value"];
 						shareMost = smile_graph_data[key]["user"];
 					}
 
-					if(smile_graph_data[key]["value"] < shareLeastValue)
-					{
+					if(smile_graph_data[key]["value"] < shareLeastValue){
 						shareLeastValue = smile_graph_data[key]["value"];
 						shareLeast = smile_graph_data[key]["user"];
 					}
-
 				}
 			}
-
 		}
 	</script>
 </body>
