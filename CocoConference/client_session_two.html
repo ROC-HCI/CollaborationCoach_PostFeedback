@@ -15,7 +15,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-	
+
 	<script src="https://conference.eastus.cloudapp.azure.com/RocConf/lib/bower_components/webrtc-adapter/adapter.js"></script>
 	<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
 
@@ -33,13 +33,92 @@
 		<div id="header_text">Conference Room <button id="end_call_button" onClick="proposeStop()">End Call</button></div>
 	</header>
 
+	<!--User ID Input Modal-->
+	<div id="UserIDInfoModal" class ="modal">
+	  UserID:
+	  <br>
+	  <select id="DropDownChoice">
+	    <!--Member A Options-->
+	    <option value="A1">A1</option>
+	    <option value="A2">A2</option>
+	    <option value="A3">A3</option>
+	    <option value="A4">A4</option>
+	    <option value="A5">A5</option>
+	    <option value="A6">A6</option>
+	    <option value="A7">A7</option>
+	    <option value="A8">A8</option>
+	    <option value="A9">A9</option>
+	    <option value="A10">A10</option>
+
+	    <!--Member B Options-->
+	    <option value="B1">B1</option>
+	    <option value="B2">B2</option>
+	    <option value="B3">B3</option>
+	    <option value="B4">B4</option>
+	    <option value="B5">B5</option>
+	    <option value="B6">B6</option>
+	    <option value="B7">B7</option>
+	    <option value="B8">B8</option>
+	    <option value="B9">B9</option>
+	    <option value="B10">B10</option>
+
+	    <!--Member C Options-->
+	    <option value="C1">C1</option>
+	    <option value="C2">C2</option>
+	    <option value="C3">C3</option>
+	    <option value="C4">C4</option>
+	    <option value="C5">C5</option>
+	    <option value="C6">C6</option>
+	    <option value="C7">C7</option>
+	    <option value="C8">C8</option>
+	    <option value="C9">C9</option>
+	    <option value="C10">C10</option>
+
+	    <!--Member D Options-->
+	    <option value="D1">D1</option>
+	    <option value="D2">D2</option>
+	    <option value="D3">D3</option>
+	    <option value="D4">D4</option>
+	    <option value="D5">D5</option>
+	    <option value="D6">D6</option>
+	    <option value="D7">D7</option>
+	    <option value="D8">D8</option>
+	    <option value="D9">D9</option>
+	    <option value="D10">D10</option>
+	  </select>
+
+	  <br>
+	  <br>
+
+	    <!--Session Selection Radio Buttons-->
+	    Which session is this?
+	    <div id="SessionRadios">
+	      <input type="radio" name="Session" value="1"> Session 1<br>
+	      <input type="radio" name="Session" value="2"> Session 2<br>
+	    </div>
+
+	  <br>
+
+	    <!--Checkbox for Lenovo Tag Concatenation-->
+	    Is this laptop a Lenovo?
+	    <div id="LenovoCheck">
+	      <input type="radio" name="Lenovo" value="LENOVO"> Yes<br>
+	      <input type="radio" name="Lenovo" value=""> No<br>
+	    </div>
+
+	  <br>
+
+	    <!--Button for Submission-->
+	    <button type="button" id="UserIDSubmissionButton" onclick="onUserIDModalClick()">Submit User Session Info</button>
+	</div>
+
 	<!--Modal-->
 	<div id="uploadingModal" class="modal">
 		<!--Modal Content-->
 		<div class="modal-content">
 			<p>Uploading Session Data...</p>
 			<p>Please fill out the survey below while waiting!</p>
-			<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdTEiO49G3Y0uRMXAoPWoefOaiWjX0qrZno-IRNYjUWDmxpTA/viewform" target="_new">Conference Survey</a></p>
+			<p><a href="https://docs.google.com/a/u.rochester.edu/forms/d/e/1FAIpQLSf117LCNo60icBBcCEVrrsFI1VgFwus7Igs4zN7kdM--aNAvw/viewform" target="_new">Conference Survey</a></p>
 		</div>
 		<div class="loader"></div>
 	</div>
@@ -66,6 +145,7 @@
 		</div>
 		<div id="background_feeds">
 			<span id="remote_videos"></span>
+			<div id="videoFeedHint">You can hover over video feeds with your mouse cursor to make them larger</div>
 		</div>
 	</div>
 
