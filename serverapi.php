@@ -163,8 +163,8 @@ if($_GET['mode'] == 'debug')
 /*
 if($_GET['mode'] == 'stupid_thing')
 {
-	$key_old = 'c4d74700-16f9-11e7-96e6-f369022ab6af';
-	$key_new = '12345678';
+	$key_old = 'e39a2d00-2546-11e7-abd1-2d1926002e99';
+	$key_new = '999888777';
 	
 	$collection = $database->selectCollection('affdexmerge');
 	$query = array('session_key' => $key_old);
@@ -180,17 +180,26 @@ if($_GET['mode'] == 'stupid_thing')
 		foreach($data as $d)
 		{
 			$new_d = $d;
-			if($new_d["focus"] == "Darth Plagueis The Wise")
+			if($new_d["focus"] == "B1\\")
 			{
-				$new_d["focus"] = "Darth";
+				$new_d["focus"] = "B1";
+			}
+			
+			if($new_d["focus"] == "c1")
+			{
+				$new_d["focus"] = "c1LENOVO";
 			}
 
 			$data_clean[] = $new_d;
 		}
 		
-		if($doc["user"] == "Darth Plagueis The Wise")
+		if($doc["user"] == "B1\\")
 		{
-			$document_clean["user"] = "Darth";
+			$document_clean["user"] = "B1";
+		}
+		else if($doc["user"] == "c1")
+		{
+			$document_clean["user"] = "c1LENOVO";
 		}
 		else
 		{
@@ -207,7 +216,6 @@ if($_GET['mode'] == 'stupid_thing')
 	}
 }
 */
-
 //=============================================================
 // Transcript Comparison
 // - Looking at the different transcripts
