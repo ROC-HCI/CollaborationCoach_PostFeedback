@@ -28,31 +28,29 @@ Users(2): NicholasPierce, Will
 Duration: 5 minutes
 
 -------------------------------------------------
-**** INVALID TEXT GRID NEEDS MIGRATION ****
-**** VIDEO FILE LABEL BROKEN ****
 
 2017-04-19
-Key: e39a2d00-2546-11e7-abd1-2d1926002e99
-Users(4): A1, B1, C1, D1
+Key: 999888777
+Users(4): A1, B1, c1LENOVO, d1LENOVO
 Duration: 8 minutes
 
 -------------------------------------------------
 
 2017-04-19
 Key: 3d574080-254c-11e7-a812-cd691f041850
-Users(4): A1, B1, C1, D1
+Users(4): A1, B1, c1, d1LENOVO
 Duration: 8 minutes
 
 -------------------------------------------------
 
 2017-04-21
 Key: 906a2060-26c0-11e7-b40a-058fd8ca01a0
-Users(4): A21, B21, C21, D21
+Users(4): A21, B21, C21, D21LENOVO
 Duration: 11 minutes
 
 -------------------------------------------------
 
 2017-04-21
 Key: a79bd530-26c5-11e7-8408-6731f9ef0888
-Users(4): A22, B22, C22, D22
+Users(4): A22, B22, C22, D22LENOVO
 Duration: 3 minutes
