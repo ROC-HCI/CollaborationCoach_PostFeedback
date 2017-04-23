@@ -160,7 +160,6 @@ if($_GET['mode'] == 'debug')
 //=============================================================
 // MIGRATE AFFDEX RAW DATA TO NEW KEY
 //=============================================================
-/*
 if($_GET['mode'] == 'stupid_thing')
 {
 	$key_old = 'e39a2d00-2546-11e7-abd1-2d1926002e99';
@@ -215,7 +214,7 @@ if($_GET['mode'] == 'stupid_thing')
 		echo "submitted: " . $document_clean["user"] . " with key " . $document_clean["session_key"];
 	}
 }
-*/
+
 //=============================================================
 // Transcript Comparison
 // - Looking at the different transcripts
