@@ -34,5 +34,32 @@ function submit_answers(selections)
 
 function submit_final_answers()
 {
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = function() 
+	{
+		if(request.readyState == 4 && request.status == 200) 
+		{
+			console.log(request.response);
+			signaling_socket.emit("final_selections_submitted",DEFAULT_CHANNEL);
+		}
+	};
 	
+	optionOne.append("<option value=''>-- Select --</option>");
+	optionTwo.append("<option value=''>-- Select --</option>");
+	optionThree.append("<option value=''>-- Select --</option>");
+	optionFour.append("<option value=''>-- Select --</option>");
+	optionFive.append("<option value=''>-- Select --</option>");
+	
+	current_ranking = {"First": optionOne.val(), "Second": optionTwo.val(), "Third": optionThree.val(), "Fourth": optionFour.val(), "Fifth": optionFive.val()};
+	
+	data_to_send = {'session_key':session_key, 
+					'user':user_name,
+					'experiment':"one",
+					'selections': current_ranking};
+							
+	string_data = JSON.stringify(data_to_send);				
+					
+	request.open('POST', 'https://conference.eastus.cloudapp.azure.com/RocConf/serverapi.php?mode=experimentSubmitFinal');				
+	request.setRequestHeader("Content-type", "application/json");			
+	request.send(string_data);
 }

@@ -180,6 +180,12 @@
 	var optionFour = $("#user_final_four");
 	var optionFive = $("#user_final_five");
 	
+	optionOne.append("<option value=''>-- Select --</option>");
+	optionTwo.append("<option value=''>-- Select --</option>");
+	optionThree.append("<option value=''>-- Select --</option>");
+	optionFour.append("<option value=''>-- Select --</option>");
+	optionFive.append("<option value=''>-- Select --</option>");
+	
 	for(var i = 0; i < selection_options.length; i++)
 	{
 		selectionDiv.append( "<li class='ui-state-default' id='"+i+"'><span class='ui-icon ui-icon-arrowthick-2-n-s'></span>"+selection_options[i]+"</li>");

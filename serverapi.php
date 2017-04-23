@@ -160,6 +160,7 @@ if($_GET['mode'] == 'debug')
 //=============================================================
 // MIGRATE AFFDEX RAW DATA TO NEW KEY
 //=============================================================
+/*
 if($_GET['mode'] == 'stupid_thing')
 {
 	$key_old = 'e39a2d00-2546-11e7-abd1-2d1926002e99';
@@ -214,7 +215,7 @@ if($_GET['mode'] == 'stupid_thing')
 		echo "submitted: " . $document_clean["user"] . " with key " . $document_clean["session_key"];
 	}
 }
-
+*/
 //=============================================================
 // Transcript Comparison
 // - Looking at the different transcripts
@@ -510,6 +511,22 @@ if($_GET['mode'] == 'experimentSubmit')
 	$document["submitted"] = date("Y-m-d h:i:sa",time());
 	
 	$collection = $database->selectCollection('experimentselections');
+	$collection->insert($document);
+	
+	echo "selections submitted";
+	
+	$connection->close();
+}
+
+// Access Point for submitting Top five answers
+if($_GET['mode'] == 'experimentSubmitFinal')
+{
+	$json_string = file_get_contents('php://input');
+	
+	$document = json_decode($json_string,true);
+	$document["submitted"] = date("Y-m-d h:i:sa",time());
+	
+	$collection = $database->selectCollection('experimentselectionsfinal');
 	$collection->insert($document);
 	
 	echo "selections submitted";

@@ -243,6 +243,9 @@ function init()
 		// Stop Affdex and submit statistics to the database
 		onStop();
 		focus_end();
+		
+		// Submit Final Selections
+		submit_final_answers();
 
 		// Upload the video recording to the server, let the signaling-server know
 		// when completed.
