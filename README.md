@@ -1,5 +1,1 @@
-# ndev-python-http-cli
-Python HTTP CLI
-
-http://nuancedev.github.io/samples/http/python/
-
+Coco (Collaboration Coach) is a video conferencing platform that offers post-session feedback on group dynamics by analyzing audiovisual data in order to help your group improve group communication.
