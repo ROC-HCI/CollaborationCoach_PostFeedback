@@ -31,3 +31,8 @@ function submit_answers(selections)
 	request.setRequestHeader("Content-type", "application/json");			
 	request.send(string_data);
 }
+
+function submit_final_answers()
+{
+	
+}
