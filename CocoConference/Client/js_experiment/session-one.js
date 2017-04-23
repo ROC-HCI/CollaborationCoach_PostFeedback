@@ -44,12 +44,6 @@ function submit_final_answers()
 		}
 	};
 	
-	optionOne.append("<option value=''>-- Select --</option>");
-	optionTwo.append("<option value=''>-- Select --</option>");
-	optionThree.append("<option value=''>-- Select --</option>");
-	optionFour.append("<option value=''>-- Select --</option>");
-	optionFive.append("<option value=''>-- Select --</option>");
-	
 	current_ranking = {"First": optionOne.val(), "Second": optionTwo.val(), "Third": optionThree.val(), "Fourth": optionFour.val(), "Fifth": optionFive.val()};
 	
 	data_to_send = {'session_key':session_key, 
