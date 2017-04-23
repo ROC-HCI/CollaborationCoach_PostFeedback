@@ -153,7 +153,16 @@ header
   z-index: -1;
   margin-left: 70%;
   width: 30%;
-  height: 100%;
+  height: 60%;
+  background-color: #f3f3f3;
+}
+
+#user_final_rank
+{
+  z-index: -1;
+  margin-left: 70%;
+  width: 30%;
+  height: 40%;
   background-color: #f3f3f3;
 }
 

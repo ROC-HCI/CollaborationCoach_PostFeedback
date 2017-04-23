@@ -153,6 +153,13 @@
 	</div>
 
 	<div id="users_priority_list"></div>
+	<div id="user_final_rank">
+		<select id="user_final_one"></select>
+		<select id="user_final_two"></select>
+		<select id="user_final_three"></select>
+		<select id="user_final_four"></select>
+		<select id="user_final_five"></select>
+	</div>
 
 	<div id="affdex_data"></div>
 </body>
@@ -167,9 +174,20 @@
 						 "Shark repellent","A bottle of rum","A VHF radio"];
 
 	var selectionDiv = $( "#sortable" )
+	var optionOne = $("#user_final_one");
+	var optionTwo = $("#user_final_two");
+	var optionThree = $("#user_final_three");
+	var optionFour = $("#user_final_four");
+	var optionFive = $("#user_final_five");
+	
 	for(var i = 0; i < selection_options.length; i++)
 	{
 		selectionDiv.append( "<li class='ui-state-default' id='"+i+"'><span class='ui-icon ui-icon-arrowthick-2-n-s'></span>"+selection_options[i]+"</li>");
+		optionOne.append("<option value='" + selection_options[i] + "'>" + selection_options[i] + "</option>");
+		optionTwo.append("<option value='" + selection_options[i] + "'>" + selection_options[i] + "</option>");
+		optionThree.append("<option value='" + selection_options[i] + "'>" + selection_options[i] + "</option>");
+		optionFour.append("<option value='" + selection_options[i] + "'>" + selection_options[i] + "</option>");
+		optionFive.append("<option value='" + selection_options[i] + "'>" + selection_options[i] + "</option>");
 	}
 
 	$( "#sortable" ).sortable();
