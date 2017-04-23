@@ -17,7 +17,7 @@ client = MongoClient()
 database = client['rocconf']
 
 # CHANGE THIS FOR A UNIQUE LABEL!
-data_set_label = "2017_04_02"
+data_set_label = "2017_04_23"
 
 #============================================================================
 # Dump to CSV file
