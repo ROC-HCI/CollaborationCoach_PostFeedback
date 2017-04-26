@@ -210,6 +210,40 @@ def generate_interuption_data(session_key_list):
 	generate_csv_file(data_set_label + "_interruptions.csv", write_data)
 	return
 	
+#============================================================================
+# Create dataset of raw affdex data
+def generate_affdex_data(session_key_list):
+	source_collection = database['affdexmerge']
+	write_data = []
+	
+	for key in session_key_list:
+		document = source_collection.find({"session_key" : key})
+		
+		for doc in document:
+			data = doc["data"]
+			user = doc["user"]
+			
+			dict = {}
+			for d in data:
+				dict["session_key"] = key
+				dict["user"] = user
+				dict["focus"] = d["focus"]
+				
+				emotions = d["emotions"]
+				expressions = d["expressions"]
+				
+				for key, value in emotions.iteritems():
+					dict[key] = value
+				
+				for key, value in expressions.iteritems():
+					dict[key] = value
+					
+			write_data.append(dict.copy())
+			
+	generate_csv_file(data_set_label + "_affdex.csv", write_data)
+	return
+				
+	
 #=======================================================
 # Main Caller
 #=======================================================
@@ -217,14 +251,16 @@ if __name__ == "__main__":
 	# List of session keys you want to get data sets for
 	session_key_list = ["2a3cd350-b807-11e6-b074-894d5799765b","12345678","07894240-0dbf-11e7-9ae9-6d413ab416f0","ebad4e90-17e6-11e7-9b9c-bf00dfff9daf",
 	                    "999888777","3d574080-254c-11e7-a812-cd691f041850","906a2060-26c0-11e7-b40a-058fd8ca01a0","a79bd530-26c5-11e7-8408-6731f9ef0888",
-						"2bb8a640-2847-11e7-af67-bf096685ec64","71ec3db0-284d-11e7-818b-8f39e78c9129"]
+						"2bb8a640-2847-11e7-af67-bf096685ec64","71ec3db0-284d-11e7-818b-8f39e78c9129","fee0b550-2a02-11e7-95b6-27c2f89beca5",
+						"e69b3b00-2a07-11e7-895e-3d111079e18f"]
 	
-	generate_interuption_data(session_key_list)
-	generate_participation_data(session_key_list)
-	generate_turntaking_data(session_key_list)
-	generate_attitude_data(session_key_list)
-	generate_shared_data(session_key_list)
-	generate_single_feature_counts(session_key_list)
+	#generate_interuption_data(session_key_list)
+	#generate_participation_data(session_key_list)
+	#generate_turntaking_data(session_key_list)
+	#generate_attitude_data(session_key_list)
+	#generate_shared_data(session_key_list)
+	#generate_single_feature_counts(session_key_list)
+	generate_affdex_data(session_key_list)
 	
 	
 		
