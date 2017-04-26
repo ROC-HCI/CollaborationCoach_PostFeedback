@@ -228,12 +228,11 @@ def generate_affdex_data(session_key_list):
 				dict["session_key"] = key
 				dict["user"] = user
 				dict["focus"] = d["focus"]
+				dict["time"] = d["timeValue"] * .25
 				
-				emotions = d["emotions"]
-				expressions = d["expressions"]
+				emotions = json.loads(d["emotions"])
+				expressions = json.loads(d["expressions"])
 				
-				pp.pprint(emotions)
-				break;
 				for key, value in emotions.iteritems():
 					dict[key] = value
 				
