@@ -17,7 +17,7 @@ client = MongoClient()
 database = client['rocconf']
 
 # CHANGE THIS FOR A UNIQUE LABEL!
-data_set_label = "2017_04_24"
+data_set_label = "2017_04_25"
 
 #============================================================================
 # Dump to CSV file
@@ -255,12 +255,12 @@ if __name__ == "__main__":
 						"2bb8a640-2847-11e7-af67-bf096685ec64","71ec3db0-284d-11e7-818b-8f39e78c9129","fee0b550-2a02-11e7-95b6-27c2f89beca5",
 						"e69b3b00-2a07-11e7-895e-3d111079e18f"]
 	
-	#generate_interuption_data(session_key_list)
-	#generate_participation_data(session_key_list)
-	#generate_turntaking_data(session_key_list)
-	#generate_attitude_data(session_key_list)
-	#generate_shared_data(session_key_list)
-	#generate_single_feature_counts(session_key_list)
+	generate_interuption_data(session_key_list)
+	generate_participation_data(session_key_list)
+	generate_turntaking_data(session_key_list)
+	generate_attitude_data(session_key_list)
+	generate_shared_data(session_key_list)
+	generate_single_feature_counts(session_key_list)
 	generate_affdex_data(session_key_list)
 	
 	
