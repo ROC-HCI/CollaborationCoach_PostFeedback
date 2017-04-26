@@ -17,7 +17,7 @@ client = MongoClient()
 database = client['rocconf']
 
 # CHANGE THIS FOR A UNIQUE LABEL!
-data_set_label = "2017_04_23"
+data_set_label = "2017_04_24"
 
 #============================================================================
 # Dump to CSV file
@@ -233,13 +233,13 @@ def generate_affdex_data(session_key_list):
 				emotions = json.loads(d["emotions"])
 				expressions = json.loads(d["expressions"])
 				
-				for key, value in emotions.iteritems():
-					dict[key] = value
+				for k, v in emotions.iteritems():
+					dict[k] = v
 				
-				for key, value in expressions.iteritems():
-					dict[key] = value
+				for i, j in expressions.iteritems():
+					dict[i] = j
 					
-			write_data.append(dict.copy())
+				write_data.append(dict.copy())
 			
 	generate_csv_file(data_set_label + "_affdex.csv", write_data)
 	return
