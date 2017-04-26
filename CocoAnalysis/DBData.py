@@ -232,6 +232,8 @@ def generate_affdex_data(session_key_list):
 				emotions = d["emotions"]
 				expressions = d["expressions"]
 				
+				pp.pprint(emotions)
+				break;
 				for key, value in emotions.iteritems():
 					dict[key] = value
 				
