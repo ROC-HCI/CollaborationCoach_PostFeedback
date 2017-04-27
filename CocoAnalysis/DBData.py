@@ -256,15 +256,15 @@ if __name__ == "__main__":
 						"2bb8a640-2847-11e7-af67-bf096685ec64","71ec3db0-284d-11e7-818b-8f39e78c9129","fee0b550-2a02-11e7-95b6-27c2f89beca5",
 						"e69b3b00-2a07-11e7-895e-3d111079e18f","d7a03190-2ad5-11e7-8073-d3e069445d1e"]
 	'''
-	session_key_list = ["538c7d90-2adb-11e7-b249-d9e757196551"]
+	session_key_list = ["112233"]
 	
-	#generate_interuption_data(session_key_list)
-	#generate_participation_data(session_key_list)
-	#generate_turntaking_data(session_key_list)
-	generate_attitude_data(session_key_list)
-	generate_shared_data(session_key_list)
-	generate_single_feature_counts(session_key_list)
-	generate_affdex_data(session_key_list)
+	generate_interuption_data(session_key_list)
+	generate_participation_data(session_key_list)
+	generate_turntaking_data(session_key_list)
+	#generate_attitude_data(session_key_list)
+	#generate_shared_data(session_key_list)
+	#generate_single_feature_counts(session_key_list)
+	#generate_affdex_data(session_key_list)
 	
 	
 		
