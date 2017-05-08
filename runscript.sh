@@ -42,12 +42,12 @@ done
 python fileparser.py $argpath
 echo "Finish - Participation Analysis"
 
-echo "Start - average affdex features"
-python AffdexParser.py $session_id
-echo "Finish - average affdex features"
+#echo "Start - average affdex features"
+#python AffdexParser.py $session_id
+#echo "Finish - average affdex features"
 
-echo "Start - shared affdex features"
-python SharedAffdexDetection.py $session_id
-echo "Finish - shared affdex features"
+#echo "Start - shared affdex features"
+#python SharedAffdexDetection.py $session_id
+#echo "Finish - shared affdex features"
 
 echo "Session Script Terminated..."
