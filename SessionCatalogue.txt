@@ -99,24 +99,31 @@ Duration: 18 minutes
 
 -------------------------------------------------
 
-2017-05-03 (No Affdex - Can Regen Participation)
+2017-05-03 (No Affdex)
 Key: 2ac07aa0-304a-11e7-99f7-8b6936f29dca
 Users(3): A61LENOVO, B61, C61
 Duration: 3 minutes
 
 -------------------------------------------------
 
-2017-05-03 (No Affdex - Can Regen Participation)
+2017-05-03 (No Affdex)
 Key: 0a5c0fb0-304d-11e7-990a-d7296a93503e
 Users(3): A62LENOVO, B62, C62
 Duration: 6 minutes
 
 -------------------------------------------------
 
-2017-05-06 (No Affdex - Can Regen Participation)
+2017-05-06 (No Affdex)
 Key: 9d6e5160-31af-11e7-866a-253fc4e70a06
-Users(4): A71, B72, C72LENOVO, D72
+Users(4): A72, B71, C71LENOVO, D71
 Duration: 6 minutes
+
+-------------------------------------------------
+
+2017-05-06 (No Affdex)
+Key: 25733bc0-31b5-11e7-a908-e9c241e9ff01
+Users(4): A71, B72, C72LENOVO, D72
+Duration: 4 minutes
 
 -------------------------------------------------
 
@@ -124,3 +131,10 @@ Duration: 6 minutes
 Key: 762c620-3293-11e7-bce5-9beddb28531e
 Users(4): A91, B91LENOVO, C91LENOVO, D91
 Duration: 14 minutes
+
+-------------------------------------------------
+
+2017-05-06 
+Key: 67f0f840-3299-11e7-aa9a-a1dc19d66b24
+Users(4): A92, B92LENOVO, C92LENOVO, D92
+Duration: 12 minutes
