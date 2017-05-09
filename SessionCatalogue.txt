@@ -93,7 +93,7 @@ Duration: 11 minutes
 -------------------------------------------------
 
 2017-04-26
-Key: Participation: 112233 (Affdex: 538c7d90-2adb-11e7-b249-d9e757196551)
+Key: 538c7d90-2adb-11e7-b249-d9e757196551
 User(4): A52, B52, C52, D52LENOVO
 Duration: 18 minutes
 
