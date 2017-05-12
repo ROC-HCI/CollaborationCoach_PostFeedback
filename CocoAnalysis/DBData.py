@@ -17,7 +17,7 @@ client = MongoClient()
 database = client['rocconf']
 
 # CHANGE THIS FOR A UNIQUE LABEL!
-data_set_label = "Session6and7_Backup"
+data_set_label = "Session11and12_Backup"
 
 #============================================================================
 # Dump to CSV file
@@ -256,15 +256,15 @@ if __name__ == "__main__":
 						"2bb8a640-2847-11e7-af67-bf096685ec64","71ec3db0-284d-11e7-818b-8f39e78c9129","fee0b550-2a02-11e7-95b6-27c2f89beca5",
 						"e69b3b00-2a07-11e7-895e-3d111079e18f","d7a03190-2ad5-11e7-8073-d3e069445d1e"]
 	'''
-	session_key_list = ["2ac07aa0-304a-11e7-99f7-8b6936f29dca","0a5c0fb0-304d-11e7-990a-d7296a93503e","9d6e5160-31af-11e7-866a-253fc4e70a06","25733bc0-31b5-11e7-a908-e9c241e9ff01"]
+	session_key_list = ["905b1440-366e-11e7-b3c3-3b6c160d9809","c8390080-3672-11e7-ad18-c98b0a7d4c00","b3cee860-3737-11e7-aa39-4947b56df72d","4244c540-373f-11e7-86a2-51e2e7ac90e7"]
 	
 	generate_interuption_data(session_key_list)
 	generate_participation_data(session_key_list)
 	generate_turntaking_data(session_key_list)
-	#generate_attitude_data(session_key_list)
-	#generate_shared_data(session_key_list)
-	#generate_single_feature_counts(session_key_list)
-	#generate_affdex_data(session_key_list)
+	generate_attitude_data(session_key_list)
+	generate_shared_data(session_key_list)
+	generate_single_feature_counts(session_key_list)
+	generate_affdex_data(session_key_list)
 	
 	
 		
