@@ -1,11 +1,11 @@
 // Script for handling the 'Lost at Sea' Game
 
 var experiment_instructions = "SCENARIO: You and your group members have been shipwrecked and are stranded in a life boat. You have a box of matches and a number of items salvaged from the sinking ship. Now, you have to determine which items are the most important for your groups survival. On your own sort the items on the next screen based on how you feel they should be ranked (top being highest priority) and press 'Submit Results'. Then the video call will begin, where you and your group will decide on the top three items.";
-
+var experiment_instructions_trimmed = "You and your group members have been shipwrecked and are stranded in a life boat. You have a box of matches and a number of items salvaged from the sinking ship. Now, you have to determine which items are the most important for your groups survival.";
 var current_ranking = null;
 
 var scenarioDisplay = $("#users_scenario_display");
-scenarioDisplay.html("<p align='center'><b>Scenario</b></p><p>" + experiment_instructions + "</p>");
+scenarioDisplay.html("<p align='center'><b>Scenario</b></p><p>" + experiment_instructions_trimmed + "</p>");
 
 function submit_answers(selections)
 {
