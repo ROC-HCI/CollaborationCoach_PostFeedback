@@ -4,7 +4,7 @@ var experiment_instructions = "SCENARIO: You and your group members have been sh
 
 var current_ranking = null;
 
-document.getElementById("users_scenario_display").value = experiment_instructions;
+document.getElementById("users_scenario_display").value = "<p align='center'><b>Scenario</b></p><p>" + experiment_instructions + "</p>";
 
 function submit_answers(selections)
 {
