@@ -4,6 +4,8 @@ var experiment_instructions = "SCENARIO: You are a member of a space crew origin
 
 var current_ranking = null;
 
+document.getElementById("users_scenario_display").value = experiment_instructions;
+
 function submit_answers(selections)
 {
 	experiment_modal.style.display = "block";
