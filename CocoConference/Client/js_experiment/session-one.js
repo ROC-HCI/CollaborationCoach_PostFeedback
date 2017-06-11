@@ -5,7 +5,7 @@ var experiment_instructions = "SCENARIO: You and your group members have been sh
 var current_ranking = null;
 
 var scenarioDisplay = $("#users_scenario_display");
-scenarioDisplay.innerHTML = "<p align='center'><b>Scenario</b></p><p>" + experiment_instructions + "</p>";
+scenarioDisplay.html("<p align='center'><b>Scenario</b></p><p>" + experiment_instructions + "</p>");
 
 function submit_answers(selections)
 {

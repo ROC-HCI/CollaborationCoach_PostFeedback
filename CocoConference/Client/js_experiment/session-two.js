@@ -5,7 +5,7 @@ var experiment_instructions = "SCENARIO: You are a member of a space crew origin
 var current_ranking = null;
 
 var scenarioDisplay = $("#users_scenario_display");
-scenarioDisplay.innerHTML = "<p align='center'><b>Scenario</b></p><p>" + experiment_instructions + "</p>";
+scenarioDisplay.html("<p align='center'><b>Scenario</b></p><p>" + experiment_instructions + "</p>");
 
 function submit_answers(selections)
 {
