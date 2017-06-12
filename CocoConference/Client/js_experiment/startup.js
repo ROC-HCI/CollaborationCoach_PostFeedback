@@ -163,6 +163,9 @@ function init()
 		{
 			users_priority_list.append( "<li class='ui-state-default'>"+current_ranking[i].item+"</li>");
 		}
+		
+		// Attach our local feed to the small feeds
+		$('#remote_videos').append(local_media_stream);
 
 		// Experiment starting, setup our remote feeds on the page.
 		for(peer_id in peer_media_streams)
