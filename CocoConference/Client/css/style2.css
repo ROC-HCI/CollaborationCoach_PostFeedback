@@ -204,11 +204,6 @@ header
   width:60%;
 }
 
-#local_video
-{
-  visibility: hidden;
-}
-
 #end_call_button
 {
   margin-left: 2%;
