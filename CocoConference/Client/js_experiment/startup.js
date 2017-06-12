@@ -163,9 +163,6 @@ function init()
 		{
 			users_priority_list.append( "<li class='ui-state-default'>"+current_ranking[i].item+"</li>");
 		}
-		
-		// Attach our local feed to the small feeds
-		$('#remote_videos').append(local_media_stream);
 
 		// Experiment starting, setup our remote feeds on the page.
 		for(peer_id in peer_media_streams)
@@ -475,7 +472,7 @@ function setup_local_media(callback, errorback)
 			local_media.attr("autoplay", "autoplay");
 			local_media.attr("muted", "true"); /* always mute ourselves by default */
 			local_media.attr("id", "local_video");
-			$('body').append(local_media);
+			$('#remote_videos').append(local_media);
 			attachMediaStream(local_media[0], stream);
 
 			if (callback) callback();
