@@ -146,7 +146,7 @@
         			//	$('#messages').append(new item("Roboto","...").create());
 					//	thinking= $('#messages li:last');
 
-						$('#messages').append("<img src='https://codemyui.com/wp-content/uploads/2015/06/iMessage-Typing-Indicator-in-CSS.gif' height=120 width=200>")
+						$('#messages').append("<img src='typing.gif' height=120 width=200>")
 						thinking= $('#messages img:last');
 
 						// scroll to last message bubble
